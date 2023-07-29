@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa&display=swap');
+
+@font-face {
+    font-family: 'ElMessiri-Bold';
+    src: url("/fonts/ElMessiri-Bold.ttf");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ElMessiri-SemiBold';
+    src: url("/fonts/ElMessiri-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ElMessiri-Medium';
+    src: url("/fonts/ElMessiri-Medium.ttf");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ElMessiri-Regular';
+    src: url("/fonts/ElMessiri-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+
+
+$color-primary : #DDB0AF;
+$color-light : #F5F5F5;
+$color-darkgrey : #0B2027;
+
+$font-primary-bold : "ElMessiri-Bold";
+$font-primary-semibold : "ElMessiri-SemiBold";
+$font-primary-medium : "ElMessiri-Medium";
+$font-primary-regular : "ElMessiri-Regular";
+
+
+
+:root{
+
+    --color-primary : #DDB0AF;
+    --color-light : #F5F5F5;
+    --color-darkgrey : #0B2027;
+
+    --font-family-main : "Bebas Neue";
+    --font-family-secondary : "Comfortaa";
+    font-size: 18px;
+}
+
+@import url("/styles/reset.scss");

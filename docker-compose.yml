@@ -1,0 +1,22 @@
+version: '3'
+services:
+  sveltekit:
+    image: svelte-docker-node
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deploy-node
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sveltekit.rule=Host(`svelte-begins.guillian.net`)"
+      - "traefik.http.routers.sveltekit.entrypoints=http"
+      - "traefik.http.routers.sveltekit-secure.rule=Host(`svelte-begins.guillian.net`)"
+      - "traefik.http.routers.sveltekit-secure.entrypoints=https"
+      - "traefik.http.routers.sveltekit-secure.tls=true"
+      - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
+
+networks:
+  traefik-net:
+   external: true
