@@ -62,10 +62,6 @@ import {page} from '$app/stores'
 
         .links{
             flex-grow: 2;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
         }
 
         .presse{

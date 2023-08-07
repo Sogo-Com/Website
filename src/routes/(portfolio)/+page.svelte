@@ -2,6 +2,38 @@
 <script>
 
     import { t } from '$lib/translations';
+	import { onMount } from 'svelte';
+    import Swiper from 'swiper';
+    import { Pagination } from 'swiper/modules';
+    import 'swiper/css';
+    let links
+
+    onMount(_=>{
+        window.swiper = new Swiper(".swiper-container",{
+            modules: [Pagination],
+            // loop: true,
+
+            // If we need pagination
+            pagination: {
+                clickable:true,
+                el: '.pagination',
+            },
+        });
+
+       
+        window.swiper.on('activeIndexChange', function() {
+            
+            Array.from(links.children).map(child => {
+                child.classList.remove("active"); 
+                return child
+            })
+            links.children[ window.swiper.activeIndex].classList.add("active")
+        });
+
+
+      
+
+    })
 
 </script>
 
@@ -44,6 +76,73 @@
     </div>
 </div>
 </div>
+<div id="expertise">
+
+    <h2>{$t('home.expertise-title')}</h2>
+
+    <div bind:this={links} class="links">
+
+        <div class="link active" on:click={()=> { window.swiper.slideTo(0) }}>
+            {$t('home.expertise-graphisme')}
+        </div>
+
+        <div class="link" on:click={()=> { window.swiper.slideTo(1) }}>
+            {$t('home.expertise-reseaux')}
+        </div>
+
+        <div class="link" on:click={()=> { window.swiper.slideTo(2) }}>
+            {$t('home.expertise-evenements')}
+        </div>
+
+        <div class="link" on:click={()=> { window.swiper.slideTo(3) }}>
+            {$t('home.expertise-photovideo')}
+        </div>
+
+        <div class="link" on:click={()=> { window.swiper.slideTo(4) }}>
+            {$t('home.expertise-relationpresse')}
+        </div>
+
+        <div class="link" on:click={()=> { window.swiper.slideTo(5) }}>
+            {$t('home.expertise-redaction')}
+        </div>
+    </div>
+    <div class="swiper-container">
+        <div  class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/images/expertise-slide.png" alt="expertise-slide">
+                <div class="btn blue">{$t('common.savoir+')}</div>
+            </div>
+        
+            <div class="swiper-slide">
+                <img src="/images/expertise-slide.png" alt="expertise-slide">
+                <div class="btn">{$t('common.savoir+')}</div>
+            </div>
+        
+            <div class="swiper-slide">
+                <img src="/images/expertise-slide.png" alt="expertise-slide">
+                <div class="btn">{$t('common.savoir+')}</div>
+            </div>
+        
+            <div class="swiper-slide">
+                <img src="/images/expertise-slide.png" alt="expertise-slide">
+                <div class="btn">{$t('common.savoir+')}</div>
+            </div>
+        
+            <div class="swiper-slide">
+                <img src="/images/expertise-slide.png" alt="expertise-slide">
+                <div class="btn">{$t('common.savoir+')}</div>
+            </div>
+        
+            <div class="swiper-slide">
+                <img src="/images/expertise-slide.png" alt="expertise-slide">
+                <div class="btn">{$t('common.savoir+')}</div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="pagination"></div>
+</div>
 
 
 <style lang="scss">
@@ -70,14 +169,9 @@
     }
     h1{
            
-            bottom:0;
-            transform: translateX(-50%);
-            color:white;
-            font-family: $font-primary-bold ;
-            font-size: 3rem;
-            text-align: center;
-            padding: 32px;
-            z-index: 30;
+                    
+        bottom:0;
+        transform: translateX(-50%);
         }
     .bg-gris{
        
@@ -120,19 +214,6 @@
         padding: 32px;
 
 
-        h2{
-
-            font-family: $font-primary-bold;
-            font-size: 2.5rem;
-            margin-bottom: 32px;
-            .grey{
-                color: $color-gris-dark;
-            }
-
-            .pink{
-                color: $color-rose;
-            }
-        }
 
         p{
             font-family: $font-secondary-light;
@@ -140,12 +221,7 @@
         }
 
         .btn{
-            border-radius: 32px;
-            font-family: $font-primary-semibold;
             background-color: $color-rose;
-            padding: 10px 20px;
-            display: inline;
-            color: #fff;
         }
 
         
@@ -189,6 +265,57 @@
     }
 }
 
+}
+
+
+
+#expertise{
+    background-color: rgba($color-bleu, .1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    h2{
+        text-align: center;
+        padding: 64px 0 32px 0;
+    }
+    img{
+        width: 100%;
+        height: 80%;
+        object-fit: contain;
+        background-size: contain;
+   
+    }
+    .swiper-slide{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+    .links{
+        align-items: center;
+        width: 80%;
+        height: 64px;
+        .link{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: $color-gris-dark  solid 1px;
+            height: 100%;
+
+
+            
+
+            &:nth-child(6){
+                border-right: $color-gris-dark solid 1px;;
+            }
+        }
+
+        
+    }
 }
 
 </style>
