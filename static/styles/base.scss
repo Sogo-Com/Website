@@ -37,7 +37,7 @@ h2{
         color:var(--color-gris);
 
         &.active{
-            font-family: var(--font-primary-semibold);
+            font-family: var(--font-secondary-semibold);
             font-weight: 700;
             color: var(--color-bleu);
         }
@@ -82,6 +82,7 @@ h2{
     padding: 10px 20px;
     display: inline;
     color: #fff;
+    cursor: pointer;
 
     &.blue{
         background-color: var(--color-bleu);

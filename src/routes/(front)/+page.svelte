@@ -1,31 +1,14 @@
 <script>
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
-	import Swiper from 'swiper';
-    import Contact from '$lib/components/Contact.svelte';
-	import { Pagination } from 'swiper/modules';
-	import 'swiper/css';
-	let links;
+	import { goto } from '$app/navigation';
+
+	import Contact from '$lib/components/Contact.svelte';
+	import SliderExpertise from '$lib/components/SliderExpertise.svelte';
+
 
 	onMount((_) => {
-		window.swiper = new Swiper('.swiper-container', {
-			modules: [Pagination],
-			// loop: true,
-
-			// If we need pagination
-			pagination: {
-				clickable: true,
-				el: '.pagination'
-			}
-		});
-
-		window.swiper.on('activeIndexChange', function () {
-			Array.from(links.children).map((child) => {
-				child.classList.remove('active');
-				return child;
-			});
-			links.children[window.swiper.activeIndex].classList.add('active');
-		});
+		
 	});
 </script>
 
@@ -45,7 +28,13 @@
 			<p>
 				{$t('home.description')}
 			</p>
-			<div class="btn">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div
+				class="btn"
+				on:click={() => {
+					goto('/agence');
+				}}
+			>
 				{$t('common.savoir+')}
 			</div>
 		</div>
@@ -58,106 +47,13 @@
 		</div>
 	</div>
 </div>
-<div id="expertise">
-	<h2>{$t('home.expertise-title')}</h2>
-
-	<div bind:this={links} class="links">
-		<div
-			class="link active"
-			on:click={() => {
-				window.swiper.slideTo(0);
-			}}
-		>
-			{$t('home.expertise-graphisme')}
-		</div>
-
-		<div
-			class="link"
-			on:click={() => {
-				window.swiper.slideTo(1);
-			}}
-		>
-			{$t('home.expertise-reseaux')}
-		</div>
-
-		<div
-			class="link"
-			on:click={() => {
-				window.swiper.slideTo(2);
-			}}
-		>
-			{$t('home.expertise-evenements')}
-		</div>
-
-		<div
-			class="link"
-			on:click={() => {
-				window.swiper.slideTo(3);
-			}}
-		>
-			{$t('home.expertise-photovideo')}
-		</div>
-
-		<div
-			class="link"
-			on:click={() => {
-				window.swiper.slideTo(4);
-			}}
-		>
-			{$t('home.expertise-relationpresse')}
-		</div>
-
-		<div
-			class="link"
-			on:click={() => {
-				window.swiper.slideTo(5);
-			}}
-		>
-			{$t('home.expertise-redaction')}
-		</div>
-	</div>
-	<div class="swiper-container">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<img src="/images/expertise-slide.png" alt="expertise-slide" />
-				<div class="btn blue">{$t('common.savoir+')}</div>
-			</div>
-
-			<div class="swiper-slide">
-				<img src="/images/expertise-slide.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
-			</div>
-
-			<div class="swiper-slide">
-				<img src="/images/expertise-slide.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
-			</div>
-
-			<div class="swiper-slide">
-				<img src="/images/expertise-slide.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
-			</div>
-
-			<div class="swiper-slide">
-				<img src="/images/expertise-slide.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
-			</div>
-
-			<div class="swiper-slide">
-				<img src="/images/expertise-slide.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="pagination" />
-</div>
+<SliderExpertise />
 
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
 			<h2>Contactez nous</h2>
-			<Contact  />
+			<Contact />
 		</div>
 		<div class="contact-images">
 			<img class="contact-image" src="/images/contact-1.png" alt="contact-1" />
@@ -218,7 +114,7 @@
 			flex-wrap: nowrap;
 			position: relative;
 
-			left: 9%;
+			left: 6%;
 
 			.bloc {
 				width: 50%;
@@ -265,58 +161,19 @@
 						z-index: 10;
 						width: 100%;
 						height: 100%;
+						border-radius: 32px;
 					}
 				}
 			}
 		}
 	}
 
-	#expertise {
-		background-color: rgba($color-bleu, 0.1);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 32px;
-		h2 {
-			text-align: center;
-			padding: 64px 0 32px 0;
-		}
-		img {
-			width: 100%;
-			height: 80%;
-			object-fit: contain;
-			background-size: contain;
-		}
-		.swiper-slide {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
-			align-items: center;
-		}
-		.links {
-			align-items: center;
-			width: 80%;
-			height: 64px;
-			.link {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				border-left: $color-gris-dark solid 1px;
-				height: 100%;
 
-				&:nth-child(6) {
-					border-right: $color-gris-dark solid 1px;
-				}
-			}
-		}
-	}
 
 	#contact {
 		.wrapper {
 			.contact-form {
 				width: 35%;
-
 			}
 			.contact-images {
 				flex-grow: 2;
@@ -324,31 +181,32 @@
 				position: relative;
 
 				.contact-image {
-                    margin-left: 64px;
+					margin-left: 64px;
 					position: absolute;
 					width: 40%;
 					height: 40%;
-                    object-fit: cover;
-                    background-size: cover;
+					object-fit: cover;
+					background-size: cover;
+					border-radius: 32px;
 
 					&:nth-child(1) {
 						top: 0;
 						left: 50%;
 						transform: translateX(-50%);
-                        z-index: 2;
+						z-index: 2;
 					}
 
 					&:nth-child(2) {
 						top: 50%;
 						transform: translateY(-50%);
-                        z-index: 3;
+						z-index: 3;
 					}
 
 					&:nth-child(3) {
 						transform: translateX(-50%);
 						bottom: 0;
 						left: 50%;
-                        z-index: 4;
+						z-index: 4;
 					}
 
 					&:nth-child(4) {
@@ -359,13 +217,9 @@
 						right: 0;
 						background: $color-rose;
 						transform: translateY(-50%);
-                        z-index: 1;
+						z-index: 1;
 					}
-
-					
 				}
-
-				
 			}
 		}
 	}

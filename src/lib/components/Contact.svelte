@@ -26,18 +26,18 @@
 <style lang="scss">
 	form {
 		font-family: $font-secondary-light;
-		background: $color-rose;
+		background: $color-gris-clair ;
 		border-radius: 32px;
 		padding: 32px;
 		display: flex;
 		flex-direction: column;
 
 		p {
-			color: $color-blanc;
+			color: $color-gris-dark ;
 			margin-bottom: 32px;
 		}
 		label {
-			color: $color-blanc;
+			color:  $color-gris-dark ;
 			margin-bottom: 8px;
 		}
 		input {
@@ -51,7 +51,7 @@
 
 		.btn {
 			background-color: $color-blanc;
-			font-family: $font-secondary-bold;
+			font-family: $font-secondary-semibold;
 			margin-top: 32px;
 			color: $color-rose;
 			width: fit-content;
