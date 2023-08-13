@@ -1,6 +1,6 @@
 version: '3'
 services:
-  sveltekit:
+  sogocom:
     image: svelte-docker-node
     build:
       context: .
@@ -10,12 +10,12 @@ services:
       - traefik-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sveltekit.rule=Host(`sogocom-beta.guillian.net`)"
-      - "traefik.http.routers.sveltekit.entrypoints=http"
-      - "traefik.http.routers.sveltekit-secure.rule=Host(`sogocom-beta.guillian.net`)"
-      - "traefik.http.routers.sveltekit-secure.entrypoints=https"
-      - "traefik.http.routers.sveltekit-secure.tls=true"
-      - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
+      - "traefik.http.routers.sogocom.rule=Host(`sogocom-beta.guillian.net`)"
+      - "traefik.http.routers.sogocom.entrypoints=http"
+      - "traefik.http.routers.sogocom-secure.rule=Host(`sogocom-beta.guillian.net`)"
+      - "traefik.http.routers.sogocom-secure.entrypoints=https"
+      - "traefik.http.routers.sogocom-secure.tls=true"
+      - "traefik.http.services.sogocom.loadbalancer.server.port=3000"
 
 networks:
   traefik-net:
