@@ -62,8 +62,9 @@ h2{
     flex-wrap: nowrap;
 
     .swiper-pagination-bullet{
+        transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         background-color: var(--color-gris);
-        margin: 16px;
+        margin: 8px;
         width: 16px;
         height: 16px;
         display: block;
@@ -76,6 +77,7 @@ h2{
 }
 
 .btn{
+    transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     border-radius: 32px;
     font-family: var(--font-primary-semibold);
     background-color: var(--color-rose);
