@@ -1,35 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa&display=swap');
 
 @font-face {
-    font-family: 'Bebas Neue';
+    font-family: 'ElMessiri-Bold';
+    src: url("/fonts/ElMessiri-Bold.ttf");
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Comfortaa';
+    font-family: 'ElMessiri-SemiBold';
+    src: url("/fonts/ElMessiri-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ElMessiri-Medium';
+    src: url("/fonts/ElMessiri-Medium.ttf");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url("/fonts/Poppins-Regular.ttf");
     font-style: normal;
     font-weight: 400;
     font-display: swap;
 }
 
 
-$color-primary : #D30C7B;
-$color-light : #FFFBFC;
-$color-darkblue : #0B2027;
-$font-family-main : "Bebas Neue";
-$font-family-secondary : "Comfortaa";
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url("/fonts/Poppins-Bold.ttf");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
 
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url("/fonts/Poppins-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url("/fonts/Poppins-Medium.ttf");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url("/fonts/Poppins-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url("/fonts/Poppins-Light.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+
+
+$font-primary-bold : "ElMessiri-Bold";
+$font-primary-semibold : "ElMessiri-SemiBold";
+$font-primary-medium : "ElMessiri-Medium";
+$font-primary-regular : "ElMessiri-Regular";
+
+$font-secondary-bold : "Poppins-Bold";
+$font-secondary-semibold : "Poppins-SemiBold";
+$font-secondary-medium : "Poppins-Medium";
+$font-secondary-regular : "Poppins-Regular";
+$font-secondary-light : "Poppins-Light";
+
+
+$color-rose : #DDB0AF;
+$color-jaune : #E5AE1E;
+$color-gris : #878787;
+$color-bordeaux : #9D524F;
+$color-bleu : #2C9A9B;
+$color-kaki : #80816D;
+$color-blanc : #F5F5F5;
+
+$color-gris-dark : #575757;
+$color-gris-clair : #E1E1E1;
 :root{
 
-    --color-primary : #D30C7B;
-    --color-light : #FFFBFC;
-    --color-darkblue : #0B2027;
+   
+    --color-rose : #DDB0AF;
+    --color-jaune : #E5AE1E;
+    --color-gris : #878787;
+    --color-bordeaux : #9D524F;
+    --color-bleu : #2C9A9B;
+    --color-kaki : #80816D;
+    --color-blanc : #F5F5F5;
 
-    --font-family-main : "Bebas Neue";
-    --font-family-secondary : "Comfortaa";
+    --color-gris-dark : #575757;
+    --color-gris-clair : #E1E1E1;
+
+    --font-primary-bold : "ElMessiri-Bold";
+    --font-primary-semibold : "ElMessiri-SemiBold";
+    --font-primary-medium : "ElMessiri-Medium";
+    --font-primary-regular : "ElMessiri-Regular";
+
+    --font-secondary-bold : "Poppins-Bold";
+    --font-secondary-semibold : "Poppins-SemiBold";
+    --font-secondary-medium : "Poppins-Medium";
+    --font-secondary-regular : "Poppins-Regular";
+    --font-secondary-light : "Poppins-Light";
+
     font-size: 18px;
 }
 
 @import url("/styles/reset.scss");
+@import url("/styles/base.scss");

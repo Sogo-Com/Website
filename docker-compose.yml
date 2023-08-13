@@ -10,9 +10,9 @@ services:
       - traefik-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sveltekit.rule=Host(`svelte-begins.guillian.net`)"
+      - "traefik.http.routers.sveltekit.rule=Host(`sogocom-beta.guillian.net`)"
       - "traefik.http.routers.sveltekit.entrypoints=http"
-      - "traefik.http.routers.sveltekit-secure.rule=Host(`svelte-begins.guillian.net`)"
+      - "traefik.http.routers.sveltekit-secure.rule=Host(`sogocom-beta.guillian.net`)"
       - "traefik.http.routers.sveltekit-secure.entrypoints=https"
       - "traefik.http.routers.sveltekit-secure.tls=true"
       - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"

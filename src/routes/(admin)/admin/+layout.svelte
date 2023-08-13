@@ -1,6 +1,5 @@
 <script >
     import { page } from '$app/stores'
-    import H1 from '$lib/components/H1.svelte';
   </script>
   
   <svelte:head>
@@ -14,8 +13,8 @@
     {/if}
   
     {#if $page.data.user}
-    <H1 innerText="Welcome Home {$page.data.user.name}" />
-  
+    
+    Welcome Home {$page.data.user.name}
       <form action="/admin/logout" method="POST">
         <button type="submit">Log out</button>
       </form>

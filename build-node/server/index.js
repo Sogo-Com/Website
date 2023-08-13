@@ -1,8 +1,6 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/index3-db52095e.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/index3-f0a5d41e.js';
 import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-39e97e00.js';
-import { w as writable, r as readable } from './chunks/index2-fda56f3e.js';
-
-const DEV = false;
+import { w as writable, r as readable } from './chunks/index2-270c726a.js';
 
 let base = "";
 let assets = base;
@@ -132,7 +130,7 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '\r\n\r\n<!DOCTYPE html>\r\n<html lang="fr" >\r\n\r\n	<head>\r\n		<meta charset="utf-8" />\r\n\r\n		<meta name="viewport" content="width=device-width" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" style="background: #0B2027 ;">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '\n\n<!DOCTYPE html>\n<html lang="fr" >\n\n	<head>\n		<meta charset="utf-8" />\n\n		<meta name="viewport" content="width=device-width" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover" style="background: #F5F5F5 ;">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -193,7 +191,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "p3a2l0"
+  version_hash: "i498fq"
 };
 function get_hooks() {
   return import('./chunks/hooks.server-1b4edca4.js');
@@ -1297,6 +1295,7 @@ function requireSetCookie () {
 
 var setCookieExports = requireSetCookie();
 
+const DEV = false;
 function negotiate(accept, types) {
   const parts = [];
   accept.split(",").forEach((str, i) => {

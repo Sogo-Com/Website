@@ -1,5 +1,4 @@
 <script>
-    import H1 from '$lib/components/H1.svelte';
     import { t } from '$lib/translations';
     import { page } from '$app/stores'
 

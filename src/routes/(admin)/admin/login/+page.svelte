@@ -1,11 +1,9 @@
 <script>
-    import H1 from '$lib/components/H1.svelte';
     import { t } from '$lib/translations';
 
     export let form;
 </script>
-
-<H1 innerText="Login" />
+Login
 
 
 <h1>Login</h1>
