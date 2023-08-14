@@ -49,6 +49,28 @@
 </div>
 <SliderExpertise />
 
+<div class="blanc" id="proj-actu">
+<div class="projet">
+
+	<h2>Notre nouveau projet</h2>
+	<h3>Distillerie St Esprit</h3>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
+
+Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar 
+	</p>
+	<div class="btn">
+		En savoir +
+	</div>
+</div>
+<div class="actu">
+	<h2>Notre dernière actu</h2>
+	<div>
+		flipcard
+	</div>
+</div>
+</div>
+
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
@@ -169,6 +191,19 @@
 	}
 
 
+	#proj-actu{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		.projet{
+
+		}
+
+		.actu{
+
+		}
+	}
 
 	#contact {
 		.wrapper {
