@@ -22,5 +22,5 @@ jobs:
       with:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
-        password: ${{ secrets.PASSWORD }}
+        password: ${{ secrets.PASSWORD }} 
         script: cd /home/guillianv/dev/gvvinfo/sogocom/Website && docker compose down && git pull && docker compose up -d --force-recreate --build
