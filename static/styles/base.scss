@@ -23,6 +23,21 @@ h2{
     }
 }
 
+
+h3{
+
+    font-family: var(--font-primary-bold);
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    .grey{
+        color: var(--color-gris-dark);
+    }
+
+    .pink{
+        color: var(--color-rose);
+    }
+}
+
 .links{
     display: flex;
     flex-direction: row;
@@ -83,10 +98,15 @@ h2{
     background-color: var(--color-rose);
     padding: 10px 20px;
     display: inline;
+    width: fit-content;
     color: #fff;
     cursor: pointer;
 
     &.blue{
         background-color: var(--color-bleu);
     }
+}
+
+p{
+    font-family: var(--font-secondary-light);
 }

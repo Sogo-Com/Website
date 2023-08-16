@@ -5,7 +5,7 @@
 
 	import Contact from '$lib/components/Contact.svelte';
 	import SliderExpertise from '$lib/components/SliderExpertise.svelte';
-
+	import FlipCard from '$lib/components/FlipCard.svelte';
 
 	onMount((_) => {
 		
@@ -52,8 +52,8 @@
 <div class="blanc" id="proj-actu">
 <div class="projet">
 
-	<h2>Notre nouveau projet</h2>
-	<h3>Distillerie St Esprit</h3>
+	<h2 class="gris">Notre nouveau projet</h2>
+	<h3 class="gris">Distillerie St Esprit</h3>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
 
@@ -62,19 +62,24 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 	<div class="btn">
 		En savoir +
 	</div>
+	<img alt="projet"  src="/images/projet.png">
 </div>
 <div class="actu">
-	<h2>Notre dernière actu</h2>
-	<div>
-		flipcard
+	<h2 class="gris">Notre dernière actu</h2>
+	<div class="actu-content">
+		<img src="/images/fleche-actu-home.svg" alt="chemin">
+		<div class="flip-container">
+			<FlipCard imageSrc="/images/projet.png" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
+		</div>
 	</div>
+	
 </div>
 </div>
 
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
-			<h2>Contactez nous</h2>
+			<h2 class="gris">Contactez nous</h2>
 			<Contact />
 		</div>
 		<div class="contact-images">
@@ -192,17 +197,74 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 
 
 	#proj-actu{
+		padding: 0;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		align-items: center;
-		.projet{
+		text-align: center;
 
+		.projet{
+			position: relative;
+			height: auto;
+			width: 50%;
+			background-color: rgba($color-bordeaux,.1);
+			display: flex;
+			flex-direction: column;
+			padding: 64px 64px;
+
+			img{
+				position: absolute;
+				right: 5%;
+				bottom: 5%;
+				width: 45%;
+				height: 65%;
+				object-fit: contain;
+				background-size: contain;
+			}
 		}
 
 		.actu{
+			height: auto;
+			width: 50%;
+			background-color: rgba($color-gris-clair, 1);
+			padding: 64px;
 
+			.actu-content{
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+
+				.flip-container{
+
+					height: 250px;
+					width: 250px;
+				}
+
+				img{
+					width: 50%;
+					height: 50%;
+					object-fit: contain;
+					background-size: contain;
+					transform: translateY(-20px);
+				}
+			}
+
+		
 		}
+
+		h3{
+			margin-top: 32px;
+			text-align: left;
+		}
+		p{
+			text-align: left;
+			width: 50%;
+		}
+		.btn{
+			margin: 64px 0;
+		}
+		
 	}
 
 	#contact {
