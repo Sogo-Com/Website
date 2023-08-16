@@ -23,6 +23,21 @@ h2{
     }
 }
 
+
+h3{
+
+    font-family: var(--font-primary-bold);
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    .grey{
+        color: var(--color-gris-dark);
+    }
+
+    .pink{
+        color: var(--color-rose);
+    }
+}
+
 .links{
     display: flex;
     flex-direction: row;
@@ -37,7 +52,7 @@ h2{
         color:var(--color-gris);
 
         &.active{
-            font-family: var(--font-primary-semibold);
+            font-family: var(--font-secondary-semibold);
             font-weight: 700;
             color: var(--color-bleu);
         }
@@ -62,8 +77,9 @@ h2{
     flex-wrap: nowrap;
 
     .swiper-pagination-bullet{
+        transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         background-color: var(--color-gris);
-        margin: 16px;
+        margin: 8px;
         width: 16px;
         height: 16px;
         display: block;
@@ -76,14 +92,21 @@ h2{
 }
 
 .btn{
+    transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     border-radius: 32px;
     font-family: var(--font-primary-semibold);
     background-color: var(--color-rose);
     padding: 10px 20px;
     display: inline;
+    width: fit-content;
     color: #fff;
+    cursor: pointer;
 
     &.blue{
         background-color: var(--color-bleu);
     }
+}
+
+p{
+    font-family: var(--font-secondary-light);
 }

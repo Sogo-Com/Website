@@ -115,13 +115,13 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 			transform: translateX(-50%);
 		}
 		.bg-gris {
-			height: 600px;
-			width: 700px;
+			height: 500px;
+			width: 600px;
 			border-top-left-radius: 400px;
 			border-top-right-radius: 400px;
-			transform: translateX(-50%) scale(1.5);
+			transform: translateX(-50%) scale(1.2);
 			opacity: 0.5;
-			bottom: -40%;
+			bottom: -50%;
 			z-index: 20;
 			display: flex;
 			justify-content: center;
