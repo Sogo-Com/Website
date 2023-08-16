@@ -12,5 +12,5 @@ RUN rm -rf ./*
 COPY --from=build /app/package.json .
 COPY --from=build /app/build-node .
 COPY --from=build /app/prisma .
-RUN yarn add prisma --save-dev && yarn prisma generate
+RUN yarn add prisma --save-dev && yarn prisma generate && node prisma/post-deploy.js
 CMD ["node", "index.js"]
