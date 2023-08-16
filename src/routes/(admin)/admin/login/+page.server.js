@@ -4,7 +4,6 @@ import { db } from '$lib/database';
 
 let Roles = {
 	ADMIN: 'ADMIN',
-	USER: 'USER'
 };
 
 /** @type {import('./$types').Actions} */
