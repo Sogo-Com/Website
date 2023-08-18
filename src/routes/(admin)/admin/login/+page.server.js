@@ -11,14 +11,14 @@ let Roles = {
 export const actions = {
 	login: async ({ cookies, request }) => {
 		const data = await request.formData();
-		const username = data.get('username');
+		const email = data.get('email');
 		const password = data.get('password');
 
-		if (typeof username !== 'string' || typeof password !== 'string' || !username || !password) {
+		if (typeof email !== 'string' || typeof password !== 'string' || !email || !password) {
 			return fail(400, { invalid: true });
 		}
 
-		const user = await db.user.findUnique({ where: { username } });
+		const user = await db.user.findUnique({ where: { email } });
 
 		if (!user) {
 			return fail(400, { credentials: true });
@@ -32,7 +32,7 @@ export const actions = {
 
 		// generate new auth token just in case
 		const authenticatedUser = await db.user.update({
-			where: { username: user.username },
+			where: { email: user.email },
 			data: { userAuthToken: crypto.randomUUID() }
 		});
 

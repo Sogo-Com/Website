@@ -10,8 +10,8 @@ Login
 
 <form action="?/login" method="POST">
   <div>
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" required />
+    <label for="email">email</label>
+    <input id="email" name="email" type="text" required />
   </div>
 
   <div>
@@ -20,7 +20,7 @@ Login
   </div>
 
   {#if form?.invalid}
-    <p class="error">Username and password is required.</p>
+    <p class="error">email and password is required.</p>
   {/if}
 
   {#if form?.credentials}
