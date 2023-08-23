@@ -25,6 +25,14 @@ const config = ({
     },
     {
       locale: 'fr',
+      key: 'agence',
+      routes: ['/agence'], 
+      loader: async () => (
+        await import('./fr/agence.json')
+      ).default,
+    },
+    {
+      locale: 'fr',
       key: 'about',
       routes: ['/about'],
       loader: async () => (
