@@ -2,6 +2,7 @@
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 	import Valeurs from '$lib/components/Valeurs.svelte';
+	import FriseHistoire from '$lib/components/FriseHistoire.svelte';
 	onMount((_) => {});
 </script>
 
@@ -35,6 +36,7 @@
 	</div>
 </div>
 <Valeurs/>
+<FriseHistoire />
 <style lang="scss">
 	#top {
 		height: 100vh;

@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 
 	let links;
+	let logo;
 	onMount((_) => {
 		clickLink();
 		checkActive();
@@ -40,7 +41,7 @@
 </script>
 
 <div id="navContainer">
-	<a class="logo" href="/">
+	<a bind:this={logo} class="logo" href="/">
 		<img alt="logo menu" src="/images/logo-menu.svg" />
 	</a>
 	<div bind:this={links} class="links">
