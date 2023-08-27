@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import Valeurs from '$lib/components/Valeurs.svelte';
 	import FriseHistoire from '$lib/components/FriseHistoire.svelte';
+	import SliderGomettes from '$lib/components/SliderGomettes.svelte';
 	onMount((_) => {});
 </script>
 
@@ -37,6 +38,7 @@
 </div>
 <Valeurs/>
 <FriseHistoire />
+<SliderGomettes />
 <style lang="scss">
 	#top {
 		height: 100vh;
