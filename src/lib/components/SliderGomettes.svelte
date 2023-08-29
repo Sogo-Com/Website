@@ -164,8 +164,8 @@
 			justify-content: center;
 			align-items: center;
 			.swiper-container {
-				width: 20vw;
-				height: 20vw;
+				width: 20vh ;
+				height: 20vh ;
                 overflow: visible;
               
 
