@@ -1,0 +1,1 @@
+{"version":3,"file":"agence-7fd30455.js","sources":["../../../.svelte-kit/adapter-node/chunks/agence.js"],"sourcesContent":["const agence = {\n  \"titre-1\": \"Des Gommettes\",\n  \"titre-2\": \"qui en jettent !\"\n};\nexport {\n  agence as default\n};\n"],"names":[],"mappings":"AAAK,MAAC,MAAM,GAAG;AACf,EAAE,SAAS,EAAE,eAAe;AAC5B,EAAE,SAAS,EAAE,kBAAkB;AAC/B;;;;"}

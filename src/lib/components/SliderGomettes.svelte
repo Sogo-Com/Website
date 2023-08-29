@@ -90,7 +90,7 @@
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
                 {#each gomettes as gomette, index}
-                    <div class="swiper-slide swiper-slide-active">
+                    <div class="swiper-slide">
                         <img src="{gomette.image}" alt="{gomette.name}" />
                     </div>
                 {/each}
@@ -121,7 +121,7 @@
  
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
 	.gomettes {
 
 
