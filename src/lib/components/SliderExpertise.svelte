@@ -49,7 +49,8 @@
 			id: 3,
 			title: 'Réseaux sociaux',
 			class: 'reseaux',
-			description: 'Reseaux ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+			description:
+				'Reseaux ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
 			images: [
 				'/images/expertise-blue.png',
 				'/images/expertise-blue.png',
@@ -60,7 +61,8 @@
 			id: 4,
 			title: 'Photos & vidéos',
 			class: 'photos',
-			description: 'Photos ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+			description:
+				'Photos ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
 			images: [
 				'/images/expertise-kaki.png',
 				'/images/expertise-kaki.png',
@@ -71,7 +73,8 @@
 			id: 5,
 			title: 'Evenements',
 			class: 'evenements',
-			description: 'Evenements ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+			description:
+				'Evenements ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
 			images: [
 				'/images/expertise-red.png',
 				'/images/expertise-red.png',
@@ -91,9 +94,9 @@
 		});
 		links.children[id].classList.add('active');
 		changeContainerClass(expertise[id].class);
-		title = expertise[id].title
-		description = expertise[id].description
-		changeImages(expertise[id].images)
+		title = expertise[id].title;
+		description = expertise[id].description;
+		changeImages(expertise[id].images);
 	}
 
 	function changeContainerClass(classToAdd) {
@@ -102,14 +105,11 @@
 		oldExpertise.class = classToAdd;
 	}
 
-	function changeImages(imagesArray){
-		
-		wrapper.children[0].firstElementChild.src = imagesArray[0]
-		wrapper.children[1].firstElementChild.src = imagesArray[1]
-		wrapper.children[2].firstElementChild.src = imagesArray[2]
+	function changeImages(imagesArray) {
+		wrapper.children[0].firstElementChild.src = imagesArray[0];
+		wrapper.children[1].firstElementChild.src = imagesArray[1];
+		wrapper.children[2].firstElementChild.src = imagesArray[2];
 	}
-
-	
 
 	onMount((_) => {
 		window.swiper = new Swiper('.swiper-container', {
@@ -122,7 +122,6 @@
 				el: '.pagination'
 			}
 		});
-		
 	});
 </script>
 
@@ -242,25 +241,35 @@
 			object-fit: contain;
 			background-size: contain;
 		}
-		.btn{
-			transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		.btn {
+			transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 		}
-		.swiper-container{
+		.swiper-container {
 			margin-bottom: 16px;
 			.swiper-slide {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
-			align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: center;
+			}
 		}
-		}
-		
+
 		.links {
 			align-items: center;
 			width: 80%;
 			height: 64px;
+
+			@media only screen and (max-width: $phone) {
+				height: fit-content;
+			}
+
 			.link {
-				transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				@media only screen and (max-width: $phone) {
+					padding: 16px;
+					border: none;
+				}
+
+				transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -268,89 +277,86 @@
 				height: 100%;
 
 				&:nth-child(6) {
-					border-right: $color-gris-dark solid 1px;
+					@media only screen and (min-width: $phone) {
+						border-right: $color-gris-dark solid 1px;
+					}
 				}
 			}
 		}
 
-		
-
-		
 		&.redaction {
 			background-color: rgba(#e5ae1e, 0.1);
 
-			.active{
+			.active {
 				color: #e5ae1e !important;
 			}
-			.btn{
+			.btn {
 				background: #e5ae1e !important;
 			}
-			.swiper-pagination-bullet-active{
+			.swiper-pagination-bullet-active {
 				background: #e5ae1e !important;
 			}
 		}
 		&.presse {
 			background-color: rgba(#e5ae1e, 0.1);
 
-
-			.active{
+			.active {
 				color: #e5ae1e !important;
 			}
-			.btn{
+			.btn {
 				background: #e5ae1e !important;
 			}
-			.swiper-pagination-bullet-active{
+			.swiper-pagination-bullet-active {
 				background: #e5ae1e !important;
 			}
-
 		}
 		&.graphisme {
-			background-color: rgba(#A48BAD, 0.1);
+			background-color: rgba(#a48bad, 0.1);
 
-			.active{
-				color: #A48BAD !important;
+			.active {
+				color: #a48bad !important;
 			}
-			.btn{
-				background: #A48BAD !important;
+			.btn {
+				background: #a48bad !important;
 			}
-			.swiper-pagination-bullet-active{
-				background: #A48BAD !important;
-			}
-		}
-		&.reseaux{
-			background-color: rgba(#2C9A9B, 0.1);
-			.active{
-				color: #2C9A9B !important;
-			}
-			.btn{
-				background: #2C9A9B !important;
-			}
-			.swiper-pagination-bullet-active{
-				background: #2C9A9B !important;
+			.swiper-pagination-bullet-active {
+				background: #a48bad !important;
 			}
 		}
-		&.photos{
-			background-color: rgba(#989A6F, 0.1);
-			.active{
-				color: #989A6F !important;
+		&.reseaux {
+			background-color: rgba(#2c9a9b, 0.1);
+			.active {
+				color: #2c9a9b !important;
 			}
-			.btn{
-				background: #989A6F !important;
+			.btn {
+				background: #2c9a9b !important;
 			}
-			.swiper-pagination-bullet-active{
-				background: #989A6F !important;
+			.swiper-pagination-bullet-active {
+				background: #2c9a9b !important;
+			}
+		}
+		&.photos {
+			background-color: rgba(#989a6f, 0.1);
+			.active {
+				color: #989a6f !important;
+			}
+			.btn {
+				background: #989a6f !important;
+			}
+			.swiper-pagination-bullet-active {
+				background: #989a6f !important;
 			}
 		}
 		&.evenements {
-			background-color: rgba(#9D524F,.1);
-			.active{
-				color: #9D524F !important;
+			background-color: rgba(#9d524f, 0.1);
+			.active {
+				color: #9d524f !important;
 			}
-			.btn{
-				background: #9D524F !important;
+			.btn {
+				background: #9d524f !important;
 			}
-			.swiper-pagination-bullet-active{
-				background: #9D524F !important;
+			.swiper-pagination-bullet-active {
+				background: #9d524f !important;
 			}
 		}
 	}

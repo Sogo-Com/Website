@@ -48,6 +48,12 @@
 		display: flex;
 		justify-content: start;
 		align-items: end;
+
+		@media only screen and (max-width: $phone) {
+			align-items: center;
+			}
+
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -59,6 +65,14 @@
 		}
 
 		h1 {
+
+			@media only screen and (max-width: $phone) {
+					padding: 64px 8px;
+					width:100%;
+					text-align: center;
+				font-size: 4rem;
+			}
+
 			text-align: left;
 			font-size: 5rem;
 			padding: 7rem;
@@ -90,6 +104,11 @@
 				position: relative;
 				text-align: center;
 				padding: 64px;
+
+				@media only screen and (max-width: $phone) {
+					padding: 64px 8px;
+					width: 80%;
+				}
 
 				div{
 					margin: 16px 0;

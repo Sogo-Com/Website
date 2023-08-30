@@ -124,6 +124,7 @@
 <style lang="scss" global>
 	.gomettes {
 
+        overflow: hidden;
 
         .info{
             display: flex;
@@ -131,6 +132,9 @@
             align-items: center;
             padding: 64px;
 
+            @media only screen and (max-width:$phone) {
+                padding:64px 8px;
+        		}
             .gomette-info{
                 width: 60%;
                 display: flex;
@@ -155,6 +159,11 @@
         .h2-seo{
             padding: 64px;
             h2{
+
+                @media only screen and (max-width:$phone) {
+                    font-size: 2.5rem;
+        		}
+
                 font-size: 4rem;
             }
         }

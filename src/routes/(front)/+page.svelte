@@ -7,9 +7,7 @@
 	import SliderExpertise from '$lib/components/SliderExpertise.svelte';
 	import FlipCard from '$lib/components/FlipCard.svelte';
 
-	onMount((_) => {
-		
-	});
+	onMount((_) => {});
 </script>
 
 <div id="top">
@@ -50,30 +48,28 @@
 <SliderExpertise />
 
 <div class="blanc" id="proj-actu">
-<div class="projet">
-
-	<h2 class="gris">Notre nouveau projet</h2>
-	<h3 class="gris">Distillerie St Esprit</h3>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar 
-	</p>
-	<div class="btn">
-		En savoir +
+	<div class="projet">
+		<h2 class="gris">Notre nouveau projet</h2>
+		<h3 class="gris">Distillerie St Esprit</h3>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
+			luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
+		</p>
+		<div class="btn">En savoir +</div>
+		<img alt="projet" src="/images/projet.png" />
 	</div>
-	<img alt="projet"  src="/images/projet.png">
-</div>
-<div class="actu">
-	<h2 class="gris">Notre dernière actu</h2>
-	<div class="actu-content">
-		<img src="/images/fleche-actu-home.svg" alt="chemin">
-		<div class="flip-container">
-			<FlipCard imageSrc="/images/projet.png" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
+	<div class="actu">
+		<h2 class="gris">Notre dernière actu</h2>
+		<div class="actu-content">
+			<img src="/images/fleche-actu-home.svg" alt="chemin" />
+			<div class="flip-container">
+				<FlipCard
+					imageSrc="/images/projet.png"
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+				/>
+			</div>
 		</div>
 	</div>
-	
-</div>
 </div>
 
 <div class="blanc" id="contact">
@@ -134,18 +130,31 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 		padding: 6rem 0;
 		position: relative;
 		overflow: hidden;
-
+		@media only screen and (max-width: $phone) {
+					padding: 1rem  0;
+					}
+			
 		.wrapper {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
 			position: relative;
 
+			@media only screen and (max-width: $phone) {
+				flex-direction: column;
+				left: 0%;
+				}
+			
 			left: 6%;
 
 			.bloc {
 				width: 50%;
 				padding: 32px;
+
+				@media only screen and (max-width: $phone) {
+					width: 100%;
+				}
+			
 
 				p {
 					font-family: $font-secondary-light;
@@ -161,9 +170,20 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 				justify-content: center;
 				align-items: center;
 
+				@media only screen and (max-width: $phone) {
+					padding: 1rem 0 0 0;
+					}
 				.conteneur {
 					position: relative;
 					width: 70%;
+
+
+					@media only screen and (max-width: $phone) {
+					width: 100%;
+					padding: 8px;
+					}
+			
+
 					span {
 						position: absolute;
 						width: 100px;
@@ -171,9 +191,16 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 						border-radius: 50px;
 						background-color: $color-rose;
 
+						@media only screen and (max-width: $phone) {
+					display: none;
+				}
+			
 						&.top-left {
 							transform: translate(-50%, -50%);
 							z-index: 5;
+
+
+
 						}
 
 						&.bottom-right {
@@ -195,24 +222,30 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 		}
 	}
 
-
-	#proj-actu{
+	#proj-actu {
 		padding: 0;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 		text-align: center;
 
-		.projet{
+		@media only screen and (max-width: $tablet) {
+			flex-direction: column;
+		}
+		.projet {
+			@media only screen and (max-width: $tablet) {
+				width: 100%;
+			}
+
 			position: relative;
 			height: auto;
 			width: 50%;
-			background-color: rgba($color-bordeaux,.1);
+			background-color: rgba($color-bordeaux, 0.1);
 			display: flex;
 			flex-direction: column;
 			padding: 64px 64px;
 
-			img{
+			img {
 				position: absolute;
 				right: 5%;
 				bottom: 5%;
@@ -223,25 +256,28 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 			}
 		}
 
-		.actu{
+		.actu {
 			height: auto;
 			width: 50%;
 			background-color: rgba($color-gris-clair, 1);
 			padding: 64px;
 
-			.actu-content{
+			@media only screen and (max-width: $tablet) {
+				width: 100%;
+			}
+
+			.actu-content {
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
 				align-items: center;
 
-				.flip-container{
-
+				.flip-container {
 					height: 250px;
 					width: 250px;
 				}
 
-				img{
+				img {
 					width: 50%;
 					height: 50%;
 					object-fit: contain;
@@ -249,30 +285,41 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 					transform: translateY(-20px);
 				}
 			}
-
-		
 		}
 
-		h3{
+		h3 {
 			margin-top: 32px;
 			text-align: left;
 		}
-		p{
+		p {
 			text-align: left;
 			width: 50%;
 		}
-		.btn{
+		.btn {
 			margin: 64px 0;
 		}
-		
 	}
 
 	#contact {
 		.wrapper {
+			@media only screen and (max-width: $tablet) {
+				display: flex;
+				flex-direction: column;
+				left: 0;
+				align-items: center;
+				justify-content: center;
+			}
+
 			.contact-form {
-				width: 35%;
+				@media only screen and (max-width: $tablet) {
+					width: 90%;
+				}
 			}
 			.contact-images {
+				@media only screen and (max-width: $tablet) {
+					display: none;
+				}
+
 				flex-grow: 2;
 				width: 65%;
 				position: relative;

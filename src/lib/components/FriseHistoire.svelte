@@ -89,6 +89,12 @@
 				flex-wrap: nowrap;
 				position: relative;
 				left: 12%;
+
+				@media only screen and (max-width: $phone) {
+					left: unset;
+					padding: 64px 8px;
+				}
+
 			}
 		}
 
@@ -100,9 +106,19 @@
 			align-items: center;
 			height: 450px;
 			width: 100%;
+
+			@media only screen and (max-width: $phone) {
+				flex-direction: column;
+			}
 			.point{
 				position:relative;
 				left: var(--esp);
+
+				@media only screen and (max-width: $phone) {
+					left: unset;
+					top: var(--esp);
+				}
+
 				width:50px;
 				height: 50px;
 				border-radius:50px;
@@ -118,6 +134,14 @@
 					background-color: $color-rose;
 					top: 50%;
 					right: 100%;
+
+					@media only screen and (max-width: $phone) {
+						width:  2px;
+						height:var(--line);
+						top: unset;
+						bottom: 100%;
+						right: 50%;
+					}
 				}
 
 				.innerEndLine{
@@ -129,6 +153,14 @@
 					border-bottom: 1px dashed $color-rose;
 					top: 50%;
 					left: 100%;
+
+					@media only screen and (max-width: $phone) {
+						transform: rotate(90deg);
+						transform-origin: left;
+						top: 100%;
+						left: 50%;
+					}
+
 				}
 
 				.innerText{
@@ -141,6 +173,10 @@
 					position: absolute;
 					text-align: right;
 
+					@media only screen and (max-width: $phone) {
+						padding: 32px;
+					}
+
 					h3{
 						margin-bottom: 8px;
 					}
@@ -151,11 +187,21 @@
 
 					&.bottom{
 						top: 100%;
+						
+						@media only screen and (max-width: $phone) {
+							top: unset;
+							right: 100% ;
+						}
 
 					}
 
 					&.top{
 						bottom:100%;
+
+						@media only screen and (max-width: $phone) {
+							bottom: unset;
+							left: 100% ;
+						}
 					}
 				}
 			}
