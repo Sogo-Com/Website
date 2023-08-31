@@ -1,9 +1,11 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	export let imageSrc;
 	export let titre = 'titre';
 	export let description = 'description';
+	export let link;
 
 	let container;
 	let flipcard;
@@ -16,29 +18,47 @@
 		container.addEventListener('mouseleave', (_) => {
 			flipcard.style.transform = 'rotateY(0deg)';
 		});
+
+
+		if(typeof link !== undefined && typeof link !== null && typeof link === 'string' && link.length > 0){
+			container.classList.add("active")
+			container.addEventListener("click",_=>{
+				goto(link)
+			})
+		}else
+			container.classList.remove("active")
 	});
 </script>
 
-<div class="container" bind:this={container}>
-	<div id="flipcard" bind:this={flipcard}>
-		<div class="front">
-			<h3>{titre}</h3>
-			<img src={imageSrc} alt={titre} />
-		</div>
-		<div class="back">
-			<img src="/images/bubble.png" alt="bubble" />
-			<p>
-				{description}
-			</p>
+	<div class="container active" bind:this={container}>
+		<div id="flipcard" bind:this={flipcard}>
+			<div class="front">
+				<h3>{titre}</h3>
+				<img src={imageSrc} alt={titre} />
+			</div>
+			<div class="back">
+				<img src="/images/bubble.png" alt="bubble" />
+				<p>
+					{description}
+				</p>
+			</div>
 		</div>
 	</div>
-</div>
+
+
 
 <style lang="scss">
+
+
 	.container {
 		width: 100%;
 		height: 100%;
 		perspective: 600px;
+
+		&.active{
+			cursor: pointer;
+		}
+
 		#flipcard {
 			width: 100%;
 			height: 100%;

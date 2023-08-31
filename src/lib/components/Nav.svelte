@@ -12,7 +12,7 @@
 	let mobile = true;
 
 	onMount((_) => {
-		mobile = window.matchMedia('(max-width: 960px)').matches;
+		mobile = window.matchMedia('(max-width: 1150px)').matches;
 		mobileMenu();
 		clickLink();
 		checkActive();
