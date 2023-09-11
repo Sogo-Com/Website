@@ -121,7 +121,7 @@
  
 </div>
 
-<style lang="scss" global>
+<style lang="scss" >
 	.gomettes {
 
         overflow: hidden;
@@ -181,9 +181,7 @@
 				.swiper-wrapper {
 					.swiper-slide {
                         
-                        &.swiper-slide-active{
-                            transform: scale(1.5);
-                        }
+                        
                         padding: 32px;
 						width: 100% !important;
 						height: 100%;

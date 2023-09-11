@@ -131,14 +131,11 @@
 			justify-content: center;
 			align-items: center;
 
-			.flip-parent{
-
-
+			.flip-parent {
 				@media only screen and (max-width: $tablet) {
 					flex-basis: 50%;
 				}
 
-				
 				@media only screen and (max-width: $phone) {
 					flex-basis: 100%;
 				}
@@ -149,24 +146,20 @@
 				justify-content: center;
 				align-items: center;
 				.flip-row {
+					@media only screen and (max-width: $tablet) {
+						width: 30vw;
+						height: 30vw;
+					}
 
-					
-				@media only screen and (max-width: $tablet) {
-					width: 30vw;
-					height: 30vw;
-				}
+					@media only screen and (max-width: $phone) {
+						width: 50vw;
+						height: 50vw;
+					}
 
-				@media only screen and (max-width: $phone) {
-					width: 50vw;
-					height: 50vw;
-				
-				}
-			
 					width: 20vw;
 					height: 20vw;
+				}
 			}
-			}
-			
 		}
 	}
 </style>

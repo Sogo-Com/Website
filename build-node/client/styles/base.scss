@@ -72,7 +72,15 @@ h3{
     flex-wrap: nowrap;
     justify-content: center;
 
+	@media only screen and (max-width:960px) {
+        flex-direction: column;
+    }
+
+
     .link{
+
+     
+
         flex-grow: 1;
         text-align: center;
         cursor: pointer;
@@ -94,9 +102,16 @@ h3{
 
     .swiper-slide{
         width: 100%;
+
+       
     }
 }
 
+.swiper-gomette{
+    .swiper-slide-active{
+        transform: scale(1.5);
+    }
+}
 .pagination{
 
     justify-content: center;
