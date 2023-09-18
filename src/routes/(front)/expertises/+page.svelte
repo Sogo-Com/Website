@@ -16,6 +16,10 @@
 			}
 		});
 	});
+
+	function changeProjet(){
+
+	}
 </script>
 
 <div id="top">
@@ -166,17 +170,14 @@
 				<div bind:this={wrapper} class="swiper-wrapper">
 					<div class="swiper-slide">
 						<img src="/images/expertise-yellow.png" alt="expertise-slide" />
-						<div class="btn">En savoir +</div>
 					</div>
 	
 					<div class="swiper-slide">
 						<img src="/images/expertise-yellow.png" alt="expertise-slide" />
-						<div class="btn">En savoir +</div>
 					</div>
 	
 					<div class="swiper-slide">
 						<img src="/images/expertise-yellow.png" alt="expertise-slide" />
-						<div class="btn">En savoir +</div>
 					</div>
 				</div>
 			</div>
@@ -410,6 +411,7 @@
 			width: 70%;
 			p{
 				margin-bottom: 64px;
+				width: 80%;
 			}
 			.btn{
 				
@@ -419,7 +421,13 @@
 	.slider{
 		flex-basis: 40%;
 		max-width: 40%;
+		padding: 0 32px;
 
+		.swiper-wrapper{
+			width: max-content;
+			height: 100%;
+    		display: flex;
+		}
 		div
 		{
 			width: 100%;
@@ -428,8 +436,8 @@
 		img{
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
-			background-size: cover;
+			object-fit: contain;
+			background-size: contain;
 		}
 	}
 }
