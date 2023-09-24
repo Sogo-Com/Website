@@ -6,9 +6,31 @@
 	let innerDescriptionText = $t('common.contact-description');
 	if (typeof description === 'string' && description.length != 0)
 		innerDescriptionText = description;
+
+	let status = '';
+	const handleSubmit = async (data) => {
+		status = 'Submitting...';
+		const formData = new FormData(data.currentTarget);
+		const object = Object.fromEntries(formData);
+		const json = JSON.stringify(object);
+
+		const response = await fetch('/api/contact', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: json
+		});
+		const result = await response.json();
+		if (result.success) {
+			console.log(result);
+			status = result.message || 'Success';
+		}
+	};
 </script>
 
-<form method="post">
+<form method="post" on:submit|preventDefault={handleSubmit}>
 	<p contenteditable="false" bind:innerText={innerDescriptionText} />
 	<label for="nom">{$t('common.contact-nom')}</label>
 	<input type="text" name="nom" id="nom" placeholder="Votre nom" />
@@ -26,18 +48,18 @@
 <style lang="scss">
 	form {
 		font-family: $font-secondary-light;
-		background: $color-gris-clair ;
+		background: $color-gris-clair;
 		border-radius: 32px;
 		padding: 32px;
 		display: flex;
 		flex-direction: column;
 
 		p {
-			color: $color-gris-dark ;
+			color: $color-gris-dark;
 			margin-bottom: 32px;
 		}
 		label {
-			color:  $color-gris-dark ;
+			color: $color-gris-dark;
 			margin-bottom: 8px;
 		}
 		input {

@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id            String   @id @default(uuid())
-  email      String   @unique
+  email         String   @unique
   passwordHash  String
   userAuthToken String   @unique
   createdAt     DateTime @default(now())
@@ -24,5 +24,10 @@ model Roles {
   User User[]
 }
 
-
-
+model Contact {
+  id        String @id @default(uuid())
+  email     String
+  nom       String
+  prenom    String
+  telephone String
+}
