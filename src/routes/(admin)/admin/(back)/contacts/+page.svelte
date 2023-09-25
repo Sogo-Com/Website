@@ -4,32 +4,43 @@
     export let data;
     const { contacts }= data
 
+  function deleteContact(index){
+    fetch(`/api/contact`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({id: contacts[index].id})
+    })
+  }
 </script>
 
 <div class="grid-view">
-    <h1>Liste des Demandes de Contacts</h1>
+    <h1>{contacts.length == 0 ? 'Aucune demande de contact' : 'Liste des demandes de contacts'}</h1>
    
-    <table class="contact-table">
+    <table class="contact-table" style="{contacts.length == 0 ? 'display:none;':''}">
         <thead>
             <tr>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Email</th>
-                <th>Téléphone</th>
-                <th>Créé le</th>
+                <!-- <th>Email</th>
+                <th>Téléphone</th> -->
+                <!-- <th>Créé le</th> -->
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
-            {#each contacts as contact }
+            {#each contacts as contact,index }
                 <tr>
-                    <td>{contact?.nom  ?? ''}</td>
+                    <td><a href="/admin/contacts/{contact.id}">{contact?.nom  ?? ''}</a></td>
                     <td>{contact?.prenom  ?? ''}</td>
-                    <td>{contact?.email  ?? ''}</td>
-                    <td>{contact?.telephone ?? ''}</td>
-                    <td>{
+                    <!-- <td>{contact?.email  ?? ''}</td>
+                    <td>{contact?.telephone ?? ''}</td> -->
+                    <!-- <td>{
                     new Intl.DateTimeFormat('fr-FR', {
                         dateStyle: 'full', timeStyle: 'long'
-                    }).format(contact?.createdAt)}</td>
+                    }).format(contact?.createdAt)}</td> -->
+                    <td><button class="delete-button" on:click={()=>{deleteContact(index)}}>Supprimer</button></td>
                 </tr>
             {/each}
            
@@ -47,6 +58,12 @@
     border: 1px solid var(--color-gris-clair);
     padding: 10px;
     text-align: left;
+    a{
+      color: #000;
+      &:hover{
+        color: var(--color-rose);
+      }
+    }
   }
 
   th {
@@ -59,6 +76,20 @@
     font-family: var(--font-secondary-regular);
   }
 
+  .delete-button {
+  background-color: var(--color-rose); /* Couleur de fond */
+  color: var(--color-blanc); /* Couleur du texte */
+  padding: 10px 20px; /* Espacement interne */
+  font-family: var(--font-secondary-bold); /* Police */
+  border: none; /* Supprime la bordure */
+  cursor: pointer; /* Curseur au survol */
+  width: 100%;
+  transition: background-color 0.3s ease; /* Transition au survol */
+  &:hover {
+    background-color: var(--color-bordeaux); /* Couleur de fond au survol */
+  }
+  }
+ 
   tbody tr:nth-child(even) {
     background-color: var(--color-gris-clair);
   }
@@ -69,6 +100,8 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  overflow: auto;
+    max-height: 90vh;
   
   h1 {
     font-family: var(--font-primary-bold);
@@ -101,6 +134,8 @@
       font-family: var(--font-secondary-regular);
       color: var(--color-gris-dark);
     }
+
+    
   }
 }
 

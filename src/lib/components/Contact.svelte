@@ -12,13 +12,18 @@
 		status = 'Submitting...';
 		const formData = new FormData(data.currentTarget);
 		const object = Object.fromEntries(formData);
+	
+		if (
+			typeof object.nom !== 'string' ||
+			typeof object.prenom !== 'string' ||
+			typeof object.telephone !== 'string' ||
+			typeof object.email !== 'string'
+		) {
+			status = 'Entrée invalide !';
+			return;
+		}
+
 		const json = JSON.stringify(object);
-
-		if(typeof json.nom !== 'string' || typeof json.prenom !== 'string' || typeof json.telephone !== 'string' || typeof json.email !== 'string')
-			return
-
-		status = 'Entrée invalide !'
-
 		const response = await fetch('/api/contact', {
 			method: 'POST',
 			headers: {

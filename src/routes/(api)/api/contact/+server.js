@@ -13,6 +13,26 @@ export async function POST(req){
             telephone
         },
     })
+    console.log(contact)
+    return new Response(JSON.stringify({}),{
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+}
+
+
+export async function DELETE(req){
+    let { langCode } = req.params
+    let {request} = req
+    
+    let {id} =  await request.json()
+    console.log(id)
+    const deleteContact = await db.contact.delete({
+        where: {
+          id
+        },
+      })
     return new Response(JSON.stringify({}),{
         headers:{
             'Content-Type': 'application/json'
