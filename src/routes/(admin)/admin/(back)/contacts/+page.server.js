@@ -11,4 +11,9 @@ export const load = async (serverloadEvent) =>{
     throw redirect(302, '/admin/login')
   }
 
+  const contacts = await db.contact.findMany()
+  return {
+    contacts
+  }
 }
+

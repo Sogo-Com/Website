@@ -14,6 +14,11 @@
 		const object = Object.fromEntries(formData);
 		const json = JSON.stringify(object);
 
+		if(typeof json.nom !== 'string' || typeof json.prenom !== 'string' || typeof json.telephone !== 'string' || typeof json.email !== 'string')
+			return
+
+		status = 'Entrée invalide !'
+
 		const response = await fetch('/api/contact', {
 			method: 'POST',
 			headers: {
@@ -25,7 +30,7 @@
 		const result = await response.json();
 		if (result.success) {
 			console.log(result);
-			status = result.message || 'Success';
+			status = result.message || 'Message envoyé !';
 		}
 	};
 </script>

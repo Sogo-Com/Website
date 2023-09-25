@@ -30,4 +30,5 @@ model Contact {
   nom       String
   prenom    String
   telephone String
+  createdAt      DateTime  @default(now())
 }
