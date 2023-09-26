@@ -3,23 +3,34 @@
 	import { page } from '$app/stores';
 
 	export let description;
+
+
+	let nom;
+	let prenom;
+	let telephone;
+	let email;
+
 	let innerDescriptionText = $t('common.contact-description');
 	if (typeof description === 'string' && description.length != 0)
 		innerDescriptionText = description;
 
 	let status = '';
+	let statusClass = ''
 	const handleSubmit = async (data) => {
 		status = 'Submitting...';
+		statusClass = 'pending'
 		const formData = new FormData(data.currentTarget);
 		const object = Object.fromEntries(formData);
 	
+		console.log(typeof object.nom);
 		if (
-			typeof object.nom !== 'string' ||
-			typeof object.prenom !== 'string' ||
-			typeof object.telephone !== 'string' ||
-			typeof object.email !== 'string'
+			object.nom.length == 0 ||
+			object.prenom.length == 0 ||
+			object.email.length == 0 ||
+			object.telephone.length == 0
 		) {
 			status = 'Entrée invalide !';
+			statusClass = 'error'
 			return;
 		}
 
@@ -35,7 +46,14 @@
 		const result = await response.json();
 		if (result.success) {
 			console.log(result);
-			status = result.message || 'Message envoyé !';
+			status = 'Message envoyé !';
+			statusClass = 'success';
+
+			nom.value = '';
+			prenom.value = '';
+			telephone.value = '';
+			email.value = '';
+			
 		}
 	};
 </script>
@@ -43,16 +61,19 @@
 <form method="post" on:submit|preventDefault={handleSubmit}>
 	<p contenteditable="false" bind:innerText={innerDescriptionText} />
 	<label for="nom">{$t('common.contact-nom')}</label>
-	<input type="text" name="nom" id="nom" placeholder="Votre nom" />
+	<input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
 	<label for="prenom">{$t('common.contact-prenom')}</label>
-	<input type="text" name="prenom" id="prenom" placeholder="Votre prenom" />
+	<input bind:this={prenom} type="text" name="prenom" id="prenom" placeholder="Votre prenom" />
 	<label for="telephone">{$t('common.contact-telephone')}</label>
-	<input type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
+	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
 	<label for="email">{$t('common.contact-email')}</label>
-	<input type="text" name="email" id="email" placeholder="Votre email" />
+	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre email" />
 	<button type="submit" class="btn" for="envoyer" value="envoyer"
 		>{$t('common.contact-send')}</button
 	>
+	<div class="status {statusClass}" contenteditable="false" bind:innerText={status}>
+
+	</div>
 </form>
 
 <style lang="scss">
@@ -87,6 +108,9 @@
 			margin-top: 32px;
 			color: $color-rose;
 			width: fit-content;
+		}
+		.status{
+			padding-top: 32px;
 		}
 	}
 </style>

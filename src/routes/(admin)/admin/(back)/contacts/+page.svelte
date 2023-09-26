@@ -1,17 +1,27 @@
 <script>
     import { t } from '$lib/translations';
     import { page } from '$app/stores'
-    export let data;
-    const { contacts }= data
+    import { invalidateAll,invalidate, goto} from '$app/navigation';
 
-  function deleteContact(index){
-    fetch(`/api/contact`, {
+    export let data;
+    let {  contacts }= data
+
+  async function deleteContact(index){
+    const response = await fetch(`/api/contact`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({id: contacts[index].id})
     })
+    
+    const result = await response.json();
+    if (result.success) {
+      contacts.splice(index,1)
+      contacts = contacts
+      alert("Contact supprimé")
+		}
+
   }
 </script>
 
@@ -40,7 +50,7 @@
                     new Intl.DateTimeFormat('fr-FR', {
                         dateStyle: 'full', timeStyle: 'long'
                     }).format(contact?.createdAt)}</td> -->
-                    <td><button class="delete-button" on:click={()=>{deleteContact(index)}}>Supprimer</button></td>
+                    <td><button data-sveltekit-reload class="delete-button" on:click={()=>{deleteContact(index)}}>Supprimer</button></td>
                 </tr>
             {/each}
            
