@@ -15,68 +15,79 @@
             id: 1,
             name: "Sophie",
             type: "La gommette des gommettes",
-            description: "qdsqsddqsLa gommette des gommettes",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
         {
             id: 2,
             name: "Arnaud",
-            type: "La gommette des video montages",
-            description: "La gommesqdqsqdstte des gommettes",
+            type: "La gommette des videos montages",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
         {
             id: 3,
             name: "Lea",
             type: "La gommette des goblins",
-            description: "La gommette des gofzfefzemmettes",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
         {
             id: 4,
             name: "Sophie",
             type: "La gommette des gommettes",
-            description: "La gommette desfeffe gommettes",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
         {
             id: 5,
             name: "Sophie",
             type: "La gommette des gommettes",
-            description: "La gommette des azazazgommettes",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
         {
             id: 6,
             name: "Sophie",
             type: "La gommette des gommettes",
-            description: "La gommette dzaazzaes gommettes",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
         {
             id: 7,
             name: "Sophie",
             type: "La gommette des gommettes",
-            description: "La gozazazmmette des gommettes",
+            description: "La gommette des gommettes",
             image: "/images/agence-bg.png"
         },
     ]
 
 	onMount((_) => {
+
+        const initialSlide = 3
+
 		let swiper = new Swiper('.swiper-container', {
 			modules: [Pagination],
-			
+			loop:'false',
 			slidesPerView: 1,
 			slidesPerGroup: 1,
+            initialSlide
 		
 		});
 
+        ChangeIndex(initialSlide)
+
         swiper.on("activeIndexChange", ()=>{
-            name.innerHTML = gomettes[swiper.activeIndex].name;
-            type.innerHTML = gomettes[swiper.activeIndex].type;
-            description.innerHTML = gomettes[swiper.activeIndex].description;
+            ChangeIndex(swiper.activeIndex)
         })
 	});
+
+
+    function ChangeIndex(index = 0){
+        name.innerHTML = gomettes[index].name;
+        type.innerHTML = gomettes[index].type;
+        description.innerHTML = gomettes[index].description;
+    }
 </script>
 
 <div class="gomettes">
@@ -173,8 +184,8 @@
 			justify-content: center;
 			align-items: center;
 			.swiper-container {
-				width: 20vh ;
-				height: 20vh ;
+				width: 15vw ;
+				height: 15vw ;
                 overflow: visible;
               
 
@@ -182,7 +193,7 @@
 					.swiper-slide {
                         
                         
-                        padding: 32px;
+                        padding: 64px;
 						width: 100% !important;
 						height: 100%;
                         transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);

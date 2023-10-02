@@ -21,7 +21,7 @@
 				<div  class="innerStartLine"></div>
 				<div  class="innerEndLine"></div>
 				<div class="innerPoint top">
-					<h3>2010</h3>
+					<h3>Lancement</h3>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
 					</p>
@@ -35,7 +35,7 @@
 				<div  class="innerStartLine"></div>
 				<div  class="innerEndLine"></div>
 				<div class="innerPoint bottom">
-					<h3>2012</h3>
+					<h3>Lancement</h3>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
 					</p>
@@ -48,23 +48,23 @@
 				<div  class="innerStartLine"></div>
 				<div  class="innerEndLine"></div>
 				<div class="innerPoint top">
-					<h3>2010</h3>
+					<h3>Lancement</h3>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
 					</p>
 				</div>
 			</div>
 
-			<div style="--esp:45vw; --line:15vw; --endline:30vw" class="point">
+			<div style="--esp:45vw; --line:15vw; --endline:40vw" class="point">
 				<div class="innerText">
 					2010
 				</div>
 				<div  class="innerStartLine"></div>
 				<div  class="innerEndLine"></div>
 				<div class="innerPoint bottom">
-					<h3>2012</h3>
+					<h3>Lancement</h3>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
+						Le meilleur reste à venir...
 					</p>
 				</div>
 			</div>
@@ -179,6 +179,7 @@
 
 					h3{
 						margin-bottom: 8px;
+						text-align: right;
 					}
 					p{
 						width: 20vw;

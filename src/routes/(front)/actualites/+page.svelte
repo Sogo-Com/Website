@@ -12,7 +12,7 @@
 	<div class="flip-container">
 		<div class="flipcard">
 			<img src="/images/actualites-path.svg" alt="chemin" />
-			<FlipCard />
+			<FlipCard titre="Stratégie de communication" imageSrc="/images/ppl.png" link="/actualites/1" description="Une stratégie de communication, c’est la mise en œuvre d’une vision, le déploiement d’une identité de marque. " />
 		</div>
 	</div>
 	<div>
@@ -69,15 +69,15 @@
 
 <style lang="scss">
 	#top {
-		margin-top: 10vh;
+		margin-top: 10%;
 		h1 {
 			color: $color-gris-dark;
 			text-align: left;
-			padding: 32px 32px 8px 32px;
+			padding: 32px 11%;
 		}
 
 		h2 {
-			padding: 0 32px;
+			padding: 0px 11%;
 			font-size: 2rem;
 			color: $color-gris-dark;
 			text-align: left;
@@ -106,9 +106,10 @@
 				}
 				margin-right: 25%;
 				position: relative;
-				width: 250px;
-				height: 250px;
-
+				width: 20vw;
+				height: 20vw;
+				transform: translateX(50%);
+				
 				img {
 					@media only screen and (max-width: $phone) {
 						display: none;
@@ -116,9 +117,9 @@
 
 					position: absolute;
 					right: 100%;
-					bottom: -30%;
-					width: 50vh;
-					height: 50vh;
+					bottom: -40%;
+					width:200%;
+					height: 200%;
 				}
 			}
 		}

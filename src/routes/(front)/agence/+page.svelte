@@ -22,11 +22,14 @@
 			</div>
 			<div class="center">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
+					L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs. 
+
+
 				</p>
+				<br>
 				<p>
 
-					Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.
+					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée, nous pensons votre communication 
 				</p>
 			</div>
 			<div class="right">
@@ -74,8 +77,7 @@
 			}
 
 			text-align: left;
-			font-size: 5rem;
-			padding: 7rem;
+			padding: 10rem;
 
 			.pink {
 				color: $color-rose;
@@ -129,6 +131,11 @@
 					flex-direction: column;
 					align-items: center;
 					justify-content: center;
+
+					p{
+						font-size: 2rem;
+						line-height: 48px;
+					}
 				}
 				.right{
 					justify-content: right;

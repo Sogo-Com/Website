@@ -9,40 +9,46 @@
 <div id="valeurs">
 	<h2><span class="pink">Nos Valeurs</span></h2>
 	<div class="conteneur">
-		<div class="contenu">
+		<div class="contenu left">
 			<p class="flip">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. . 
+				Créative et inspirée, l’équipe Sogo Com c’est aussi un lien de proximité assuré.
+<br><br>
+Basée à Poisy, aux portes d’Annecy, la team expérimentée défend son système de valeurs coûte que coûte.
+<br><br>
+L’éthique et l’écoute pour la finesse de l’intention, la confiance et le conseil pour la justesse de la relation.
 			</p>
 		</div>
-		<div class="contenu">
+		<div class="contenu center">
 			<div class="flip">
-				<FlipCard />
+				<FlipCard  titre="Bienveillance"  />
 			</div>
 			
 		</div>
 
-		<div class="contenu">
+		<div class="contenu right">
 			<div class="flip">
-				<FlipCard />
+				<FlipCard titre="Éthique"  description="« L’éthique c’est l’esthétique de dedans », Pierre Reverdy. 
+
+				Mettre en adéquation nos actions et nos valeurs, injecter de l’humain à tous les temps de la collaboration est une composante essentielle chez Sogo Com. "/>
 			</div>
 		</div>
-		<div class="contenu">
+		<div class="contenu left">
 			<div class="flip">
-				<FlipCard />
+				<FlipCard  titre="Confiance" description="« Le meilleur moyen de savoir si vous pouvez faire confiance à quelqu’un c’est de lui faire confiance », Ernest Hemingway. 
+
+				Incontournable à toute relation saine et sereine, Sogo Com place la confiance mutuelle comme trait d’union. Elle tisse le lien entre vous et nous. " />
 			</div>
 		</div>
-		<div class="contenu">
+		<div class="contenu center">
 			<div class="flip">
-				<FlipCard />
+				<FlipCard  titre="Conseil" description="« Un bon conseil doit pouvoir être conjugué à la personnalité de l’individu qui le reçoit », Laurent Martinez
+
+				Parce que tout process de projet comprend un principe fondateur et clé de réalité, l’équipe Sogo Com vous éclaire, vous aiguille et vous conseille en toute transparence pour une communication qui vous ressemble. " />
 			</div>
 		</div>
-		<div class="contenu">
+		<div class="contenu right">
 			<div class="flip">
-				<FlipCard />
+				<FlipCard  titre="Bienveillance" />
 			</div>
 		</div>
 	</div>
@@ -53,9 +59,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facil
 		background-color: #fcf7f7;
 		padding-bottom: 64px;
 		h2{
-			padding: 64px 0 0 64px;
+			padding: 64px 11% 0  11%;
 		}
 		.conteneur {
+
+			padding: 0 8%;
+
 			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
@@ -64,19 +73,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facil
 
 
 			.contenu {
-				padding: 64px;
-				flex-basis: 33.333333%;
+				flex-basis: 26%;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				flex-grow: 1;
 
+				
+
 				p{
-					font-size: 0.8rem;
+					font-size: 1rem;
+					line-height: 1rem;
 				}
 				.flip {
-					width: 250px;
-					height: 250px;
+					margin: 15% 5% 15%  0 ;
+					width: 20vw;
+					height: 20vw;
 				}
 			}
 		}

@@ -20,11 +20,15 @@
 	<div class="wrapper">
 		<div class="bloc desc-gauche">
 			<h2>
-				<span class="grey">{$t('home.intro-1')}</span><br />
-				<span class="pink">{$t('home.intro-2')}</span>
+				<span class="grey">Une équipe au cœur
+					</span><br />
+				<span class="pink">pulsant</span>
 			</h2>
 			<p>
-				{$t('home.description')}
+				Idées en fusion, inspiration pleine impulsion, ça bouillonne dans la marmite des Gommettes. De l’écorce jusqu’à la pulpe, on décortique jusqu’à extraire l’essentiel, la note juste et le ton qui détonne. Cible en plein cœur de votre identité !
+				<br /><br />
+Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusion. La communication grand angle en perfusion, la créativité sans limites pour détonation. 
+				
 			</p>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
@@ -49,8 +53,8 @@
 
 <div class="blanc" id="proj-actu">
 	<div class="projet">
-		<h2 class="gris">Notre nouveau projet</h2>
-		<h3 class="gris">Distillerie St Esprit</h3>
+		<h2 class="grey">Notre nouveau projet</h2>
+		<h3 class="grey">Distillerie St Esprit</h3>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
 			luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
@@ -59,7 +63,7 @@
 		<img alt="projet" src="/images/projet.png" />
 	</div>
 	<div class="actu">
-		<h2 class="gris">Notre dernière actu</h2>
+		<h2 class="grey">Notre dernière actu</h2>
 		<div class="actu-content">
 			<img src="/images/fleche-actu-home.svg" alt="chemin" />
 			<div class="flip-container">
@@ -75,7 +79,7 @@
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
-			<h2 class="gris">Contactez nous</h2>
+			<h2 class="grey">Contactez nous !</h2>
 			<Contact />
 		</div>
 		<div class="contact-images">
@@ -107,17 +111,17 @@
 			left: 50%;
 		}
 		h1 {
+			width: 100%;
 			bottom: 0;
 			transform: translateX(-50%);
 		}
 		.bg-gris {
-			height: 500px;
-			width: 600px;
-			border-top-left-radius: 400px;
-			border-top-right-radius: 400px;
-			transform: translateX(-50%) scale(1.2);
+			height: 100vh;
+			width: 100vh;
+			border-radius: 50vh;
+			transform: translate(-50%, -30%) scale(1.2);
 			opacity: 0.5;
-			bottom: -50%;
+			top: 100%;
 			z-index: 20;
 			display: flex;
 			justify-content: center;
@@ -127,13 +131,14 @@
 	}
 
 	.blanc {
-		padding: 6rem 0;
+		background-color: #fff;
+		padding: 10rem 11%;
 		position: relative;
 		overflow: hidden;
 		@media only screen and (max-width: $phone) {
-					padding: 1rem  0;
-					}
-			
+			padding: 1rem 0;
+		}
+
 		.wrapper {
 			display: flex;
 			flex-direction: row;
@@ -143,22 +148,18 @@
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				left: 0%;
-				}
-			
-			left: 6%;
+			}
 
 			.bloc {
 				width: 50%;
-				padding: 32px;
 
 				@media only screen and (max-width: $phone) {
 					width: 100%;
 				}
-			
 
 				p {
 					font-family: $font-secondary-light;
-					margin-bottom: 48px;
+					margin-bottom: 64px;
 				}
 
 				.btn {
@@ -167,40 +168,36 @@
 			}
 			.img-droite {
 				display: flex;
-				justify-content: center;
-				align-items: center;
+				justify-content: end;
+				align-items: start;
 
 				@media only screen and (max-width: $phone) {
 					padding: 1rem 0 0 0;
-					}
+				}
 				.conteneur {
 					position: relative;
-					width: 70%;
-
+					width: 100%;
+					transform: translateX(20%);
 
 					@media only screen and (max-width: $phone) {
-					width: 100%;
-					padding: 8px;
+						width: 100%;
+						padding: 8px;
 					}
-			
 
 					span {
 						position: absolute;
-						width: 100px;
-						height: 100px;
-						border-radius: 50px;
+						width: 200px;
+						height: 200px;
+						border-radius: 200px;
 						background-color: $color-rose;
 
 						@media only screen and (max-width: $phone) {
-					display: none;
-				}
-			
+							display: none;
+						}
+
 						&.top-left {
 							transform: translate(-50%, -50%);
 							z-index: 5;
-
-
-
 						}
 
 						&.bottom-right {
@@ -237,20 +234,24 @@
 				width: 100%;
 			}
 
+			h2 {
+				text-align: left;
+			}
+
 			position: relative;
 			height: auto;
 			width: 50%;
 			background-color: rgba($color-bordeaux, 0.1);
 			display: flex;
 			flex-direction: column;
-			padding: 64px 64px;
+			padding: 64px 11%;
 
 			img {
 				position: absolute;
 				right: 5%;
 				bottom: 5%;
-				width: 45%;
-				height: 65%;
+				width: 40%;
+				height: 60%;
 				object-fit: contain;
 				background-size: contain;
 			}
@@ -273,13 +274,13 @@
 				align-items: center;
 
 				.flip-container {
-					height: 250px;
-					width: 250px;
+					height: 20vw;
+					width: 20vw;
 				}
 
 				img {
-					width: 50%;
-					height: 50%;
+					width: 40%;
+					height: 40%;
 					object-fit: contain;
 					background-size: contain;
 					transform: translateY(-20px);
@@ -293,7 +294,7 @@
 		}
 		p {
 			text-align: left;
-			width: 50%;
+			width: 60%;
 		}
 		.btn {
 			margin: 64px 0;
@@ -311,6 +312,7 @@
 			}
 
 			.contact-form {
+				width: 45%;
 				@media only screen and (max-width: $tablet) {
 					width: 90%;
 				}
@@ -321,14 +323,13 @@
 				}
 
 				flex-grow: 2;
-				width: 65%;
+				width: 55%;
 				position: relative;
+				transform: translateX(20%);
 
 				.contact-image {
 					margin-left: 64px;
 					position: absolute;
-					width: 40%;
-					height: 40%;
 					object-fit: cover;
 					background-size: cover;
 					border-radius: 32px;
@@ -336,30 +337,36 @@
 					&:nth-child(1) {
 						top: 0;
 						left: 50%;
-						transform: translateX(-50%);
+						transform: translate(-75%, -15%);
 						z-index: 2;
+						height: 40%;
+						width: 50%;
 					}
 
 					&:nth-child(2) {
 						top: 50%;
-						transform: translateY(-50%);
+						height: 50%;
+						width: 40%;
+						transform: translate(-30%, -50%);
 						z-index: 3;
 					}
 
 					&:nth-child(3) {
-						transform: translateX(-50%);
+						transform: translate(-100%, 20%);
 						bottom: 0;
 						left: 50%;
+						height: 50%;
+						width: 30%;
 						z-index: 4;
 					}
 
 					&:nth-child(4) {
 						border-radius: 5000px;
-						height: 400px;
-						width: 400px;
+						height: 700px;
+						width: 700px;
 						top: 50%;
-						right: 0;
-						background: $color-rose;
+						right: -35%;
+						background: #ddb0af;
 						transform: translateY(-50%);
 						z-index: 1;
 					}

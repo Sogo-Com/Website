@@ -96,7 +96,7 @@
 				changeProjet(0);
 			}}
 		>
-			{$t('home.projet-redaction')}
+			Rédaction
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -106,7 +106,7 @@
 				changeProjet(1);
 			}}
 		>
-			{$t('home.projet-relationpresse')}
+			Relation de presse
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -116,7 +116,7 @@
 				changeProjet(2);
 			}}
 		>
-			{$t('home.projet-graphisme')}
+			Graphisme
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -126,7 +126,7 @@
 				changeProjet(3);
 			}}
 		>
-			{$t('home.projet-reseaux')}
+			Réseaux sociaux
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -136,7 +136,7 @@
 				changeProjet(4);
 			}}
 		>
-			{$t('home.projet-photovideo')}
+			Photos et vidéos
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -146,7 +146,7 @@
 				changeProjet(5);
 			}}
 		>
-			{$t('home.projet-evenements')}
+			Évenements
 		</div>
 	</div>
 
@@ -196,8 +196,7 @@
 		h1 {
 			color: #fff;
 			text-align: left;
-			padding: 256px 128px;
-			font-size: 4rem;
+			padding: 256px 11%;
 			z-index: 15;
 			position: relative;
 		}
@@ -224,7 +223,7 @@
 			flex-basis: 50%;
 		}
 		.question {
-			padding: 128px;
+			padding: 128px 64px 128px 11%;
 
 			h2 {
 				color: $color-gris-dark;
@@ -232,7 +231,7 @@
 		}
 
 		.reponse {
-			padding: 64px;
+			padding:  128px  11% 128px 64px;
 		}
 	}
 

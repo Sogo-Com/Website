@@ -80,6 +80,11 @@
 			}
 
 			.front {
+
+				h3{
+					padding: 32px;
+					text-align: center;
+				}
 				img {
 					position: absolute;
 					border-radius: 500px;

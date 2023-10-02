@@ -14,9 +14,12 @@
 	const expertise = [
 		{
 			id: 0,
-			title: 'Redaction',
+			title: 'Nos expertises',
 			class: 'redaction',
-			description: 'Desc ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+			description:
+				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+
+Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
 				'/images/expertise-yellow.png',
 				'/images/expertise-yellow.png',
@@ -25,9 +28,12 @@
 		},
 		{
 			id: 1,
-			title: 'Relation de presses',
+			title: 'Nos expertises',
 			class: 'presse',
-			description: 'Press ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+			description:
+				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+
+Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
 				'/images/expertise-yellow.png',
 				'/images/expertise-yellow.png',
@@ -36,9 +42,12 @@
 		},
 		{
 			id: 2,
-			title: 'Graphisme',
+			title: 'Nos expertises',
 			class: 'graphisme',
-			description: 'Graph ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+			description:
+				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+
+Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs. `,
 			images: [
 				'/images/expertise-purple.png',
 				'/images/expertise-purple.png',
@@ -47,10 +56,12 @@
 		},
 		{
 			id: 3,
-			title: 'Réseaux sociaux',
+			title: 'Nos expertises',
 			class: 'reseaux',
 			description:
-				'Reseaux ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+
+Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
 				'/images/expertise-blue.png',
 				'/images/expertise-blue.png',
@@ -59,10 +70,12 @@
 		},
 		{
 			id: 4,
-			title: 'Photos & vidéos',
+			title: 'Nos expertises',
 			class: 'photos',
 			description:
-				'Photos ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+
+Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
 				'/images/expertise-kaki.png',
 				'/images/expertise-kaki.png',
@@ -71,10 +84,12 @@
 		},
 		{
 			id: 5,
-			title: 'Evenements',
+			title: 'Nos expertises',
 			class: 'evenements',
 			description:
-				'Evenements ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+
+Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
 				'/images/expertise-red.png',
 				'/images/expertise-red.png',
@@ -122,13 +137,15 @@
 				el: '.pagination'
 			}
 		});
+
+		changeExpertise(0);
 	});
 </script>
 
 <div class="expertise" bind:this={container}>
 	<h2 bind:innerText={title} contenteditable="false">{$t('home.expertise-title')}</h2>
 
-	<p bind:innerText={description} contenteditable="false">
+	<p bind:innerHTML={description} contenteditable="false">
 		{$t('home.expertise-description')}
 	</p>
 
@@ -222,16 +239,18 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 32px;
+		padding: 64px;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
 		h2 {
 			text-align: center;
 			padding: 64px 0 32px 0;
+			color: $color-gris-dark;
 		}
 		p {
 			padding: 0 32px 64px 32px;
 			text-align: center;
+			max-width: 60%;
 			color: $color-gris-dark;
 			font-family: $font-secondary-light;
 		}
@@ -243,6 +262,7 @@
 		}
 		.btn {
 			transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+			font-family: $font-secondary-light;
 		}
 		.swiper-container {
 			margin-bottom: 16px;
@@ -264,6 +284,10 @@
 			}
 
 			.link {
+
+				flex-grow: initial;
+				padding: 24px;
+
 				@media only screen and (max-width: $phone) {
 					padding: 16px;
 					border: none;

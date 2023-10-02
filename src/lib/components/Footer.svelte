@@ -10,36 +10,38 @@
 		</a>
 		<div class="links">
 			<a href="/agence">
-				{$t('common.menu-agence')}
+				Agence
 			</a>
 			<a href="/actualites">
-				{$t('common.menu-actualites')}
-			</a>
-			<a href="/projets">
-				{$t('common.menu-projets')}
-			</a>
-			<a href="/contact">
-				{$t('common.menu-contact')}
-			</a>
-			<a href="/presse">
-				{$t('common.menu-presse')}
+				Actualités
 			</a>
 			<a href="/competences">
-				{$t('common.menu-competences')}
+				Compétences
 			</a>
+			<a href="/contact">
+				Contact
+			</a>
+			<a href="/projets">
+				Projets
+			</a>
+			
+			<a href="/presse">
+				Espace presse
+			</a>
+			
 		</div>
 	</div>
 	<div class="white">
 		<a href="/mentions">
-			{$t('common.menu-mentions')}
+			Mentions légales
 		</a>
 		-
 		<a href="/donnees-personelles">
-			{$t('common.menu-donnees')}
+			Données personnelles
 		</a>
 		-
 		<a>
-			{$t('common.menu-cookies')}
+			Préférence cookies
 		</a>
 	</div>
 </footer>
@@ -71,10 +73,10 @@
 				a {
 					flex-basis: 50%;
 					font-family: $font-secondary-light;
-					font-size: 0.8rem;
+					font-size: 1rem;
 					color: $color-blanc;
 					text-decoration: none;
-					padding-bottom: 16px;
+					padding: 16px 0;
 				}
 			}
 		}
@@ -84,7 +86,7 @@
 			justify-content: center;
 			align-items: center;
 			font-family: $font-secondary-light;
-			font-size: 0.8rem;
+			font-size: 1rem;
 			color: $color-gris-dark;
 
 			@media only screen and (max-width: $phone) {

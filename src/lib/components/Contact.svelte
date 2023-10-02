@@ -8,6 +8,7 @@
 	let nom;
 	let prenom;
 	let telephone;
+	let societe;
 	let email;
 
 	let innerDescriptionText = $t('common.contact-description');
@@ -64,6 +65,8 @@
 	<input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
 	<label for="prenom">{$t('common.contact-prenom')}</label>
 	<input bind:this={prenom} type="text" name="prenom" id="prenom" placeholder="Votre prenom" />
+	<label for="societe">Société</label>
+	<input bind:this={societe} type="text" name="societe" id="societe" placeholder="Votre société" />
 	<label for="telephone">{$t('common.contact-telephone')}</label>
 	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
 	<label for="email">{$t('common.contact-email')}</label>
@@ -88,10 +91,14 @@
 		p {
 			color: $color-gris-dark;
 			margin-bottom: 32px;
+			font-family: $font-secondary-medium;
+			font-size: 24px;
 		}
 		label {
 			color: $color-gris-dark;
 			margin-bottom: 8px;
+			font-family: $font-secondary-medium;
+			font-size: 1rem;
 		}
 		input {
 			background: $color-blanc;
