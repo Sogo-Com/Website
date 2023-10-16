@@ -55,7 +55,7 @@
 			&.bleu {
 				background-color: rgba($color-bleu, 0.1);
 			}
-			padding: 64px 32px;
+			padding: 64px 11%;
 			height: fit-content;
 			display: flex;
 			flex-direction: row;
@@ -101,6 +101,7 @@
 
 				.texte {
 					padding: 0 0 32px 0;
+					font-family: $font-secondary-light;
 				}
 				.btn {
 					margin-top: 32px;
@@ -109,8 +110,9 @@
 			}
 			.trait {
 				width: 2px;
-				height: 250px;
+				height: 300px;
 				background-color: $color-gris-dark;
+				margin: 0 32px;
 			}
 			.images {
 				flex-basis: 15%;
