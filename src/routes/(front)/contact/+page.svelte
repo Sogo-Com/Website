@@ -16,12 +16,22 @@
 				scrollWheelZoom: false
 			});
 
+			const icon =  L.icon({
+				iconUrl: '/images/marker-icon.png',
+				shadowUrl: '/images/marker-shadow.png',
+				iconSize:     [25, 41], // size of the icon
+				shadowSize:   [41, 41], // size of the shadow
+				iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+				shadowAnchor: [21, 41],  // the same for the shadow
+				popupAnchor:  [-3, -41] // point from which the popup should open relative to the iconAnchor
+			});
+
 			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution:
 					'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 
-			L.marker([45.933060, 6.073554])
+			L.marker([45.933060, 6.073554],{icon})
 				.addTo(map)
 				.bindPopup(
 					'<strong>Sogo Com</strong><br>356 Rue de Chavanne 74330 Poisy'
