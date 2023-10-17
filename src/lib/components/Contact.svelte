@@ -18,7 +18,7 @@
 	let status = '';
 	let statusClass = ''
 	const handleSubmit = async (data) => {
-		status = 'Submitting...';
+		status = 'Envoie en cours...';
 		statusClass = 'pending'
 		const formData = new FormData(data.currentTarget);
 		const object = Object.fromEntries(formData);
@@ -28,7 +28,8 @@
 			object.nom.length == 0 ||
 			object.prenom.length == 0 ||
 			object.email.length == 0 ||
-			object.telephone.length == 0
+			object.telephone.length == 0 ||
+			object.societe.length == 0
 		) {
 			status = 'Entrée invalide !';
 			statusClass = 'error'
@@ -53,6 +54,7 @@
 			nom.value = '';
 			prenom.value = '';
 			telephone.value = '';
+			societe.value = ''
 			email.value = '';
 			
 		}
