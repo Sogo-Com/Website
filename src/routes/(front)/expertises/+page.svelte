@@ -439,6 +439,7 @@
 					justify-content: center;
 					align-items: center;
 					flex-direction: column;
+					cursor: pointer;
 					img {
 						margin: 8px;
 						width: 64px;

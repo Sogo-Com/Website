@@ -155,6 +155,7 @@ h2:before {
 		justify-content: center;
 		text-align: center;
 		text-decoration: none;
+		transition: all cubic-bezier(0.39, 0.575, 0.565, 1) .3s;
 		@media only screen and (max-width: $phone) {
 		padding: 2rem 0;
 		}
@@ -163,10 +164,14 @@ h2:before {
 			margin: 16px;
 		}
 	}
+
+	.info a:hover{
+		filter: grayscale(1);
+	}
 }
 
 #map{
-	height: 30vh;
+	height: 40vh;
 	z-index: 0;
 }
 

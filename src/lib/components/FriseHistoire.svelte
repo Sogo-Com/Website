@@ -88,7 +88,7 @@
 				flex-direction: row;
 				flex-wrap: nowrap;
 				position: relative;
-				left: 12%;
+				left: 22%;
 
 				@media only screen and (max-width: $phone) {
 					left: unset;
@@ -172,7 +172,7 @@
 					padding: 16px;
 					position: absolute;
 					text-align: right;
-
+					right: calc(100% - 68px);
 					@media only screen and (max-width: $phone) {
 						padding: 32px;
 					}

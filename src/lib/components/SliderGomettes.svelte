@@ -13,52 +13,60 @@
     const gomettes = [
         {
             id: 1,
-            name: "Sophie",
+            name: "Muriel",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Muriel1.png",
+            active: "/images/Muriel2.png"
+        
         },
         {
             id: 2,
-            name: "Arnaud",
+            name: "Gaelle",
             type: "La gommette des videos montages",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Gaelle1.png",
+            active: "/images/Gaelle2.png"
         },
         {
             id: 3,
-            name: "Lea",
+            name: "Julie",
             type: "La gommette des goblins",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Julie1.png",
+            active: "/images/Julie2.png"
         },
         {
             id: 4,
             name: "Sophie",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Sophie1.png",
+            active: "/images/Sophie2.png"
         },
         {
             id: 5,
-            name: "Sophie",
+            name: "Arnaud",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Arnaud1.png",
+            active: "/images/Arnaud2.png"
         },
         {
             id: 6,
-            name: "Sophie",
+            name: "Veronique",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Veronique1.png",
+            active: "/images/Veronique2.png"
         },
         {
             id: 7,
-            name: "Sophie",
+            name: "Magali",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
-            image: "/images/agence-bg.png"
+            inactive: "/images/Magali1.png",
+            active: "/images/Magali2.png"
         },
     ]
 
@@ -68,26 +76,40 @@
 
 		let swiper = new Swiper('.swiper-container', {
 			modules: [Pagination],
-			loop:'false',
+			loop:false,
 			slidesPerView: 1,
 			slidesPerGroup: 1,
-            initialSlide
+            initialSlide,
+            slideToClickedSlide:true
 		
 		});
 
-        ChangeIndex(initialSlide)
+      
+        function ChangeIndex(){
+
+            name.innerHTML = gomettes[swiper.activeIndex].name;
+            type.innerHTML = gomettes[swiper.activeIndex].type;
+            description.innerHTML = gomettes[swiper.activeIndex].description;
+            const oldSlide = swiper.slides[swiper.previousIndex]
+            if(oldSlide != null)
+                oldSlide.firstElementChild.src =  gomettes[swiper.previousIndex].inactive
+
+            const newSlide = swiper.slides[swiper.activeIndex]
+            if(newSlide != null)
+            newSlide.firstElementChild.src =  gomettes[swiper.activeIndex].active
+
+        }
 
         swiper.on("activeIndexChange", ()=>{
-            ChangeIndex(swiper.activeIndex)
+
+            ChangeIndex()
         })
+
+        ChangeIndex()
+
 	});
 
 
-    function ChangeIndex(index = 0){
-        name.innerHTML = gomettes[index].name;
-        type.innerHTML = gomettes[index].type;
-        description.innerHTML = gomettes[index].description;
-    }
 </script>
 
 <div class="gomettes">
@@ -102,7 +124,7 @@
 			<div class="swiper-wrapper">
                 {#each gomettes as gomette, index}
                     <div class="swiper-slide">
-                        <img src="{gomette.image}" alt="{gomette.name}" />
+                        <img src="{gomette.inactive}" alt="{gomette.name}" />
                     </div>
                 {/each}
 				
@@ -114,17 +136,11 @@
         <div class="gomette-info">
 
             <h2>
-                <span class="pink" bind:this={name}>SOPHIE</span>
-                
+                <span class="pink" bind:this={name}></span>
             </h2>
             <h3 bind:this={type}>
-                La gommette des Gommettes
             </h3>
             <p bind:this={description}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-                Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-    
-                Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.
             </p>
     
         </div>

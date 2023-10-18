@@ -16,91 +16,94 @@
 			id: 0,
 			title: 'Nos expertises',
 			class: 'redaction',
-			description:
-				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+			description: `Le plat signature de Sogo Com : l’écriture ! <br><br>
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/expertise-yellow.png',
-				'/images/expertise-yellow.png',
-				'/images/expertise-yellow.png'
-			]
+				'/images/mokup.png',
+				'/images/mokup.png',
+				'/images/mokup.png'
+			],
+			bgImages : '/images/exper-jaune.png'
 		},
 		{
 			id: 1,
 			title: 'Nos expertises',
 			class: 'presse',
-			description:
-				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+			description: `Le plat signature de Sogo Com : l’écriture ! <br><br>
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/expertise-yellow.png',
-				'/images/expertise-yellow.png',
-				'/images/expertise-yellow.png'
-			]
+				'/images/mokup.png',
+				'/images/mokup.png',
+				'/images/mokup.png'
+			],
+			bgImages : '/images/exper-jaune.png'
 		},
 		{
 			id: 2,
 			title: 'Nos expertises',
 			class: 'graphisme',
-			description:
-				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+			description: `Le plat signature de Sogo Com : l’écriture ! <br><br>
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs. `,
 			images: [
-				'/images/expertise-purple.png',
-				'/images/expertise-purple.png',
-				'/images/expertise-purple.png'
-			]
+				'/images/mokup.png',
+				'/images/mokup.png',
+				'/images/mokup.png'
+			],
+			bgImages : '/images/exper-rose.png'
 		},
 		{
 			id: 3,
 			title: 'Nos expertises',
 			class: 'reseaux',
-			description:
-				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+			description: `Le plat signature de Sogo Com : l’écriture ! <br><br>
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/expertise-blue.png',
-				'/images/expertise-blue.png',
-				'/images/expertise-blue.png'
-			]
+				'/images/mokup.png',
+				'/images/mokup.png',
+				'/images/mokup.png'
+			],
+			bgImages : '/images/exper-bleu.png'
 		},
 		{
 			id: 4,
 			title: 'Nos expertises',
 			class: 'photos',
-			description:
-				`Le plat signature de Sogo Com : l’écriture ! <br><br>
+			description: `Le plat signature de Sogo Com : l’écriture ! <br><br>
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/expertise-kaki.png',
-				'/images/expertise-kaki.png',
-				'/images/expertise-kaki.png'
-			]
+				'/images/mokup.png',
+				'/images/mokup.png',
+				'/images/mokup.png'
+			],
+			bgImages : '/images/exper-kaki.png'
 		},
 		{
 			id: 5,
 			title: 'Nos expertises',
 			class: 'evenements',
-			description:
-				`Le plat signature de Sogo Com : l’écriture ! <br><br>
-
+			description: `Le plat signature de Sogo Com : l’écriture ! <br><br>
+			
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/expertise-red.png',
-				'/images/expertise-red.png',
-				'/images/expertise-red.png'
-			]
+				'/images/mokup.png',
+				'/images/mokup.png',
+				'/images/mokup.png'
+			],
+			bgImages : '/images/exper-rouge.png'
 		}
 	];
 
 	let oldExpertise = {
 		class: ''
 	};
+
+
+	let bgImageSrc;
 
 	function changeExpertise(id) {
 		Array.from(links.children).map((child) => {
@@ -111,6 +114,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		changeContainerClass(expertise[id].class);
 		title = expertise[id].title;
 		description = expertise[id].description;
+		bgImageSrc =  expertise[id].bgImages
 		changeImages(expertise[id].images);
 	}
 
@@ -124,6 +128,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		wrapper.children[0].firstElementChild.src = imagesArray[0];
 		wrapper.children[1].firstElementChild.src = imagesArray[1];
 		wrapper.children[2].firstElementChild.src = imagesArray[2];
+		
 	}
 
 	onMount((_) => {
@@ -210,25 +215,26 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			{$t('home.expertise-evenements')}
 		</div>
 	</div>
+
 	<div class="swiper-container">
 		<div bind:this={wrapper} class="swiper-wrapper">
 			<div class="swiper-slide">
-				<img src="/images/expertise-yellow.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
+				<img src="/images/mokup.png" alt="expertise-slide" />
 			</div>
 
 			<div class="swiper-slide">
-				<img src="/images/expertise-yellow.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
+				<img src="/images/mokup.png" alt="expertise-slide" />
 			</div>
 
 			<div class="swiper-slide">
-				<img src="/images/expertise-yellow.png" alt="expertise-slide" />
-				<div class="btn">{$t('common.savoir+')}</div>
+				<img src="/images/mokup.png" alt="expertise-slide" />
 			</div>
 		</div>
+
+		<img class="img-bg" src="{bgImageSrc}" alt="expertise-slide" />
 	</div>
 
+	<div class="btn">{$t('common.savoir+')}</div>
 	<div class="pagination" />
 </div>
 
@@ -254,23 +260,36 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			color: $color-gris-dark;
 			font-family: $font-secondary-light;
 		}
-		img {
-			width: 100%;
-			height: 80%;
-			object-fit: contain;
-			background-size: contain;
-		}
+
 		.btn {
+			margin-bottom: 32px;
 			transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 			font-family: $font-secondary-light;
 		}
 		.swiper-container {
 			margin-bottom: 16px;
+			position: relative;
 			.swiper-slide {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-evenly;
 				align-items: center;
+
+				img {
+					width: auto;
+					height: 80%;
+					object-fit: contain;
+					background-size: contain;
+				}
+			}
+
+			.img-bg {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: auto;
+   				height: 80%;
 			}
 		}
 
@@ -284,7 +303,6 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			}
 
 			.link {
-
 				flex-grow: initial;
 				padding: 24px;
 
@@ -312,10 +330,10 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			background-color: rgba(#e5ae1e, 0.1);
 
 			.active {
-				color: #e5ae1e !important;
+				color: #e5ae1e !important ;
 			}
 			.btn {
-				background: #e5ae1e !important;
+				background: #e5ae1e;
 			}
 			.swiper-pagination-bullet-active {
 				background: #e5ae1e !important;
@@ -328,7 +346,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				color: #e5ae1e !important;
 			}
 			.btn {
-				background: #e5ae1e !important;
+				background: #e5ae1e;
 			}
 			.swiper-pagination-bullet-active {
 				background: #e5ae1e !important;
@@ -338,7 +356,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			background-color: rgba(#a48bad, 0.1);
 
 			.active {
-				color: #a48bad !important;
+				color: #a48bad;
 			}
 			.btn {
 				background: #a48bad !important;
@@ -353,7 +371,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				color: #2c9a9b !important;
 			}
 			.btn {
-				background: #2c9a9b !important;
+				background: #2c9a9b;
 			}
 			.swiper-pagination-bullet-active {
 				background: #2c9a9b !important;
@@ -365,7 +383,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				color: #989a6f !important;
 			}
 			.btn {
-				background: #989a6f !important;
+				background: #989a6f;
 			}
 			.swiper-pagination-bullet-active {
 				background: #989a6f !important;
@@ -377,7 +395,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				color: #9d524f !important;
 			}
 			.btn {
-				background: #9d524f !important;
+				background: #9d524f;
 			}
 			.swiper-pagination-bullet-active {
 				background: #9d524f !important;

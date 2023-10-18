@@ -60,7 +60,7 @@
 	</div>
 
 	<div class="menu-container">
-		<a bind:this={logo} class="logo" href="/">
+		<a data-sveltekit-reload bind:this={logo} class="logo" href="/">
 			<img alt="logo menu" src="/images/logo-menu.svg" />
 		</a>
 
@@ -69,10 +69,10 @@
 				<a href="/agence">
 					{$t('common.menu-agence')}
 				</a>
-				<a href="/expertises">
+				<a  href="/expertises">
 					{$t('common.menu-expertises')}
 				</a>
-				<a href="/projets">
+				<a data-sveltekit-reload href="/projets">
 					{$t('common.menu-projets')}
 				</a>
 				<a href="/actualites">
@@ -162,7 +162,7 @@
 					font-family: $font-secondary-medium;
 				}
 				a:hover {
-					color: $color-gris-clair;
+					color: $color-rose;
 				}
 
 				flex-grow: 2;
