@@ -1,5 +1,6 @@
 <script>
 	import { t, locales, locale } from '$lib/translations';
+	import  gsap from 'gsap'
 	import { goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -10,22 +11,49 @@
 	let menu;
 	let mobileBtn;
 	let mobile = true;
+	const mobileTl = gsap.timeline()
 
 	onMount((_) => {
 		mobile = window.matchMedia('(max-width: 1150px)').matches;
 		mobileMenu();
 		clickLink();
 		checkActive();
+
 	});
 
 	function mobileMenu() {
 		if (!mobile) return;
 
+	
 		mobileBtn.addEventListener('click', (_) => {
-			menu.classList.toggle('active');
-			mobileBtn.classList.toggle('active');
+
+			if(menu.classList.contains('active'))
+			{
+				mobileClose()
+			}else
+				mobileOpen()
+
 		});
 	}
+
+	function mobileOpen(){
+		menu.classList.add('active');
+		mobileBtn.classList.add('active');
+
+		mobileTl.to(menu,{
+			height:'auto'
+		})
+	}
+
+	function mobileClose(){
+		menu.classList.remove('active');
+		mobileBtn.classList.remove('active');
+
+		mobileTl.to(menu,{
+			height:'0'
+		})
+	}
+
 
 	function clickLink() {
 		for (const link of links.children) {
@@ -33,6 +61,11 @@
 		}
 	}
 	function checkActive(e) {
+		if (mobile){
+			menu.classList.remove('active');
+			mobileBtn.classList.remove('active');
+		}
+
 		if (e?.currentTarget != null) {
 			const a = e.currentTarget;
 
@@ -53,13 +86,13 @@
 </script>
 
 <div id="navContainer">
-	<div bind:this={mobileBtn} class="mobile-btn">
-		<span class="mob-1" />
-		<span class="mob-2" />
-		<span class="mob-3" />
-	</div>
-
 	<div class="menu-container">
+		<div bind:this={mobileBtn} class="mobile-btn">
+			<span class="mob-1" />
+			<span class="mob-2" />
+			<span class="mob-3" />
+		</div>
+
 		<a data-sveltekit-reload bind:this={logo} class="logo" href="/">
 			<img alt="logo menu" src="/images/logo-menu.svg" />
 		</a>
@@ -69,7 +102,7 @@
 				<a href="/agence">
 					{$t('common.menu-agence')}
 				</a>
-				<a  href="/expertises">
+				<a href="/expertises">
 					{$t('common.menu-expertises')}
 				</a>
 				<a data-sveltekit-reload href="/projets">
@@ -81,6 +114,8 @@
 				<a href="/contact">
 					{$t('common.menu-contact')}
 				</a>
+
+				<a class="mobile presse" href="/"> Espace Presse </a>
 			</div>
 		</div>
 		<div class="presse">
@@ -108,13 +143,15 @@
 		.menu-container {
 			margin-left: 11%;
 			margin-right: 11%;
-
 			width: 100%;
 			display: flex;
 
+			@media only screen and (max-width: $tablet) {
+				justify-content: space-between;
+			}
+
 			div,
 			a {
-			
 				text-align: center;
 				text-decoration: none;
 				font-family: $font-secondary-light;
@@ -130,13 +167,17 @@
 				flex-basis: 50%;
 				display: flex;
 				align-items: center;
+
 				@media only screen and (max-width: $tablet) {
 					position: absolute;
 					top: 100%;
 					width: 100%;
-					display: none;
-					height: fit-content;
+					display: block;
+					overflow: hidden;
+					height: 0;
+					// height: fit-content;
 					background-color: #fff;
+					left: 0;
 
 					.links {
 						flex-direction: column;
@@ -165,6 +206,17 @@
 					color: $color-rose;
 				}
 
+				.mobile {
+					color: #fff !important;
+					width: -webkit-fill-available;
+					justify-content: center;
+					display: none;
+
+					@media only screen and (max-width: $tablet) {
+						display: flex;
+					}
+				}
+
 				flex-grow: 2;
 
 				.active {
@@ -180,6 +232,10 @@
 				justify-content: end;
 				align-items: center;
 				flex-basis: 25%;
+
+				@media only screen and (max-width: $tablet) {
+					display: none;
+				}
 				.btn-container {
 					width: fit-content;
 					display: inline;
@@ -188,7 +244,7 @@
 					.btn {
 						background-color: $color-rose;
 						width: fit-content;
-						display: inline;
+						display: block;
 						padding: 10px 32px;
 						border-radius: 32px;
 						color: $color-blanc;
