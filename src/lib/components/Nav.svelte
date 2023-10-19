@@ -1,6 +1,6 @@
 <script>
 	import { t, locales, locale } from '$lib/translations';
-	import  gsap from 'gsap'
+	import gsap from 'gsap';
 	import { goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -20,43 +20,43 @@
 		mobileMenu();
 		clickLink();
 		checkActive();
-
 	});
 
-	
 	function mobileMenu() {
 		if (!mobile) return;
 
-	
 		mobileBtn.addEventListener('click', (_) => {
-
-			if(menu.classList.contains('active'))
-			{
-				mobileClose()
-			}else
-				mobileOpen()
-
+			if (menu.classList.contains('active')) {
+				mobileClose();
+			} else mobileOpen();
 		});
 	}
 
-	function mobileOpen(){
+	function mobileOpen() {
+
+		if(!mobile)
+			return
+
 		menu.classList.add('active');
 		mobileBtn.classList.add('active');
 
-		mobileTl.to(menu,{
-			height:'auto'
-		})
+		mobileTl.to(menu, {
+			height: 'auto'
+		});
 	}
 
-	function mobileClose(){
+	function mobileClose() {
+
+		if(!mobile)
+			return
+		
 		menu.classList.remove('active');
 		mobileBtn.classList.remove('active');
 
-		mobileTl.to(menu,{
-			height:'0'
-		})
+		mobileTl.to(menu, {
+			height: '0'
+		});
 	}
-
 
 	function clickLink() {
 		for (const link of links.children) {
@@ -64,10 +64,7 @@
 		}
 	}
 	function checkActive(e) {
-		if (mobile){
-			menu.classList.remove('active');
-			mobileBtn.classList.remove('active');
-		}
+		mobileClose()
 
 		if (e?.currentTarget != null) {
 			const a = e.currentTarget;
@@ -86,8 +83,6 @@
 			}
 		}
 	}
-
-
 </script>
 
 <div id="navContainer">
@@ -262,22 +257,34 @@
 				@media only screen and (min-width: $tablet) {
 					display: none;
 				}
-
+				transition: cubic-bezier(0.39, 0.575, 0.565, 1) all 0.3s;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-evenly;
 				align-items: center;
+				cursor: pointer;
+
+				:nth-child(1) {
+					bottom: 0px;
+				}
+
+				:nth-child(3) {
+					top: 0px;
+				}
 
 				&.active {
 					:nth-child(1) {
 						transform: rotate(45deg) translate(3px);
+						bottom: 0px !important;
 					}
+
 					:nth-child(2) {
 						opacity: 0;
 					}
 
 					:nth-child(3) {
 						transform: rotate(-45deg);
+						top: 0px !important;
 					}
 				}
 
@@ -288,7 +295,17 @@
 					height: 3px;
 					margin: 8px 16px;
 					width: 50px;
+					position: relative;
 					background-color: $color-rose;
+				}
+			}
+			.mobile-btn:hover {
+				:nth-child(1) {
+					bottom: -5px;
+				}
+
+				:nth-child(3) {
+					top: -5px;
 				}
 			}
 		}
