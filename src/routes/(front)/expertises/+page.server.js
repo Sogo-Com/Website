@@ -29,8 +29,8 @@ Vous avez le projet, nous avons les mots.`,
         imagePrincipale: '/images/expertise-redac.png',
         
         icons: [{
-            active:'/images/redac-1.svg',
-            inactive : '/images/redac-1.svg',
+            active:'/images/expertises/Redaction/WebActive.png',
+            inactive : '/images/expertises/Redaction/Web.png',
             titre: 'Web',
             description: `Ecrire pour le web est un exercice particulier qui a des règles propres. L’écriture SEO est le meilleur moyen de faire remonter vos contenus en termes de référencement. 
             <br><br>
@@ -38,8 +38,8 @@ Vous avez le projet, nous avons les mots.`,
             image:'/images/expertise-yellow.png',
         },
         {
-            active:'/images/redac-2.svg',
-            inactive : '/images/redac-2.svg',
+            active:'/images/expertises/Redaction/PrintActive.png',
+            inactive : '/images/expertises/Redaction/Print.png',
             titre: 'Print',
             description: `Plaquettes, brochures, flyers, dossiers de presse… Vos supports de communication print doivent être dans le prolongement de votre identité et de vos valeurs. Des textes adaptés, des mots choisis et des univers déclinés, retrouvez ici quelques-uns de nos projets rédactionnels.`,
             image:'/images/expertise-yellow.png',

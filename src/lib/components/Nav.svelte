@@ -93,7 +93,7 @@
 			<span class="mob-3" />
 		</div>
 
-		<a data-sveltekit-reload bind:this={logo} class="logo" href="/">
+		<a data-sveltekit-reload bind:this={logo} class="logo-menu" href="/">
 			<img alt="logo menu" src="/images/logo-menu.svg" />
 		</a>
 
@@ -158,7 +158,7 @@
 				color: $color-gris-dark;
 				font-size: 24px;
 			}
-			.logo {
+			.logo-menu {
 				display: flex;
 				align-items: start;
 				flex-basis: 25%;
@@ -190,9 +190,6 @@
 						background-color: $color-rose;
 					}
 
-					&.active {
-						display: block !important;
-					}
 				}
 			}
 
