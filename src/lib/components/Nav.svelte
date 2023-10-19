@@ -11,16 +11,19 @@
 	let menu;
 	let mobileBtn;
 	let mobile = true;
-	const mobileTl = gsap.timeline()
+	let mobileTl;
 
 	onMount((_) => {
 		mobile = window.matchMedia('(max-width: 1150px)').matches;
+		mobileTl = gsap.timeline();
+
 		mobileMenu();
 		clickLink();
 		checkActive();
 
 	});
 
+	
 	function mobileMenu() {
 		if (!mobile) return;
 
@@ -83,6 +86,8 @@
 			}
 		}
 	}
+
+
 </script>
 
 <div id="navContainer">
