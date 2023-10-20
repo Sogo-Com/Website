@@ -29,8 +29,8 @@ Vous avez le projet, nous avons les mots.`,
         imagePrincipale: '/images/expertise-redac.png',
         
         icons: [{
-            active:'/images/expertises/Redaction/WebActive.png',
-            inactive : '/images/expertises/Redaction/Web.png',
+            active:'/images/expertises/Redaction/WebActive_1.svg',
+            inactive : '/images/expertises/Redaction/Web_1.svg',
             titre: 'Web',
             description: `Ecrire pour le web est un exercice particulier qui a des règles propres. L’écriture SEO est le meilleur moyen de faire remonter vos contenus en termes de référencement. 
             <br><br>
@@ -38,8 +38,8 @@ Vous avez le projet, nous avons les mots.`,
             image:'/images/expertise-yellow.png',
         },
         {
-            active:'/images/expertises/Redaction/PrintActive.png',
-            inactive : '/images/expertises/Redaction/Print.png',
+            active:'/images/expertises/Redaction/PrintActive_1.svg',
+            inactive : '/images/expertises/Redaction/Print_1.svg',
             titre: 'Print',
             description: `Plaquettes, brochures, flyers, dossiers de presse… Vos supports de communication print doivent être dans le prolongement de votre identité et de vos valeurs. Des textes adaptés, des mots choisis et des univers déclinés, retrouvez ici quelques-uns de nos projets rédactionnels.`,
             image:'/images/expertise-yellow.png',
@@ -64,21 +64,21 @@ Sont les flèches ciblées prêtes à être décochées.`,
     
 
         icons: [{
-            active:'/images/presse-1.svg',
-            inactive : '/images/presse-1.svg',
+            active:'/images/expertises/RelationsPresse/CommuniqueActive_2.svg',
+            inactive : '/images/expertises/RelationsPresse/Communique_2.svg',
             titre: 'Communiqués de presse',
             description: `Le communiqué de presse est un outil précieux pour faire régulièrement parler de nos partenaires. A chacun ses besoins et son rythme, nous planifions avec vous l’envoi ponctuel ou régulier de vos informations et actualités.`,
             image:'/images/expertise-yellow.png',
         },{
-            active:'/images/presse-2.svg',
-            inactive : '/images/presse-2.svg',
+            active:'/images/expertises/RelationsPresse/DossierActive_2.svg',
+            inactive : '/images/expertises/RelationsPresse/Dossier_2.svg',
             titre: 'Dossier presse',
             description: `Le dossier de presse est essentiel pour développer l’intérêt autour de vos valeurs d’entreprise, de vos compétences et de vos actions. 
             Complet et détaillé, le dossier de presse doit être le reflet de votre identité.`,
             image:'/images/expertise-yellow.png',
         },{
-            active:'/images/presse-3.svg',
-            inactive : '/images/presse-3.svg',
+            active:'/images/expertises/RelationsPresse/InvitationActive_2.svg',
+            inactive : '/images/expertises/RelationsPresse/Invitation_2.svg',
             titre: 'Invitation presse',
             description: `Que ce soit pour lancer un événement, marquer le temps fort d’une entreprise, évoquer le lancement d’un produit ou simplement faire découvrir l’un de nos partenaires, nous organisons des rencontres avec la presse sous différentes formes, petits-déjeuners informels ou conférences officielles.`,
             image:'/images/expertise-yellow.png',
@@ -102,42 +102,42 @@ Confiez-nous votre image, nous la bichonnerons. Notoriété et qualité garantie
 
 
         icons: [{
-            active:'/images/graph-1.svg',
-            inactive : '/images/graph-1.svg',
+            active:'/images/expertises/Graphisme/LivreActive_1.svg',
+            inactive : '/images/expertises/Graphisme/Livre_1.svg',
             titre: 'Livre',
             description: `La mise en page d’un livre entier est un travail titanesque et complexe. 
             Nous imaginons l’univers graphique qui sera le vôtre et assurons la réalisation de la maquette, de l’élaboration du chemin de fer jusqu’aux calages techniques avec l’imprimeur.`,
             image:'/images/expertise-purple.png',
         },
         {
-            active:'/images/graph-2.svg',
-            inactive : '/images/graph-2.svg',
+            active:'/images/expertises/Graphisme/FlyerActive_1.svg',
+            inactive : '/images/expertises/Graphisme/Flyer_1.svg',
             titre: 'Flyer',
             description: `Percutant, le flyer est un outil qui doit taper dans l’œil tout en assurant la lisibilité du propos et des informations essentielles. Son efficacité dépend de sa pertinence visuelle.`,
             image:'/images/expertise-purple.png',
         }, {
-            active:'/images/graph-3.svg',
-            inactive : '/images/graph-3.svg',
+            active:'/images/expertises/Graphisme/PlaquetteActive_1.svg',
+            inactive : '/images/expertises/Graphisme/Plaquette_1.svg',
             titre: 'Plaquette',
             description: `Qu’elle soit institutionnelle, commerciale ou informative, la plaquette doit refléter votre intention et être bien organisée. Un look qui correspond à votre chartre graphique est un gage de qualité.`,
             image:'/images/expertise-purple.png',
         },
         {
-            active:'/images/graph-4.svg',
-            inactive : '/images/graph-4.svg',
+            active:'/images/expertises/Graphisme/LogoActive_1.svg',
+            inactive : '/images/expertises/Graphisme/Logo_1.svg',
             titre: 'Logo',
             description: `Le logo est le symbole de votre entreprise. Il doit refléter votre identité et vos valeurs en un seul coup d’œil. Il doit être décliné en différents formats et coloris. Associé à une charte graphique, il véhicule votre image et vous accompagne durant toute la vie de votre entreprise.`,
             image:'/images/expertise-purple.png',
         },
         {
-            active:'/images/graph-6.svg',
-            inactive : '/images/graph-6.svg',
+            active:'/images/expertises/Graphisme/PubliciteActive_1.svg',
+            inactive : '/images/expertises/Graphisme/Publicite_1.svg',
             titre: 'Publicité',
             description: `Encarts publicitaires et publi-informations, nous réalisons vos maquettes selon les formats et contraintes techniques exigés par les magazines.`,
             image:'/images/expertise-purple.png',
         },{
-            active:'/images/graph-5.svg',
-            inactive : '/images/graph-5.svg',
+            active:'/images/expertises/Graphisme/CoveringActive_1.svg',
+            inactive : '/images/expertises/Graphisme/Covering_1.svg',
             titre: 'Covering',
             description: `Le covering, qui consiste à habiller vos véhicules à votre image, a des contraintes techniques bien particulières. Pour des covering élégants et bien calés, faites confiance à notre œil avisé et roulez avec style.`,
             image:'/images/expertise-purple.png',
@@ -162,23 +162,23 @@ Laissez-nous vous guider pour optimiser vos actions sur les médias sociaux et a
 
         icons: [
             {
-                active:'/images/reseaux-1.svg',
-                inactive : '/images/reseaux-1.svg',
+                active:'/images/expertises/ReseauxSociaux/FacebookActive_1.svg',
+                inactive : '/images/expertises/ReseauxSociaux/Facebook_1.svg',
                 titre: 'Facebook',
                 description: `Photos, vidéos, partages de lien et questions interactives sont les contenus les mieux véhiculés sur Facebook, à nous de trouver le bon rythme et les meilleurs accroches pour valoriser votre entreprise.
                 C’est la synergie entre visuel, propos, choix des hashtags et interactions qui vous garantira efficacité et pertinence.`,
                 image:'/images/expertise-blue.png',
             },
             {
-                active:'/images/reseaux-2.svg',
-                inactive : '/images/reseaux-2.svg',
+                active:'/images/expertises/ReseauxSociaux/InstagramActive_1.svg',
+                inactive : '/images/expertises/ReseauxSociaux/Instagram_2.svg',
                 titre: 'Instagram',
                 description: `Réseau essentiellement basé sur le partage de photos et de vidéos, Instagram focalise son attraction sur l’engagement de ceux qui vous suivent et la possibilité qu’ils ont de s’identifier à vous. Créer du partage et de l’intimité et afficher ses sources d’inspiration font partie des ingrédients clés pour susciter l’intérêt.  Sur Insta, il faut être positif et divertissant !`,
                 image:'/images/expertise-blue.png',
             },
             {
-                active:'/images/reseaux-3.svg',
-                inactive : '/images/reseaux-3.svg',
+                active:'/images/expertises/ReseauxSociaux/LinkedinActive_1.svg',
+                inactive : '/images/expertises/ReseauxSociaux/Linkedin_2.svg',
                 titre: 'LinkedIn',
                 description: `Linkedin est un réseau social à visée professionnelle. Ici les contenus peuvent être plus détaillés et plus techniques pour attirer l’intérêt et l’engagement à vos côtés de partenaires, d’institutionnels et de tout un écosystème de professionnels. Parlez des évolutions et innovations de votre entreprise, mettez vos collaborations et projets à l’honneur, développez des sujets engagés et surtout exprimez-vous… Sur Linkedin, c’est la régularité qui prime.`,
                 image:'/images/expertise-blue.png',
@@ -199,22 +199,22 @@ Zoom sur l’image, le tournage et le montage sont aussi dans notre rayon. Actio
         imagePrincipale: '/images/expertise-photos.png',
      
         icons: [ {
-            active:'/images/photos-1.svg',
-            inactive : '/images/photos-1.svg',
+            active:'/images/expertises/PhotosVideos/PhotosActive_1.svg',
+            inactive : '/images/expertises/PhotosVideos/Photos_1.svg',
             titre: 'Photos',
             description: `Que ce soit pour le web ou pour le print, avoir des photos haute définition, bien anglées, mises en scène et variées est un pré-requis incontournable à toute communication qualitative. 
 
             Votre image en dépend et la confiance que l’on vous accordera aussi. Misez sur l’image n’est pas une option, faites-nous confiance.`,
             image:'/images/expertise-kaki.png',
         },{
-            active:'/images/photos-2.svg',
-            inactive : '/images/photos-2.svg',
+            active:'/images/expertises/PhotosVideos/VideosActive_1.svg',
+            inactive : '/images/expertises/PhotosVideos/Videos_1.svg',
             titre: 'Vidéos',
             description: `Tout comme la photo, la vidéo permet de capitaliser de façon positive et instantanée sur votre entreprise. Elaborer le scénario, réaliser les prises de vue et les interviews, cadencer le tout en musique et en rythme, la vidéo est un art qui doit donner du sens à votre message.`,
             image:'/images/expertise-kaki.png',
         },{
-            active:'/images/photos-3.svg',
-            inactive : '/images/photos-3.svg',
+            active:'/images/expertises/PhotosVideos/DroneActive_1.svg',
+            inactive : '/images/expertises/PhotosVideos/Drone_1.svg',
             titre: 'Prises de vue aériennes',
             description: `Les prises de vue aérienne à l’aide de drones apportent une vraie plus-value à vos images. Prendre de la hauteur et changer d’angle pour des images qui marquent, plonger au cœur d’un univers vu d’en haut pour en prendre toute la dimension, les images de drone ouvrent le champ d’un regard impactant.`,
             image:'/images/expertise-kaki.png',
@@ -238,8 +238,8 @@ N’hésitez pas à nous confier vos projets, nous imaginons tous vos événemen
       
         icons: [
             {
-                active:'/images/evenement-1.svg',
-                inactive : '/images/evenement-1.svg',
+                active:'/images/expertises/Event/ConventionActive_1.svg',
+                inactive : '/images/expertises/Event/Convention_1.svg',
                 titre: 'Convention',
                 description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
                 Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
@@ -247,22 +247,22 @@ N’hésitez pas à nous confier vos projets, nous imaginons tous vos événemen
                 image:'/images/expertise-red.png',
             },
             {
-                active:'/images/evenement-2.svg',
-                inactive : '/images/evenement-2.svg',
+                active:'/images/expertises/Event/InaugurationActive_1.svg',
+                inactive : '/images/expertises/Event/Inauguration_1.svg',
                 titre: 'Inauguration',
                 description: `Inaugurer ses nouveaux locaux est toujours l’occasion de tisser du lien avec ses partenaires et collaborateurs et de conforter le lien de proximité que vous entretenez avec eux. C’est aussi une façon de s’implanter dans un nouvel environnement et de rencontrer ses voisins. Ne négliger pas cette étape importante dans la vie de votre entreprise.
                 `,
                 image:'/images/expertise-red.png',
             },
             {
-                active:'/images/evenement-3.svg',
-                inactive : '/images/evenement-3.svg',
+                active:'/images/expertises/Event/SeminaireActive_1.svg',
+                inactive : '/images/expertises/Event/Seminaire_1.svg',
                 titre: 'Séminaire',
                 description: `Vous souhaitez organiser un temps d’échange et de travail autour d’un thème, d’un sujet ou d’une problématique ? Un séminaire réussi doit concilier proximité des espaces de réunion, de restauration et d’hébergement, fluidité du planning et bien entendu pertinence des interventions. Nous savons mitonner pour vous la recette parfaite.`,
                 image:'/images/expertise-red.png',
             }, {
-                active:'/images/evenement-4.svg',
-                inactive : '/images/evenement-4.svg',
+                active:'/images/expertises/Event/SoireeActive_1.svg',
+                inactive : '/images/expertises/Event/Soiree_1.svg',
                 titre: 'Soirées',
                 description: `Soirées à thème, esprit guinguette, tendance festive ou gustative, nous avons le secret pour faire de nos/vos soirées de vrais moments d’échanges informels. Se rassembler autour d’une dégustation en accord mets et vins, découvrir le savoir-faire d’un partenaire ou le talent caché d’une pépite de l’équipe, tous les prétextes sont bons pour se retrouver et casser un peu les habitudes.`,
                 image:'/images/expertise-red.png',

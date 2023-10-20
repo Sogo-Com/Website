@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 9px;
+      }
+
+      .cls-2 {
+        fill: #a48bad;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="Calque_1-2" data-name="Calque 1">
+    <g>
+      <circle class="cls-2" cx="540" cy="540" r="540"/>
+      <g>
+        <polygon class="cls-1" points="208.52 330.8 429.51 208.52 650.49 330.8 871.48 208.52 871.48 749.2 650.49 871.48 429.51 749.2 208.52 871.48 208.52 330.8"/>
+        <line class="cls-1" x1="429.51" y1="208.52" x2="429.51" y2="749.2"/>
+        <line class="cls-1" x1="650.49" y1="330.8" x2="650.49" y2="871.48"/>
+      </g>
+    </g>
+  </g>
+</svg>

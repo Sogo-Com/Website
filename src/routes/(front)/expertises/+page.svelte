@@ -444,6 +444,8 @@
 						margin: 8px;
 						width: 64px;
 						height: 64px;
+						border-radius: 64px;
+						transition: all cubic-bezier(0.39, 0.575, 0.565, 1) .3s;
 					}
 				}
 
@@ -491,7 +493,11 @@
 					background-color: rgba($color-jaune, 0.1);
 				}
 			}
-
+			.medias {
+				img:hover {
+					background-color: rgba($color-jaune, 0.3);
+				}
+			}
 			.exper-choice {
 				background-color: rgba($color-jaune, 0.1);
 			}
@@ -515,7 +521,11 @@
 					background-color: rgba($color-violet, 0.1);
 				}
 			}
-
+			.medias {
+				img:hover {
+					background-color: rgba($color-violet, 0.3);
+				}
+			}
 			.exper-choice {
 				background-color: rgba($color-violet, 0.1);
 			}
@@ -540,6 +550,11 @@
 				}
 			}
 
+			.medias {
+				img:hover {
+					background-color: rgba($color-bleu, 0.3);
+				}
+			}
 			.exper-choice {
 				background-color: rgba($color-bleu, 0.1);
 			}
@@ -564,6 +579,11 @@
 				}
 			}
 
+			.medias {
+				img:hover {
+					background-color: rgba($color-kaki, 0.3);
+				}
+			}
 			.exper-choice {
 				background-color: rgba($color-kaki, 0.1);
 			}
@@ -588,6 +608,11 @@
 				}
 			}
 
+			.medias {
+				img:hover {
+					background-color: rgba($color-bordeaux, 0.3);
+				}
+			}
 			.exper-choice {
 				background-color: rgba($color-bordeaux, 0.1);
 			}
