@@ -203,16 +203,33 @@
 				width: 15vw ;
 				height: 15vw ;
                 overflow: visible;
-              
+                @media only screen and (max-width:$tablet) {
+                    width: 25vw ;
+				    height: 25vw ;
+        		}
+
+                @media only screen and (max-width:$phone) {
+                    width: 35vw ;
+				    height: 35vw ;
+        		}
+
 
 				.swiper-wrapper {
 					.swiper-slide {
                         
                         
+
                         padding: 64px;
 						width: 100% !important;
 						height: 100%;
                         transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+
+                        @media only screen and (max-width:$phone) {
+                            padding: 10vw;
+                        }
+
+
 						img {
                             -webkit-mask-image: url("/images/bubble-mask.svg");
                             mask-image: url("/images/bubble-mask.svg");

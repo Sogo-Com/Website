@@ -16,6 +16,12 @@ h2{
     margin-bottom: 32px;
     line-height: 64px;
     
+
+    @media only screen and (max-width: 960px) {
+        margin-bottom: 0px;
+    }
+
+
     &.grey ,   
     .grey{
         color: var(--color-gris-dark);
@@ -33,6 +39,13 @@ h2{
     &.end{
         align-items: end;
         padding-right: 10%;
+
+        @media only screen and (max-width: 960px) {
+            align-items: center !important;
+            padding-left: 0%;
+            padding-right: 0%;
+        }
+
     }
     &.center{
         align-items: center;
@@ -46,13 +59,19 @@ h2{
     display: flex;
     flex-direction: column;
 
+    @media only screen and (max-width: 960px) {
+        margin-bottom: 64px;
+    }
+
 
     h2 {
         margin-bottom: 8px;
+
     }
     p {
         font-size: 0.8rem;
     }
+
 }
 
 
