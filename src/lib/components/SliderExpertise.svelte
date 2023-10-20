@@ -245,8 +245,13 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 64px;
+		padding: 10rem 11%;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+
+		@media only screen and (max-width: $phone) {
+				height: fit-content;
+			}
 
 		h2 {
 			text-align: center;
@@ -259,6 +264,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			max-width: 60%;
 			color: $color-gris-dark;
 			font-family: $font-secondary-light;
+			@media only screen and (max-width: $phone) {
+				max-width: 100%;
+			}
 		}
 
 		.btn {

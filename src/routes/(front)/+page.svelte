@@ -135,9 +135,7 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 		padding: 10rem 11%;
 		position: relative;
 		overflow: hidden;
-		@media only screen and (max-width: $phone) {
-			padding: 1rem 0;
-		}
+	
 
 		.wrapper {
 			display: flex;
@@ -172,16 +170,17 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 				align-items: start;
 
 				@media only screen and (max-width: $phone) {
-					padding: 1rem 0 0 0;
+					padding: 5rem 0 0 0;
+					justify-content: center;
+					align-items: center;
 				}
 				.conteneur {
 					position: relative;
 					width: 100%;
 					transform: translateX(20%);
-
+					height: 100%;
 					@media only screen and (max-width: $phone) {
-						width: 100%;
-						padding: 8px;
+						transform: none;
 					}
 
 					span {
@@ -213,6 +212,7 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 						width: 100%;
 						height: 100%;
 						border-radius: 32px;
+						object-fit: cover;
 					}
 				}
 			}
@@ -280,6 +280,11 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 				.flip-container {
 					height: 20vw;
 					width: 20vw;
+					
+					@media only screen and (max-width: $phone) {
+						height: 30vw;
+						width: 30vw;
+					}
 				}
 
 				img {
@@ -288,6 +293,10 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 					object-fit: contain;
 					background-size: contain;
 					transform: translateY(-20px);
+
+					@media only screen and (max-width: $phone) {
+						width: 30%;
+					}
 				}
 			}
 		}

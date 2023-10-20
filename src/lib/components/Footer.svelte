@@ -89,9 +89,6 @@
 			font-size: 1rem;
 			color: $color-gris-dark;
 
-			@media only screen and (max-width: $phone) {
-				flex-direction: column;
-			}
 			a {
 				padding: 8px 16px;
 				color: $color-gris-dark;
