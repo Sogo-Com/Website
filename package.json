@@ -30,7 +30,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^5.3.1",
-		"bcrypt": "^5.1.0",
+		"bcrypt": "^5.1.1",
 		"cannon-es": "^0.20.0",
 		"gsap": "^3.12.1",
 		"leaflet": "^1.7.1",

@@ -173,7 +173,7 @@
 						font-size: 0.8rem;
 
 						@media only screen and (max-width: $phone) {
-							width: 30vw;
+							width: 28vw;
 							line-height: 16px;
 						}
 					}
