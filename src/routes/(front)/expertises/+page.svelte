@@ -13,7 +13,7 @@
 	let titreSecondaireEl;
 	let descriptionSecondaireEl;
 	let imageSecondaireEl;
-	let iconsEls = []
+	let iconsEls = [];
 
 	//Data part
 	export let data;
@@ -21,8 +21,6 @@
 	let iconsData = [];
 
 	onMount((_) => {
-	
-
 		changeExpertise();
 	});
 
@@ -42,48 +40,38 @@
 		descriptionPrincipaleEl = data.descriptionHTML;
 		iconsData = data.icons;
 
+		if (iconsData.length <= 0) {
+			realSecondaireEl.style.display = 'none';
+			return;
+		}
 
-		if(iconsData.length <= 0)
-		{
-			realSecondaireEl.style.display = "none"
-			return
-		} 
+		const iconData = iconsData[0];
 
-		const iconData = iconsData[0]
-		
 		titreSecondaireEl = iconData.titre;
 		descriptionSecondaireEl = iconData.description;
-		imageSecondaireEl = iconData.image
-
+		imageSecondaireEl = iconData.image;
 	}
 
+	function changeIcon(index = 0) {
+		if (iconsData.length <= 0) {
+			realSecondaireEl.style.display = 'none';
+			return;
+		}
 
-	function changeIcon(index = 0){
+		Array.from(iconsEls.children).forEach((icon, localIndex) => {
+			const localIconData = iconsData[localIndex];
+			icon.src = localIconData.inactive;
+		});
 
+		const actualIcon = iconsData[index];
 
-		if(iconsData.length <= 0)
-		{
-			realSecondaireEl.style.display = "none"
-			return
-		} 
-
-
-		Array.from(iconsEls.children).forEach((icon,localIndex) => {
-			const localIconData = iconsData[localIndex]
-			icon.src = localIconData.inactive
-		})
-
-		const actualIcon = iconsData[index]
-		
 		titreSecondaireEl = actualIcon.titre;
 		descriptionSecondaireEl = actualIcon.description;
-		imageSecondaireEl = actualIcon.image
-		
-		const iconEl = iconsEls.children.item(index)
-		if(iconEl != null)
-			iconEl.src = actualIcon.active
-	}
+		imageSecondaireEl = actualIcon.image;
 
+		const iconEl = iconsEls.children.item(index);
+		if (iconEl != null) iconEl.src = actualIcon.active;
+	}
 </script>
 
 <div id="total-expertise" bind:this={containerEl}>
@@ -209,7 +197,13 @@
 				<div class="medias" bind:this={iconsEls}>
 					{#each iconsData as icon, index}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
-						<img on:click={()=>{ changeIcon(index) }} src={ index == 0 ? icon.active : icon.inactive} alt="Real {index}" />
+						<img
+							on:click={() => {
+								changeIcon(index);
+							}}
+							src={index == 0 ? icon.active : icon.inactive}
+							alt="Real {index}"
+						/>
 					{/each}
 				</div>
 				<div class="texte">
@@ -219,9 +213,7 @@
 				</div>
 			</div>
 			<div class="slider">
-				
 				<img src={imageSecondaireEl} alt="expertise-icon" />
-				
 			</div>
 		</div>
 	</div>
@@ -274,9 +266,6 @@
 			padding: 6rem 11%;
 			position: relative;
 			overflow: hidden;
-			@media only screen and (max-width: $phone) {
-				padding: 1rem 0;
-			}
 
 			.wrapper {
 				display: flex;
@@ -410,6 +399,9 @@
 				justify-content: center;
 				align-items: center;
 
+				@media only screen and (max-width: $phone) {
+					flex-direction: column;
+				}
 				.image {
 					flex-basis: 20%;
 					padding: 32px;
@@ -428,33 +420,55 @@
 
 		.infoSlide {
 			display: flex;
-
+			@media only screen and (max-width: $phone) {
+				flex-direction: column;
+			}
 			.infos {
 				display: flex;
 				flex-basis: 60%;
 				justify-content: start;
 				align-items: start;
+				@media only screen and (max-width: $phone) {
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+				}
 				.medias {
 					display: flex;
 					justify-content: center;
 					align-items: center;
 					flex-direction: column;
 					cursor: pointer;
+
+					@media only screen and (max-width: $phone) {
+						flex-direction: row;
+						padding: 32px;
+						flex-wrap: wrap;
+					}
 					img {
 						margin: 8px;
 						width: 64px;
 						height: 64px;
 						border-radius: 64px;
-						transition: all cubic-bezier(0.39, 0.575, 0.565, 1) .3s;
+						transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 					}
 				}
 
 				.texte {
 					width: 70%;
 					margin-left: 10%;
+
+					@media only screen and (max-width: $phone) {
+						width: 100%;
+						margin-left: 0%;
+						text-align: center;
+					}
 					p {
 						margin-bottom: 64px;
 						width: 80%;
+						@media only screen and (max-width: $phone) {
+							width: 100%;
+						}
 					}
 					.btn {
 					}
@@ -464,6 +478,12 @@
 				flex-basis: 40%;
 				max-width: 40%;
 				padding: 0 32px;
+
+				@media only screen and (max-width: $phone) {
+					flex-basis: 100%;
+					max-width: 100%;
+					padding: 64px 0px 0 0px;
+				}
 
 				.swiper-wrapper {
 					width: max-content;

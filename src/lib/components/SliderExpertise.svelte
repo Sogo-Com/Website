@@ -251,6 +251,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 		@media only screen and (max-width: $phone) {
 				height: fit-content;
+				padding: 0;
 			}
 
 		h2 {
@@ -266,6 +267,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			font-family: $font-secondary-light;
 			@media only screen and (max-width: $phone) {
 				max-width: 100%;
+				padding: 0 11%;
 			}
 		}
 

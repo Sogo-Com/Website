@@ -114,6 +114,7 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 			width: 100%;
 			bottom: 0;
 			transform: translateX(-50%);
+			word-break: break-word;
 		}
 		.bg-gris {
 			height: 100vh;
@@ -288,8 +289,8 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 					}
 
 					@media only screen and (max-width: $phone) {
-						height: 40vw;
-						width: 40vw;
+						height: 50vw;
+						width: 50vw;
 					}
 				}
 
@@ -321,6 +322,11 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 	}
 
 	#contact {
+
+		@media only screen and (max-width: $phone) {
+						padding: 5rem 0;
+					}
+
 		.wrapper {
 			@media only screen and (max-width: $tablet) {
 				display: flex;

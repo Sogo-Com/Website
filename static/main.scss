@@ -137,6 +137,11 @@ $phone : 960px;
         font-size: 14px;
     }
 
+    
+    @media only screen and (max-width: $phone) {
+        font-size: 12px;
+    }
+
 
     --tablet:1150px;
     --phone:960px;
