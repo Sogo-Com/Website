@@ -62,10 +62,21 @@
 			flex-wrap: nowrap;
 			justify-content: space-evenly;
 			align-items: center;
+			@media only screen and (max-width: $phone) {
+				flex-direction: column;
+			}
 			.contenu {
 				max-width: 40vw;
 				padding: 32px;
 
+				@media only screen and (max-width: $phone) {
+					max-width: unset;
+					padding: 64px 0px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+				}
 				h3 {
 					position: relative;
 					z-index: 1;
@@ -113,9 +124,18 @@
 				height: 300px;
 				background-color: $color-gris-dark;
 				margin: 0 32px;
+				@media only screen and (max-width: $phone) {
+					display: none;
+				}
 			}
 			.images {
 				flex-basis: 15%;
+				
+				@media only screen and (max-width: $phone) {
+					width: 80%;
+					max-width: 300px;
+				}
+
 				img {
 					width: 100%;
 					height: 100%;

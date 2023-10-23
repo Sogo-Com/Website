@@ -114,11 +114,13 @@
 					@media only screen and (max-width: $tablet) {
 						width: 30vw;
 						height: 30vw;
+						margin:auto;
 					}
 
 					@media only screen and (max-width: $phone) {
-						width: 70vw;
-						height: 70vw;
+						width: 80vw;
+						height: 80vw;
+						margin: 15% auto ;
 					}
 				}
 			}

@@ -23,7 +23,12 @@
     <Footer />
 </div>
 
+<style lang="scss">
 
+    .app{
+        overflow: hidden;
+    }
+</style>
 
 
 

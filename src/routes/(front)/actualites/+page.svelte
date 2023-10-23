@@ -70,6 +70,10 @@
 <style lang="scss">
 	#top {
 		margin-top: 10%;
+
+		@media only screen and (max-width: $phone) {
+			margin-top: 15vh;
+		}
 		h1 {
 			color: $color-gris-dark;
 			text-align: left;
@@ -81,19 +85,25 @@
 			font-size: 2rem;
 			color: $color-gris-dark;
 			text-align: left;
+
+			@media only screen and (max-width: $phone) {
+				line-height: normal;
+			}
 		}
 		.flip-container {
 			display: flex;
 			justify-content: end;
 			transform: translate(0, -50px);
 
+			@media only screen and (max-width: $tablet) {
+				transform: translate(0, -30px);
+			}
+
+			
 			@media only screen and (max-width: $phone) {
 				justify-content: center;
 				padding: 32px;
-			}
-
-			@media only screen and (max-width: $tablet) {
-				transform: translate(0, -30px);
+				transform: none;
 			}
 
 			.flipcard {
@@ -103,6 +113,9 @@
 
 				@media only screen and (max-width: $phone) {
 					margin-right: 0;
+					transform: none;
+					width: 80vw;
+					height: 80vw;
 				}
 				margin-right: 25%;
 				position: relative;
@@ -132,6 +145,11 @@
 			justify-content: center;
 			align-items: center;
 
+
+			@media only screen and (max-width: $phone) {
+				padding: 11% 64px;
+			}
+
 			.flip-parent {
 				@media only screen and (max-width: $tablet) {
 					flex-basis: 50%;
@@ -139,6 +157,8 @@
 
 				@media only screen and (max-width: $phone) {
 					flex-basis: 100%;
+					padding: 0;
+					margin: 15% auto ;
 				}
 
 				flex-basis: 33.3%;
@@ -153,8 +173,8 @@
 					}
 
 					@media only screen and (max-width: $phone) {
-						width: 50vw;
-						height: 50vw;
+						width: 80vw;
+						height: 80vw;
 					}
 
 					width: 20vw;

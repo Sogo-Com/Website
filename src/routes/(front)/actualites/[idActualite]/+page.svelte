@@ -198,6 +198,14 @@ Construire et mener à son terme une stratégie de communication a un coût. Que
 		margin: -400px 20% 64px 20%;
 		background-color: #fff;
 
+
+		@media only screen and (max-width: $phone) {
+			align-items: center;
+			margin: -300px 0% 0 0%;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			}
+
 		h1{
 			color: $color-gris-dark;
 			padding:8px 0;

@@ -100,7 +100,7 @@
 
 .title{
 
-	padding-top: 10rem;
+	padding-top: 20vh;
 	display: flex;
 	justify-content: center;
 	background-color: #fff;

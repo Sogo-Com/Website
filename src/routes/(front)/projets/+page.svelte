@@ -150,47 +150,47 @@
 		</div>
 	</div>
 
-	<ProjetRow 
-		isLeft=true 
+	<ProjetRow
+		isLeft="true"
 		imgLeft="/images/tomme-bauges.png"
 		imgRight="/images/livre.png"
 		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
 		luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 		condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
 		facilisis orci at luctus."
-		title="Tome des Bauges",
+		title="Tome des Bauges"
+		,
 		link="/projets/1"
 	/>
 
-
-	<ProjetRow 
-		isLeft=false 
+	<ProjetRow
+		isLeft="false"
 		imgLeft="/images/bouteille.png"
 		imgRight="/images/distillerie.png"
 		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
 		luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 		condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
 		facilisis orci at luctus."
-		title="Distillerie St Esprit",
+		title="Distillerie St Esprit"
+		,
 		link="/projets/1"
 	/>
 
-	<ProjetRow 
-		isLeft=true 
+	<ProjetRow
+		isLeft="true"
 		imgLeft="/images/st-marcellin.png"
 		imgRight="/images/livre.png"
 		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
 		luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
 		condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
 		facilisis orci at luctus."
-		title="St Marcellin",
+		title="St Marcellin"
+		,
 		link="/projets/1"
 	/>
-
-
 </div>
 
-<style lang="scss" >
+<style lang="scss">
 	#top {
 		height: 100vh;
 		h1 {
@@ -219,10 +219,18 @@
 		align-items: center;
 		background-color: $color-gris-clair;
 
+		@media only screen and (max-width: $phone) {
+			flex-direction: column;
+		}
 		.gris-child {
 			flex-basis: 50%;
 		}
 		.question {
+			@media only screen and (max-width: $phone) {
+				flex-direction: column;
+				padding: 5rem 11%;
+			}
+
 			padding: 128px 64px 128px 11%;
 
 			h2 {
@@ -231,7 +239,11 @@
 		}
 
 		.reponse {
-			padding:  128px  11% 128px 64px;
+			padding: 128px 11% 128px 64px;
+			@media only screen and (max-width: $phone) {
+				flex-direction: column;
+				padding: 0 11% 5rem 11%;
+			}
 		}
 	}
 
@@ -244,8 +256,6 @@
 		padding: 64px 0;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 		background-color: #fff;
-
-	
 
 		.links {
 			align-items: center;
@@ -276,9 +286,5 @@
 				}
 			}
 		}
-
-		   
-
-		
 	}
 </style>
