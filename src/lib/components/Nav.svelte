@@ -115,13 +115,15 @@
 					{$t('common.menu-contact')}
 				</a>
 
-				<a class="mobile presse" href="/"> Espace Presse </a>
+				<a class="mobile presse" href="/presse"> Espace Presse </a>
 			</div>
 		</div>
 		<div class="presse">
+			<a href="/presse">
 			<div class="btn-container">
 				<div class="btn">Espace Presse</div>
 			</div>
+		</a>
 		</div>
 	</div>
 </div>
