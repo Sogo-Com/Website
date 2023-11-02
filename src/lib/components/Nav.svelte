@@ -87,11 +87,7 @@
 
 <div id="navContainer">
 	<div class="menu-container">
-		<div bind:this={mobileBtn} class="mobile-btn">
-			<span class="mob-1" />
-			<span class="mob-2" />
-			<span class="mob-3" />
-		</div>
+	
 
 		<a data-sveltekit-reload bind:this={logo} class="logo-menu" href="/">
 			<img alt="logo menu" src="/images/logo-menu.svg" />
@@ -125,6 +121,12 @@
 			</div>
 		</a>
 		</div>
+
+		<div bind:this={mobileBtn} class="mobile-btn">
+			<span class="mob-1" />
+			<span class="mob-2" />
+			<span class="mob-3" />
+		</div>
 	</div>
 </div>
 
@@ -152,6 +154,11 @@
 				justify-content: space-between;
 			}
 
+			@media only screen and (max-width: $phone) {
+				margin-left: 5%;
+				margin-right: 5%;
+			}
+
 			div,
 			a {
 				text-align: center;
@@ -164,6 +171,11 @@
 				display: flex;
 				align-items: start;
 				flex-basis: 25%;
+
+				@media only screen and (max-width: $phone) {
+					align-items: center;
+				}
+
 			}
 			.menu {
 				flex-basis: 50%;
@@ -296,6 +308,12 @@
 					width: 50px;
 					position: relative;
 					background-color: $color-rose;
+
+					@media only screen and (max-width: $phone) {
+						width: 50px;
+						margin: 8px 0px;
+					}
+
 				}
 			}
 			.mobile-btn:hover {

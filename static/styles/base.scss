@@ -6,6 +6,11 @@ h1{
     text-align: center;
     padding: 32px;
     z-index: 30;
+
+    @media only screen and (max-width:960px) {
+        font-size: 4rem;
+    }
+
 }
 
 
@@ -18,7 +23,9 @@ h2{
     
 
     @media only screen and (max-width: 960px) {
-        margin-bottom: 0px;
+        margin-bottom: 24px;
+        line-height: 32px;
+        
     }
 
 

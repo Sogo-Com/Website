@@ -20,15 +20,16 @@
 	<div class="wrapper">
 		<div class="bloc desc-gauche">
 			<h2>
-				<span class="grey">Une équipe au cœur
-					</span><br />
+				<span class="grey">Une équipe au cœur </span><br />
 				<span class="pink">pulsant</span>
 			</h2>
 			<p>
-				Idées en fusion, inspiration pleine impulsion, ça bouillonne dans la marmite des Gommettes. De l’écorce jusqu’à la pulpe, on décortique jusqu’à extraire l’essentiel, la note juste et le ton qui détonne. Cible en plein cœur de votre identité !
+				Idées en fusion, inspiration pleine impulsion, ça bouillonne dans la marmite des Gommettes.
+				De l’écorce jusqu’à la pulpe, on décortique jusqu’à extraire l’essentiel, la note juste et
+				le ton qui détonne. Cible en plein cœur de votre identité !
 				<br /><br />
-Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusion. La communication grand angle en perfusion, la créativité sans limites pour détonation. 
-				
+				Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusion. La communication
+				grand angle en perfusion, la créativité sans limites pour détonation.
 			</p>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
@@ -97,6 +98,11 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 		width: 100%;
 		overflow: hidden;
 		position: relative;
+
+		@media only screen and (max-width: $phone) {
+			height: 50vh;
+		}
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -115,6 +121,10 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 			bottom: 0;
 			transform: translateX(-50%);
 			word-break: break-word;
+			@media only screen and (max-width: $phone) {
+				word-break: initial;
+			}
+
 		}
 		.bg-gris {
 			height: 100vh;
@@ -136,7 +146,10 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 		padding: 10rem 11%;
 		position: relative;
 		overflow: hidden;
-	
+
+		@media only screen and (max-width: $phone) {
+			padding:  32px 16px;
+		}
 
 		.wrapper {
 			display: flex;
@@ -171,7 +184,6 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 				align-items: start;
 
 				@media only screen and (max-width: $phone) {
-					padding: 5rem 0 0 0;
 					justify-content: center;
 					align-items: center;
 				}
@@ -246,8 +258,10 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 			display: flex;
 			flex-direction: column;
 			padding: 64px 11%;
-
-			.btn{
+			@media only screen and (max-width: $phone) {
+				padding: 16px;
+			}
+			.btn {
 				background-color: $color-bordeaux;
 			}
 
@@ -271,6 +285,7 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 			@media only screen and (max-width: $tablet) {
 				width: 100%;
 			}
+		
 
 			.actu-content {
 				display: flex;
@@ -281,7 +296,6 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 				.flip-container {
 					height: 20vw;
 					width: 20vw;
-					
 
 					@media only screen and (max-width: $tablet) {
 						height: 30vw;
@@ -289,8 +303,8 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 					}
 
 					@media only screen and (max-width: $phone) {
-						height: 50vw;
-						width: 50vw;
+						height: 70vw;
+						width: 70vw;
 					}
 				}
 
@@ -302,7 +316,7 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 					transform: translateY(-20px);
 
 					@media only screen and (max-width: $phone) {
-						width: 30%;
+						display: none;
 					}
 				}
 			}
@@ -322,11 +336,7 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 	}
 
 	#contact {
-
-		@media only screen and (max-width: $phone) {
-						padding: 5rem 0;
-					}
-
+	
 		.wrapper {
 			@media only screen and (max-width: $tablet) {
 				display: flex;
@@ -340,6 +350,9 @@ Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusi
 				width: 45%;
 				@media only screen and (max-width: $tablet) {
 					width: 90%;
+				}
+				@media only screen and (max-width: $phone) {
+					width: 100%;
 				}
 			}
 			.contact-images {
