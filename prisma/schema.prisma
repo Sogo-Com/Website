@@ -25,11 +25,20 @@ model Roles {
 }
 
 model Contact {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
   email     String
   nom       String
   prenom    String
   telephone String
-  societe String
-  createdAt      DateTime  @default(now())
+  societe   String
+  createdAt DateTime @default(now())
+}
+
+model Actualite {
+  id           String   @id @default(uuid())
+  titre        String
+  redacteur    String
+  tempsLecture String
+  contenu      String
+  createdAt    DateTime @default(now())
 }
