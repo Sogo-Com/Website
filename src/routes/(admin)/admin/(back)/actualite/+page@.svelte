@@ -3,15 +3,16 @@
 	import Layout from '../+layout.svelte';
 	import EditorJS from '@editorjs/editorjs';
 	import Header from '@editorjs/header';
-	import Paragraph from '@editorjs/paragraph';
 	import NestedList from '@editorjs/nested-list';
 	import SimpleImage from '@editorjs/simple-image';
-	import Button from '$lib/editor/Button.js'
+	import ButtonTool from '$lib/editor/ButtonTool.js'
+
 	export let data;
 	let { actualite } = data;
 
-	const editor = new EditorJS({
-	
+	let editor;
+	onMount(_=>{
+		editor = new EditorJS({
 			holder: 'contenu',
 			tools: {
 				header: {
@@ -23,13 +24,9 @@
 					},
 					shortcut: 'CMD+SHIFT+H'
 				},
-
-				paragraph: {
-					class: Paragraph,
-					inlineToolbar: true,
-
-				},
-
+				button: {
+					class: ButtonTool,
+				}, 
 				nestedList:{
 					class: NestedList,
 					inlineToolbar: true,
@@ -38,16 +35,22 @@
 				image: {
 					class: SimpleImage
 				},
-				button:{
-					class: Button
-				}
+				
 			},
-			defaultBlock: 'paragraph',
 		});
+		editor.isReady
+			.then(() => {
+				editor.render(actualite.contenu);
+			})
+			.catch((reason) => {
+				console.log(`Editor.js initialization failed because of ${reason}`);
+			});
+	
+	})
 
+	
 	function save() {
-		editor
-			.save()
+		editor?.save()
 			.then((outputData) => {
 				console.log('Article data: ', outputData);
 			})
