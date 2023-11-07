@@ -4,8 +4,6 @@ import { json , error} from '@sveltejs/kit'
 
 export default {
 
-    endpoint : '/api/actualite',
-
     delete : async (id) => {
 
             const body = {
@@ -38,6 +36,36 @@ export default {
     upsert : async (actualite) => {
 
 
+        let { id = '', titre, tempsLecture, redacteur, contenu } = await request.json()
+        contenu = JSON.stringify(contenu)
+    
+        const actualite = await db.actualite.upsert({
+            where: {
+                id
+            },
+            create: {
+                titre,
+                redacteur,
+                tempsLecture,
+                contenu,
+            },
+            update: {
+                titre,
+                redacteur,
+                tempsLecture,
+                contenu,
+            },
+        })
+    
+        return new Response(JSON.stringify({
+            status: 200,
+            success: 'Actualite saved Successfully',
+            data:actualite
+        }), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
 
     }
 

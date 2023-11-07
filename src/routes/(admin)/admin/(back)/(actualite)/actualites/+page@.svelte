@@ -9,9 +9,14 @@
 
 		
 		const data = await ActualiteCRUD.delete(actualites[index].id).catch(reason => {		
+			
+			alert("Error "+reason);
 		})
 		
-			
+		if(data != null)
+		{
+			alert(data.message);
+		}
 
 		// const response = await fetch(`/api/actualite`, {
 		// 	method: 'DELETE',

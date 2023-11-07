@@ -8,7 +8,7 @@ export default {
     delete: (id) => {
 
         return new Promise(async (resolve, reject) => {
-
+            
             try {
 
                 if (!IsString(id))
