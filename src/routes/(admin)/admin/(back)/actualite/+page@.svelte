@@ -49,15 +49,28 @@
 	})
 
 	
-	function save() {
-		editor?.save()
-			.then((outputData) => {
-				console.log('Article data: ', outputData);
-			})
-			.catch((error) => {
-				console.log('Saving failed: ', error);
-			});
-	}
+	const handleSubmit = async (data) => {
+		debugger
+		const formData = new FormData(data.currentTarget);
+		const object = Object.fromEntries(formData);
+		object.contenu =await editor?.save() ?? ''
+
+		const json = JSON.stringify(object);
+		const response = await fetch('/api/actualite', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: json
+		});
+		const result = await response.json();
+		if (result.success) {
+		
+		}
+	};
+
+
 </script>
 
 <Layout>
@@ -68,7 +81,7 @@
 	<div>
 		<h1>Formulaire d'Actualité</h1>
 
-		<form class="actualite-form">
+		<form method="POST" class="actualite-form" on:submit|preventDefault={handleSubmit}>
 			<div class="form-group">
 				<label for="titre">Titre</label>
 				<input id="titre" name="titre" type="text" required />
@@ -85,7 +98,8 @@
 				<label for="contenu">Contenu</label>
 				<div id="contenu" class="contenu" name="contenu" required />
 			</div>
-			<button type="submit" class="submit-button" on:click={save}>Enregistrer</button>
+			
+			<button type="submit" for="envoyer" value="envoyer" class="submit-button" >Enregistrer</button>
 		</form>
 	</div>
 </Layout>
