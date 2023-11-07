@@ -3,7 +3,7 @@
 	import { redirect } from '@sveltejs/kit';
 
 	function logout() {
-		redirect(300, '/admin/logout');
+		goto( '/admin/logout');
 	}
 </script>
 
@@ -26,7 +26,7 @@
 	<div class="main-content">
 		<header class="header">
 			<div class="header-content">
-				<button class="logout-button" on:click={logout}>Déconnexion</button>
+				<button class="logout-button" on:click={()=> {logout()}}>Déconnexion</button>
 				<slot class="btn-container" name="buttons" />
 
 				<a href="/" target="_blank" class="view-site-button"><div>Voir le site</div></a>

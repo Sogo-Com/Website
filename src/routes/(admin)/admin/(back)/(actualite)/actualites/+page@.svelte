@@ -16,22 +16,10 @@
 		if(data != null)
 		{
 			alert(data.message);
+			location.reload(true);
 		}
 
-		// const response = await fetch(`/api/actualite`, {
-		// 	method: 'DELETE',
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify({ id: actualites[index].id })
-		// });
 
-		// const result = await response.json();
-		// if (result.success) {
-		// 	actualites.splice(index, 1);
-		// 	actualites = actualites;
-		// 	alert('Actualite supprimé');
-		// }
 	}
 
 	

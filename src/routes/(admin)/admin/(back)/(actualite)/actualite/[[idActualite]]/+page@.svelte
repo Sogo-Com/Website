@@ -9,13 +9,14 @@
 	import ButtonTool from '$lib/editor/ButtonTool.js'
 	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js'
 	import { goto, invalidateAll } from '$app/navigation';
+	import ActualiteCRUD from '$lib/client/crud/actualite'
 
 	export let data;
 	let { actualite } = data;
 	
 	let editor;
 	onMount(_=>{
-		
+
 		const contenuBlock = actualite.contenu != null ? JSON.parse(actualite.contenu) : {}
 
 		editor = new EditorJS({
@@ -50,31 +51,45 @@
 	
 	})
 
-	
-	const handleSubmit = async (data) => {
+	const editorLoadContenu = (contenu = null) => {
 		
-		const formData = new FormData(data.currentTarget);
+		if(editor != null && contenu != null)
+		{
+			editor.isReady.then(() => {
+				editor.render(contenu);
+			});
+		}
+	}
+	
+	const handleSubmit = async (form) => {
+		
+		const formData = new FormData(form.currentTarget);
 		const object = Object.fromEntries(formData);
 		object.contenu = await editor?.save() ?? ''
 		object.id = actualite.id
 		
-
-
-		const json = JSON.stringify(object);
-		const response = await fetch('/api/actualite', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: json
-		});
-		const result = await response.json();
-		if (result.success) {
-			const {data } = result;
-			goto(`/admin/actualite/${data.id}`);
+	    const result = await ActualiteCRUD.upsert(object).catch(reason => { alert("Error "+reason) })
+		
+		if(result != null){
+			alert(result.message)
+			goto(`/admin/actualite/${result.data.id}`,{}).then(_=>{	actualite = result.data })
+			editorLoadContenu(result.data.contenu)
 		}
+
 	};
+
+	async function handleDelete() {
+
+			const result = await ActualiteCRUD.delete(actualite?.id).catch(reason => {alert("Error "+reason) })
+
+			if(result != null)
+			{
+				alert(result.message);
+				
+				goto("/admin/actualites")
+			}
+
+	}
 
 
 </script>
@@ -82,7 +97,10 @@
 <Layout>
 	<div slot="buttons">
 		<button class="back-button" on:click={()=>{goto("/admin/actualites")}}>Retour aux actualites</button>
-		<button class="delete-button" on:click={()=>{}}>Retour aux actualites</button>
+		{#if actualite.id != null && actualite.id.length != 0}
+			<button class="delete-button"  on:click={()=>{handleDelete()}}>Supprimer</button>
+		{/if}
+	
 	</div>
 
 	<div>

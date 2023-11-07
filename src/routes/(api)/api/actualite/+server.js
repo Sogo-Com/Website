@@ -11,6 +11,7 @@ export async function POST(event) {
       throw error(403)
     }
     const actualite = await request.json()
+
     return await ActualiteCRUD.upsert(actualite)
 }
 
