@@ -9,15 +9,18 @@
 
 <div class="back-office">
 	<!-- Sidebar/Menu -->
-	<div class="sidebar">
-		<div class="logo">
-			<img src="/images/sogo-pink.png" alt="Logo de l'entreprise" />
+	<div class="sidebar-container">
+		<div class="sidebar">
+			<div class="logo">
+				<img src="/images/sogo-pink.png" alt="Logo de l'entreprise" />
+			</div>
+			<ul class="menu">
+				<li><a href="/admin/contacts">Demandes de contact</a></li>
+				<li><a href="/admin/actualites">Actualites</a></li>
+			</ul>
 		</div>
-		<ul class="menu">
-			<li><a href="/admin/contacts">Demandes de contact</a></li>
-			<li><a href="/admin/actualites">Actualites</a></li>
-		</ul>
 	</div>
+	
 
 	<!-- Main Content -->
 	<div class="main-content">
@@ -45,11 +48,17 @@
 	font-family: var(--font-primary-bold);
     color: var(--color-rose);
 }
-		/* Sidebar/Menu */
-		.sidebar {
+
+		.sidebar-container{
 			width: 250px;
 			background-color: $color-gris-clair;
 			padding: 20px;
+		}
+		/* Sidebar/Menu */
+		.sidebar {
+		
+			position: sticky;
+			top: 0;
 
 			.logo {
 				margin-bottom: 20px;
@@ -89,6 +98,9 @@
 		/* Header */
 		.header {
 			background-color: $color-gris-clair;
+			position: sticky;
+			top: 0;
+			z-index: 10;
 
 			.header-content {
 				display: flex;
@@ -157,6 +169,21 @@
 					}
 				}
 
+
+				.back-button {
+					height: 50px;
+					background-color: var(--color-jaune);
+					color: var(--color-blanc);
+					padding: 0 20px;
+					font-family: var(--font-secondary-bold);
+					border: none;
+					cursor: pointer;
+					transition: background-color 0.3s ease;
+
+					&:hover {
+						background-color: var(--color-gris);
+					}
+				}
 
 				.delete-button {
 					height: 50px;

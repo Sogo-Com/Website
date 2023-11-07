@@ -1,24 +1,29 @@
 <script>
-	import Layout from '../+layout.svelte';
+	import Layout from '../../+layout.svelte';
+	import ActualiteCRUD from '$lib/crud/actualite'
 
 	export let data;
 	let { actualites } = data;
 
 	async function deleteActualite(index) {
-		const response = await fetch(`/api/actualite`, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ id: actualites[index].id })
-		});
 
-		const result = await response.json();
-		if (result.success) {
-			actualites.splice(index, 1);
-			actualites = actualites;
-			alert('Actualite supprimé');
-		}
+
+		ActualiteCRUD.delete(actualites[index].id)
+
+		// const response = await fetch(`/api/actualite`, {
+		// 	method: 'DELETE',
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({ id: actualites[index].id })
+		// });
+
+		// const result = await response.json();
+		// if (result.success) {
+		// 	actualites.splice(index, 1);
+		// 	actualites = actualites;
+		// 	alert('Actualite supprimé');
+		// }
 	}
 
 	
@@ -46,7 +51,7 @@
 				{#each actualites as actualite, index}
 					<tr>
 						<td
-							><a href="/admin/actualites/{actualite.id}">{actualite?.titre ?? 'Aucun titre'}</a
+							><a href="/admin/actualite/{actualite.id}">{actualite?.titre ?? 'Aucun titre'}</a
 							></td
 						>
 						<td>{actualite?.redacteur ?? 'Aucun rédacteur'}</td>

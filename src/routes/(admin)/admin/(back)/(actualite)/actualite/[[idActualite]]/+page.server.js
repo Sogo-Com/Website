@@ -12,17 +12,15 @@ export const load = async (serverloadEvent) =>{
   }
 
   const {params} = serverloadEvent
-
-  const actualite = await db.actualite.findUnique({
+  const {idActualite = ''} = params
+  let actualite = await db.actualite.findUnique({
     where:{
-      id:params.idActualite
+      id:idActualite
     }
   })
 
-  if(actualite == null){
-    throw redirect(302, '/admin/actualites')
-  }
-
+  actualite = actualite == null ? {} : actualite
+  
   return {
     actualite
   }

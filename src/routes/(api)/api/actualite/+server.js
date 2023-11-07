@@ -9,11 +9,20 @@ export async function POST(event) {
       throw error(403)
     }
     
-    let { titre, tempsLecture, redacteur, contenu } = await request.json()
+    let { id = '', titre, tempsLecture, redacteur, contenu } = await request.json()
     contenu = JSON.stringify(contenu)
 
-    const actualite = await db.actualite.create({
-        data: {
+    const actualite = await db.actualite.upsert({
+        where: {
+            id
+        },
+        create: {
+            titre,
+            redacteur,
+            tempsLecture,
+            contenu,
+        },
+        update: {
             titre,
             redacteur,
             tempsLecture,
@@ -23,7 +32,8 @@ export async function POST(event) {
 
     return new Response(JSON.stringify({
         status: 200,
-        success: 'Actualite saved Successfully'
+        success: 'Actualite saved Successfully',
+        data:actualite
     }), {
         headers: {
             'Content-Type': 'application/json'

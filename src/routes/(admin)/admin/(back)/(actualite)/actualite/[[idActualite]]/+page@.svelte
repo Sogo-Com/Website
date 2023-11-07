@@ -1,17 +1,23 @@
 <script>
+	import Layout from '../../../+layout.svelte';
 	import { onMount } from 'svelte';
-	import Layout from '../+layout.svelte';
+	import { redirect } from '@sveltejs/kit';
 	import EditorJS from '@editorjs/editorjs';
 	import Header from '@editorjs/header';
 	import NestedList from '@editorjs/nested-list';
 	import SimpleImage from '@editorjs/simple-image';
 	import ButtonTool from '$lib/editor/ButtonTool.js'
+	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js'
+	import { goto, invalidateAll } from '$app/navigation';
 
 	export let data;
 	let { actualite } = data;
-
+	
 	let editor;
 	onMount(_=>{
+		
+		const contenuBlock = actualite.contenu != null ? JSON.parse(actualite.contenu) : {}
+
 		editor = new EditorJS({
 			holder: 'contenu',
 			tools: {
@@ -27,6 +33,7 @@
 				button: {
 					class: ButtonTool,
 				}, 
+				paragraph:ParagraphTool,
 				nestedList:{
 					class: NestedList,
 					inlineToolbar: true,
@@ -37,23 +44,21 @@
 				},
 				
 			},
+			data : contenuBlock,
+			defaultBlock: 'paragraph'
 		});
-		editor.isReady
-			.then(() => {
-				editor.render(actualite.contenu);
-			})
-			.catch((reason) => {
-				console.log(`Editor.js initialization failed because of ${reason}`);
-			});
 	
 	})
 
 	
 	const handleSubmit = async (data) => {
-		debugger
+		
 		const formData = new FormData(data.currentTarget);
 		const object = Object.fromEntries(formData);
-		object.contenu =await editor?.save() ?? ''
+		object.contenu = await editor?.save() ?? ''
+		object.id = actualite.id
+		
+
 
 		const json = JSON.stringify(object);
 		const response = await fetch('/api/actualite', {
@@ -66,7 +71,8 @@
 		});
 		const result = await response.json();
 		if (result.success) {
-		
+			const {data } = result;
+			goto(`/admin/actualite/${data.id}`);
 		}
 	};
 
@@ -75,7 +81,8 @@
 
 <Layout>
 	<div slot="buttons">
-		<button class="save-button">Sauvegarder</button>
+		<button class="back-button" on:click={()=>{goto("/admin/actualites")}}>Retour aux actualites</button>
+		<button class="delete-button" on:click={()=>{}}>Retour aux actualites</button>
 	</div>
 
 	<div>
@@ -84,15 +91,15 @@
 		<form method="POST" class="actualite-form" on:submit|preventDefault={handleSubmit}>
 			<div class="form-group">
 				<label for="titre">Titre</label>
-				<input id="titre" name="titre" type="text" required />
+				<input id="titre" name="titre" bind:value={actualite.titre} contenteditable="true" type="text" required />
 			</div>
 			<div class="form-group">
 				<label for="redacteur">Rédacteur</label>
-				<input id="redacteur" name="redacteur" type="text" required />
+				<input id="redacteur" name="redacteur" bind:value={actualite.redacteur} contenteditable="true" type="text" required />
 			</div>
 			<div class="form-group">
 				<label for="tempsLecture">Temps de Lecture (en minutes)</label>
-				<input id="tempsLecture" name="tempsLecture" type="number" required />
+				<input id="tempsLecture" name="tempsLecture" bind:value={actualite.tempsLecture} contenteditable="true" type="number" required />
 			</div>
 			<div class="form-group">
 				<label for="contenu">Contenu</label>

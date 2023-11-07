@@ -11,19 +11,20 @@ export default class ButtonTool {
 }
 
   constructor({ data }) {
+    
     this.data = data || { text: '', link: '' };
   }
 
   render() {
-    this.data.text = ''
-    this.data.link = ''
+    this.data.text = this.data.text != '' ? this.data.text : "En savoir +" 
+    this.data.link  = this.data.link != '' ? this.data.link : "#"
 
     this.wrapper = document.createElement('div');
     this.wrapper.classList.add('btn');
 
     this.button = document.createElement('span');
-    this.button.href = "#";
-    this.button.textContent = "En savoir +"
+    this.button.href = this.data.link;
+    this.button.textContent = this.data.text
     this.button.contentEditable = true;
     this.button.oninput = (event) => {
       this.data.text = event.target.textContent;

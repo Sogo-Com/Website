@@ -46,7 +46,7 @@ h1{
 form {
   padding: 0 32px;
   margin-top: 20px;
-  width: auto;
+  width: 90%;
   max-width: 600px;
   margin: 0 auto;
 }
