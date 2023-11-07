@@ -1,14 +1,17 @@
 <script>
 	import Layout from '../../+layout.svelte';
-	import ActualiteCRUD from '$lib/crud/actualite'
+	import ActualiteCRUD from '$lib/client/crud/actualite'
 
 	export let data;
 	let { actualites } = data;
 
 	async function deleteActualite(index) {
 
-
-		ActualiteCRUD.delete(actualites[index].id)
+		
+		const data = await ActualiteCRUD.delete(actualites[index].id).catch(reason => {		
+		})
+		
+			
 
 		// const response = await fetch(`/api/actualite`, {
 		// 	method: 'DELETE',

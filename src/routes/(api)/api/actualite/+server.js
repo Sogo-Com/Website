@@ -1,5 +1,7 @@
 import { db } from '$lib/database'
 import { error } from '@sveltejs/kit';
+import ActualiteCRUD from '$lib/server/crud/actualite'
+
 
 export async function POST(event) {
   
@@ -51,18 +53,7 @@ export async function DELETE(event) {
     }
     let { id } = await request.json()
 
-    const deleteActualite = await db.actualite.delete({
-        where: {
-            id
-        },
-    })
-    return new Response(JSON.stringify({
-        status: 200,
-        success: 'Actualite deleted Successfully'
-    }), {
-        headers: {
+    return await ActualiteCRUD.delete(id)
 
-            'Content-Type': 'application/json'
-        }
-    })
+
 }
