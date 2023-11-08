@@ -53,6 +53,7 @@ export default {
                 if (!IsObject(actualite))
                     reject("L'actualite n'est pas un objet")
                 
+                    debugger
                 const body = JSON.stringify(actualite)
 
                 const response = await fetch(API_ENDPOINT, {

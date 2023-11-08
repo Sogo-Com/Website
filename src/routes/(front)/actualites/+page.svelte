@@ -3,7 +3,16 @@
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 
-	onMount((_) => {});
+
+	export let data;
+	const {actualites} = data
+
+	onMount((_) => {
+
+
+
+
+	});
 </script>
 
 <div id="top">
@@ -18,11 +27,18 @@
 	<div>
 		<h2>Tous nos contenus</h2>
 		<div class="actualites">
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard link="/actualites/1" titre="Actu 1" description="Description de l'actu n°1" />
+
+
+			{#each actualites as actualite,index }
+		
+				<div class="flip-parent">
+					<div class="flip-row">
+						<FlipCard link="/actualites/{actualite.id}" titre="{actualite.titre ?? "Actualite n°"+ index }" description="{actualite.descriptionCourte}" />
+					</div>
 				</div>
-			</div>
+			{/each}
+
+		
 			<div class="flip-parent">
 				<div class="flip-row">
 					<FlipCard />

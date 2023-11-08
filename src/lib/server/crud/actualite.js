@@ -1,6 +1,9 @@
-import { IsJsonString, IsString, IsStringNotEmpty, IsObject } from "../../utils/type";
+import { IsJsonString, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile } from "../../utils/type";
 import { db } from '$lib/database'
 import { json , error} from '@sveltejs/kit'
+import { writeFileSync } from 'fs';
+
+const UPLOAD_PATH ="/uploads/actualites/"
 
 export default {
 
@@ -35,12 +38,14 @@ export default {
 
     upsert : async (actualite) => {
 
+        console.log(writeFileSync())
+
         const body = {
             message:"Actualité enregistré",
             data:{}
         }
 
-        let { id = '', titre = '', tempsLecture = '', redacteur = '', contenu= {} } = actualite
+        let { id = '', titre = '',photo = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
 
         if(!IsStringNotEmpty(titre)){
             throw error(400, {
@@ -57,6 +62,22 @@ export default {
                 message:"Aucun rédacteur"
             })
         }
+
+        if(!IsString(descriptionCourte)){
+            throw error(400, {
+                message:"Description courte n'est pas correcte"
+            })
+        }
+
+
+        
+        if(!IsString(photo) || !IsFile(photo) || !IsPhoto(photo)){
+            throw error(400, {
+                message:"Photo incorrecte"
+            })
+        }
+
+        
         if(!IsObject(contenu) ){
             throw error(400, {
                 message:"Contenu mal formaté"
@@ -66,21 +87,34 @@ export default {
         try{
 
             contenu = JSON.stringify(contenu)
-            
+
+
+            if(IsPhoto(photo)){
+
+                const finalPath = `${UPLOAD_PATH}${photo.name}`
+                writeFileSync(finalPath, Buffer.from(await photo.arrayBuffer()));
+                photo = finalPath
+                
+            }
+    
             body.data  = await db.actualite.upsert({
                 where: {
                     id
                 },
                 create: {
                     titre,
+                    photo,
                     redacteur,
                     tempsLecture,
+                    descriptionCourte,
                     contenu,
                 },
                 update: {
                     titre,
+                    photo,
                     redacteur,
                     tempsLecture,
+                    descriptionCourte,
                     contenu,
                 },
             })

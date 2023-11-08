@@ -30,3 +30,54 @@ export function IsObject(obj) {
         return false;
     }
 }
+
+
+export function IsFile(obj){
+
+    try {
+        return (obj != null && typeof obj === 'object' && obj instanceof File)
+    } catch (e) {
+        return false;
+    }
+
+}
+
+export function IsEmptyFile(obj){
+
+    try {
+        return (IsFile(obj) && (!IsStringNotEmpty(obj.name) || obj.size == 0 ))
+    } catch (e) {
+        return false;
+    }
+
+}
+
+export function IsPhoto(obj){
+
+    try {
+
+        if(IsEmptyFile(obj))
+            return false
+
+        const authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp']
+        const fileExtension = GetExtension(obj.name)
+
+        return (authorizedExtensions.includes(fileExtension))
+    } catch (e) {
+        return false;
+    }
+
+}
+
+export function GetExtension(fname) {
+    var pos = fname.lastIndexOf(".");
+    var strlen = fname.length;
+    if (pos != -1 && strlen != pos + 1) {
+      var ext = fname.split(".");
+      var len = ext.length;
+      var extension = ext[len - 1].toLowerCase();
+    } else {
+      extension = "No extension found";
+    }
+    return extension;
+  }

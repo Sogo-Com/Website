@@ -14,6 +14,7 @@
 	export let data;
 	let { actualite } = data;
 	
+
 	let editor;
 	onMount(_=>{
 
@@ -63,7 +64,11 @@
 	
 	const handleSubmit = async (form) => {
 		
+debugger
+
 		const formData = new FormData(form.currentTarget);
+		formData.append('image', aFiles[0] /*, optional filename */)
+
 		const object = Object.fromEntries(formData);
 		object.contenu = await editor?.save() ?? ''
 		object.id = actualite.id
@@ -111,6 +116,18 @@
 				<label for="titre">Titre</label>
 				<input id="titre" name="titre" bind:value={actualite.titre} contenteditable="true" type="text" required />
 			</div>
+
+			<div class="form-group">
+				<label for="file">Image</label>
+				<input
+				  type="file"
+				  id="file"
+				  name="photo"
+				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
+				  
+				/>
+			  </div>
+
 			<div class="form-group">
 				<label for="redacteur">Rédacteur</label>
 				<input id="redacteur" name="redacteur" bind:value={actualite.redacteur} contenteditable="true" type="text" required />
@@ -119,6 +136,12 @@
 				<label for="tempsLecture">Temps de Lecture (en minutes)</label>
 				<input id="tempsLecture" name="tempsLecture" bind:value={actualite.tempsLecture} contenteditable="true" type="number" required />
 			</div>
+
+			<div class="form-group">
+				<label for="descriptionCourte">Description courte (200 caracteres max)</label>
+				<textarea id="descriptionCourte" rows="3" cols="45"  maxlength="200" name="descriptionCourte" bind:value={actualite.descriptionCourte} contenteditable="true" type="text" required />
+			</div>
+
 			<div class="form-group">
 				<label for="contenu">Contenu</label>
 				<div id="contenu" class="contenu" name="contenu" required />
