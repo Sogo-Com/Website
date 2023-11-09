@@ -1,11 +1,12 @@
-import { IsJsonString, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile } from "../../utils/type";
-import { Base64toWebp } from "../../utils/convert";
+import { IsJsonString, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile, GetExtension } from "../../utils/type";
+import { Base64toWebp, ToBase64RawString } from "../../utils/convert";
 import { uuid } from "../../utils/random";
 import { db } from '$lib/database'
 import { json , error} from '@sveltejs/kit'
-import { writeFile } from 'fs';
+import { writeFile, writeFileSync } from 'fs';
 
-const UPLOAD_PATH ="./static/uploads/actualites/"
+const FULL_UPLOAD_PATH ="./static/uploads/actualites/"
+const PARTIAL_UPLOAD_PATH ="/uploads/actualites/"
 
 export default {
 
@@ -47,7 +48,7 @@ export default {
             data:{}
         }
 
-        let { id = '', titre = '',photo64 = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
+        let { id = '', titre = '',photo = '',photo64 = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
 
         if(!IsStringNotEmpty(titre)){
             throw error(400, {
@@ -92,20 +93,13 @@ export default {
 
             if(IsStringNotEmpty(photo64)){
 
-                const photoName = `${uuid()}.jpg`
-                const photoFile = Base64toWebp(photo64, photoName)
-                const photoPath = `${UPLOAD_PATH}${photoName}`
-
-                console.log(photo64)
-                await writeFile(photoPath, photo64, 'base64',(err) => { 
-                    if (err) 
-                      console.log(err); 
-                    else { 
-                      console.log(photoPath+ " Photo written successfully\n"); 
-                    } 
-                })
-
-                photo = photoPath
+                let photoName = `${uuid()}.webp`
+                const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoName}`
+                const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoName}`
+                const photo64Raw = ToBase64RawString(photo64)
+                
+                writeFileSync(fsPhotoPath, photo64Raw ,'base64')
+                photo = dbPhotoPath
                 
             }
     

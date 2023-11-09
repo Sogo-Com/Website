@@ -71,7 +71,7 @@
 	 	object.photo64 =await FileToBase64(object.photoFile)
 		object.contenu = await editor?.save() ?? ''
 		object.id = actualite.id
-		debugger
+		object.photo = actualite.photo
 
 	    const result = await ActualiteCRUD.upsert(object).catch(reason => { alert("Error "+reason) })
 		

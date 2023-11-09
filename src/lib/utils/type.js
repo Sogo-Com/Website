@@ -52,6 +52,8 @@ export function IsEmptyFile(obj){
 
 }
 
+export const PhotoExtensions = ['jpg', 'jpeg', 'png', 'webp']
+
 export function IsPhoto(obj){
 
     try {
@@ -59,10 +61,9 @@ export function IsPhoto(obj){
         if(IsEmptyFile(obj))
             return false
 
-        const authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp']
         const fileExtension = GetExtension(obj.name)
 
-        return (authorizedExtensions.includes(fileExtension))
+        return (PhotoExtensions.includes(fileExtension))
     } catch (e) {
         return false;
     }
