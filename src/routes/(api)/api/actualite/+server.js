@@ -10,11 +10,10 @@ export async function POST(event) {
     if (!locals.user) {
       throw error(403)
     }
-    const actualite = await request.json()
 
+    const actualite = await request.json()
     return await ActualiteCRUD.upsert(actualite)
 }
-
 
 export async function DELETE(event) {
 

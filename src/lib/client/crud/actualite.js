@@ -44,8 +44,6 @@ export default {
 
     upsert: async (actualite) => {
 
-
-
         return new Promise(async (resolve, reject) => {
             
             try {
@@ -53,8 +51,10 @@ export default {
                 if (!IsObject(actualite))
                     reject("L'actualite n'est pas un objet")
                 
-                    debugger
+
+                delete actualite.photoFile
                 const body = JSON.stringify(actualite)
+                
 
                 const response = await fetch(API_ENDPOINT, {
                     method: 'POST',

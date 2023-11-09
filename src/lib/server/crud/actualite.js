@@ -1,9 +1,11 @@
 import { IsJsonString, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile } from "../../utils/type";
+import { Base64toWebp } from "../../utils/convert";
+import { uuid } from "../../utils/random";
 import { db } from '$lib/database'
 import { json , error} from '@sveltejs/kit'
-import { writeFileSync } from 'fs';
+import { writeFile } from 'fs';
 
-const UPLOAD_PATH ="/uploads/actualites/"
+const UPLOAD_PATH ="./static/uploads/actualites/"
 
 export default {
 
@@ -38,14 +40,14 @@ export default {
 
     upsert : async (actualite) => {
 
-        console.log(writeFileSync())
+     
 
         const body = {
             message:"Actualité enregistré",
             data:{}
         }
 
-        let { id = '', titre = '',photo = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
+        let { id = '', titre = '',photo64 = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
 
         if(!IsStringNotEmpty(titre)){
             throw error(400, {
@@ -70,8 +72,7 @@ export default {
         }
 
 
-        
-        if(!IsString(photo) || !IsFile(photo) || !IsPhoto(photo)){
+        if(!IsString(photo64)){
             throw error(400, {
                 message:"Photo incorrecte"
             })
@@ -89,11 +90,22 @@ export default {
             contenu = JSON.stringify(contenu)
 
 
-            if(IsPhoto(photo)){
+            if(IsStringNotEmpty(photo64)){
 
-                const finalPath = `${UPLOAD_PATH}${photo.name}`
-                writeFileSync(finalPath, Buffer.from(await photo.arrayBuffer()));
-                photo = finalPath
+                const photoName = `${uuid()}.jpg`
+                const photoFile = Base64toWebp(photo64, photoName)
+                const photoPath = `${UPLOAD_PATH}${photoName}`
+
+                console.log(photo64)
+                await writeFile(photoPath, photo64, 'base64',(err) => { 
+                    if (err) 
+                      console.log(err); 
+                    else { 
+                      console.log(photoPath+ " Photo written successfully\n"); 
+                    } 
+                })
+
+                photo = photoPath
                 
             }
     

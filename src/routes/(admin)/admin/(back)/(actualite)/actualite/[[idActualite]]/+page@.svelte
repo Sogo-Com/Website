@@ -10,7 +10,7 @@
 	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js'
 	import { goto, invalidateAll } from '$app/navigation';
 	import ActualiteCRUD from '$lib/client/crud/actualite'
-
+	import { FileToBase64, Base64toWebp } from '$lib/utils/convert'
 	export let data;
 	let { actualite } = data;
 	
@@ -64,15 +64,15 @@
 	
 	const handleSubmit = async (form) => {
 		
-debugger
+
 
 		const formData = new FormData(form.currentTarget);
-		formData.append('image', aFiles[0] /*, optional filename */)
-
-		const object = Object.fromEntries(formData);
+		const object = Object.fromEntries(formData)
+	 	object.photo64 =await FileToBase64(object.photoFile)
 		object.contenu = await editor?.save() ?? ''
 		object.id = actualite.id
-		
+		debugger
+
 	    const result = await ActualiteCRUD.upsert(object).catch(reason => { alert("Error "+reason) })
 		
 		if(result != null){
@@ -122,7 +122,7 @@ debugger
 				<input
 				  type="file"
 				  id="file"
-				  name="photo"
+				  name="photoFile"
 				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
 				  
 				/>
