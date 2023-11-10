@@ -24,7 +24,7 @@
 			<FlipCard titre="Stratégie de communication" imageSrc="/images/ppl.png" link="/actualites/1" description="Une stratégie de communication, c’est la mise en œuvre d’une vision, le déploiement d’une identité de marque. " />
 		</div>
 	</div>
-	<div>
+	<div class="actu-container">
 		<h2>Tous nos contenus</h2>
 		<div class="actualites">
 
@@ -33,7 +33,7 @@
 		
 				<div class="flip-parent">
 					<div class="flip-row">
-						<FlipCard link="/actualites/{actualite.id}" titre="{actualite.titre ?? "Actualite n°"+ index }" description="{actualite.descriptionCourte}" />
+						<FlipCard link="/actualites/{actualite.id}"  imageSrc="{actualite.photo}" titre="{actualite.titre ?? "Actualite n°"+ index }" description="{actualite.descriptionCourte}" />
 					</div>
 				</div>
 			{/each}
@@ -85,11 +85,23 @@
 
 <style lang="scss">
 	#top {
+
+		@media only screen and (max-width: $phone) {
+					padding: 0 15%;
+				}
+
 		margin-top: 10%;
 		h1 {
 			color: $color-gris-dark;
 			text-align: left;
 			padding: 32px 11%;
+
+			@media only screen and (max-width: $phone) {
+				padding:  32px 0;
+				margin-top: 120px;
+				text-align: center;
+			}
+
 		}
 
 		h2 {
@@ -97,6 +109,13 @@
 			font-size: 2rem;
 			color: $color-gris-dark;
 			text-align: left;
+
+			
+			@media only screen and (max-width: $phone) {
+				padding:  0 32px;
+				text-align: center;
+			}
+
 		}
 		.flip-container {
 			display: flex;
@@ -104,8 +123,7 @@
 			transform: translate(0, -50px);
 
 			@media only screen and (max-width: $phone) {
-				justify-content: center;
-				padding: 32px;
+				display: none;
 			}
 
 			@media only screen and (max-width: $tablet) {
@@ -139,6 +157,14 @@
 				}
 			}
 		}
+		
+		.actu-container{
+			h2{
+				@media only screen and (max-width: $phone) {
+				display: none;
+			}
+			}
+		}
 
 		.actualites {
 			padding: 32px 64px;
@@ -148,6 +174,10 @@
 			justify-content: center;
 			align-items: center;
 
+			@media only screen and (max-width: $phone) {
+					padding: 0;
+				}
+
 			.flip-parent {
 				@media only screen and (max-width: $tablet) {
 					flex-basis: 50%;
@@ -155,6 +185,7 @@
 
 				@media only screen and (max-width: $phone) {
 					flex-basis: 100%;
+					padding: 32px 0;
 				}
 
 				flex-basis: 33.3%;
@@ -169,8 +200,8 @@
 					}
 
 					@media only screen and (max-width: $phone) {
-						width: 50vw;
-						height: 50vw;
+						width: 100%;
+						height: 100vw;
 					}
 
 					width: 20vw;

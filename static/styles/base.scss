@@ -188,6 +188,16 @@ p{
     font-family: var(--font-secondary-light);
     line-height: 32px;
     color: var(--color-gris-dark);
+
+	@media only screen and (max-width: 1150px) {
+        line-height: 24px;
+        font-size: 1rem;
+    }
+
+    @media only screen and (max-width: 960px) {
+        line-height: 18px;
+        font-size: 1.2rem;
+    }
 }
 
 .pending{

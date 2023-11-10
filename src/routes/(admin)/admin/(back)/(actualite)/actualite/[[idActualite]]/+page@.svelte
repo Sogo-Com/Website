@@ -6,11 +6,12 @@
 	import Header from '@editorjs/header';
 	import NestedList from '@editorjs/nested-list';
 	import SimpleImage from '@editorjs/simple-image';
-	import ButtonTool from '$lib/editor/ButtonTool.js'
+	import ButtonTool from '$lib/editor/button/ButtonTool.js'
 	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js'
 	import { goto, invalidateAll } from '$app/navigation';
 	import ActualiteCRUD from '$lib/client/crud/actualite'
 	import { FileToBase64, Base64toWebp } from '$lib/utils/convert'
+	import { IsPhoto } from '$lib/utils/type'
 	export let data;
 	let { actualite } = data;
 	
@@ -64,14 +65,16 @@
 	
 	const handleSubmit = async (form) => {
 		
-
+		
 
 		const formData = new FormData(form.currentTarget);
 		const object = Object.fromEntries(formData)
-	 	object.photo64 =await FileToBase64(object.photoFile)
 		object.contenu = await editor?.save() ?? ''
 		object.id = actualite.id
 		object.photo = actualite.photo
+
+		if(IsPhoto(object.photoFile))
+			object.photo64 =await FileToBase64(object.photoFile)
 
 	    const result = await ActualiteCRUD.upsert(object).catch(reason => { alert("Error "+reason) })
 		
@@ -126,7 +129,11 @@
 				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
 				  
 				/>
+				{#if actualite.photo != null && actualite.photo.length != 0}
+					<img src={actualite.photo} alt={actualite.titre} />
+				{/if}
 			  </div>
+
 
 			<div class="form-group">
 				<label for="redacteur">Rédacteur</label>
@@ -162,6 +169,15 @@
 		.form-group {
 			margin-bottom: 20px;
 
+			img{
+				margin-top: 20px;
+				width: 100%;
+				height: auto;
+				object-fit: cover;
+				max-height: 300px;
+			}
+
+						
 			label {
 				font-family: var(--font-secondary-medium);
 				color: var(--color-gris-dark);
