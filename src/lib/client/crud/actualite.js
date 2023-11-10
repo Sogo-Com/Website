@@ -1,5 +1,5 @@
 import { IsJsonString, IsObject, IsStringNotEmpty } from "../../utils/type";
-import { db } from '$lib/database'
+
 
 const API_ENDPOINT = '/api/actualite'
 

@@ -3,13 +3,6 @@ import adapterNode from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import preprocessor from'svelte-preprocess';
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { log } from 'console';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: [preprocessor({
