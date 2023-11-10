@@ -88,12 +88,12 @@
 	<div class="filtre">
 		<form method="post" on:submit|preventDefault={handleSubmit}>
 			<p contenteditable="false">Recherchez !</p>
-
+	<!-- 
 			<label for="nom">Nom</label>
 			<input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
 
-			
-			<!-- <input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
+		
+			<input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
 			<label for="prenom">{$t('common.contact-prenom')}</label>
 			<input bind:this={type} type="text" name="type" id="type" placeholder="Séléctionnez un type" />
 			<label for="societe">Société</label>
@@ -102,12 +102,10 @@
 			<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
 			<label for="email">{$t('common.contact-email')}</label>
 			<input bind:this={email} type="text" name="email" id="email" placeholder="Votre email" />
-			<button type="submit" class="btn" for="envoyer" value="envoyer"
-				>{$t('common.contact-send')}</button
-			>
+			<button type="submit" class="btn" for="envoyer" value="envoyer"	>{$t('common.contact-send')}</button>
 			<div class="status {statusClass}" contenteditable="false" bind:innerText={status}>
-		 -->
 			</div>
+			 -->
 		</form>
 	</div>
 	<div class="clients">
