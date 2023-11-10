@@ -3,7 +3,16 @@
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 
-	onMount((_) => {});
+
+	export let data;
+	const {actualites} = data
+
+	onMount((_) => {
+
+
+
+
+	});
 </script>
 
 <div id="top">
@@ -15,14 +24,21 @@
 			<FlipCard titre="Stratégie de communication" imageSrc="/images/ppl.png" link="/actualites/1" description="Une stratégie de communication, c’est la mise en œuvre d’une vision, le déploiement d’une identité de marque. " />
 		</div>
 	</div>
-	<div>
+	<div class="actu-container">
 		<h2>Tous nos contenus</h2>
 		<div class="actualites">
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard link="/actualites/1" titre="Actu 1" description="Description de l'actu n°1" />
+
+
+			{#each actualites as actualite,index }
+		
+				<div class="flip-parent">
+					<div class="flip-row">
+						<FlipCard link="/actualites/{actualite.id}"  imageSrc="{actualite.photo}" titre="{actualite.titre ?? "Actualite n°"+ index }" description="{actualite.descriptionCourte}" />
+					</div>
 				</div>
-			</div>
+			{/each}
+
+		
 			<div class="flip-parent">
 				<div class="flip-row">
 					<FlipCard />
@@ -69,6 +85,11 @@
 
 <style lang="scss">
 	#top {
+
+		@media only screen and (max-width: $phone) {
+					padding: 0 15%;
+				}
+
 		margin-top: 10%;
 
 		@media only screen and (max-width: $phone) {
@@ -78,6 +99,13 @@
 			color: $color-gris-dark;
 			text-align: left;
 			padding: 32px 11%;
+
+			@media only screen and (max-width: $phone) {
+				padding:  32px 0;
+				margin-top: 120px;
+				text-align: center;
+			}
+
 		}
 
 		h2 {
@@ -86,9 +114,12 @@
 			color: $color-gris-dark;
 			text-align: left;
 
+			
 			@media only screen and (max-width: $phone) {
-				line-height: normal;
+				padding:  0 32px;
+				text-align: center;
 			}
+
 		}
 		.flip-container {
 			display: flex;
@@ -101,9 +132,11 @@
 
 			
 			@media only screen and (max-width: $phone) {
-				justify-content: center;
-				padding: 32px;
-				transform: none;
+				display: none;
+			}
+
+			@media only screen and (max-width: $tablet) {
+				transform: translate(0, -30px);
 			}
 
 			.flipcard {
@@ -136,6 +169,14 @@
 				}
 			}
 		}
+		
+		.actu-container{
+			h2{
+				@media only screen and (max-width: $phone) {
+				display: none;
+			}
+			}
+		}
 
 		.actualites {
 			padding: 32px 64px;
@@ -145,10 +186,9 @@
 			justify-content: center;
 			align-items: center;
 
-
 			@media only screen and (max-width: $phone) {
-				padding: 11% 64px;
-			}
+					padding: 0;
+				}
 
 			.flip-parent {
 				@media only screen and (max-width: $tablet) {
@@ -157,8 +197,7 @@
 
 				@media only screen and (max-width: $phone) {
 					flex-basis: 100%;
-					padding: 0;
-					margin: 15% auto ;
+					padding: 32px 0;
 				}
 
 				flex-basis: 33.3%;
@@ -173,8 +212,8 @@
 					}
 
 					@media only screen and (max-width: $phone) {
-						width: 80vw;
-						height: 80vw;
+						width: 100%;
+						height: 100vw;
 					}
 
 					width: 20vw;

@@ -1,0 +1,1 @@
+import{w as a}from"./index.1d317714.js";import{n as e,e as o}from"./utils.aad758f4.js";let i;function l(t){i=t.client}function c(t){return(...n)=>i[t](...n)}const u={url:e({}),page:e({}),navigating:a(null),updated:o()};export{c,l as i,u as s};

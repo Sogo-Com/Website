@@ -14,7 +14,7 @@ export async function POST(req) {
             societe
         },
     })
-    console.log(contact)
+
     return new Response(JSON.stringify({
         status: 200,
         success: 'Contact created successfully'
