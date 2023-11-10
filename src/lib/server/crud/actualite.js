@@ -1,11 +1,11 @@
-import { IsJsonString, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile, GetExtension } from "../../utils/type";
+import { IsJsonString,  IsEmptyFile, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile, GetExtension } from "../../utils/type";
 import { Base64toWebp, ToBase64RawString } from "../../utils/convert";
 import { uuid } from "../../utils/random";
 import { db } from '$lib/database'
 import { json , error} from '@sveltejs/kit'
 import { writeFile, writeFileSync } from 'fs';
 
-const FULL_UPLOAD_PATH ="./static/uploads/actualites/"
+const FULL_UPLOAD_PATH ="static/uploads/actualites/"
 const PARTIAL_UPLOAD_PATH ="/uploads/actualites/"
 
 export default {
@@ -41,14 +41,14 @@ export default {
 
     upsert : async (actualite) => {
 
-     
 
         const body = {
             message:"Actualité enregistré",
             data:{}
         }
 
-        let { id = '', titre = '',photo = '',photo64 = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
+        let { id = '', titre = '',photo = '',photoFile = '', tempsLecture = '', redacteur = '', descriptionCourte = '', contenu= {} } = actualite
+      
 
         if(!IsStringNotEmpty(titre)){
             throw error(400, {
@@ -72,15 +72,8 @@ export default {
             })
         }
 
-
-        if(!IsString(photo64)){
-            throw error(400, {
-                message:"Photo incorrecte"
-            })
-        }
-
         
-        if(!IsObject(contenu) ){
+        if(!IsJsonString(contenu) ){
             throw error(400, {
                 message:"Contenu mal formaté"
             })
@@ -88,17 +81,12 @@ export default {
 
         try{
 
-            contenu = JSON.stringify(contenu)
+            if(IsPhoto(photoFile)){
 
-
-            if(IsStringNotEmpty(photo64)){
-
-                let photoName = `${uuid()}.webp`
-                const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoName}`
-                const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoName}`
-                const photo64Raw = ToBase64RawString(photo64)
-                
-                writeFileSync(fsPhotoPath, photo64Raw ,'base64')
+                const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`
+                const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`
+            
+                writeFileSync(fsPhotoPath,  Buffer.from(await photoFile.arrayBuffer()))
                 photo = dbPhotoPath
                 
             }

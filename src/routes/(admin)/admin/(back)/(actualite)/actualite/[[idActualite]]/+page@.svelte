@@ -2,86 +2,34 @@
 	import Layout from '../../../+layout.svelte';
 	import { onMount } from 'svelte';
 	import { redirect } from '@sveltejs/kit';
-	import EditorJS from '@editorjs/editorjs';
-	import Header from '@editorjs/header';
-	import NestedList from '@editorjs/nested-list';
-	import SimpleImage from '@editorjs/simple-image';
-	import ButtonTool from '$lib/editor/button/ButtonTool.js'
-	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js'
+
+	import Writer from '$lib/components/editor/Writer.svelte';
+
 	import { goto, invalidateAll } from '$app/navigation';
 	import ActualiteCRUD from '$lib/client/crud/actualite'
 	import { FileToBase64, Base64toWebp } from '$lib/utils/convert'
 	import { IsPhoto } from '$lib/utils/type'
+
 	export let data;
 	let { actualite } = data;
 	
 
-	let editor;
-	onMount(_=>{
-
-		const contenuBlock = actualite.contenu != null ? JSON.parse(actualite.contenu) : {}
-
-		editor = new EditorJS({
-			holder: 'contenu',
-			tools: {
-				header: {
-					class: Header,
-					config: {
-						placeholder: 'Titre',
-						levels: [2, 3, 4],
-						defaultLevel: 2
-					},
-					shortcut: 'CMD+SHIFT+H'
-				},
-				button: {
-					class: ButtonTool,
-				}, 
-				paragraph:ParagraphTool,
-				nestedList:{
-					class: NestedList,
-					inlineToolbar: true,
-					shortcut: 'CMD+SHIFT+L'
-				},
-				image: {
-					class: SimpleImage
-				},
-				
-			},
-			data : contenuBlock,
-			defaultBlock: 'paragraph'
-		});
-	
-	})
-
-	const editorLoadContenu = (contenu = null) => {
-		
-		if(editor != null && contenu != null)
-		{
-			editor.isReady.then(() => {
-				editor.render(contenu);
-			});
-		}
-	}
+	let writerMethods;
 	
 	const handleSubmit = async (form) => {
 		
 		
-
 		const formData = new FormData(form.currentTarget);
-		const object = Object.fromEntries(formData)
-		object.contenu = await editor?.save() ?? ''
-		object.id = actualite.id
-		object.photo = actualite.photo
+		formData.append('contenu', await writerMethods.saveContenu() ?? '')
+		formData.append('id', actualite.id)
+		formData.append('photo', actualite.photo)
 
-		if(IsPhoto(object.photoFile))
-			object.photo64 =await FileToBase64(object.photoFile)
-
-	    const result = await ActualiteCRUD.upsert(object).catch(reason => { alert("Error "+reason) })
+	    const result = await ActualiteCRUD.upsert(formData).catch(reason => { alert("Error "+reason) })
 		
 		if(result != null){
 			alert(result.message)
 			goto(`/admin/actualite/${result.data.id}`,{}).then(_=>{	actualite = result.data })
-			editorLoadContenu(result.data.contenu)
+			writerMethods.loadContenu(result.data.contenu)
 		}
 
 	};
@@ -151,7 +99,10 @@
 
 			<div class="form-group">
 				<label for="contenu">Contenu</label>
-				<div id="contenu" class="contenu" name="contenu" required />
+				
+				<div id="contenu" class="contenu" name="contenu" required >
+					<Writer bind:methods={writerMethods} contenu="{actualite.contenu}"/>
+				</div>
 			</div>
 			
 			<button type="submit" for="envoyer" value="envoyer" class="submit-button" >Enregistrer</button>

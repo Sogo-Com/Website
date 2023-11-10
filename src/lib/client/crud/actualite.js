@@ -42,26 +42,19 @@ export default {
 
     },
 
-    upsert: async (actualite) => {
+    upsert: async (formData) => {
 
         return new Promise(async (resolve, reject) => {
             
             try {
              
-                if (!IsObject(actualite))
+                if (!IsObject(formData))
                     reject("L'actualite n'est pas un objet")
-                
-
-                delete actualite.photoFile
-                const body = JSON.stringify(actualite)
-                
+              
 
                 const response = await fetch(API_ENDPOINT, {
                     method: 'POST',
-                    body,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    body:formData,
                 });
 
                 const result = await response.json();

@@ -11,8 +11,9 @@ export async function POST(event) {
       throw error(403)
     }
 
-    const actualite = await request.json()
-    return await ActualiteCRUD.upsert(actualite)
+    const formData = await request.formData()
+    const object = Object.fromEntries(formData)
+    return await ActualiteCRUD.upsert(object)
 }
 
 export async function DELETE(event) {
