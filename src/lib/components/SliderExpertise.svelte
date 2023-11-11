@@ -251,7 +251,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 		@media only screen and (max-width: $phone) {
 				height: fit-content;
-				padding: 0;
+				padding: 0 0 64px 0;
 			}
 
 		h2 {

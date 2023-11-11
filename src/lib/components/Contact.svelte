@@ -4,6 +4,38 @@
 
 	export let description;
 
+	import { onMount } from 'svelte';
+
+	
+	import gsap from 'gsap';
+	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+	import ScrollSmoother from 'gsap/dist/ScrollSmoother';
+	import SplitText from 'gsap/dist/SplitText';
+
+	onMount(_=>{
+		gsap.registerPlugin(ScrollTrigger, ScrollSmoother,SplitText);
+		     //Btn
+			 document.querySelectorAll(".btn")?.forEach(button => {
+
+				let tl = gsap.timeline({
+					scrollTrigger:{
+						trigger:button,
+						start: "top 70%",
+						end: "bottom 70%",
+						scrub:true,
+					}
+				})
+				tl.fromTo(button,{
+					yPercent: 100,
+					autoAlpha: 0,
+				},{
+					yPercent: 0,
+					autoAlpha: 1,
+				})
+
+				})
+
+			})
 
 	let nom;
 	let prenom;
@@ -94,7 +126,6 @@
 			color: $color-gris-dark;
 			margin-bottom: 32px;
 			font-family: $font-secondary-medium;
-			font-size: 24px;
 		}
 		label {
 			color: $color-gris-dark;

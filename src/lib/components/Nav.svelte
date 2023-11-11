@@ -101,7 +101,7 @@
 				<a href="/expertises">
 					{$t('common.menu-expertises')}
 				</a>
-				<a data-sveltekit-reload href="/projets">
+				<a  href="/projets">
 					{$t('common.menu-projets')}
 				</a>
 				<a href="/actualites">

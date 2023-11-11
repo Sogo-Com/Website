@@ -3,16 +3,10 @@
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 
-
 	export let data;
-	const {actualites} = data
+	const { actualites } = data;
 
-	onMount((_) => {
-
-
-
-
-	});
+	onMount((_) => {});
 </script>
 
 <div id="top">
@@ -21,24 +15,30 @@
 	<div class="flip-container">
 		<div class="flipcard">
 			<img src="/images/actualites-path.svg" alt="chemin" />
-			<FlipCard titre="Stratégie de communication" imageSrc="/images/ppl.png" link="/actualites/1" description="Une stratégie de communication, c’est la mise en œuvre d’une vision, le déploiement d’une identité de marque. " />
+			<FlipCard
+				titre="Stratégie de communication"
+				imageSrc="/images/ppl.png"
+				link="/actualites/1"
+				description="Une stratégie de communication, c’est la mise en œuvre d’une vision, le déploiement d’une identité de marque. "
+			/>
 		</div>
 	</div>
 	<div class="actu-container">
 		<h2>Tous nos contenus</h2>
 		<div class="actualites">
-
-
-			{#each actualites as actualite,index }
-		
+			{#each actualites as actualite, index}
 				<div class="flip-parent">
 					<div class="flip-row">
-						<FlipCard link="/actualites/{actualite.id}"  imageSrc="{actualite.photo}" titre="{actualite.titre ?? "Actualite n°"+ index }" description="{actualite.descriptionCourte}" />
+						<FlipCard
+							link="/actualites/{actualite.id}"
+							imageSrc={actualite.photo}
+							titre={actualite.titre ?? 'Actualite n°' + index}
+							description={actualite.descriptionCourte}
+						/>
 					</div>
 				</div>
 			{/each}
 
-		
 			<div class="flip-parent">
 				<div class="flip-row">
 					<FlipCard />
@@ -85,27 +85,21 @@
 
 <style lang="scss">
 	#top {
+		padding-top: 120px;
 
 		@media only screen and (max-width: $phone) {
-					padding: 0 15%;
-				}
-
-		margin-top: 10%;
-
-		@media only screen and (max-width: $phone) {
-			margin-top: 15vh;
+			padding: 120px 15% 0 15%;
 		}
+
 		h1 {
 			color: $color-gris-dark;
 			text-align: left;
 			padding: 32px 11%;
 
 			@media only screen and (max-width: $phone) {
-				padding:  32px 0;
-				margin-top: 120px;
+				padding: 32px 0;
 				text-align: center;
 			}
-
 		}
 
 		h2 {
@@ -114,12 +108,10 @@
 			color: $color-gris-dark;
 			text-align: left;
 
-			
 			@media only screen and (max-width: $phone) {
-				padding:  0 32px;
+				padding: 0 32px;
 				text-align: center;
 			}
-
 		}
 		.flip-container {
 			display: flex;
@@ -130,7 +122,6 @@
 				transform: translate(0, -30px);
 			}
 
-			
 			@media only screen and (max-width: $phone) {
 				display: none;
 			}
@@ -155,7 +146,7 @@
 				width: 20vw;
 				height: 20vw;
 				transform: translateX(50%);
-				
+
 				img {
 					@media only screen and (max-width: $phone) {
 						display: none;
@@ -164,17 +155,17 @@
 					position: absolute;
 					right: 100%;
 					bottom: -40%;
-					width:200%;
+					width: 200%;
 					height: 200%;
 				}
 			}
 		}
-		
-		.actu-container{
-			h2{
+
+		.actu-container {
+			h2 {
 				@media only screen and (max-width: $phone) {
-				display: none;
-			}
+					display: none;
+				}
 			}
 		}
 
@@ -187,8 +178,8 @@
 			align-items: center;
 
 			@media only screen and (max-width: $phone) {
-					padding: 0;
-				}
+				padding: 0;
+			}
 
 			.flip-parent {
 				@media only screen and (max-width: $tablet) {

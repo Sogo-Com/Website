@@ -1,5 +1,4 @@
 <script>
-	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
@@ -7,19 +6,19 @@
 	import SliderExpertise from '$lib/components/SliderExpertise.svelte';
 	import FlipCard from '$lib/components/FlipCard.svelte';
 
-	onMount((_) => {});
+
 </script>
 
 <div id="top">
 	<img alt="background-sogo" src="/images/bg-home.png" />
 	<div class="abso bg-gris" />
 
-	<h1 class="abso">{$t('home.titre')}</h1>
+	<h1 class="abso">Sogo Com, votre agence de communication</h1>
 </div>
 <div class="blanc" id="blanc">
 	<div class="wrapper">
 		<div class="bloc desc-gauche">
-			<h2>
+			<h2 class="">
 				<span class="grey">Une équipe au cœur </span><br />
 				<span class="pink">pulsant</span>
 			</h2>
@@ -38,14 +37,14 @@
 					goto('/agence');
 				}}
 			>
-				{$t('common.savoir+')}
+			En savoir +
 			</div>
 		</div>
 		<div class="bloc img-droite">
 			<div class="conteneur">
-				<span class="bubble top-left" />
+				<span data-lag=".2" class="bubble top-left" />
 				<img src="/images/home-equipe.png" alt="L'equipe" />
-				<span class="bubble bottom-right" />
+				<span data-lag=".2" class="bubble bottom-right" />
 			</div>
 		</div>
 	</div>
@@ -54,8 +53,8 @@
 
 <div class="blanc" id="proj-actu">
 	<div class="projet">
-		<h2 class="grey">Notre nouveau projet</h2>
-		<h3 class="grey">Distillerie St Esprit</h3>
+		<h2 class="grey ">Notre nouveau projet</h2>
+		<h3 class="grey ">Distillerie St Esprit</h3>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
 			luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
@@ -64,7 +63,7 @@
 		<img alt="projet" src="/images/projet.png" />
 	</div>
 	<div class="actu">
-		<h2 class="grey">Notre dernière actu</h2>
+		<h2 class="grey ">Notre dernière actu</h2>
 		<div class="actu-content">
 			<img src="/images/fleche-actu-home.svg" alt="chemin" />
 			<div class="flip-container">
@@ -80,7 +79,7 @@
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
-			<h2 class="grey">Contactez nous !</h2>
+			<h2 class="grey ">Contactez nous !</h2>
 			<Contact />
 		</div>
 		<div class="contact-images">
@@ -92,7 +91,15 @@
 	</div>
 </div>
 
+
+
+
 <style lang="scss">
+
+
+
+
+
 	#top {
 		height: 100vh;
 		width: 100%;
@@ -164,6 +171,12 @@
 
 			.bloc {
 				width: 50%;
+
+				&.desc-gauche {
+					@media only screen and (max-width: $phone) {
+						margin-bottom: 32px;
+					}
+				}
 
 				@media only screen and (max-width: $phone) {
 					width: 100%;

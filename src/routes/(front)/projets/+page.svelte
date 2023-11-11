@@ -193,6 +193,7 @@
 <style lang="scss">
 	#top {
 		height: 100vh;
+		position: relative;
 		h1 {
 			color: #fff;
 			text-align: left;
