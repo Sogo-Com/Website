@@ -179,7 +179,7 @@
 				<img src={imgPrincipaleEl} alt="sogo" />
 			</div>
 			<div class="texte">
-				<h3 class="grey">{titreEl}</h3>
+				<h3 data-noamin class="grey">{titreEl}</h3>
 				<p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" />
 			</div>
 		</div>
@@ -187,7 +187,7 @@
 	<div id="realSecondaire" bind:this={realSecondaireEl} class="blanc">
 		<div class="wrapper">
 			<div class="bloc desc-gauche">
-				<h2>
+				<h2 class="h2-gauche">
 					<span class="grey">Nos réalisations</span>
 				</h2>
 			</div>
@@ -207,7 +207,7 @@
 					{/each}
 				</div>
 				<div class="texte">
-					<h3 class="grey">{titreSecondaireEl}</h3>
+					<h3 data-noamin class="grey">{titreSecondaireEl}</h3>
 					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
 					<div class="btn">En savoir +</div>
 				</div>
@@ -231,7 +231,8 @@
 			align-items: end;
 
 			@media only screen and (max-width: $phone) {
-				align-items: center;
+				align-items: end;
+				height: 50vh;
 			}
 
 			img {
@@ -267,6 +268,9 @@
 			position: relative;
 			overflow: hidden;
 
+			@media only screen and (max-width: $phone) {
+				padding: 32px 12px;
+			}
 			.wrapper {
 				display: flex;
 				flex-direction: row;
@@ -278,11 +282,25 @@
 					left: 0%;
 				}
 
+
+			
 				h2 {
 					position: relative;
 					z-index: 1;
 					width: fit-content;
 					margin-bottom: 64px;
+					@media only screen and (max-width: $phone) {
+						margin-bottom: 16px;
+						text-align: center;
+						width: 100%;
+					}
+				}
+
+				.h2-gauche{
+					@media only screen and (max-width: $phone) {
+						
+						text-align: left;
+					}
 				}
 
 				h2:before {
@@ -296,6 +314,9 @@
 					content: '';
 					width: 70px;
 					height: 70px;
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
 				}
 
 				h2:after {
@@ -309,6 +330,9 @@
 					z-index: -1;
 					width: 70px;
 					height: 70px;
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
 				}
 				.bloc {
 					width: 50%;
@@ -320,6 +344,9 @@
 					p {
 						font-family: $font-secondary-light;
 						margin-bottom: 48px;
+						@media only screen and (max-width: $phone) {
+							margin-bottom: 0;
+						}
 					}
 				}
 				.img-droite {
@@ -329,7 +356,7 @@
 					padding: 0 16px;
 
 					@media only screen and (max-width: $phone) {
-						padding: 1rem 0 0 0;
+						display: none;
 					}
 					.conteneur {
 						position: relative;
@@ -361,6 +388,9 @@
 			padding: 64px 0;
 			transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
+			@media only screen and (max-width: $phone) {
+				padding: 32px 12px;
+			}
 			h3 {
 			}
 			.links {
@@ -409,11 +439,17 @@
 						width: 100%;
 						height: 100%;
 					}
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
 				}
 
 				.texte {
 					flex-basis: 60%;
 					padding: 64px;
+					@media only screen and (max-width: $phone) {
+						padding: 32px 0;
+					}
 				}
 			}
 		}
@@ -429,9 +465,9 @@
 				justify-content: start;
 				align-items: start;
 				@media only screen and (max-width: $phone) {
-					flex-direction: column;
 					justify-content: center;
-					align-items: center;
+					align-items: start;
+					padding: 32px 0;
 				}
 				.medias {
 					display: flex;
@@ -442,7 +478,7 @@
 
 					@media only screen and (max-width: $phone) {
 						flex-direction: row;
-						padding: 32px;
+						padding: 0;
 						flex-wrap: wrap;
 					}
 					img {
@@ -457,11 +493,11 @@
 				.texte {
 					width: 70%;
 					margin-left: 10%;
-
+					
 					@media only screen and (max-width: $phone) {
 						width: 100%;
 						margin-left: 0%;
-						text-align: center;
+						text-align: left;
 					}
 					p {
 						margin-bottom: 64px;

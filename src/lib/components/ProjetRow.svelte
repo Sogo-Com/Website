@@ -51,9 +51,23 @@
 .sub-project {
 			&.blanc {
 				background-color: #fff;
+
+				.contenu{
+					@media only screen and (max-width: $phone) {
+						align-items: start;
+						text-align: start;
+					}
+				}
 			}
 			&.bleu {
 				background-color: rgba($color-bleu, 0.1);
+
+				.contenu{
+					@media only screen and (max-width: $phone) {
+						align-items: end;
+						text-align: end;
+					}
+				}
 			}
 			padding: 64px 11%;
 			height: fit-content;
@@ -64,6 +78,7 @@
 			align-items: center;
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
+				padding:32px 12px ;
 			}
 			.contenu {
 				max-width: 40vw;
@@ -71,7 +86,7 @@
 
 				@media only screen and (max-width: $phone) {
 					max-width: unset;
-					padding: 64px 0px;
+					padding:  0px;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
@@ -81,6 +96,9 @@
 					position: relative;
 					z-index: 1;
 					width: fit-content;
+					@media only screen and (max-width: $phone) {
+						margin-bottom: 16px;
+					}
 				}
 			
 
@@ -95,6 +113,9 @@
 					content: '';
 					width: 50px;
 					height: 50px;
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
 				}
 
 				h3:after {
@@ -108,14 +129,23 @@
 					z-index: -1;
 					width: 50px;
 					height: 50px;
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
 				}
 
 				.texte {
 					padding: 0 0 32px 0;
 					font-family: $font-secondary-light;
+					@media only screen and (max-width: $phone) {
+						padding:0;
+					}
 				}
 				.btn {
-					margin-top: 32px;
+					@media only screen and (max-width: $phone) {
+						margin-top: 16px;
+					}
+			
 					background-color: $color-bleu;
 				}
 			}
@@ -132,8 +162,7 @@
 				flex-basis: 15%;
 				
 				@media only screen and (max-width: $phone) {
-					width: 80%;
-					max-width: 300px;
+					display: none;
 				}
 
 				img {

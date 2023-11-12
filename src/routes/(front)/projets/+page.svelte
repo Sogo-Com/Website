@@ -194,12 +194,25 @@
 	#top {
 		height: 100vh;
 		position: relative;
+		display: flex;
+
+		@media only screen and (max-width:$phone) {
+			height: 50vh;
+			align-items: end;
+		}
 		h1 {
 			color: #fff;
 			text-align: left;
 			padding: 256px 11%;
 			z-index: 15;
 			position: relative;
+
+			@media only screen and (max-width:$phone) {
+				padding: 64px 8px;
+				width: 100%;
+				text-align: center;
+			}
+			
 		}
 
 		img {
@@ -219,18 +232,25 @@
 		justify-content: center;
 		align-items: center;
 		background-color: $color-gris-clair;
-
+	
 		@media only screen and (max-width: $phone) {
 			flex-direction: column;
+			margin: 0;
+			padding:32px 12px ;
 		}
 		.gris-child {
 			flex-basis: 50%;
+			@media only screen and (max-width: $phone) {
+				flex-basis: 100%;
+				width: 100%;
+			}	
 		}
 		.question {
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
-				padding: 5rem 11%;
-			}
+				padding:0;
+				text-align: center	;
+			}	
 
 			padding: 128px 64px 128px 11%;
 
@@ -243,7 +263,7 @@
 			padding: 128px 11% 128px 64px;
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
-				padding: 0 11% 5rem 11%;
+				padding: 0;
 			}
 		}
 	}
@@ -257,6 +277,11 @@
 		padding: 64px 0;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 		background-color: #fff;
+
+		@media only screen and (max-width: $phone) {
+			
+				padding:32px 0px;
+		}	
 
 		.links {
 			align-items: center;

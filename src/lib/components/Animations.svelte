@@ -12,6 +12,9 @@
 
 	export const methods = {
 		refresh: () => {
+
+			const noanim = ":not([data-noamin])"
+
 			//Titres
 
 			const isMedia = window.matchMedia("(max-width:1150px)").matches
@@ -42,7 +45,7 @@
 
 
 
-			const revealElements = 'h2,h3';
+			const revealElements = 'h2'+noanim+',h3'+noanim;
 
 			document.querySelectorAll(revealElements)?.forEach((elem) => {
 				const splited = new SplitText(elem, { type: 'words,chars' });
@@ -150,9 +153,9 @@
 
 <style lang="scss" global>
 	//Anims
-	h1,
-	h2,
-	h3 {
+	h1:not([data-noamin]),
+	h2:not([data-noamin]),
+	h3:not([data-noamin]) {
 		opacity: 0;
 		visibility: hidden;
 	}
