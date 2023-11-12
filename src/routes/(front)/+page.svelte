@@ -108,6 +108,7 @@
 
 		@media only screen and (max-width: $phone) {
 			height: 50vh;
+			padding-top: 120px;
 		}
 
 		img {

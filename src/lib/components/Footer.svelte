@@ -12,7 +12,7 @@
 		<div class="links">
 			<a href="/agence"> Agence </a>
 			<a href="/actualites"> Actualités </a>
-			<a href="/competences"> Compétences </a>
+			<a href="/expertises"> Expertises </a>
 			<a href="/contact"> Contact </a>
 			<a href="/projets"> Projets </a>
 
