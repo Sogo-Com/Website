@@ -12,7 +12,7 @@
 
     const gomettes = [
         {
-            id: 1,
+            id: 0,
             name: "Muriel",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
@@ -21,7 +21,7 @@
         
         },
         {
-            id: 2,
+            id: 1,
             name: "Gaelle",
             type: "La gommette des videos montages",
             description: "La gommette des gommettes",
@@ -29,7 +29,7 @@
             active: "/images/Gaelle2.png"
         },
         {
-            id: 3,
+            id: 2,
             name: "Julie",
             type: "La gommette des goblins",
             description: "La gommette des gommettes",
@@ -37,7 +37,7 @@
             active: "/images/Julie2.png"
         },
         {
-            id: 4,
+            id: 3,
             name: "Sophie",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
@@ -45,7 +45,7 @@
             active: "/images/Sophie2.png"
         },
         {
-            id: 5,
+            id: 4,
             name: "Arnaud",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
@@ -53,7 +53,7 @@
             active: "/images/Arnaud2.png"
         },
         {
-            id: 6,
+            id: 5,
             name: "Veronique",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
@@ -61,7 +61,7 @@
             active: "/images/Veronique2.png"
         },
         {
-            id: 7,
+            id: 6,
             name: "Magali",
             type: "La gommette des gommettes",
             description: "La gommette des gommettes",
@@ -72,31 +72,50 @@
 
 	onMount((_) => {
 
-        const initialSlide = 3
-
 		let swiper = new Swiper('.swiper-container', {
 			modules: [Pagination],
-			loop:false,
-			slidesPerView: 1,
-			slidesPerGroup: 1,
-            initialSlide,
-            slideToClickedSlide:true
+            slidesPerGroup:1,
+            loop:true,
+            spaceBetween:0,
+            slidesPerView:1,
+            initialSlide:3,
+            centeredSlides:true,
+            slideToClickedSlide:true,
+            breakpoints: {
+              
+                960: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                1150: {
+                    slidesPerView: 3,
+                    spaceBetween: 60
+                }
+            }
 		
 		});
 
       
         function ChangeIndex(){
 
-            name.innerHTML = gomettes[swiper.activeIndex].name;
-            type.innerHTML = gomettes[swiper.activeIndex].type;
-            description.innerHTML = gomettes[swiper.activeIndex].description;
-            const oldSlide = swiper.slides[swiper.previousIndex]
-            if(oldSlide != null)
-                oldSlide.firstElementChild.src =  gomettes[swiper.previousIndex].inactive
 
-            const newSlide = swiper.slides[swiper.activeIndex]
-            if(newSlide != null)
-            newSlide.firstElementChild.src =  gomettes[swiper.activeIndex].active
+            swiper.slides.forEach((slid,index) => {
+
+                const id = slid.dataset.gomette
+                slid.firstElementChild.src =  gomettes[id].inactive
+
+            })
+            
+            const slid = swiper.slides[swiper.activeIndex]
+            const id = slid.dataset.gomette
+
+            name.innerHTML = gomettes[id].name;
+            type.innerHTML = gomettes[id].type;
+            description.innerHTML = gomettes[id].description;
+          
+            if(slid != null)
+                slid.firstElementChild.src =  gomettes[id].active
 
         }
 
@@ -106,7 +125,6 @@
         })
 
         ChangeIndex()
-
 	});
 
 
@@ -123,7 +141,7 @@
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
                 {#each gomettes as gomette, index}
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-gomette="{gomette.id}">
                         <img src="{gomette.inactive}" alt="{gomette.name}" />
                     </div>
                 {/each}
@@ -151,8 +169,6 @@
 <style lang="scss" >
 	.gomettes {
 
-        overflow: hidden;
-
         .info{
             display: flex;
             justify-content: center;
@@ -160,7 +176,7 @@
             padding: 64px;
 
             @media only screen and (max-width:$phone) {
-                padding:64px 8px;
+                padding:32px 8px;
         		}
             .gomette-info{
                 width: 60%;
@@ -185,6 +201,10 @@
 
         .h2-seo{
             padding: 64px;
+            @media only screen and (max-width:$phone) {
+                padding: 32px;
+                margin: 0;
+        		}
             h2{
 
                 @media only screen and (max-width:$phone) {
@@ -196,50 +216,32 @@
         }
 
 		.swiper-gomette {
+            width: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			.swiper-container {
-				width: 15vw ;
-				height: 15vw ;
+				width: 100%;
+                height: 40vh;
                 overflow: visible;
-                @media only screen and (max-width:$tablet) {
-                    width: 25vw ;
-				    height: 25vw ;
-        		}
-
-                @media only screen and (max-width:$phone) {
-                    width: 35vw ;
-				    height: 35vw ;
-        		}
 
 
 				.swiper-wrapper {
 					.swiper-slide {
-                        
-                        
-
-                        padding: 64px;
-						width: 100% !important;
-						height: 100%;
+                        cursor: pointer;
                         transition: all .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-
+                        padding: 64px;
 
                         @media only screen and (max-width:$phone) {
-                            padding: 10vw;
-                        }
+                        font-size: 2.5rem;
+                    }
 
 
 						img {
-                            -webkit-mask-image: url("/images/bubble-mask.svg");
-                            mask-image: url("/images/bubble-mask.svg");
-                            -webkit-mask-size: contain;
-                            mask-size: contain;
-                            -webkit-mask-repeat: no-repeat;
-                            mask-repeat: no-repeat;
+                      
 							width: 100%;
 							height: 100%;
-							object-fit: cover;
+							object-fit: contain;
 						}
 					}
 				}

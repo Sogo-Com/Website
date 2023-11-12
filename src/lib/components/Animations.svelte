@@ -14,7 +14,8 @@
 		refresh: () => {
 			//Titres
 
-
+			const isMedia = window.matchMedia("(max-width:1150px)").matches
+			console.log(isMedia);
 			document.querySelectorAll("h1")?.forEach((elem) => {
 				const splited = new SplitText(elem, { type: 'words,chars' });
 
@@ -50,11 +51,16 @@
 					autoAlpha: 1
 				});
 
+				const props = {
+					start: isMedia ? 'top 80%' :  'top 70%',
+					end: isMedia ? 'bottom 80%' :  'bottom 70%',
+				}
+
 				let tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: elem,
-						start: 'top 70%',
-						end: 'bottom 70%'
+						start: props.start,
+						end:  props.end
 					}
 				});
 
@@ -75,11 +81,17 @@
 
 			//Btn
 			document.querySelectorAll('.app .btn')?.forEach((button) => {
+
+				const props = {
+					start: isMedia ? 'top 80%' :  'top 70%',
+					end: isMedia ? 'bottom 80%' :  'bottom 70%',
+				}
+
 				let tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: button,
-						start: 'top 70%',
-						end: 'bottom 70%',
+						start: props.start,
+						end:  props.end,
 						scrub: true
 					}
 				});
@@ -101,14 +113,21 @@
 			//p
 			document.querySelectorAll('.app p')?.forEach((paragraph) => {
 
-                const splited = new SplitText(paragraph, { type: 'words,chars' });
+				const props = {
+					start: isMedia ? 'top 90%' :  'top 80%',
+					end: isMedia ? 'bottom 90%' :  'bottom 80%',
+					scrub: !isMedia,
+					stagger : isMedia ? 0.05 : 0.02
+				}
+				
+                const splited = new SplitText(paragraph, { type: 'line,words,chars' });
 
 				let tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: paragraph,
-						start: 'top 60%',
-						end: '+=300px 60%',
-                        scrub:true
+						start: props.start,
+						end:  props.end,
+                        scrub:props.scrub
 					}
 				});
 				tl.fromTo(
@@ -118,7 +137,7 @@
 						autoAlpha: 0
 					},
 					{
-						stagger: 0.02,
+						stagger: props.stagger,
 						duration: 0.05,
 						y: 0,
 						autoAlpha: 1

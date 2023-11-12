@@ -137,7 +137,8 @@ h3{
 
 .swiper-gomette{
     .swiper-slide-active{
-        transform: scale(2);
+
+        padding: 32px !important;
     }
 }
 .pagination{

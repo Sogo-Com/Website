@@ -126,9 +126,7 @@
 				display: none;
 			}
 
-			@media only screen and (max-width: $tablet) {
-				transform: translate(0, -30px);
-			}
+	
 
 			.flipcard {
 				@media only screen and (max-width: $tablet) {

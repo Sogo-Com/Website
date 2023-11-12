@@ -16,32 +16,27 @@
 <div id="guillemets">
 	<div class="bloc-container">
 		<div class="bloc-seul">
-
 			<div class="left">
-				<img src="/images/guillemet-gauche.PNG" alt="guillemet gauche">
+				<img src="/images/guillemet-gauche.PNG" alt="guillemet gauche" />
 			</div>
 			<div class="center">
+				<p>L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs.</p>
+				<br />
 				<p>
-					L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs. 
-
-
-				</p>
-				<br>
-				<p>
-
-					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée, nous pensons votre communication 
+					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée,
+					nous pensons votre communication
 				</p>
 			</div>
 			<div class="right">
-				<img src="/images/guillemet-droit.PNG"  alt="guillemet droit">
+				<img src="/images/guillemet-droit.PNG" alt="guillemet droit" />
 			</div>
-			
 		</div>
 	</div>
 </div>
-<Valeurs/>
+<Valeurs />
 <FriseHistoire />
 <SliderGomettes />
+
 <style lang="scss">
 	#top {
 		height: 100vh;
@@ -53,9 +48,9 @@
 		align-items: end;
 
 		@media only screen and (max-width: $phone) {
-			align-items: center;
-			}
-
+			align-items: end;
+			height: 50vh;
+		}
 
 		img {
 			width: 100%;
@@ -68,12 +63,10 @@
 		}
 
 		h1 {
-
 			@media only screen and (max-width: $phone) {
-					padding: 64px 8px;
-					width:100%;
-					text-align: center;
-				font-size: 4rem;
+				padding: 64px 8px;
+				width: 100%;
+				text-align: center;
 			}
 
 			text-align: left;
@@ -85,17 +78,25 @@
 		}
 	}
 
-
-	#guillemets{
+	#guillemets {
 		background-color: #fff;
-		.bloc-container{
+		
+		@media only screen and (max-width: $phone) {
+			margin: 0;
+			padding:0 12px ;
+		}
+		.bloc-container {
 			width: 100%;
 			height: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 
-			.bloc-seul{
+			@media only screen and (max-width: $phone) {
+					width: 100%;
+				}
+
+			.bloc-seul {
 				width: 60%;
 				height: 100%;
 				display: flex;
@@ -108,36 +109,47 @@
 				padding: 64px;
 
 				@media only screen and (max-width: $phone) {
-					padding: 64px 8px;
-					width: 80%;
+					width: 100%;
+					padding: 16px 0;
 				}
 
-				div{
+				div {
 					margin: 16px 0;
 					width: 100%;
 					height: 100%;
 					display: flex;
 					align-items: center;
-					img{
+
+					@media only screen and (max-width: $phone) {
+						margin: 0;
+					}
+					img {
 						width: 100px;
 						height: 100px;
 						object-fit: contain;
+						@media only screen and (max-width: $phone) {
+							width:80px;
+							height: 80px;
+						}
 					}
 				}
-				.left{
+				.left {
 					justify-content: start;
 				}
-				.center{
+				.center {
 					flex-direction: column;
 					align-items: center;
 					justify-content: center;
 
-					p{
+					p {
 						font-size: 2rem;
 						line-height: 48px;
+						@media only screen and (max-width: $phone) {
+							line-height: normal;
+						}
 					}
 				}
-				.right{
+				.right {
 					justify-content: right;
 				}
 			}

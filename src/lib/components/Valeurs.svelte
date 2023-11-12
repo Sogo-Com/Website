@@ -68,7 +68,20 @@
 	#valeurs {
 		background-color: #fcf7f7;
 		padding-bottom: 64px;
+
+		@media only screen and (max-width: $phone) {
+			margin: 0;
+			padding: 0 12px;
+		}
+
 		h2 {
+			@media only screen and (max-width: $phone) {
+				margin: 0;
+				padding: 0;
+				padding-top: 32px;
+				width: 100%;
+				text-align: center;
+			}
 			padding: 64px 11% 0 11%;
 		}
 		.conteneur {
@@ -81,6 +94,8 @@
 			flex-wrap: wrap;
 
 			@media only screen and (max-width: $phone) {
+				padding: 0;
+				padding-bottom: 32px;
 				:first-child {
 					p {
 						height: auto !important;
@@ -105,22 +120,29 @@
 				p {
 					font-size: 1rem;
 					line-height: 1rem;
+
+					
+					@media only screen and (max-width: $phone) {
+						width: 100% !important;
+						margin-bottom: 12px;
+					}
 				}
 				.flip {
 					margin: 15% 5% 15% 0;
 					width: 20vw;
 					height: 20vw;
 
+
 					@media only screen and (max-width: $tablet) {
 						width: 30vw;
 						height: 30vw;
-						margin:auto;
+						margin: auto;
 					}
 
 					@media only screen and (max-width: $phone) {
-						width: 80vw;
-						height: 80vw;
-						margin: 15% auto ;
+						width: 70vw;
+						height: 70vw;
+						margin: 12px auto;
 					}
 				}
 			}

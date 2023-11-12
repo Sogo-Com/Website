@@ -73,7 +73,9 @@
 			padding: 6rem 0;
 			position: relative;
 			overflow: hidden;
-
+			@media only screen and (max-width: $phone) {
+				padding: 32px 12px 0 12px;
+			}
 			.wrapper {
 				display: flex;
 				flex-direction: row;
@@ -83,7 +85,7 @@
 
 				@media only screen and (max-width: $phone) {
 					left: unset;
-					padding: 64px 8px;
+					padding: 0;
 				}
 			}
 		}
@@ -98,6 +100,7 @@
 
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
+				align-items: start;
 			}
 			.point {
 				position: relative;
@@ -161,29 +164,38 @@
 					text-align: right;
 					right: calc(100% - 68px);
 					@media only screen and (max-width: $phone) {
-						padding: 32px;
+						padding: 0 32px;
+						width: 80vw;
 					}
 
 					h3 {
 						margin-bottom: 8px;
 						text-align: right;
+						@media only screen and (max-width: $phone) {
+							width: 100%;
+							text-align: left;
+						}
 					}
 					p {
 						width: 20vw;
 						font-size: 0.8rem;
 
 						@media only screen and (max-width: $phone) {
-							width: 28vw;
+							width: 100%;
+							text-align: left;
 							line-height: 16px;
 						}
 					}
+
+					@media only screen and (max-width: $phone) {
+							left: 100%;
+						}
 
 					&.bottom {
 						top: 100%;
 
 						@media only screen and (max-width: $phone) {
 							top: unset;
-							right: 100%;
 						}
 					}
 
@@ -192,7 +204,6 @@
 
 						@media only screen and (max-width: $phone) {
 							bottom: unset;
-							left: 100%;
 						}
 					}
 				}

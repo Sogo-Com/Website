@@ -155,7 +155,8 @@
 		overflow: hidden;
 
 		@media only screen and (max-width: $phone) {
-			padding:  32px 16px;
+			margin: 0;
+			padding: 64px 12px 32px 12px;
 		}
 
 		.wrapper {

@@ -38,6 +38,7 @@
 				await navigation.complete;
                 animations.refresh();
 			});
+
 		});
 	});
 </script>
