@@ -1,13 +1,12 @@
 FROM node:18-alpine AS build
 
-
-WORKDIR /app 
+WORKDIR /app
 COPY . .
-RUN npm
-RUN npm build
+RUN npm install
+RUN npm run build
 
 FROM node:18-alpine AS deploy-node
-WORKDIR /app 
+WORKDIR /app
 RUN rm -rf ./*
 COPY --from=build /app/gsap-bonus.tgz .
 COPY --from=build /app/package.json .
