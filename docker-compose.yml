@@ -22,4 +22,4 @@ networks:
   traefik-net:
    external: true
 volumes:
-  server-data
+  - server-data
