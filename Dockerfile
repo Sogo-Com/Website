@@ -13,5 +13,5 @@ COPY --from=build /app/package.json .
 COPY --from=build /app/build-node .
 COPY --from=build /app/prisma .
 COPY --from=build /app/.env .
-RUN npm add prisma --save-dev && npx prisma generate && node ./post-deploy.js
+RUN npm add prisma --save-dev && npx prisma db push && npx prisma generate && node ./post-deploy.js
 CMD ["node", "index.js"]
