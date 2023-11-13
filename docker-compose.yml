@@ -17,9 +17,9 @@ services:
       - "traefik.http.routers.sogocom-secure.tls=true"
       - "traefik.http.services.sogocom.loadbalancer.server.port=3000"
     volumes:
-      - ./webiste-data/dev.db:/app/dev.db
+      - ./website-data/dev.db:/app/dev.db
 networks:
   traefik-net:
    external: true
 volumes:
-  webiste-data:
+  website-data:
