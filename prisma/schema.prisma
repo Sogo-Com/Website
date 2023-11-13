@@ -50,7 +50,7 @@ model Projet {
   titre             String
   photo             String   @default("")
   photoLogo         String   @default("")
-  descriptionCourte String   @default("Aucune description")
+  descriptionCourte String   @default("")
   contenu           String
   createdAt         DateTime @default(now())
 }
