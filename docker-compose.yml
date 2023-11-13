@@ -21,3 +21,5 @@ services:
 networks:
   traefik-net:
    external: true
+volumes:
+  server-data
