@@ -16,10 +16,13 @@ services:
       - "traefik.http.routers.sogocom-secure.entrypoints=https"
       - "traefik.http.routers.sogocom-secure.tls=true"
       - "traefik.http.services.sogocom.loadbalancer.server.port=3000"
-    volumes:
-      - ./website-data/dev.db:/app/dev.db
+     volumes:
+      - type: bind
+        source: ./prisma/dev.db
+        target: /app/dev.db
+      - type: bind
+        source: ./build-node/client/
+        target: /app/client/
 networks:
   traefik-net:
    external: true
-volumes:
-  website-data:

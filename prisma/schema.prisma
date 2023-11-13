@@ -49,7 +49,6 @@ model Projet {
   id           String   @id @default(uuid())
   titre        String
   photo        String @default("")
-  photoLogo        String @default("")
   descriptionCourte      String  @default("Aucune description")
   contenu      String
   createdAt    DateTime @default(now())
