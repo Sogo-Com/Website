@@ -51,6 +51,7 @@ model Projet {
   photo             String   @default("")
   photoLogo         String   @default("")
   descriptionCourte String   @default("Aucune description")
+  test              String
   contenu           String
   createdAt         DateTime @default(now())
 }
