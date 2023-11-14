@@ -123,7 +123,7 @@ ${``}`;
 const options = {
   app_template_contains_nonce: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
-  csrf_check_origin: true,
+  csrf_check_origin: false,
   track_server_fetches: false,
   embedded: false,
   env_public_prefix: "PUBLIC_",
@@ -196,7 +196,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1fa61ma"
+  version_hash: "s948b9"
 };
 function get_hooks() {
   return import('./chunks/hooks.server-605091a4.js');

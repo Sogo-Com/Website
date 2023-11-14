@@ -8,19 +8,23 @@
 
 		<meta name="viewport" content="width=device-width" />
 		
-		<link href="./_app/immutable/assets/3.4dfdd47d.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.1706cde4.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.107dcb2b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/utils.a85b8b84.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.1d317714.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.6e2a0eea.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.dc1ddb04.js">
+		<link href="./_app/immutable/assets/3.5f00e564.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.47931f14.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.dae810a7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/utils.9e65cc02.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.0514b3e4.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.a16c883c.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.8a8cd08a.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.cbadaa10.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/3.554f6784.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.2ecbd46b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/stores.6e8a75ea.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/17.d93d9a9a.js"><title>Selte Begins</title><!-- HEAD_svelte-1mhw16t_START --><link rel="icon" href="/favicon.png"><!-- HEAD_svelte-1mhw16t_END -->
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.3774f3ce.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.27daf9c2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.e9d4fb40.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/stores.ff863ffa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/navigation.2aff1a2c.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ScrollTrigger.54cd0f3a.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_commonjsHelpers.725317a4.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/SplitText.d9a01c3b.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/16.a134063f.js"><title>Selte Begins</title><!-- HEAD_svelte-17oj097_START --><link rel="icon" href="/favicon.png"><!-- HEAD_svelte-17oj097_END --><!-- HEAD_svelte-17oj097_START --><link rel="icon" href="/favicon.png"><!-- HEAD_svelte-17oj097_END -->
 	</head>
 	<body data-sveltekit-preload-data="hover" style="background: #F5F5F5 ;">
 		<div style="display: contents">
@@ -28,11 +32,11 @@
 
 
 
-<div class="app svelte-kukal2"><header><div id="navContainer"><div class="menu-container"><a data-sveltekit-reload class="logo-menu" href="/"><img alt="logo menu" src="/images/logo-menu.svg"></a>
+<header><div id="navContainer"><div class="menu-container"><a data-sveltekit-reload class="logo-menu" href="/"><img alt="logo menu" src="/images/logo-menu.svg"></a>
 
 		<div class="menu"><div class="links"><a href="/agence">Agence</a>
 				<a href="/expertises">Expertises</a>
-				<a data-sveltekit-reload href="/projets">Projets</a>
+				<a href="/projets">Projets</a>
 				<a href="/actualites">Actualités</a>
 				<a href="/contact">Contact</a>
 
@@ -44,12 +48,12 @@
 			<span class="mob-3"></span></div></div>
 </div></header>
 
-	<main></main>
+<div class="app" id="smooth-wrapper"><div id="smooth-content"><main></main>
 
-    <footer class="svelte-1i48nut"><div class="black svelte-1i48nut"><a class="logo svelte-1i48nut" href="/"><img alt="logo menu" src="/images/logo-menu-black.svg" class="svelte-1i48nut"></a>
+		<footer class="svelte-1i48nut"><div class="black svelte-1i48nut"><a class="logo svelte-1i48nut" href="/"><img alt="logo menu" src="/images/logo-menu-black.svg" class="svelte-1i48nut"></a>
 		<div class="links svelte-1i48nut"><a href="/agence" class="svelte-1i48nut">Agence </a>
 			<a href="/actualites" class="svelte-1i48nut">Actualités </a>
-			<a href="/competences" class="svelte-1i48nut">Compétences </a>
+			<a href="/expertises" class="svelte-1i48nut">Expertises </a>
 			<a href="/contact" class="svelte-1i48nut">Contact </a>
 			<a href="/projets" class="svelte-1i48nut">Projets </a>
 
@@ -59,16 +63,18 @@
 		<a href="/donnees-personelles" class="svelte-1i48nut">Données personnelles </a>
 		-
 		<a class="svelte-1i48nut">Préférence cookies </a></div>
-</footer>
-</div>
+</footer></div></div>
+
+
+
 
 
 			
 			<script>
 				{
-					__sveltekit_1fa61ma = {
+					__sveltekit_s948b9 = {
 						base: new URL(".", location).pathname.slice(0, -1),
-						env: {}
+						env: {"PUBLIC_UPLOADS_DIR":"uploads/"}
 					};
 
 					const element = document.currentScript.parentElement;
@@ -76,11 +82,11 @@
 					const data = [{"type":"data","data":{user:void 0},"uses":{}},null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.1706cde4.js"),
-						import("./_app/immutable/entry/app.dc1ddb04.js")
+						import("./_app/immutable/entry/start.47931f14.js"),
+						import("./_app/immutable/entry/app.8a8cd08a.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 3, 17],
+							node_ids: [0, 3, 16],
 							data,
 							form: null,
 							error: null
