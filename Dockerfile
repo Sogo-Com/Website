@@ -11,6 +11,7 @@ RUN rm -rf ./*
 COPY --from=build /app/gsap-bonus.tgz .
 COPY --from=build /app/package.json .
 COPY --from=build /app/build-node .
+COPY --from=build /app/uploads /uploads
 COPY --from=build /app/prisma .
 COPY --from=build /app/.env .
 COPY --from=build /app/server.js .
