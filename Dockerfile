@@ -17,6 +17,6 @@ COPY --from=build /app/.env .
 COPY --from=build /app/server.js .
 #RUN apk update && apk add bash #If debug
 RUN npm add prisma --save-dev && npx prisma db push && npx prisma generate && node ./post-deploy.js
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
 #ENTRYPOINT tail -f /dev/null #If debug
 #docker exec -it website-sogocom-1 bash #If debug
