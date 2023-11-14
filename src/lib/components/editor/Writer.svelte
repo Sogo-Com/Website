@@ -1,8 +1,10 @@
 <script>
+
 	import EditorJS from '@editorjs/editorjs';
 	import Header from '@editorjs/header';
 	import NestedList from '@editorjs/nested-list';
 	import SimpleImage from '@editorjs/simple-image';
+	import { IsJsonString } from '$lib/utils/type';
 	import ButtonTool from '$lib/editor/button/ButtonTool.js';
 	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js';
 	import { onMount } from 'svelte';
@@ -46,6 +48,11 @@
 	export const methods = {
 		loadContenu: (contenu = null) => {
 			if (editor != null && contenu != null) {
+
+				if (IsJsonString(contenu)) {
+					contenu = JSON.parse(contenu);
+				}
+
 				editor.isReady.then(() => {
 					editor.render(contenu);
 				});

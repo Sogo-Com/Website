@@ -1,7 +1,7 @@
 <script>
 	import Layout from '../../+layout.svelte';
 	import ActualiteCRUD from '$lib/client/crud/actualite'
-
+	
 	export let data;
 	let { actualites } = data;
 

@@ -1,11 +1,14 @@
 <script>
 	import { goto } from '$app/navigation';
+	import toast, { Toaster } from 'svelte-french-toast';
 	import { redirect } from '@sveltejs/kit';
 
 	function logout() {
 		goto( '/admin/logout');
 	}
 </script>
+
+<Toaster />
 
 <div class="back-office">
 	<!-- Sidebar/Menu -->

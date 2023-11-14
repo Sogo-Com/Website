@@ -2,7 +2,8 @@
 	import Layout from '../../../+layout.svelte';
 	import { onMount } from 'svelte';
 	import { redirect } from '@sveltejs/kit';
-
+	import { enhance, applyAction } from '$app/forms';
+	import toast from 'svelte-french-toast';
 	import Writer from '$lib/components/editor/Writer.svelte';
 
 	import { goto, invalidateAll } from '$app/navigation';
@@ -13,40 +14,80 @@
 	export let data;
 	let { actualite } = data;
 	
-
 	let writerMethods;
 	
-	const handleSubmit = async (form) => {
-		
-		
-		const formData = new FormData(form.currentTarget);
-		formData.append('contenu', await writerMethods.saveContenu() ?? '')
-		formData.append('id', actualite.id)
-		formData.append('photo', actualite.photo)
+	const submitCreateNote = async ({ form, data, action, cancel }) => {
 
-	    const result = await ActualiteCRUD.upsert(formData).catch(reason => { alert("Error "+reason) })
 		
-		if(result != null){
-			alert(result.message)
-			goto(`/admin/actualite/${result.data.id}`,{}).then(_=>{	actualite = result.data })
-			writerMethods.loadContenu(result.data.contenu)
+		const { titre, redacteur,tempsLecture ,descriptionCourte, photoFile} = Object.fromEntries(data);
+
+		if (titre.length < 1) {
+			toast.error('Titre vide !');
+			cancel();
 		}
 
+		if (redacteur.length < 1) {
+			toast.error('Redacteur vide !');
+			cancel();
+		}
+		
+		if (tempsLecture.length < 1) {
+			toast.error('Temps de lecture vide !');
+			cancel();
+		}
+
+		if (descriptionCourte.length < 1) {
+			toast.error('Temps de lecture vide !');
+			cancel();
+		}
+
+
+		data.append('contenu', await writerMethods.saveContenu() ?? '')
+		data.append('id', actualite.id)
+		data.append('photo', actualite.photo ?? '')
+
+
+		return async ({ result, update }) => {
+			
+			switch (result.type) {
+				case 'success':
+					toast.success('Actualité enregistré!');
+					await applyAction(result)
+
+					break;
+				case 'invalid':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				default:
+					break;
+			}
+			
+			await update();
+			
+			actualite = result.data.data
+			goto(`/admin/actualite/${actualite.id}`,{invalidateAll: true})
+			writerMethods.loadContenu(actualite.contenu)
+
+		};
 	};
 
-	async function handleDelete() {
-
-			const result = await ActualiteCRUD.delete(actualite?.id).catch(reason => {alert("Error "+reason) })
-
-			if(result != null)
-			{
-				alert(result.message);
-				
-				goto("/admin/actualites")
+	const submitDeleteNote  = () => {
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Actualité supprimé!');
+					
+					break;
+				case 'invalid':
+					toast.error("Erreur lors de la suppression");
+					break;
+				default:
+					break;
 			}
-
-	}
-
+			await update();
+			goto("/admin/actualites", { invalidateAll: true })
+		};
+	};
 
 </script>
 
@@ -54,7 +95,12 @@
 	<div slot="buttons">
 		<button class="back-button" on:click={()=>{goto("/admin/actualites")}}>Retour aux actualites</button>
 		{#if actualite.id != null && actualite.id.length != 0}
-			<button class="delete-button"  on:click={()=>{handleDelete()}}>Supprimer</button>
+
+			<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
+				<input type="hidden" name="id" value={actualite.id} />
+				<button type="submit" class="delete-button">Supprimer</button>
+			</form>
+
 		{/if}
 	
 	</div>
@@ -62,10 +108,10 @@
 	<div>
 		<h1>Formulaire d'Actualité</h1>
 
-		<form method="POST" class="actualite-form" on:submit|preventDefault={handleSubmit}>
+		<form method="POST" action="?/create" class="actualite-form"  use:enhance={submitCreateNote}>
 			<div class="form-group">
 				<label for="titre">Titre</label>
-				<input id="titre" name="titre" bind:value={actualite.titre} contenteditable="true" type="text" required />
+				<input id="titre" name="titre" bind:value={actualite.titre} contenteditable="true" type="text"  />
 			</div>
 
 			<div class="form-group">
@@ -85,16 +131,16 @@
 
 			<div class="form-group">
 				<label for="redacteur">Rédacteur</label>
-				<input id="redacteur" name="redacteur" bind:value={actualite.redacteur} contenteditable="true" type="text" required />
+				<input id="redacteur" name="redacteur" bind:value={actualite.redacteur} contenteditable="true" type="text"  />
 			</div>
 			<div class="form-group">
 				<label for="tempsLecture">Temps de Lecture (en minutes)</label>
-				<input id="tempsLecture" name="tempsLecture" bind:value={actualite.tempsLecture} contenteditable="true" type="number" required />
+				<input id="tempsLecture" name="tempsLecture" bind:value={actualite.tempsLecture} contenteditable="true" type="number"  />
 			</div>
 
 			<div class="form-group">
 				<label for="descriptionCourte">Description courte (200 caracteres max)</label>
-				<textarea id="descriptionCourte" rows="3" cols="45"  maxlength="200" name="descriptionCourte" bind:value={actualite.descriptionCourte} contenteditable="true" type="text" required />
+				<textarea id="descriptionCourte" rows="3" cols="45"  maxlength="200" name="descriptionCourte" bind:value={actualite.descriptionCourte} contenteditable="true" type="text"  />
 			</div>
 
 			<div class="form-group">
