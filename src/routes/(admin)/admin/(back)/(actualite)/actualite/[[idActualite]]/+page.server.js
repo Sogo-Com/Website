@@ -3,7 +3,7 @@ import { IsJsonString, IsEmptyFile, IsString, IsStringNotEmpty, IsObject, IsPhot
 
 import bcrypt from 'bcrypt'
 import { db } from '$lib/database'
-import { writeFileSync } from 'fs';
+import { writeFileSync,existsSync, mkdirSync } from 'fs';
 
 const FULL_UPLOAD_PATH = `uploads/actualites/`
 const PARTIAL_UPLOAD_PATH = "/uploads/actualites/"
@@ -72,8 +72,14 @@ export const actions = {
       
       if (IsPhoto(photoFile)) {
 
+        if (!existsSync(FULL_UPLOAD_PATH)){
+          mkdirSync(FULL_UPLOAD_PATH);
+        }
+
         const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`
         const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`
+
+
 
         writeFileSync(fsPhotoPath, Buffer.from(await photoFile.arrayBuffer()))
         photo = dbPhotoPath
