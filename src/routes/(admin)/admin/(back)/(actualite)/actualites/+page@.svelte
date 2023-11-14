@@ -1,28 +1,32 @@
 <script>
+	
+	import { enhance } from '$app/forms';
+	import toast from 'svelte-french-toast';
+
 	import Layout from '../../+layout.svelte';
-	import ActualiteCRUD from '$lib/client/crud/actualite'
 	
 	export let data;
 	let { actualites } = data;
 
-	async function deleteActualite(index) {
 
-		
-		const data = await ActualiteCRUD.delete(actualites[index].id).catch(reason => {		
-			
-			alert("Error "+reason);
-		})
-		
-		if(data != null)
-		{
-			alert(data.message);
-			location.reload(true);
-		}
+	const submitDeleteNote  = () => {
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Actualité supprimé!');
+					
+					break;
+				case 'failure':
+					toast.error("Erreur lors de la suppression");
+					break;
+				default:
+					break;
+			}
+			await update();
+			goto("/admin/actualites", { invalidateAll: true })
+		};
+	};
 
-
-	}
-
-	
 </script>
 
 <Layout>
@@ -59,13 +63,16 @@
 							}).format(actualite?.createdAt)}</td
 						>
 						<td
-							><button
-								data-sveltekit-reload
-								class="delete-button"
-								on:click={() => {
-									deleteActualite(index);
-								}}>Supprimer</button
-							></td
+							>
+							
+							
+								<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
+									<input type="hidden" name="id" value={actualite.id} />
+									<button type="submit" class="delete-button">Supprimer</button>
+								</form>
+
+							
+							</td
 						>
 					</tr>
 				{/each}

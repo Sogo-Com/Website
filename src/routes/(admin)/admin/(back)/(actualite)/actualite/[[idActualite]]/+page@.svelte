@@ -1,15 +1,10 @@
 <script>
 	import Layout from '../../../+layout.svelte';
-	import { onMount } from 'svelte';
-	import { redirect } from '@sveltejs/kit';
 	import { enhance, applyAction } from '$app/forms';
 	import toast from 'svelte-french-toast';
 	import Writer from '$lib/components/editor/Writer.svelte';
 
-	import { goto, invalidateAll } from '$app/navigation';
-	import ActualiteCRUD from '$lib/client/crud/actualite'
-	import { FileToBase64, Base64toWebp } from '$lib/utils/convert'
-	import { IsPhoto } from '$lib/utils/type'
+	import { goto, } from '$app/navigation';
 
 	export let data;
 	let { actualite } = data;
