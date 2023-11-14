@@ -55,7 +55,7 @@
 					await applyAction(result)
 
 					break;
-				case 'invalid':
+				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
 					break;
 				default:
@@ -78,7 +78,7 @@
 					toast.success('Actualité supprimé!');
 					
 					break;
-				case 'invalid':
+				case 'failure':
 					toast.error("Erreur lors de la suppression");
 					break;
 				default:

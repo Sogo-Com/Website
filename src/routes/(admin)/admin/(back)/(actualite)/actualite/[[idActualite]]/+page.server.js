@@ -1,4 +1,4 @@
-import { fail, redirect,invalid } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
 import { IsJsonString, IsEmptyFile, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile, GetExtension } from "$lib/utils/type";
 
 import bcrypt from 'bcrypt'
@@ -40,28 +40,28 @@ export const actions = {
     let { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photo, photoFile } = data
 
     if (titre.length < 1) {
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ Le titre ne doit pas être vide",
       });
     }
 
     if (redacteur.length < 1) {
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ Le redacteur ne doit pas être vide",
       });
     }
 
     if (tempsLecture.length < 1) {
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ Le temps de lecture ne doit pas être vide",
       });
     }
 
     if (descriptionCourte.length < 1) {
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ La description courte ne doit pas être vide",
       });
@@ -110,7 +110,7 @@ export const actions = {
 
     } catch (err) {
 
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'actualité",
       });
@@ -127,7 +127,7 @@ export const actions = {
     const { id = null } = data
 
     if (!IsStringNotEmpty(id)) {
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ L'identifiant de l'actualité est requis",
       });
@@ -142,7 +142,7 @@ export const actions = {
       })
 
       if (actualiteToDelete == null) {
-        return invalid(400, {
+        return fail(400, {
           data: data,
           errorMsg: "L'actualité n'existe pas",
         });
@@ -161,7 +161,7 @@ export const actions = {
 
     } catch (err) {
 
-      return invalid(400, {
+      return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de la suppression de l'actualité",
       });
