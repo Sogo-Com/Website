@@ -11,9 +11,9 @@ export const load = async (serverloadEvent) =>{
     throw redirect(302, '/admin/login')
   }
 
-  const actualites = await db.actualite.findMany()
+  const projets = await db.projet.findMany()
   return {
-    actualites
+    projets
   }
 }
 
@@ -26,31 +26,32 @@ export const actions = {
     if (!IsStringNotEmpty(id)) {
       return fail(400, {
         data: data,
-        errorMsg: "❌ L'identifiant de l'actualité est requis",
+        errorMsg: "❌ L'identifiant du projet est requis",
       });
     }
 
     try {
 
-      const actualiteToDelete = await db.actualite.findUnique({
+      const projetToDelete = await db.projet.findUnique({
         where: {
           id
         }
       })
 
-      if (actualiteToDelete == null) {
+      if (projetToDelete == null) {
         return fail(400, {
           data: data,
-          errorMsg: "L'actualité n'existe pas",
+          errorMsg: "Le projet n'existe pas",
         });
       }
 
-      await db.actualite.delete({
+      await db.projet.delete({
         where: {
           id
         },
       })
 
+     
       return {
         data: undefined,
         errorMsg: undefined,
@@ -60,7 +61,7 @@ export const actions = {
 
       return fail(400, {
         data: data,
-        errorMsg: "❌ Une erreur est survenue lors de la suppression de l'actualité",
+        errorMsg: "❌ Une erreur est survenue lors de la suppression du projet",
       });
 
     }

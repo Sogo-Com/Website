@@ -14,16 +14,17 @@
 			switch (result.type) {
 				case 'success':
 					toast.success('Actualité supprimé!');
-					
+					await update(result);
 					break;
 				case 'failure':
 					toast.error("Erreur lors de la suppression");
+					await update();
 					break;
 				default:
 					break;
 			}
-			await update();
-			goto("/admin/actualites", { invalidateAll: true })
+			
+			window.location.reload();
 		};
 	};
 

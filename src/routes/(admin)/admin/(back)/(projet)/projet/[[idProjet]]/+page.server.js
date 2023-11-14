@@ -3,10 +3,10 @@ import { IsJsonString, IsEmptyFile, IsString, IsStringNotEmpty, IsObject, IsPhot
 
 import bcrypt from 'bcrypt'
 import { db } from '$lib/database'
-import { writeFileSync } from 'fs';
+import {  writeFileSync,existsSync, mkdirSync } from 'fs';
 
-const FULL_UPLOAD_PATH = `uploads/actualites/`
-const PARTIAL_UPLOAD_PATH = "/uploads/actualites/"
+const FULL_UPLOAD_PATH = `uploads/projets/`
+const PARTIAL_UPLOAD_PATH = "/uploads/projets/"
 
 
 export const load = async (serverloadEvent) => {
@@ -17,17 +17,17 @@ export const load = async (serverloadEvent) => {
   }
 
   const { params } = serverloadEvent
-  const { idActualite = '' } = params
-  let actualite = await db.actualite.findUnique({
+  const { idProjet = '' } = params
+  let projet = await db.projet.findUnique({
     where: {
-      id: idActualite
+      id: idProjet
     }
   })
 
-  actualite = actualite == null ? {} : actualite
+  projet = projet == null ? {} : projet
 
   return {
-    actualite
+    projet
   }
 }
 
@@ -37,7 +37,7 @@ export const actions = {
     console.log("Hit action");
     const data = Object.fromEntries(await request.formData());
 
-    let { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photo, photoFile } = data
+    let { id, titre,  descriptionCourte,photo, photoLogo, photoFile ,photoLogoFile ,contenu} = data
 
     if (titre.length < 1) {
       return fail(400, {
@@ -46,19 +46,6 @@ export const actions = {
       });
     }
 
-    if (redacteur.length < 1) {
-      return fail(400, {
-        data: data,
-        errorMsg: "❌ Le redacteur ne doit pas être vide",
-      });
-    }
-
-    if (tempsLecture.length < 1) {
-      return fail(400, {
-        data: data,
-        errorMsg: "❌ Le temps de lecture ne doit pas être vide",
-      });
-    }
 
     if (descriptionCourte.length < 1) {
       return fail(400, {
@@ -72,6 +59,12 @@ export const actions = {
       
       if (IsPhoto(photoFile)) {
 
+        
+        if (!existsSync(FULL_UPLOAD_PATH)){
+          mkdirSync(FULL_UPLOAD_PATH);
+        }
+
+
         const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`
         const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`
 
@@ -80,30 +73,43 @@ export const actions = {
 
       }
 
-      const actualite = await db.actualite.upsert({
+          
+      if (IsPhoto(photoLogoFile)) {
+        
+        if (!existsSync(FULL_UPLOAD_PATH)){
+          mkdirSync(FULL_UPLOAD_PATH);
+        }
+        
+        const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoLogoFile.name}`
+        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoLogoFile.name}`
+
+        writeFileSync(fsPhotoPath, Buffer.from(await photoLogoFile.arrayBuffer()))
+        photoLogo = dbPhotoPath
+
+      }
+
+      const projet = await db.projet.upsert({
         where: {
           id
         },
         create: {
           titre,
           photo,
-          redacteur,
-          tempsLecture,
+          photoLogo,
           descriptionCourte,
           contenu,
         },
         update: {
           titre,
           photo,
-          redacteur,
-          tempsLecture,
+          photoLogo,
           descriptionCourte,
           contenu,
         },
       })
 
       return {
-        data: actualite,
+        data: projet,
         errorMsg: undefined,
       };
 
@@ -112,7 +118,7 @@ export const actions = {
 
       return fail(400, {
         data: data,
-        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'actualité",
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du projet",
       });
 
     }
@@ -129,26 +135,26 @@ export const actions = {
     if (!IsStringNotEmpty(id)) {
       return fail(400, {
         data: data,
-        errorMsg: "❌ L'identifiant de l'actualité est requis",
+        errorMsg: "❌ L'identifiant du projet est requis",
       });
     }
 
     try {
 
-      const actualiteToDelete = await db.actualite.findUnique({
+      const projetToDelete = await db.projet.findUnique({
         where: {
           id
         }
       })
 
-      if (actualiteToDelete == null) {
+      if (projetToDelete == null) {
         return fail(400, {
           data: data,
-          errorMsg: "L'actualité n'existe pas",
+          errorMsg: "Le projet n'existe pas",
         });
       }
 
-      await db.actualite.delete({
+      await db.projet.delete({
         where: {
           id
         },
@@ -163,7 +169,7 @@ export const actions = {
 
       return fail(400, {
         data: data,
-        errorMsg: "❌ Une erreur est survenue lors de la suppression de l'actualité",
+        errorMsg: "❌ Une erreur est survenue lors de la suppression du projet",
       });
 
     }

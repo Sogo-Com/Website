@@ -7,70 +7,68 @@
 	import { goto, } from '$app/navigation';
 
 	export let data;
-	let { actualite } = data;
+	let { projet } = data;
 	
 	let writerMethods;
 	
-	const submitCreateNote = async ({ form, data, action, cancel }) => {
+	const submitCreateProjet = async ({ form, data, action, cancel }) => {
 
-		
-		const { titre, redacteur,tempsLecture ,descriptionCourte, photoFile} = Object.fromEntries(data);
+		const { titre, descriptionCourte} = Object.fromEntries(data);
 
 		if (titre.length < 1) {
 			toast.error('Titre vide !');
 			cancel();
 		}
 
-		if (redacteur.length < 1) {
-			toast.error('Redacteur vide !');
-			cancel();
-		}
-		
-		if (tempsLecture.length < 1) {
-			toast.error('Temps de lecture vide !');
-			cancel();
-		}
-
 		if (descriptionCourte.length < 1) {
-			toast.error('Temps de lecture vide !');
+			toast.error('Description courte vide !');
 			cancel();
 		}
 
 
 		data.append('contenu', await writerMethods.saveContenu() ?? '')
-		data.append('id', actualite.id)
-		data.append('photo', actualite.photo ?? '')
+		data.append('id', projet.id)
+		data.append('photo', projet.photo ?? '')
+		data.append('photoLogo', projet.photoLogo ?? '')
 
 
 		return async ({ result, update }) => {
 			
 			switch (result.type) {
 				case 'success':
-					toast.success('Actualité enregistré!');
+					toast.success('Projet enregistré!');
 					await applyAction(result)
+			
+					await update();
+			
+					projet = result.data.data
+					goto(`/admin/projet/${projet.id}`,{invalidateAll: true})
+					writerMethods.loadContenu(projet.contenu)
 
 					break;
 				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
+					
+					await update();
+					break;
+				case 'error':
+					toast.error("Erreur lors de l'enregistrement");
+					
+					await update();
 					break;
 				default:
 					break;
 			}
-			
-			await update();
-			
-			actualite = result.data.data
-			goto(`/admin/actualite/${actualite.id}`,{invalidateAll: true})
-			writerMethods.loadContenu(actualite.contenu)
+
 
 		};
 	};
 
-	const submitDeleteNote  = () => {
+	const submitDeleteProjet  = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Actualité supprimé!');
+					toast.success('Projet supprimé!');
 					
 					break;
 				case 'failure':
@@ -80,7 +78,7 @@
 					break;
 			}
 			await update();
-			goto("/admin/actualites", { invalidateAll: true })
+			goto("/admin/projets", { invalidateAll: true })
 		};
 	};
 
@@ -88,11 +86,11 @@
 
 <Layout>
 	<div slot="buttons">
-		<button class="back-button" on:click={()=>{goto("/admin/actualites")}}>Retour aux actualites</button>
-		{#if actualite.id != null && actualite.id.length != 0}
+		<button class="back-button" on:click={()=>{goto("/admin/projets")}}>Retour aux projets</button>
+		{#if projet.id != null && projet.id.length != 0}
 
-			<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
-				<input type="hidden" name="id" value={actualite.id} />
+			<form action="?/delete" method="POST" use:enhance={submitDeleteProjet}>
+				<input type="hidden" name="id" value={projet.id} />
 				<button type="submit" class="delete-button">Supprimer</button>
 			</form>
 
@@ -101,12 +99,12 @@
 	</div>
 
 	<div>
-		<h1>Formulaire d'Actualité</h1>
+		<h1>Formulaire de Projet</h1>
 
-		<form method="POST" action="?/create" class="actualite-form"  use:enhance={submitCreateNote}>
+		<form method="POST" action="?/create" class="projet-form"  use:enhance={submitCreateProjet}>
 			<div class="form-group">
 				<label for="titre">Titre</label>
-				<input id="titre" name="titre" bind:value={actualite.titre} contenteditable="true" type="text"  />
+				<input id="titre" name="titre" bind:value={projet.titre} contenteditable="true" type="text"  />
 			</div>
 
 			<div class="form-group">
@@ -118,31 +116,38 @@
 				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
 				  
 				/>
-				{#if actualite.photo != null && actualite.photo.length != 0}
-					<img src={actualite.photo} alt={actualite.titre} />
+				{#if projet.photo != null && projet.photo.length != 0}
+					<img src={projet.photo} alt={projet.titre} />
 				{/if}
 			  </div>
 
 
-			<div class="form-group">
-				<label for="redacteur">Rédacteur</label>
-				<input id="redacteur" name="redacteur" bind:value={actualite.redacteur} contenteditable="true" type="text"  />
-			</div>
-			<div class="form-group">
-				<label for="tempsLecture">Temps de Lecture (en minutes)</label>
-				<input id="tempsLecture" name="tempsLecture" bind:value={actualite.tempsLecture} contenteditable="true" type="number"  />
-			</div>
+			  <div class="form-group">
+				<label for="fileLogo">Image Logo</label>
+				<input
+				  type="file"
+				  id="fileLogo"
+				  name="photoLogoFile"
+				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
+				  
+				/>
+				{#if projet.photoLogo != null && projet.photoLogo.length != 0}
+					<img src={projet.photoLogo} alt={projet.titre} />
+				{/if}
+			  </div>
+
+
 
 			<div class="form-group">
 				<label for="descriptionCourte">Description courte (200 caracteres max)</label>
-				<textarea id="descriptionCourte" rows="3" cols="45"  maxlength="200" name="descriptionCourte" bind:value={actualite.descriptionCourte} contenteditable="true" type="text"  />
+				<textarea id="descriptionCourte" rows="3" cols="45"  maxlength="200" name="descriptionCourte" bind:value={projet.descriptionCourte} contenteditable="true" type="text"  />
 			</div>
 
 			<div class="form-group">
 				<label for="contenu">Contenu</label>
 				
 				<div id="contenu" class="contenu" name="contenu" required >
-					<Writer bind:methods={writerMethods} contenu="{actualite.contenu}"/>
+					<Writer bind:methods={writerMethods} contenu="{projet.contenu}"/>
 				</div>
 			</div>
 			
@@ -152,7 +157,7 @@
 </Layout>
 
 <style lang="scss">
-	.actualite-form {
+	.projet-form {
 		margin: 0px 20px;
 		padding: 20px;
 		background-color: var(--color-blanc);

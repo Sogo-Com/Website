@@ -4,26 +4,29 @@
 	import toast from 'svelte-french-toast';
 
 	import Layout from '../../+layout.svelte';
+	import { goto, invalidateAll } from '$app/navigation';
 	
 	export let data;
-	let { actualites } = data;
+	let { projets } = data;
 
 
 	const submitDeleteNote  = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Actualité supprimé!');
+					toast.success('Projet supprimé!');
+					await update(result);
 					
 					break;
 				case 'failure':
 					toast.error("Erreur lors de la suppression");
+					await update();
 					break;
 				default:
 					break;
 			}
-			await update();
-			goto("/admin/actualites", { invalidateAll: true })
+			window.location.reload();
+			
 		};
 	};
 
@@ -31,14 +34,14 @@
 
 <Layout>
 	<div slot="buttons">
-		<a href="/admin/actualite" class="create-button" ><span>Créer une actualite</span></a>
+		<a href="/admin/projet" class="create-button" ><span>Créer un projet</span></a>
 	</div>
 	<div class="grid-view">
 		<h1>
-			{actualites.length == 0 ? 'Aucune actualité' : 'Liste des actualites'}
+			{projets.length == 0 ? 'Aucun projet' : 'Liste des projets'}
 		</h1>
 
-		<table class="actualite-table" style={actualites.length == 0 ? 'display:none;' : ''}>
+		<table class="projet-table" style={projets.length == 0 ? 'display:none;' : ''}>
 			<thead>
 				<tr>
 					<th>Titre</th>
@@ -48,26 +51,26 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each actualites as actualite, index}
+				{#each projets as projet, index}
 					<tr>
 						<td
-							><a href="/admin/actualite/{actualite.id}">{actualite?.titre ?? 'Aucun titre'}</a
+							><a href="/admin/projet/{projet.id}">{projet?.titre ?? 'Aucun titre'}</a
 							></td
 						>
-						<td>{actualite?.redacteur ?? 'Aucun rédacteur'}</td>
+						<td>{projet?.redacteur ?? 'Aucun rédacteur'}</td>
 
 						<td
 							>{new Intl.DateTimeFormat('fr-FR', {
 								dateStyle: 'full',
 								timeStyle: 'long'
-							}).format(actualite?.createdAt)}</td
+							}).format(projet?.createdAt)}</td
 						>
 						<td
 							>
 							
 							
 								<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
-									<input type="hidden" name="id" value={actualite.id} />
+									<input type="hidden" name="id" value={projet.id} />
 									<button type="submit" class="delete-button">Supprimer</button>
 								</form>
 
@@ -85,7 +88,7 @@
 
 
 
-	.actualite-table {
+	.projet-table {
 		width: 100%;
 		border-collapse: collapse;
 
@@ -158,7 +161,7 @@
 			border: 1px solid var(--color-gris-clair);
 			padding: 20px;
 
-			/* Styles spécifiques pour le contenu de la demande de actualite */
+			/* Styles spécifiques pour le contenu de la demande de projet */
 
 			/* Exemple de style pour le titre de la demande */
 			.request-title {

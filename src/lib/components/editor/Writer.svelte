@@ -49,10 +49,14 @@
 		loadContenu: (contenu = null) => {
 			if (editor != null && contenu != null) {
 
+				
 				if (IsJsonString(contenu)) {
 					contenu = JSON.parse(contenu);
 				}
 
+				if(contenu.blocks == null || contenu.blocks.length == 0)
+					return
+				
 				editor.isReady.then(() => {
 					editor.render(contenu);
 				});

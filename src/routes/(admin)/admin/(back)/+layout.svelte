@@ -20,6 +20,7 @@
 			<ul class="menu">
 				<li><a href="/admin/contacts">Demandes de contact</a></li>
 				<li><a href="/admin/actualites">Actualites</a></li>
+				<li><a href="/admin/projets">Projets</a></li>
 			</ul>
 		</div>
 	</div>
