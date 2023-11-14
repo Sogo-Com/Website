@@ -1,6 +1,6 @@
 <script>
 	import FlipCard from '$lib/components/FlipCard.svelte';
-	import { t } from '$lib/translations';
+
 	import { onMount } from 'svelte';
 
 	export let data;

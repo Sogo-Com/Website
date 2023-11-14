@@ -1,5 +1,5 @@
 <script>
-	import { t, locales, locale } from '$lib/translations';
+
 	import { page } from '$app/stores';
 	
 </script>

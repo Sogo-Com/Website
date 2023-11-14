@@ -1,5 +1,4 @@
 <script>
-    import { t } from '$lib/translations';
 
     export let form;
 </script>

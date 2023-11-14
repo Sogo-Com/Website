@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { t } from '$lib/translations';
 	import Swiper from 'swiper';
 	import { Pagination } from 'swiper/modules';
 	import 'swiper/css';
@@ -148,10 +147,10 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 </script>
 
 <div class="expertise" bind:this={container}>
-	<h2 bind:innerText={title} contenteditable="false">{$t('home.expertise-title')}</h2>
+	<h2 bind:innerText={title} contenteditable="false">Titre</h2>
 
 	<p bind:innerHTML={description} contenteditable="false">
-		{$t('home.expertise-description')}
+		Description
 	</p>
 
 	<div bind:this={links} class="links">
@@ -162,7 +161,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				changeExpertise(0);
 			}}
 		>
-			{$t('home.expertise-redaction')}
+			Rédaction
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -172,7 +171,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				changeExpertise(1);
 			}}
 		>
-			{$t('home.expertise-relationpresse')}
+			Relation de presse
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -182,7 +181,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				changeExpertise(2);
 			}}
 		>
-			{$t('home.expertise-graphisme')}
+			Graphisme
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -192,7 +191,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				changeExpertise(3);
 			}}
 		>
-			{$t('home.expertise-reseaux')}
+			Réseaux sociaux
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -202,7 +201,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				changeExpertise(4);
 			}}
 		>
-			{$t('home.expertise-photovideo')}
+			Photos & vidéos
 		</div>
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -212,7 +211,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				changeExpertise(5);
 			}}
 		>
-			{$t('home.expertise-evenements')}
+			Événements
 		</div>
 	</div>
 
@@ -234,7 +233,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		<img class="img-bg" src="{bgImageSrc}" alt="expertise-slide" />
 	</div>
 
-	<div class="btn">{$t('common.savoir+')}</div>
+	<div class="btn">En savoir +</div>
 	<div class="pagination" />
 </div>
 

@@ -1,5 +1,5 @@
 <script>
-	import { t } from '$lib/translations';
+	
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import Contact from '$lib/components/Contact.svelte';

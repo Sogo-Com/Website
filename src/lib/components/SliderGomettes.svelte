@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { t } from '$lib/translations';
 	import Swiper from 'swiper';
 	import { Pagination } from 'swiper/modules';
 	import 'swiper/css';

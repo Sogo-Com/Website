@@ -1,5 +1,5 @@
 <script>
-	import { t } from '$lib/translations';
+	
 	import { onMount } from 'svelte';
 	import Valeurs from '$lib/components/Valeurs.svelte';
 	import FriseHistoire from '$lib/components/FriseHistoire.svelte';
@@ -10,7 +10,7 @@
 <div id="top">
 	<img alt="background-sogo" src="/images/agence-bg.png" />
 
-	<h1><span class="pink">{$t('agence.titre-1')}</span><br />{$t('agence.titre-2')}</h1>
+	<h1><span class="pink">Des gommettes</span><br />qui en jettent !</h1>
 </div>
 
 <div id="guillemets">

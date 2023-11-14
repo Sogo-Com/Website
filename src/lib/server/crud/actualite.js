@@ -3,10 +3,9 @@ import { Base64toWebp, ToBase64RawString } from "../../utils/convert";
 import { uuid } from "../../utils/random";
 import { db } from '$lib/database'
 import { json , error} from '@sveltejs/kit'
-import { writeFile, writeFileSync } from 'fs';
-import { PUBLIC_UPLOADS_DIR } from '$env/static/public'
+import {  writeFileSync } from 'fs';
 
-const FULL_UPLOAD_PATH =`${PUBLIC_UPLOADS_DIR}actualites/`
+const FULL_UPLOAD_PATH =`uploads/actualites/`
 const PARTIAL_UPLOAD_PATH ="/uploads/actualites/"
 
 export default {

@@ -1,5 +1,5 @@
 <script>
-    import { t } from '$lib/translations';
+
     import { page } from '$app/stores'
     import {goto} from '$app/navigation'
     export let data;

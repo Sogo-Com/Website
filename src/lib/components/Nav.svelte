@@ -1,5 +1,5 @@
 <script>
-	import { t, locales, locale } from '$lib/translations';
+
 	import gsap from 'gsap';
 	import { goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
@@ -96,19 +96,19 @@
 		<div bind:this={menu} class="menu">
 			<div bind:this={links} class="links">
 				<a href="/agence">
-					{$t('common.menu-agence')}
+					Agence
 				</a>
 				<a href="/expertises">
-					{$t('common.menu-expertises')}
+					Expertises
 				</a>
 				<a  href="/projets">
-					{$t('common.menu-projets')}
+					Projets
 				</a>
 				<a href="/actualites">
-					{$t('common.menu-actualites')}
+					Actualites
 				</a>
 				<a href="/contact">
-					{$t('common.menu-contact')}
+					Contact
 				</a>
 
 				<a class="mobile presse" href="/presse"> Espace Presse </a>

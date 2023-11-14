@@ -1,5 +1,5 @@
 <script>
-	import { t } from '$lib/translations';
+	
 	import { onMount } from 'svelte';
 	import ProjetRow from '$lib/components/ProjetRow.svelte';
 	let container;

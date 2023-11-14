@@ -1,5 +1,5 @@
 <script>
-	import { t, locales, locale } from '$lib/translations';
+	
 	import { page } from '$app/stores';
 
 	export let description;
@@ -43,7 +43,7 @@
 	let societe;
 	let email;
 
-	let innerDescriptionText = $t('common.contact-description');
+	let innerDescriptionText = "Description";
 	if (typeof description === 'string' && description.length != 0)
 		innerDescriptionText = description;
 
@@ -95,18 +95,18 @@
 
 <form method="post" on:submit|preventDefault={handleSubmit}>
 	<p contenteditable="false" bind:innerText={innerDescriptionText} />
-	<label for="nom">{$t('common.contact-nom')}</label>
+	<label for="nom">Nom</label>
 	<input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
-	<label for="prenom">{$t('common.contact-prenom')}</label>
+	<label for="prenom">Prenom</label>
 	<input bind:this={prenom} type="text" name="prenom" id="prenom" placeholder="Votre prenom" />
 	<label for="societe">Société</label>
 	<input bind:this={societe} type="text" name="societe" id="societe" placeholder="Votre société" />
-	<label for="telephone">{$t('common.contact-telephone')}</label>
+	<label for="telephone">Téléphone</label>
 	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
-	<label for="email">{$t('common.contact-email')}</label>
+	<label for="email">Email</label>
 	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre email" />
 	<button type="submit" class="btn" for="envoyer" value="envoyer"
-		>{$t('common.contact-send')}</button
+		>Envoyer</button
 	>
 	<div class="status {statusClass}" contenteditable="false" bind:innerText={status}>
 

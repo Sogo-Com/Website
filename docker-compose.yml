@@ -21,8 +21,8 @@ services:
         source: ./prisma/dev.db
         target: /app/dev.db
       - type: bind
-        source: ./build-node/client/uploads/
-        target: /app/client/uploads/
+        source: ./uploads/
+        target: /app/uploads/
 networks:
   traefik-net:
    external: true
