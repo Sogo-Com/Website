@@ -4,8 +4,9 @@ import { uuid } from "../../utils/random";
 import { db } from '$lib/database'
 import { json , error} from '@sveltejs/kit'
 import { writeFile, writeFileSync } from 'fs';
+import { PUBLIC_UPLOADS_DIR } from '$env/static/public'
 
-const FULL_UPLOAD_PATH ="static/uploads/actualites/"
+const FULL_UPLOAD_PATH =`${PUBLIC_UPLOADS_DIR}actualites/`
 const PARTIAL_UPLOAD_PATH ="/uploads/actualites/"
 
 export default {
