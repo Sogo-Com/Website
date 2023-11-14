@@ -1,6 +1,6 @@
-import { fail, redirect } from '@sveltejs/kit'
+import { fail, redirect,invalid } from '@sveltejs/kit'
 import { IsJsonString, IsEmptyFile, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile, GetExtension } from "$lib/utils/type";
-import { invalid } from "@sveltejs/kit";
+
 import bcrypt from 'bcrypt'
 import { db } from '$lib/database'
 import { writeFileSync } from 'fs';
