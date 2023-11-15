@@ -55,3 +55,11 @@ model Projet {
   contenu           String
   createdAt         DateTime @default(now())
 }
+
+
+model Client {
+  id                String   @id @default(uuid())
+  nom               String
+  createdAt         DateTime @default(now())
+}
+
