@@ -48,7 +48,7 @@ model Actualite {
 model Projet {
   id                String   @id @default(uuid())
   titre             String
-  typeProjet        String   @default("") 
+  typeProjet        String   @default("")
   photo             String   @default("")
   photoLogo         String   @default("")
   descriptionCourte String   @default("")
@@ -56,11 +56,10 @@ model Projet {
   createdAt         DateTime @default(now())
 }
 
-
 model Client {
-  id                String   @id @default(uuid())
-  nom               String
-  typeClient        String   @default("")
-  createdAt         DateTime @default(now())
+  id          String   @id @default(uuid())
+  nom         String
+  typeClient  String   @default("")
+  typeDomaine String   @default("")
+  createdAt   DateTime @default(now())
 }
-
