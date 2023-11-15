@@ -60,6 +60,7 @@ model Projet {
 model Client {
   id                String   @id @default(uuid())
   nom               String
+  typeClient        String   @default("")
   createdAt         DateTime @default(now())
 }
 
