@@ -6,5 +6,5 @@ node_modules
 .env
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-# prisma/dev.db
+prisma/dev.db
 uploads/*
