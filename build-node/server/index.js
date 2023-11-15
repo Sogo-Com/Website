@@ -1,6 +1,6 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/index3-7ceb3c84.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/ssr-4049a6a7.js';
 import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-0087e825.js';
-import { w as writable, r as readable } from './chunks/index2-efbc8688.js';
+import { w as writable, r as readable } from './chunks/index2-d174f90b.js';
 
 let base = "";
 let assets = base;
@@ -48,15 +48,14 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.data_2(data_2);
   let $$settled;
   let $$rendered;
+  let previous_head = $$result.head;
   do {
     $$settled = true;
+    $$result.head = previous_head;
     {
       stores.page.set(page);
     }
-    $$rendered = `
-
-
-${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+    $$rendered = `  ${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
       $$result,
       { data: data_0, this: components[0] },
       {
@@ -114,9 +113,7 @@ ${constructors[1] ? `${validate_component(constructors[0] || missing_component, 
         }
       },
       {}
-    )}`}
-
-${``}`;
+    )}`} ${``}`;
   } while (!$$settled);
   return $$rendered;
 });
@@ -206,10 +203,10 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "kdfoc1"
+  version_hash: "1porbci"
 };
 function get_hooks() {
-  return import('./chunks/hooks.server-605091a4.js');
+  return import('./chunks/hooks.server-fc4ce644.js');
 }
 
 /** @type {Record<string, string>} */
