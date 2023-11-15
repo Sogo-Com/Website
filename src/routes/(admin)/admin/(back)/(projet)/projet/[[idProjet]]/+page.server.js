@@ -33,16 +33,31 @@ export const load = async (serverloadEvent) => {
 
 
 export const actions = {
-  create: async ({ request }) => {
-    console.log("Hit action");
+  create:  async ({ request, locals}) => {
+    
+   
     const data = Object.fromEntries(await request.formData());
 
-    let { id, titre,  descriptionCourte,photo, photoLogo, photoFile ,photoLogoFile ,contenu} = data
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN" ) {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { id, titre,typeProjet,  descriptionCourte,photo, photoLogo, photoFile ,photoLogoFile ,contenu} = data
 
     if (titre.length < 1) {
       return fail(400, {
         data: data,
         errorMsg: "❌ Le titre ne doit pas être vide",
+      });
+    }
+
+    if (typeProjet.length < 1) {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Le type ne doit pas être vide",
       });
     }
 
@@ -94,6 +109,7 @@ export const actions = {
         },
         create: {
           titre,
+          typeProjet,
           photo,
           photoLogo,
           descriptionCourte,
@@ -101,6 +117,7 @@ export const actions = {
         },
         update: {
           titre,
+          typeProjet,
           photo,
           photoLogo,
           descriptionCourte,

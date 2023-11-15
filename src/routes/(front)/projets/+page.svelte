@@ -2,10 +2,14 @@
 	
 	import { onMount } from 'svelte';
 	import ProjetRow from '$lib/components/ProjetRow.svelte';
+
+	export let data
+	const { projets } = data
+
 	let container;
 	let links;
 
-	const projets = [
+	const projetsData = [
 		{
 			id: 0,
 			class: 'redaction'
@@ -149,6 +153,19 @@
 			Évenements
 		</div>
 	</div>
+
+	{#each projets as projet, index}
+	<ProjetRow
+		isLeft="{index % 2 != 0}"
+		imgLeft="{index % 2 != 0 ? projet.photoLogo : projet.photo}"
+		imgRight="{index % 2 == 0 ? projet.photoLogo : projet.photo}"
+		description="{projet.descriptionCourte}"
+		title="{projet.titre}"
+		,
+		link="/projets/{projet.id}"
+	/>
+
+{/each}
 
 	<ProjetRow
 		isLeft="true"

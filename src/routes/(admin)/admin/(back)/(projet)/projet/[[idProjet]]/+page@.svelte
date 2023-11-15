@@ -108,6 +108,22 @@
 			</div>
 
 			<div class="form-group">
+				<label for="typeProjet">Type de projet</label>
+
+				<select id="typeProjet" value={projet.typeProjet ?? ""} name="typeProjet" required>
+					<option value="" selected disabled hidden>Choisissez un type...</option>
+					<option value="redaction">Rédaction</option>
+					<option value="presse">Presse</option>
+					<option value="graphisme">Graphisme</option>
+					<option value="reseaux">Réseaux</option>
+					<option value="photos">Photos</option>
+					<option value="evenements">Evenements</option>
+				</select>	
+			</div>
+
+			
+
+			<div class="form-group">
 				<label for="file">Image</label>
 				<input
 				  type="file"
@@ -185,6 +201,7 @@
 			input[type='text'],
 			input[type='number'],
 			textarea,
+			select,
 			.contenu {
 				width: 100%;
 				padding: 10px;

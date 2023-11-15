@@ -10,7 +10,8 @@
 	let { projets } = data;
 
 
-	const submitDeleteNote  = () => {
+	const submitDeleteProjet  = () => {
+		
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
@@ -45,7 +46,7 @@
 			<thead>
 				<tr>
 					<th>Titre</th>
-					<th>Redacteur</th>
+					<th>Type</th>
 					<th>Date de création</th>
 					<th>Supprimer</th>
 				</tr>
@@ -57,7 +58,7 @@
 							><a href="/admin/projet/{projet.id}">{projet?.titre ?? 'Aucun titre'}</a
 							></td
 						>
-						<td>{projet?.redacteur ?? 'Aucun rédacteur'}</td>
+						<td>{projet?.typeProjet ?? 'Aucun type'}</td>
 
 						<td
 							>{new Intl.DateTimeFormat('fr-FR', {
@@ -69,7 +70,7 @@
 							>
 							
 							
-								<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
+								<form action="?/delete" method="POST" use:enhance={submitDeleteProjet}>
 									<input type="hidden" name="id" value={projet.id} />
 									<button type="submit" class="delete-button">Supprimer</button>
 								</form>

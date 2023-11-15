@@ -33,9 +33,16 @@ export const load = async (serverloadEvent) => {
 
 
 export const actions = {
-  create: async ({ request }) => {
-    console.log("Hit action");
+  create: async ({ request, locals}) => {
+    
+ 
     const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN" ) {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
 
     let { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photo, photoFile } = data
 
@@ -128,8 +135,17 @@ export const actions = {
   },
 
 
-  delete: async ({ request }) => {
+  delete: async ({ request, locals}) => {
+
     const data = Object.fromEntries(await request.formData());
+
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN" ) {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
     const { id = null } = data
 
     if (!IsStringNotEmpty(id)) {

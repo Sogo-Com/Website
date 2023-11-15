@@ -48,6 +48,7 @@ model Actualite {
 model Projet {
   id                String   @id @default(uuid())
   titre             String
+  typeProjet        String   @default("")
   photo             String   @default("")
   photoLogo         String   @default("")
   descriptionCourte String   @default("")
