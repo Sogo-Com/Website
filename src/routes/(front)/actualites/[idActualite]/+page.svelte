@@ -7,7 +7,7 @@
 
 	export let data;
 	const {actualite} = data
-
+	
 	const contenu = actualite.contenu != null ? JSON.parse(actualite.contenu) : {}
 		
 

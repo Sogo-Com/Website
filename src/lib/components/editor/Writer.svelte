@@ -3,7 +3,7 @@
 	import EditorJS from '@editorjs/editorjs';
 	import Header from '@editorjs/header';
 	import NestedList from '@editorjs/nested-list';
-	import SimpleImage from '@editorjs/simple-image';
+	import ImageTool from '@editorjs/image';
 	import { IsJsonString } from '$lib/utils/type';
 	import ButtonTool from '$lib/editor/button/ButtonTool.js';
 	import ParagraphTool from '$lib/editor/paragraph/ParagraphTool.js';
@@ -37,7 +37,13 @@
 					shortcut: 'CMD+SHIFT+L'
 				},
 				image: {
-					class: SimpleImage
+					class: ImageTool,
+					config: {
+						endpoints: {
+							byFile: '/api/editorjs', 
+							byUrl: '/api/editorjs',
+						}
+					}
 				}
 			},
 			data: contenu,

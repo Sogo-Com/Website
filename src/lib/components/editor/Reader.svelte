@@ -1,6 +1,7 @@
 <script>
 	export let contenu;
 	const { blocks = [] } = contenu;
+	
 </script>
 
 <div id="contenu">
@@ -18,9 +19,7 @@
 			{#if block.type == 'header' && block.data.level == 4}
 				<h4>{block.data.text}</h4>
 			{/if}
-			{#if block.type == 'image'}
-				<img src={block.data.file.url} alt={block.data.caption} />
-			{/if}
+		
 			{#if block.type == 'list'}
 				<ul>
 					{#each block.data.items as item}
@@ -30,6 +29,10 @@
 			{/if}
 			{#if block.type == 'quote'}
 				<blockquote>{block.data.text}</blockquote>
+			{/if}
+			{#if block.type == 'image'}
+				<img src={block.data.file.url} alt={block.data.caption} />
+				<blockquote>{block.data.caption}</blockquote>
 			{/if}
 			{#if block.type == 'code'}
 				<pre><code>{block.data.code}</code></pre>
@@ -54,6 +57,21 @@
 
 	.block-button {
 		margin-bottom: 64px;
+	}
+
+	.block-image {
+		width: 100%;
+		max-height: 400px;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 	
 </style>
