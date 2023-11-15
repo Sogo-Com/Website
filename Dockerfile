@@ -3,7 +3,7 @@ FROM node:18-alpine AS build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm add prisma --save-dev && npx prisma migrate deploy && npx prisma generate && node ./post-deploy.js
+RUN npm add prisma --save-dev && npx prisma migrate deploy && npx prisma generate && node ./prisma/post-deploy.js
 RUN npm run build
 
 FROM node:18-alpine AS deploy-node
