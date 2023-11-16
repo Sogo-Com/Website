@@ -34,7 +34,10 @@
 		<div id="flipcard" bind:this={flipcard}>
 			<div class="front">
 				<h3>{titre}</h3>
-				<img src={imageSrc} alt={titre} />
+				{#if imageSrc}
+					<img src={imageSrc} alt={titre} />
+				{/if}
+				
 			</div>
 			<div class="back">
 				<img src="/images/bubble.png" alt="bubble" />
@@ -82,14 +85,14 @@
 			.front {
 
 				h3{
-					padding: 32px;
+					padding: 8px;
 					text-align: center;
 				}
 				img {
 					position: absolute;
 					border-radius: 500px;
-					right: -15%;
-					bottom: -35%;
+					right: -25%;
+					bottom: -45%;
 					width: 100%;
 					height: 100%;
                     object-fit: cover;
@@ -112,7 +115,7 @@
 				}
 				p {
 					color: #fff;
-					font-size: 0.8em;
+					font-size: 1rem;
 					position: relative;
 					z-index: 1;
 					text-align: left;

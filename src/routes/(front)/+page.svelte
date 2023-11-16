@@ -13,7 +13,7 @@
 	<img alt="background-sogo" src="/images/bg-home.png" />
 	<div class="abso bg-gris" />
 
-	<h1 class="abso">Sogo Com, votre agence de communication</h1>
+	<h1 class="abso">Sogo Com, votre agence<br> de communication</h1>
 </div>
 <div class="blanc" id="blanc">
 	<div class="wrapper">
@@ -361,6 +361,9 @@
 				justify-content: center;
 			}
 
+			h2{
+				font-size: 2.5rem;
+			}
 			.contact-form {
 				width: 45%;
 				@media only screen and (max-width: $tablet) {

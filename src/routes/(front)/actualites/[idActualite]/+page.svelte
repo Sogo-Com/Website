@@ -1,7 +1,4 @@
 <script>
-	import FlipCard from '$lib/components/FlipCard.svelte';
-
-	import { onMount } from 'svelte';
 	import Reader from '$lib/components/editor/Reader.svelte';
 
 

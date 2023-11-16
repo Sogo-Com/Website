@@ -15,7 +15,7 @@
 					trigger: '.filtre',
 					start: 'top 120px',
 					end: `bottom ${filtre.firstElementChild.clientHeight + 120}px`,
-					markers: true,
+					// markers: true,
 					pin: true
 				}
 			});

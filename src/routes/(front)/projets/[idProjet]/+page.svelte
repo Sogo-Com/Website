@@ -1,64 +1,41 @@
 <script>
-	import FlipCard from '$lib/components/FlipCard.svelte';
+	import Reader from '$lib/components/editor/Reader.svelte';
 
-	import { onMount } from 'svelte';
 
-	onMount((_) => {});
+	export let data;
+	const {projet} = data
+	
+	const contenu = projet.contenu != null ? JSON.parse(projet.contenu) : {}
+		
+
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/agence-bg.png" />
+	<img alt="background-sogo" src="{projet.photo ?? "/images/agence-bg.png"}" />
 
 </div>
 
-<div class="actualite">
+<div class="projet">
 
 	<h1>
-		Titre du projet
+		{projet.titre ?? "Projet"}
 	</h1>
 
 	<div class="actu-bar">
-		<div class="author">
-			<img src="/images/author.svg" alt="author">
-			Gaëlle Tagliabue
-		</div>
-
+		
 		<div class="calendar">
 			<img  src="/images/calendar.svg" alt="calendar">
-			30 mai 2023
+			{ new Intl.DateTimeFormat("en-GB").format(projet.createdAt) }
 		</div>
 
 		<div class="commentary">
 			<img  src="/images/commentary.svg" alt="commentary">
-			5 commentaires
+			{ projet.typeProjet  } 
 		</div>
 	</div>
 
 	<div class="contenu">
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
-
-Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.
-		</p> 
+		<Reader contenu="{contenu}"/>
 	</div>
 </div>
 
@@ -74,7 +51,8 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condime
 
 		@media only screen and (max-width: $phone) {
 			align-items: center;
-			}
+			height: 60vh;
+		}
 
 
 		img {
@@ -88,17 +66,26 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condime
 		}
 	}
 
-	.actualite{
+	.projet{
 		z-index: 15;
 		position: relative;
 		border-radius: 32px;
-		padding: 64px;
-		margin: -400px 64px 64px 64px;
+		padding: 64px 10%;
+		margin: -400px 20% 64px 20%;
 		background-color: #fff;
 
+		@media only screen and (max-width: $tablet) {
+			margin: -300px 10% 32px 10%;
+		}
+
+		@media only screen and (max-width: $phone) {
+			margin: 0;
+			padding: 64px 12px 32px 12px;
+		}
 		h1{
 			color: $color-gris-dark;
 			padding:8px 0;
+			font-size: 3rem;
 		}
 		.actu-bar{
 			margin: 32px 0;
@@ -111,7 +98,7 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condime
 				padding: 16px 0;
 				display: flex;
 				width: fit-content;
-			
+				flex-basis: 33.3%;
 				align-items: center;
 				font-family: $font-secondary-light;
 				flex-grow: 1;
@@ -120,11 +107,9 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condime
 					padding: 0 16px;
 				}
 			}
-			.author{
-				justify-content: left;
-			}
+			
 			.calendar{
-				justify-content: center;
+				justify-content: left;
 			}
 			.commentary{
 				justify-content: right;
@@ -132,9 +117,7 @@ Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condime
 
 		}
 
-		p{
-			font-size: 0.8rem;
-		}
+
 
 	}
 </style>

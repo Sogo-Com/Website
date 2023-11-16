@@ -25,6 +25,7 @@
 		});
 	});
 
+
 	onNavigate((navigation) => {
         
 		if (!document.startViewTransition) return;
@@ -36,7 +37,7 @@
                 smoothScroll.scrollTop(0)
 				resolve();
 				await navigation.complete;
-                animations.refresh();
+                animations.load();
 			});
 
 		});

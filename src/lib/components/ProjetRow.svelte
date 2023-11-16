@@ -10,6 +10,9 @@
     export let title;
     export let description
 
+	isLeft = isLeft.toString()
+
+	
     function clicked(){
         if(link != null && link.length > 0)
             goto(link)

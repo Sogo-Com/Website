@@ -244,7 +244,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 10rem 11%;
+		padding: 64px 11%;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
 

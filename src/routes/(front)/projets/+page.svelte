@@ -2,54 +2,29 @@
 	
 	import { onMount } from 'svelte';
 	import ProjetRow from '$lib/components/ProjetRow.svelte';
+	import { enhance, applyAction } from '$app/forms';
+	import { invalidate, invalidateAll } from '$app/navigation';
 
 	export let data
-	const { projets } = data
+	let { projets } = data
 
 	let container;
 	let links;
 
-	const projetsData = [
-		{
-			id: 0,
-			class: 'redaction'
-		},
-		{
-			id: 1,
-			class: 'presse'
-		},
-		{
-			id: 2,
-			class: 'graphisme'
-		},
-		{
-			id: 3,
-			class: 'reseaux'
-		},
-		{
-			id: 4,
-			class: 'photos'
-		},
-		{
-			id: 5,
-			class: 'evenements'
-		}
-	];
+	const typesProjets = ['redaction','presse','graphisme','reseaux','photos','evenements'];
 
-	let oldProjets = {
+	let oldProjet = {
 		class: ''
 	};
 
 	function changeProjet(id) {
+
 		Array.from(links.children).map((child) => {
-			child.classList.remove('active');
+			child.querySelector(".link").classList.remove('active');
 			return child;
 		});
-		links.children[id].classList.add('active');
-		changeContainerClass(projet[id].class);
-		title = projet[id].title;
-		description = projet[id].description;
-		changeImages(projet[id].images);
+		links.querySelectorAll(`.link`).item(id).classList.add('active');
+		changeContainerClass(typesProjets[id]);
 	}
 
 	function changeContainerClass(classToAdd) {
@@ -57,6 +32,34 @@
 		if (oldProjet.class.length > 0) container.classList.remove(oldProjet.class);
 		oldProjet.class = classToAdd;
 	}
+
+	
+	const submitFindProjets  = () => {
+		return async ({ result, update ,data,cancel}) => {
+		
+			const form = Object.fromEntries(data);
+      		const { typeProjet = null } = form
+
+			switch (result.type) {
+				case 'success':
+					
+					projets = result.data.data
+					await update();
+					window?.refreshAnimations()
+					changeProjet(typesProjets.indexOf(typeProjet))
+
+					break;
+				case 'failure':
+					await update();
+					break;
+				default:
+					break;
+			}
+		
+					
+		};
+	};
+
 
 	onMount((_) => {});
 </script>
@@ -93,70 +96,43 @@
 
 <div class="projet" bind:this={container}>
 	<div bind:this={links} class="links">
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeProjet(0);
-			}}
-		>
-			Rédaction
-		</div>
+		
+		
+		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
+			<input type="hidden" name="typeProjet" value="redaction" />
+			<button type="submit" class="link">Rédaction</button>
+		</form>
+		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
+			<input type="hidden" name="typeProjet" value="presse" />
+			<button type="submit" class="link">Relation de presse</button>
+		</form>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeProjet(1);
-			}}
-		>
-			Relation de presse
-		</div>
+		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
+			<input type="hidden" name="typeProjet" value="graphisme" />
+			<button type="submit" class="link">Graphisme</button>
+		</form>
+	
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeProjet(2);
-			}}
-		>
-			Graphisme
-		</div>
+		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
+			<input type="hidden" name="typeProjet" value="reseaux" />
+			<button type="submit" class="link">Réseaux sociaux</button>
+		</form>
+		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
+			<input type="hidden" name="typeProjet" value="photos" />
+			<button type="submit" class="link">Photos et vidéos</button>
+		</form>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeProjet(3);
-			}}
-		>
-			Réseaux sociaux
-		</div>
-
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeProjet(4);
-			}}
-		>
-			Photos et vidéos
-		</div>
-
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeProjet(5);
-			}}
-		>
-			Évenements
-		</div>
+		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
+			<input type="hidden" name="typeProjet" value="evenements" />
+			<button type="submit" class="link">Évenements</button>
+		</form>
+	
 	</div>
 
 	{#each projets as projet, index}
+	
 	<ProjetRow
-		isLeft="{index % 2 != 0}"
+		isLeft="{index % 2 == 0}"
 		imgLeft="{index % 2 != 0 ? projet.photoLogo : projet.photo}"
 		imgRight="{index % 2 == 0 ? projet.photoLogo : projet.photo}"
 		description="{projet.descriptionCourte}"
@@ -167,44 +143,6 @@
 
 {/each}
 
-	<ProjetRow
-		isLeft="true"
-		imgLeft="/images/tomme-bauges.png"
-		imgRight="/images/livre.png"
-		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-		luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
-		condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
-		facilisis orci at luctus."
-		title="Tome des Bauges"
-		,
-		link="/projets/1"
-	/>
-
-	<ProjetRow
-		isLeft="false"
-		imgLeft="/images/bouteille.png"
-		imgRight="/images/distillerie.png"
-		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-		luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
-		condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
-		facilisis orci at luctus."
-		title="Distillerie St Esprit"
-		,
-		link="/projets/1"
-	/>
-
-	<ProjetRow
-		isLeft="true"
-		imgLeft="/images/st-marcellin.png"
-		imgRight="/images/livre.png"
-		description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-		luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
-		condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
-		facilisis orci at luctus."
-		title="St Marcellin"
-		,
-		link="/projets/1"
-	/>
 </div>
 
 <style lang="scss">
@@ -291,7 +229,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 64px 0;
+		padding-top: 64px;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 		background-color: #fff;
 
