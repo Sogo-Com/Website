@@ -4,7 +4,11 @@ import { db } from '$lib/database'
 
 export const load = async (serverloadEvent) => {
 
-  const projets = await db.projet.findMany()
+  const projets = await db.projet.findMany({
+    where: {
+      typeProjet:'redaction'
+    }
+  })
   return {
     projets
   }

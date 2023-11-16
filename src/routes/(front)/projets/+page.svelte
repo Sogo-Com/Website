@@ -1,26 +1,24 @@
 <script>
-	
 	import { onMount } from 'svelte';
 	import ProjetRow from '$lib/components/ProjetRow.svelte';
 	import { enhance, applyAction } from '$app/forms';
 	import { invalidate, invalidateAll } from '$app/navigation';
 
-	export let data
-	let { projets } = data
+	export let data;
+	let { projets } = data;
 
 	let container;
 	let links;
 
-	const typesProjets = ['redaction','presse','graphisme','reseaux','photos','evenements'];
+	const typesProjets = ['redaction', 'presse', 'graphisme', 'reseaux', 'photos', 'evenements'];
 
 	let oldProjet = {
 		class: ''
 	};
 
 	function changeProjet(id) {
-
 		Array.from(links.children).map((child) => {
-			child.querySelector(".link").classList.remove('active');
+			child.querySelector('.link').classList.remove('active');
 			return child;
 		});
 		links.querySelectorAll(`.link`).item(id).classList.add('active');
@@ -29,24 +27,21 @@
 
 	function changeContainerClass(classToAdd) {
 		container.classList.add(classToAdd);
-		if (oldProjet.class.length > 0) container.classList.remove(oldProjet.class);
+		if (oldProjet.class.length > 0 && classToAdd != oldProjet.class) container.classList.remove(oldProjet.class);
 		oldProjet.class = classToAdd;
 	}
 
-	
-	const submitFindProjets  = () => {
-		return async ({ result, update ,data,cancel}) => {
-		
+	const submitFindProjets = () => {
+		return async ({ result, update, data, cancel }) => {
 			const form = Object.fromEntries(data);
-      		const { typeProjet = null } = form
+			const { typeProjet = null } = form;
 
 			switch (result.type) {
 				case 'success':
-					
-					projets = result.data.data
+					projets = result.data.data;
 					await update();
-					window?.refreshAnimations()
-					changeProjet(typesProjets.indexOf(typeProjet))
+					window?.refreshAnimations();
+					changeProjet(typesProjets.indexOf(typeProjet));
 
 					break;
 				case 'failure':
@@ -55,11 +50,8 @@
 				default:
 					break;
 			}
-		
-					
 		};
 	};
-
 
 	onMount((_) => {});
 </script>
@@ -70,7 +62,7 @@
 </div>
 <div class="gris">
 	<div class="question gris-child">
-		<h2>
+		<h2 data-noamin>
 			Que fait-on <br />
 			chez Sogo Com ?
 		</h2>
@@ -96,8 +88,6 @@
 
 <div class="projet" bind:this={container}>
 	<div bind:this={links} class="links">
-		
-		
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="redaction" />
 			<button type="submit" class="link">Rédaction</button>
@@ -111,7 +101,6 @@
 			<input type="hidden" name="typeProjet" value="graphisme" />
 			<button type="submit" class="link">Graphisme</button>
 		</form>
-	
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="reseaux" />
@@ -126,23 +115,20 @@
 			<input type="hidden" name="typeProjet" value="evenements" />
 			<button type="submit" class="link">Évenements</button>
 		</form>
-	
 	</div>
 
 	{#each projets as projet, index}
-	
-	<ProjetRow
-		isLeft="{index % 2 == 0}"
-		imgLeft="{index % 2 != 0 ? projet.photoLogo : projet.photo}"
-		imgRight="{index % 2 == 0 ? projet.photoLogo : projet.photo}"
-		description="{projet.descriptionCourte}"
-		title="{projet.titre}"
-		,
-		link="/projets/{projet.id}"
-	/>
-
-{/each}
-
+		<ProjetRow
+			isLeft={index % 2 == 0}
+			imgLeft={index % 2 != 0 ? projet.photoLogo : projet.photo}
+			imgRight={index % 2 == 0 ? projet.photoLogo : projet.photo}
+			description={projet.descriptionCourte}
+			title={projet.titre}
+			,
+			customClass={projet.typeProjet}
+			link="/projets/{projet.id}"
+		/>
+	{/each}
 </div>
 
 <style lang="scss">
@@ -151,7 +137,7 @@
 		position: relative;
 		display: flex;
 
-		@media only screen and (max-width:$phone) {
+		@media only screen and (max-width: $phone) {
 			height: 50vh;
 			align-items: end;
 		}
@@ -162,12 +148,11 @@
 			z-index: 15;
 			position: relative;
 
-			@media only screen and (max-width:$phone) {
+			@media only screen and (max-width: $phone) {
 				padding: 64px 8px;
 				width: 100%;
 				text-align: center;
 			}
-			
 		}
 
 		img {
@@ -187,25 +172,25 @@
 		justify-content: center;
 		align-items: center;
 		background-color: $color-gris-clair;
-	
+
 		@media only screen and (max-width: $phone) {
 			flex-direction: column;
 			margin: 0;
-			padding:32px 12px ;
+			padding: 32px 12px;
 		}
 		.gris-child {
 			flex-basis: 50%;
 			@media only screen and (max-width: $phone) {
 				flex-basis: 100%;
 				width: 100%;
-			}	
+			}
 		}
 		.question {
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
-				padding:0;
-				text-align: center	;
-			}	
+				padding: 0;
+				text-align: center;
+			}
 
 			padding: 128px 64px 128px 11%;
 
@@ -234,9 +219,9 @@
 		background-color: #fff;
 
 		@media only screen and (max-width: $phone) {
-			
-				padding:32px 0px;
-		}	
+			padding: 32px 0px;
+		}
+
 
 		.links {
 			align-items: center;
@@ -268,4 +253,5 @@
 			}
 		}
 	}
+
 </style>

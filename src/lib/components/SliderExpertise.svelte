@@ -19,8 +19,8 @@
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/mokup.png',
-				'/images/mokup.png',
+				'/images/SliderRedac/Redac1.png',
+				'/images/SliderRedac/Redac2.png',
 				'/images/mokup.png'
 			],
 			bgImages : '/images/exper-jaune.png'
@@ -33,9 +33,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/mokup.png',
-				'/images/mokup.png',
-				'/images/mokup.png'
+				'/images/SliderRelationsPresse/RelationsPresse1.png',
+				'/images/SliderRelationsPresse/RelationsPresse2.png',
+				'/images/SliderRelationsPresse/RelationsPresse3.png'
 			],
 			bgImages : '/images/exper-jaune.png'
 		},
@@ -47,9 +47,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs. `,
 			images: [
-				'/images/mokup.png',
-				'/images/mokup.png',
-				'/images/mokup.png'
+				'/images/SliderGraphisme/Graphisme1.png',
+				'/images/SliderGraphisme/Graphisme2.png',
+				'/images/SliderGraphisme/Graphisme3.png'
 			],
 			bgImages : '/images/exper-rose.png'
 		},
@@ -61,9 +61,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/mokup.png',
-				'/images/mokup.png',
-				'/images/mokup.png'
+				'/images/SliderReseauxSociaux/carretta.png',
+				'/images/SliderReseauxSociaux/festivalMagie.png',
+				'/images/SliderReseauxSociaux/liberart.png',
 			],
 			bgImages : '/images/exper-bleu.png'
 		},
@@ -75,7 +75,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/mokup.png',
+				'/images/SlidePhotoVideo/2.png',
 				'/images/mokup.png',
 				'/images/mokup.png'
 			],
@@ -89,9 +89,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/mokup.png',
-				'/images/mokup.png',
-				'/images/mokup.png'
+				'/images/SliderEvenement/1.png',
+				'/images/SliderEvenement/2.png',
+				'/images/SliderEvenement/3.png',
 			],
 			bgImages : '/images/exper-rouge.png'
 		}
