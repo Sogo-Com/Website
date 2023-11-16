@@ -190,6 +190,14 @@
 			.swiper-pagination-bullet-active {
 				background: #e5ae1e !important;
 			}
+				
+			h3:before{
+				background-color: rgba(#e5ae1e, 0.1);
+			}
+
+			h3:after{
+				background-color: rgba(#e5ae1e, 0.1);
+			}
 		}
 		&.presse {
 			&.right{
@@ -206,6 +214,16 @@
 			.swiper-pagination-bullet-active {
 				background: #e5ae1e !important;
 			}
+
+			
+			
+			h3:before{
+				background-color: rgba(#e5ae1e, 0.1);
+			}
+
+			h3:after{
+				background-color: rgba(#e5ae1e, 0.1);
+			}
 		}
 		&.graphisme {
 		
@@ -220,6 +238,15 @@
 			}
 			.swiper-pagination-bullet-active {
 				background: #a48bad !important;
+			}
+
+			
+			h3:before{
+				background-color: rgba(#a48bad, 0.1);
+			}
+
+			h3:after{
+				background-color: rgba(#a48bad, 0.1);
 			}
 		}
 		&.reseaux {
@@ -236,6 +263,15 @@
 			.swiper-pagination-bullet-active {
 				background: #2c9a9b !important;
 			}
+
+			
+			h3:before{
+				background-color: rgba(#2c9a9b, 0.1);
+			}
+
+			h3:after{
+				background-color: rgba(#2c9a9b, 0.1);
+			}
 		}
 		&.photos {
 			&.right{
@@ -250,6 +286,14 @@
 			}
 			.swiper-pagination-bullet-active {
 				background: #989a6f !important;
+			}
+
+			h3:before{
+				background-color: rgba(#989a6f, 0.1);
+			}
+
+			h3:after{
+				background-color: rgba(#989a6f, 0.1);
 			}
 		}
 		&.evenements {
@@ -266,6 +310,14 @@
 			}
 			.swiper-pagination-bullet-active {
 				background: #9d524f !important;
+			}
+
+			h3:before{
+				background-color: rgba(#9d524f, 0.1);
+			}
+
+			h3:after{
+				background-color: rgba(#9d524f, 0.1);
 			}
 		}
 	}
