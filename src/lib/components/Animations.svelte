@@ -19,7 +19,7 @@
 	export const methods = {
 		load: () => {
 
-			const noanim = ":not([data-noamin])"
+			const noanim = ":not([data-noamin],.noanim)"
 		
 			//Titres
 
@@ -175,9 +175,9 @@
 
 <style lang="scss" global>
 	//Anims
-	h1:not([data-noamin]),
-	h2:not([data-noamin]),
-	h3:not([data-noamin]) {
+	h1:not([data-noamin],.noanim),
+	h2:not([data-noamin],.noanim),
+	h3:not([data-noamin],.noanim) {
 		opacity: 0;
 		visibility: hidden;
 	}
