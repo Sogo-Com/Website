@@ -4,6 +4,10 @@
 	import Valeurs from '$lib/components/Valeurs.svelte';
 	import FriseHistoire from '$lib/components/FriseHistoire.svelte';
 	import SliderGomettes from '$lib/components/SliderGomettes.svelte';
+
+	export let data;
+	let { collaborateurs } = data;
+
 	onMount((_) => {});
 </script>
 
@@ -35,7 +39,7 @@
 </div>
 <Valeurs />
 <FriseHistoire />
-<SliderGomettes />
+<SliderGomettes {collaborateurs} />
 
 <style lang="scss">
 	#top {
@@ -97,7 +101,7 @@
 				}
 
 			.bloc-seul {
-				width: 60%;
+				width: 65%;
 				height: 100%;
 				display: flex;
 				justify-content: center;
@@ -142,8 +146,8 @@
 					justify-content: center;
 
 					p {
-						font-size: 2rem;
-						line-height: 48px;
+						font-size: 1.5rem;
+						line-height: 32px;
 						@media only screen and (max-width: $phone) {
 							line-height: normal;
 						}

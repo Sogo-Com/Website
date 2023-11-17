@@ -63,3 +63,14 @@ model Client {
   typeDomaine String   @default("")
   createdAt   DateTime @default(now())
 }
+
+model Collaborateur {
+  id                String   @id @default(uuid())
+  prenom            String
+  descriptionCourte String
+  description       String   @default("")
+  photoInactive     String   @default("")
+  photoActive       String   @default("")
+  rang       Int   @default(1)
+  createdAt         DateTime @default(now())
+}

@@ -4,7 +4,10 @@
 	import { goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { onMount, beforeUpdate,afterUpdate } from 'svelte';
+	import { onNavigate } from '$app/navigation';
+
+	
 
 	let links;
 	let logo;
@@ -17,10 +20,33 @@
 		mobile = window.matchMedia('(max-width: 1150px)').matches;
 		mobileTl = gsap.timeline();
 
-		mobileMenu();
 		clickLink();
-		checkActive();
+		mobileMenu();
+		checkLinks(window.location)
 	});
+
+	
+
+	onNavigate(( {to}) => {
+		
+		const {url} = to;
+		checkLinks(url)
+
+	});
+
+	function checkLinks(url){
+		const linkChilds = Array.from(links.children);
+		if(linkChilds.length != 0 && url != null)
+		{
+			linkChilds.forEach((link) => {
+				link.classList.remove('active');
+				const linkUrl = new URL(link.href);
+				if (url.pathname == linkUrl.pathname) link.classList.add('active');
+			});
+		}
+
+	}
+
 
 	function mobileMenu() {
 		if (!mobile) return;
@@ -45,6 +71,12 @@
 		});
 	}
 
+	function clickLink() {
+		for (const link of links.children) {
+			mobileClose()
+		}
+	}
+
 	function mobileClose() {
 
 		if(!mobile)
@@ -58,38 +90,15 @@
 		});
 	}
 
-	function clickLink() {
-		for (const link of links.children) {
-			link.addEventListener('click', checkActive);
-		}
-	}
-	function checkActive(e) {
-		mobileClose()
 
-		if (e?.currentTarget != null) {
-			const a = e.currentTarget;
 
-			for (const link of links.children) {
-				link.classList.remove('active');
-			}
-			a.classList.add('active');
-		} else {
-			let pathname = window.location.pathname;
-			for (const link of links.children) {
-				const url = new URL(link.href);
-
-				if (url.pathname == pathname) link.classList.add('active');
-				else link.classList.remove('active');
-			}
-		}
-	}
 </script>
 
 <div id="navContainer">
 	<div class="menu-container">
 	
 
-		<a data-sveltekit-reload bind:this={logo} class="logo-menu" href="/">
+		<a  bind:this={logo} class="logo-menu" href="/">
 			<img alt="logo menu" src="/images/logo-menu.svg" />
 		</a>
 
