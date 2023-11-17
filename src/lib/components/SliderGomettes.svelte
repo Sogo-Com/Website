@@ -8,77 +8,80 @@
 
     export let collaborateurs;
 
+
     let prenom;
     let descriptionCourte;
     let description;
 
     
-    collaborateurs = [...collaborateurs,...[
-        {
-            id: 0,
-            prenom: "Muriel",
-            descriptionCourte: "La gommette des gommettes",
-            description: "La gommette des gommettes",
-            photoInactive: "/images/Muriel1.png",
-            rang:7,
-            photoActive: "/images/Muriel2.png"
+    // collaborateurs = [...collaborateurs,...[
+    //     {
+    //         id: 0,
+    //         prenom: "Muriel",
+    //         descriptionCourte: "La gommette des gommettes",
+    //         description: "La gommette des gommettes",
+    //         photoInactive: "/images/Muriel1.png",
+    //         rang:7,
+    //         photoActive: "/images/Muriel2.png"
         
-        },
-        {
-            id: 1,
-            prenom: "Gaelle",
-            descriptionCourte: "La gommette des videos montages",
-            description: "La gommette des gommettes",
-            photoInactive: "/images/Gaelle1.png",
-            photoActive: "/images/Gaelle2.png",
-            rang:6,
-        },
-        {
-            id: 2,
-            prenom: "Julie",
-            descriptionCourte: "La gommette des goblins",
-            description: "La gommette des gommettes",
-            photoInactive: "/images/Julie1.png",
-            photoActive: "/images/Julie2.png",
-            rang:5,
-        },
-        {
-            id: 3,
-            prenom: "Sophie",
-            descriptionCourte: "La gommette des gommettes",
-            description: "La gommette des gommettes",
-            photoInactive: "/images/Sophie1.png",
-            photoActive: "/images/Sophie2.png",
-            rang:2,
-        },
+    //     },
+    //     {
+    //         id: 1,
+    //         prenom: "Gaelle",
+    //         descriptionCourte: "La gommette des videos montages",
+    //         description: "La gommette des gommettes",
+    //         photoInactive: "/images/Gaelle1.png",
+    //         photoActive: "/images/Gaelle2.png",
+    //         rang:6,
+    //     },
+    //     {
+    //         id: 2,
+    //         prenom: "Julie",
+    //         descriptionCourte: "La gommette des goblins",
+    //         description: "La gommette des gommettes",
+    //         photoInactive: "/images/Julie1.png",
+    //         photoActive: "/images/Julie2.png",
+    //         rang:5,
+    //     },
+    //     {
+    //         id: 3,
+    //         prenom: "Sophie",
+    //         descriptionCourte: "La gommette des gommettes",
+    //         description: "La gommette des gommettes",
+    //         photoInactive: "/images/Sophie1.png",
+    //         photoActive: "/images/Sophie2.png",
+    //         rang:2,
+    //     },
       
-        {
-            id: 5,
-            prenom: "Veronique",
-            descriptionCourte: "La gommette des gommettes",
-            description: "La gommette des gommettes",
-            photoInactive: "/images/Veronique1.png",
-            photoActive: "/images/Veronique2.png",
-            rang:3,
-        },
-        {
-            id: 6,
-            prenom: "Magali",
-            descriptionCourte: "La gommette des gommettes",
-            description: "La gommette des gommettes",
-            photoInactive: "/images/Magali1.png",
-            photoActive: "/images/Magali2.png",
-            rang:4,
-        },
-    ]]
+    //     {
+    //         id: 5,
+    //         prenom: "Veronique",
+    //         descriptionCourte: "La gommette des gommettes",
+    //         description: "La gommette des gommettes",
+    //         photoInactive: "/images/Veronique1.png",
+    //         photoActive: "/images/Veronique2.png",
+    //         rang:3,
+    //     },
+    //     {
+    //         id: 6,
+    //         prenom: "Magali",
+    //         descriptionCourte: "La gommette des gommettes",
+    //         description: "La gommette des gommettes",
+    //         photoInactive: "/images/Magali1.png",
+    //         photoActive: "/images/Magali2.png",
+    //         rang:4,
+    //     },
+    // ]]
 
-    collaborateurs?.forEach((collaborateur, index) => {
+    collaborateurs?.sort((a,b)=> a.rang - b.rang).forEach((collaborateur, index) => {
         collaborateur.partialId = index
     })
-
-    collaborateurs.sort((a,b)=> a.rang - b.rang)
-
+    
 	onMount((_) => {
+
+
+        if(collaborateurs == null || collaborateurs.length == 0)
+            return
 
 		let swiper = new Swiper('.swiper-container', {
 			modules: [Pagination],
@@ -138,6 +141,8 @@
 
 </script>
 
+{#if collaborateurs != null && collaborateurs.length != 0}
+
 <div class="collaborateurs">
 
     <div class="h2-seo center">
@@ -173,6 +178,8 @@
     </div>
  
 </div>
+
+{/if}
 
 <style lang="scss" >
 	.collaborateurs {

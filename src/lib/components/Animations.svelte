@@ -24,7 +24,6 @@
 			//Titres
 
 			const isMedia = window.matchMedia("(max-width:1150px)").matches
-			console.log(isMedia);
 			document.querySelectorAll("h1")?.forEach((elem) => {
 				const splited = new SplitText(elem, { type: 'words,chars' });
 
