@@ -285,10 +285,16 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				align-items: center;
 
 				img {
+					
 					width: auto;
 					height: 80%;
 					object-fit: contain;
 					background-size: contain;
+
+					@media only screen and (max-width: $phone) {
+						width: 80%;
+					}
+					
 				}
 			}
 

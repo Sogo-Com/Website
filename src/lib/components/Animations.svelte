@@ -25,7 +25,7 @@
 
 			const isMedia = window.matchMedia("(max-width:1150px)").matches
 			document.querySelectorAll("h1")?.forEach((elem) => {
-				const splited = new SplitText(elem, { type: 'words,chars' });
+				const splited = new SplitText(elem, { type: 'words,chars,lines' });
 
 				gsap.to(elem, {
 					autoAlpha: 1

@@ -106,10 +106,7 @@
 		overflow: hidden;
 		position: relative;
 
-		@media only screen and (max-width: $phone) {
-			height: 50vh;
-			padding-top: 120px;
-		}
+	
 
 		img {
 			width: 100%;
@@ -126,12 +123,16 @@
 		}
 		h1 {
 			width: 100%;
-			bottom: 0;
-			transform: translateX(-50%);
+			bottom: 20%;
+
+			transform: translate(-50%,50%);
 			word-break: break-word;
 			@media only screen and (max-width: $phone) {
 				word-break: initial;
+				padding: 16px;
+				font-size: 3rem;
 			}
+		
 
 		}
 		.bg-gris {

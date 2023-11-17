@@ -153,11 +153,15 @@
 		padding: 32px 0;
 		z-index: 100;
 
+		@media only screen and (max-width: $phone) {
+			padding: 16px 0;
+		}
 		.menu-container {
 			margin-left: 11%;
 			margin-right: 11%;
 			width: 100%;
 			display: flex;
+			align-items: center;
 
 			@media only screen and (max-width: $tablet) {
 				justify-content: space-between;
@@ -181,8 +185,13 @@
 				align-items: start;
 				flex-basis: 25%;
 
+				
 				@media only screen and (max-width: $phone) {
 					align-items: center;
+					flex-basis: 100%;
+					img{
+						width: 70%;
+					}
 				}
 
 			}
@@ -277,6 +286,7 @@
 				@media only screen and (min-width: $tablet) {
 					display: none;
 				}
+				height: fit-content;
 				transition: cubic-bezier(0.39, 0.575, 0.565, 1) all 0.3s;
 				display: flex;
 				flex-direction: column;
@@ -296,6 +306,11 @@
 					:nth-child(1) {
 						transform: rotate(45deg) translate(3px);
 						bottom: 0px !important;
+
+						@media only screen and (max-width: $phone) {
+							transform: rotate(45deg) translate(-3px);
+						}
+					
 					}
 
 					:nth-child(2) {
@@ -305,6 +320,10 @@
 					:nth-child(3) {
 						transform: rotate(-45deg);
 						top: 0px !important;
+
+						@media only screen and (max-width: $phone) {
+							transform: rotate(-45deg) translate(-3px);
+						}
 					}
 				}
 
@@ -319,8 +338,8 @@
 					background-color: $color-rose;
 
 					@media only screen and (max-width: $phone) {
-						width: 50px;
-						margin: 8px 0px;
+						width: 40px;
+						margin: 4px 0px;
 					}
 
 				}
