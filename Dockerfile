@@ -2,6 +2,8 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 COPY . .
+RUN rm -rf package-lock.json
+RUN rm -rf node_modules
 RUN npm install
 RUN npm run build
 
