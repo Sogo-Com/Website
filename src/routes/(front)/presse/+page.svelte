@@ -88,9 +88,9 @@
 		</div>
 		<div class="bloc img-droite">
 			<div class="conteneur">
-				<span class="bubble top-left" />
+				<span data-lag=".2" class="bubble top-left" />
 				<img src="/images/home-equipe.png" alt="L'equipe" />
-				<span class="bubble bottom-right" />
+				<span data-lag=".2" class="bubble bottom-right" />
 			</div>
 		</div>
 	</div>

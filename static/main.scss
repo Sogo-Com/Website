@@ -130,16 +130,15 @@ $phone : 960px;
     --font-secondary-regular : "Poppins-Regular";
     --font-secondary-light : "Poppins-Light";
 
-    font-size: 18px;
-
+    font-size: 1vw;
 
     @media only screen and (max-width: $tablet) {
-        font-size: 14px;
+        font-size: 1.5vw;
     }
 
     
     @media only screen and (max-width: $phone) {
-        font-size: 12px;
+        font-size: 3vw;
     }
 
 

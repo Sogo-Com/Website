@@ -8,10 +8,9 @@ Everything you need to build a Svelte project, powered by [`create-svelte`](http
 install dependencies with `npm install` , start a development server:
 
 ```bash
-npm run dev
+.ENV
+npm run startup
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
 ## Building
