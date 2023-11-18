@@ -217,15 +217,15 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 	<div class="swiper-container">
 		<div bind:this={wrapper} class="swiper-wrapper">
-			<div class="swiper-slide">
+			<div class="swiper-slide" data-lag="0.1">
 				<img src="/images/mokup.png" alt="expertise-slide" />
 			</div>
 
-			<div class="swiper-slide">
+			<div class="swiper-slide" data-lag="0.1">
 				<img src="/images/mokup.png" alt="expertise-slide" />
 			</div>
 
-			<div class="swiper-slide">
+			<div class="swiper-slide" data-lag="0.1">
 				<img src="/images/mokup.png" alt="expertise-slide" />
 			</div>
 		</div>

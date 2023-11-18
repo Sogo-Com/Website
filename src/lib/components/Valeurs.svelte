@@ -80,11 +80,14 @@
 				padding-top: 32px;
 				width: 100%;
 				text-align: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 			padding: 64px 11% 0 11%;
 		}
 		.conteneur {
-			padding: 0 8%;
+			padding: 0 11%;
 
 			display: flex;
 			flex-direction: row;
@@ -111,6 +114,7 @@
 
 				@media only screen and (max-width: $tablet) {
 					flex-basis: 35%;
+					margin: 32px 0;
 				}
 				@media only screen and (max-width: $phone) {
 					flex-basis: 50%;
@@ -131,6 +135,9 @@
 					width: 20vw;
 					height: 20vw;
 
+					p{
+						width: 100%;
+					}
 
 					@media only screen and (max-width: $tablet) {
 						width: 30vw;

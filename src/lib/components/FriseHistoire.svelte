@@ -121,7 +121,7 @@
 					left: unset;
 					top: var(--esp);
 				}
-
+				color: $color-blanc;
 				width: 50px;
 				height: 50px;
 				border-radius: 50px;
@@ -129,17 +129,18 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				
 
 				.innerStartLine {
 					position: absolute;
 					width: var(--line);
 					height: 2px;
-					background-color: $color-rose;
+					background-color: #000;
 					top: 50%;
 					right: 100%;
 
 					@media only screen and (max-width: $phone) {
-						width: 2px;
+						width: 1px;
 						height: var(--line);
 						top: unset;
 						bottom: 100%;
@@ -152,8 +153,8 @@
 					width: var(--endline);
 					height: 0px;
 					border: none;
-					border-top: 1px dashed $color-rose;
-					border-bottom: 1px dashed $color-rose;
+					border-top: 1px dashed #000;
+					border-bottom: 1px dashed #000;
 					top: 50%;
 					left: 100%;
 
@@ -173,6 +174,7 @@
 					padding: 16px;
 					position: absolute;
 					text-align: right;
+					
 					right: calc(100% - 68px);
 					@media only screen and (max-width: $phone) {
 						padding: 0 32px;
@@ -182,6 +184,7 @@
 					h3 {
 						margin-bottom: 8px;
 						text-align: right;
+						color: #000;
 						@media only screen and (max-width: $phone) {
 							width: 100%;
 							text-align: left;

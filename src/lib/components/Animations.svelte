@@ -10,7 +10,7 @@
 		gsap.registerPlugin(ScrollTrigger, SplitText);
 		methods.load();
 		window.refreshAnimations = () => {
-			methods.refresh();
+		//	methods.refresh();
 		};
 
 	});
@@ -92,17 +92,13 @@
 			//Btn
 			document.querySelectorAll('.app .btn')?.forEach((button) => {
 
-				const props = {
-					start: isMedia ? 'top 90%' :  'top 80%',
-					end: isMedia ? 'bottom 90%' :  'bottom 80%',
-				}
-
 				let tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: button,
-						start: props.start,
-						end:  props.end,
-						scrub: false
+						start: 'top 90%',
+						end:   'bottom 90%',
+						scrub: false,
+						once:true,
 					}
 				});
 				tl.fromTo(
@@ -128,7 +124,6 @@
 				const props = {
 					start: isMedia ? 'top 90%' :  'top 80%',
 					end: isMedia ? 'bottom 90%' :  'bottom 80%',
-					scrub: !isMedia,
 					stagger : isMedia ? 0.01 : 0.02
 				}
 				
@@ -139,7 +134,8 @@
 						trigger: paragraph,
 						start: props.start,
 						end:  props.end,
-                        scrub:props.scrub
+                        scrub:false,
+						//once:true,
 					}
 				});
 				tl.fromTo(

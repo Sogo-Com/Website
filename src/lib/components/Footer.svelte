@@ -35,13 +35,13 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 32px;
+			padding: 32px 11%;
 			@media only screen and (max-width: $phone) {
 				flex-direction: column-reverse;
 			}
 			.logo {
 				display: flex;
-				justify-content: center;
+				justify-content: start;
 				align-items: center;
 				flex-basis: 33.3%;
 				img {

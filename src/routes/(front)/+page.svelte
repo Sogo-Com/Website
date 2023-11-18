@@ -6,14 +6,15 @@
 	import SliderExpertise from '$lib/components/SliderExpertise.svelte';
 	import FlipCard from '$lib/components/FlipCard.svelte';
 
-
+	export let data;
+	let { actualite, projet } = data;
 </script>
 
 <div id="top">
 	<img alt="background-sogo" src="/images/bg-home.png" />
 	<div class="abso bg-gris" />
 
-	<h1 class="abso">Sogo Com, votre agence<br> de communication</h1>
+	<h1 class="abso">Sogo Com, votre agence<br /> de communication</h1>
 </div>
 <div class="blanc" id="blanc">
 	<div class="wrapper">
@@ -30,15 +31,10 @@
 				Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusion. La communication
 				grand angle en perfusion, la créativité sans limites pour détonation.
 			</p>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="btn"
-				on:click={() => {
-					goto('/agence');
-				}}
-			>
-			En savoir +
-			</div>
+		
+			<a href="/agence" class="btn">
+				En savoir +
+			</a>
 		</div>
 		<div class="bloc img-droite">
 			<div class="conteneur">
@@ -52,34 +48,40 @@
 <SliderExpertise />
 
 <div class="blanc" id="proj-actu">
-	<div class="projet">
-		<h2 class="grey ">Notre nouveau projet</h2>
-		<h3 class="grey ">Distillerie St Esprit</h3>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-			luctus. Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar
-		</p>
-		<div class="btn">En savoir +</div>
-		<img alt="projet" src="/images/projet.png" />
-	</div>
-	<div class="actu">
-		<h2 class="grey ">Notre dernière actu</h2>
-		<div class="actu-content">
-			<img src="/images/fleche-actu-home.svg" alt="chemin" />
-			<div class="flip-container">
-				<FlipCard
-					imageSrc="/images/projet.png"
-					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-				/>
+	{#if projet != null}
+		<div class="projet">
+			<h2 class="grey">Notre nouveau projet</h2>
+			<h3 class="grey">{projet.titre}</h3>
+			<p>
+				{projet.descriptionCourte}
+			</p>
+			<a href="/projets/{projet.id}" class="btn">En savoir +</a>
+			<img alt="projet" src={projet.photo} />
+		</div>
+	{/if}
+
+	{#if actualite != null}
+		<div class="actu">
+			<h2 class="grey">Notre dernière actu</h2>
+			<div class="actu-content">
+				<img src="/images/fleche-actu-home.svg" alt="chemin" />
+				<div class="flip-container">
+					<FlipCard
+						titre={actualite.titre}
+						link="/actualites/{actualite.id}"
+						imageSrc={actualite.photo}
+						description={actualite.descriptionCourte}
+					/>
+				</div>
 			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
-			<h2 class="grey ">Contactez nous !</h2>
+			<h2 class="grey">Contactez nous !</h2>
 			<Contact />
 		</div>
 		<div class="contact-images">
@@ -91,22 +93,12 @@
 	</div>
 </div>
 
-
-
-
 <style lang="scss">
-
-
-
-
-
 	#top {
 		height: 100vh;
 		width: 100%;
 		overflow: hidden;
 		position: relative;
-
-	
 
 		img {
 			width: 100%;
@@ -125,15 +117,13 @@
 			width: 100%;
 			bottom: 20%;
 
-			transform: translate(-50%,50%);
+			transform: translate(-50%, 50%);
 			word-break: break-word;
 			@media only screen and (max-width: $phone) {
 				word-break: initial;
 				padding: 16px;
 				font-size: 3rem;
 			}
-		
-
 		}
 		.bg-gris {
 			height: 100vh;
@@ -266,10 +256,11 @@
 			h2 {
 				text-align: left;
 			}
-
+			flex-basis: 50%;
+			flex-grow: 1;
 			position: relative;
 			height: auto;
-			width: 50%;
+			width: 100%;
 			background-color: rgba($color-bordeaux, 0.1);
 			display: flex;
 			flex-direction: column;
@@ -294,14 +285,15 @@
 
 		.actu {
 			height: auto;
-			width: 50%;
 			background-color: rgba($color-gris-clair, 1);
 			padding: 64px;
-
+			flex-grow: 1;
+			width: 100%;
+			flex-basis: 50%;
 			@media only screen and (max-width: $tablet) {
 				width: 100%;
+				padding: 32px 12px;
 			}
-		
 
 			.actu-content {
 				display: flex;
@@ -352,7 +344,6 @@
 	}
 
 	#contact {
-	
 		.wrapper {
 			@media only screen and (max-width: $tablet) {
 				display: flex;
@@ -362,7 +353,7 @@
 				justify-content: center;
 			}
 
-			h2{
+			h2 {
 				font-size: 2.5rem;
 			}
 			.contact-form {
