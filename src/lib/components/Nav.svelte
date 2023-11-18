@@ -73,7 +73,10 @@
 
 	function clickLink() {
 		for (const link of links.children) {
-			mobileClose()
+			link.addEventListener("click",_=>{
+				mobileClose()
+			})
+			
 		}
 	}
 
@@ -190,7 +193,7 @@
 					align-items: center;
 					flex-basis: 100%;
 					img{
-						width: 70%;
+						height: 70%;
 					}
 				}
 

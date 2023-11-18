@@ -69,6 +69,16 @@
 	#histoire {
 		background: #fff;
 
+		.h2-seo{
+			@media only screen and (max-width: $tablet) {
+				padding-bottom: 32px;
+			}
+			h2{
+				@media only screen and (max-width: $tablet) {
+					margin-bottom: 0;
+				}
+			}
+		}
 		&.blanc {
 			padding: 6rem 0;
 			position: relative;
@@ -101,6 +111,7 @@
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				align-items: start;
+				height: calc(60vw + 200px);
 			}
 			.point {
 				position: relative;

@@ -36,6 +36,8 @@
 				<h3>{titre}</h3>
 				{#if imageSrc}
 					<img src={imageSrc} alt={titre} />
+				{:else}
+					<div class="placeholder"></div>
 				{/if}
 				
 			</div>
@@ -88,7 +90,7 @@
 					padding: 8px;
 					text-align: center;
 				}
-				img {
+				img ,.placeholder{
 					position: absolute;
 					border-radius: 500px;
 					right: -25%;

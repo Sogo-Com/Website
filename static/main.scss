@@ -103,6 +103,7 @@ $color-gris-clair : #E1E1E1;
 
 $tablet : 1150px;
 $phone : 960px;
+$fold : 360px;
 
 :root{
 
@@ -130,20 +131,25 @@ $phone : 960px;
     --font-secondary-regular : "Poppins-Regular";
     --font-secondary-light : "Poppins-Light";
 
-    font-size: 1vw;
+    font-size: 18px;
+
 
     @media only screen and (max-width: $tablet) {
-        font-size: 1.5vw;
+        font-size: 14px;
     }
 
     
     @media only screen and (max-width: $phone) {
-        font-size: 3vw;
+        font-size: 12px;
     }
 
+    @media only screen and (max-width: $fold) {
+        font-size: 10px;
+    }
 
     --tablet:1150px;
     --phone:960px;
+    --fold:360px;
 }
 
 @import url("/styles/reset.scss");

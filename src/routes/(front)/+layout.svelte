@@ -53,11 +53,7 @@
 
 <div class="app" id="smooth-wrapper">
 	<div id="smooth-content">
-		<main
-			on:introend={() => {
-				console.log('transiion');
-			}}
-		>
+		<main>
 			<slot />
 		</main>
 
@@ -67,3 +63,9 @@
 
 
 <Animations bind:methods={animations} />
+
+<style lang="scss">
+	main{
+		min-height: 100vh;
+	}
+</style>
