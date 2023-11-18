@@ -14,16 +14,16 @@
 	<img alt="background-sogo" src="/images/bg-home.png" />
 	<div class="abso bg-gris" />
 
-	<h1 class="abso">Sogo Com, votre agence<br /> de communication</h1>
+	<h1 animate class="abso">Sogo Com, votre agence<br /> de communication</h1>
 </div>
 <div class="blanc" id="blanc">
 	<div class="wrapper">
 		<div class="bloc desc-gauche">
-			<h2 class="">
+			<h2 animate>
 				<span class="grey">Une équipe au cœur </span><br />
 				<span class="pink">pulsant</span>
 			</h2>
-			<p>
+			<p animate>
 				Idées en fusion, inspiration pleine impulsion, ça bouillonne dans la marmite des Gommettes.
 				De l’écorce jusqu’à la pulpe, on décortique jusqu’à extraire l’essentiel, la note juste et
 				le ton qui détonne. Cible en plein cœur de votre identité !
@@ -50,9 +50,9 @@
 <div class="blanc" id="proj-actu">
 	{#if projet != null}
 		<div class="projet">
-			<h2 class="grey">Notre nouveau projet</h2>
-			<h3 class="grey">{projet.titre}</h3>
-			<p>
+			<h2 animate class="grey">Notre nouveau projet</h2>
+			<h3 animate class="grey">{projet.titre}</h3>
+			<p animate>
 				{projet.descriptionCourte}
 			</p>
 			<a href="/projets/{projet.id}" class="btn">En savoir +</a>
@@ -62,7 +62,7 @@
 
 	{#if actualite != null}
 		<div class="actu">
-			<h2 class="grey">Notre dernière actu</h2>
+			<h2 animate class="grey">Notre dernière actu</h2>
 			<div class="actu-content">
 				<img src="/images/fleche-actu-home.svg" alt="chemin" />
 				<div class="flip-container">
@@ -81,7 +81,7 @@
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
-			<h2 class="grey">Contactez nous !</h2>
+			<h2 animate class="grey">Contactez nous !</h2>
 			<Contact />
 		</div>
 		<div class="contact-images">

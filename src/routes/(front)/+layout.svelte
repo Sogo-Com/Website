@@ -19,9 +19,9 @@
 		gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 		smoothScroll = ScrollSmoother.create({
 			autoResize: true, // automatically call update() when window is resized
-			smooth: 2,
+			smooth: 1,
 			effects: true, // looks for data-speed and data-lag attributes on elements
-			smoothTouch: 0.1 // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+			// smoothTouch: 0.1 // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
 		});
 	});
 

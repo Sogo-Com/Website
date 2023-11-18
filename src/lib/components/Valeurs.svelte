@@ -135,7 +135,7 @@
 					width: 20vw;
 					height: 20vw;
 
-					&p{
+					& p{
 						width: 100%;
 					}
 
