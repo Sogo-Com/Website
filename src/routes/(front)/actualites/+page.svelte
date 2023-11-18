@@ -6,23 +6,27 @@
 	export let data;
 	const { actualites } = data;
 
+	const firstActualite = actualites.length > 0 ? actualites[0] : null
 	onMount((_) => {});
 </script>
 
 <div id="top">
 	<h1>Nos actualités</h1>
-	<h2>Retrouvez notre dernier article</h2>
-	<div class="flip-container">
-		<div class="flipcard">
-			<img src="/images/actualites-path.svg" alt="chemin" />
-			<FlipCard
-				titre="Stratégie de communication"
-				imageSrc="/images/ppl.png"
-				link="/actualites/1"
-				description="Une stratégie de communication, c’est la mise en œuvre d’une vision, le déploiement d’une identité de marque. "
-			/>
+	{#if firstActualite != null}
+		<h2>Retrouvez notre dernier article</h2>
+		<div class="flip-container">
+			<div class="flipcard">
+				<img src="/images/actualites-path.svg" alt="chemin" />
+				<FlipCard
+							link="/actualites/{firstActualite.id}"
+							imageSrc={firstActualite.photo}
+							titre={firstActualite.titre ?? 'Actualité !'}
+							description={firstActualite.descriptionCourte}
+						/>
+			</div>
 		</div>
-	</div>
+	{/if}
+	
 	<div class="actu-container">
 		<h2>Tous nos contenus</h2>
 		<div class="actualites">
@@ -39,46 +43,6 @@
 				</div>
 			{/each}
 
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard link="/actualites/5" />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
-			<div class="flip-parent">
-				<div class="flip-row">
-					<FlipCard />
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
