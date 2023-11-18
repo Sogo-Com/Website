@@ -103,6 +103,7 @@ $color-gris-clair : #E1E1E1;
 
 $tablet : 1150px;
 $phone : 960px;
+$fold : 360px;
 
 :root{
 
@@ -142,9 +143,13 @@ $phone : 960px;
         font-size: 12px;
     }
 
+    @media only screen and (max-width: $fold) {
+        font-size: 10px;
+    }
 
     --tablet:1150px;
     --phone:960px;
+    --fold:360px;
 }
 
 @import url("/styles/reset.scss");

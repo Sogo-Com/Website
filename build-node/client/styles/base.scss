@@ -135,9 +135,9 @@ h3{
     }
 }
 
-.swiper-gomette{
+.swiper-collaborateur{
     .swiper-slide-active{
-
+        cursor: inherit;
         padding: 32px !important;
     }
 }
@@ -168,10 +168,11 @@ h3{
     border-radius: 32px;
     font-family: var(--font-primary-semibold);
     background-color: var(--color-rose);
+    text-decoration: none;
     padding: 10px 20px;
     display: inline;
     width: fit-content;
-    color: #fff;
+    color: #fff; 
     cursor: pointer;
 
     &.blue{
@@ -216,4 +217,53 @@ p{
 
 .toaster{
     font-family: var(--font-primary-semibold);
+}
+
+
+.redaction {
+		
+    .link.active {
+        color: #e5ae1e !important ;
+    }
+
+}
+
+    
+.presse {
+    
+    .link.active {
+        color: #e5ae1e !important;
+    }
+
+
+}
+.graphisme {
+
+    .link.active {
+        color: #a48bad;
+    }
+    
+}
+.reseaux {
+
+    .link.active {
+        color: #2c9a9b !important;
+    }
+
+    
+}
+.photos {
+
+    .link.active {
+        color: #989a6f !important;
+    }
+    
+
+}
+.evenements {
+
+    .link.active {
+        color: #9d524f !important;
+    }
+    
 }
