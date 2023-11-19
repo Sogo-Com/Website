@@ -187,10 +187,7 @@
 			.btn {
 				background: #e5ae1e;
 			}
-			.swiper-pagination-bullet-active {
-				background: #e5ae1e !important;
-			}
-				
+		
 			h3:before{
 				background-color: rgba(#e5ae1e, 0.1);
 			}
@@ -211,9 +208,7 @@
 			.btn {
 				background: #e5ae1e;
 			}
-			.swiper-pagination-bullet-active {
-				background: #e5ae1e !important;
-			}
+			
 
 			
 			
@@ -236,10 +231,7 @@
 			.btn {
 				background: #a48bad !important;
 			}
-			.swiper-pagination-bullet-active {
-				background: #a48bad !important;
-			}
-
+		
 			
 			h3:before{
 				background-color: rgba(#a48bad, 0.1);
@@ -260,9 +252,7 @@
 			.btn {
 				background: #2c9a9b;
 			}
-			.swiper-pagination-bullet-active {
-				background: #2c9a9b !important;
-			}
+			
 
 			
 			h3:before{
@@ -284,10 +274,7 @@
 			.btn {
 				background: #989a6f;
 			}
-			.swiper-pagination-bullet-active {
-				background: #989a6f !important;
-			}
-
+			
 			h3:before{
 				background-color: rgba(#989a6f, 0.1);
 			}
@@ -308,9 +295,7 @@
 			.btn {
 				background: #9d524f;
 			}
-			.swiper-pagination-bullet-active {
-				background: #9d524f !important;
-			}
+			
 
 			h3:before{
 				background-color: rgba(#9d524f, 0.1);

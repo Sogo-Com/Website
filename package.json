@@ -39,6 +39,7 @@
 		"express": "^4.18.2",
 		"gsap": "./gsap-bonus.tgz",
 		"leaflet": "^1.7.1",
+		"sharp": "^0.32.6",
 		"svelte-french-toast": "^1.2.0",
 		"swiper": "^10.1.0"
 	}
