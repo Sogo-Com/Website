@@ -103,7 +103,7 @@ $color-gris-clair : #E1E1E1;
 
 $tablet : 1150px;
 $phone : 960px;
-$fold : 360px;
+$fold : 359px;
 
 :root{
 
@@ -149,7 +149,7 @@ $fold : 360px;
 
     --tablet:1150px;
     --phone:960px;
-    --fold:360px;
+    --fold:359px;
 }
 
 @import url("/styles/reset.scss");

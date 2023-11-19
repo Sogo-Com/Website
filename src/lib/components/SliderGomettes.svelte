@@ -124,7 +124,7 @@
 
 <style lang="scss" >
 	.collaborateurs {
-
+        overflow: hidden;
         .info{
             display: flex;
             justify-content: center;

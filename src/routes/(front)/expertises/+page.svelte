@@ -53,7 +53,7 @@
 
 		const iconData = iconsData[0];
 
-		titreSecondaireEl = iconData.titre;
+		titreSecondaireEl.innerText = iconData.titre;
 		descriptionSecondaireEl = iconData.description;
 		imageSecondaireEl = iconData.image;
 	}
@@ -71,7 +71,7 @@
 
 		const actualIcon = iconsData[index];
 
-		titreSecondaireEl = actualIcon.titre;
+		titreSecondaireEl.innerText = actualIcon.titre;
 		descriptionSecondaireEl = actualIcon.description;
 		imageSecondaireEl = actualIcon.image;
 
@@ -163,7 +163,7 @@
 	<div id="realSecondaire" bind:this={realSecondaireEl} class="blanc">
 		<div class="wrapper">
 			<div class="bloc desc-gauche">
-				<h2 class="h2-gauche">
+				<h2 animate class="h2-gauche">
 					<span class="grey">Nos réalisations</span>
 				</h2>
 			</div>
@@ -184,7 +184,7 @@
 					{/each}
 				</div>
 				<div class="texte">
-					<h3  class="grey">{titreSecondaireEl}</h3>
+					<h3 animate bind:this={titreSecondaireEl} class="grey"></h3>
 					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
 					<div animate class="btn">En savoir +</div>
 				</div>

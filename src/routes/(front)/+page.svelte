@@ -122,8 +122,13 @@
 			@media only screen and (max-width: $phone) {
 				word-break: initial;
 				padding: 16px;
-				font-size: 3rem;
+				
 			}
+			@media only screen and (max-width: $fold) {
+				font-size: 3rem;
+				
+			}
+			
 		}
 		.bg-gris {
 			height: 100vh;

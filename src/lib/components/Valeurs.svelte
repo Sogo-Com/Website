@@ -112,6 +112,14 @@
 				align-items: center;
 				flex-grow: 1;
 
+
+				&.right{
+					justify-content: end;
+				}
+
+				&.left{
+					justify-content: start;
+				}
 				@media only screen and (max-width: $tablet) {
 					flex-basis: 35%;
 					margin: 32px 0;
@@ -123,7 +131,7 @@
 				p {
 					font-size: 1rem;
 					line-height: 1rem;
-
+					width: 100% !important;
 					
 					@media only screen and (max-width: $phone) {
 						width: 100% !important;
@@ -131,13 +139,10 @@
 					}
 				}
 				.flip {
-					margin: 15% 5% 15% 0;
+					margin: 15%  0;
 					width: 20vw;
 					height: 20vw;
 
-					& p{
-						width: 100%;
-					}
 
 					@media only screen and (max-width: $tablet) {
 						width: 30vw;

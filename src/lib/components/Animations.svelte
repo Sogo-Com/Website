@@ -239,8 +239,8 @@
 			Elems?.forEach((Elem) => {
 				
 				const props = {
-					start: isTablet ? 'top 80%' : 'top 80%',
-					end: isTablet ? 'bottom 80%' : 'bottom 80%'
+					start: isTablet ? 'top 85%' : 'top 80%',
+					end: isTablet ? 'bottom 85%' : 'bottom 80%'
 				};
 
 			
@@ -257,7 +257,9 @@
 					Elem,
 					{
 						y: 10,
-						opacity: 0
+						opacity: 0,
+						delay:0,
+						duration:.3
 					},
 					{
 						y: 0,
