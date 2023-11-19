@@ -27,7 +27,7 @@
 	{/if}
 
 	<div class="contenu">
-		<h3 class="noanim" >{title}</h3>
+		<h3>{title}</h3>
 		<div class="texte">
 			{description}
 		</div>

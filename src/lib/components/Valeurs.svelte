@@ -6,10 +6,10 @@
 </script>
 
 <div id="valeurs">
-	<h2><span class="pink">Nos Valeurs</span></h2>
+	<h2 animate><span class="pink">Nos Valeurs</span></h2>
 	<div class="conteneur">
 		<div class="contenu left">
-			<p class="flip">
+			<p animate class="flip">
 				Créative et inspirée, l’équipe Sogo Com c’est aussi un lien de proximité assuré.
 				<br /><br />
 				Basée à Poisy, aux portes d’Annecy, la team expérimentée défend son système de valeurs coûte

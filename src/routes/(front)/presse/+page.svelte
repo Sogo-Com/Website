@@ -68,8 +68,8 @@
 <div class="blanc" id="blanc">
 	<div class="wrapper">
 		<div class="bloc desc-gauche">
-			<h1>Nos clients</h1>
-			<p>
+			<h1 animate>Nos clients</h1>
+			<p animate>
 				Sogo Com accompagne plusieurs entreprises locales, régionales et nationales dans leurs
 				relations presse. Immobilier, gastronomie, art de vivre, technologie, voyage, sport, petite
 				enfance, nettoyage et bien d’autres secteurs nous font confiance.
@@ -77,14 +77,9 @@
 				Retrouvez sur cette page nos derniers communiqués et dossiers de presse.
 			</p>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="btn"
-				on:click={() => {
-					goto('/agence');
-				}}
-			>
+			<a animate class="btn" href="/agence">
 				En savoir plus
-			</div>
+			</a>
 		</div>
 		<div class="bloc img-droite">
 			<div class="conteneur">

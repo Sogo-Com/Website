@@ -43,7 +43,7 @@
 </svelte:head>
 
 <div class="title">
-	<h2>Contactez nous</h2>
+	<h2 animate>Contactez nous</h2>
 </div>
 
 <div class="infos">
@@ -78,9 +78,9 @@
 			<Contact />
 		</div>
 		<div class="contact-images">
-			<img class="contact-image" src="/images/contact-1.png" alt="contact-1" />
-			<img class="contact-image" src="/images/contact-2.png" alt="contact-2" />
-			<img class="contact-image" src="/images/contact-3.png" alt="contact-3" />
+			<img class="contact-image" data-lag="0.1" src="/images/contact-1.png" alt="contact-1" />
+			<img class="contact-image" data-lag="0.05" src="/images/contact-2.png" alt="contact-2" />
+			<img class="contact-image" data-lag="0.2" src="/images/contact-3.png" alt="contact-3" />
 			<span class="contact-image" />
 		</div>
 	</div>
@@ -221,12 +221,14 @@
 						z-index: 2;
 						height: 40%;
 						width: 50%;
+						min-width: 350px;
 					}
 
 					&:nth-child(2) {
 						top: 50%;
 						height: 50%;
 						width: 40%;
+						min-width: 300px;
 						transform: translate(-30%, -50%);
 						z-index: 3;
 					}
@@ -237,6 +239,7 @@
 						left: 50%;
 						height: 50%;
 						width: 30%;
+						min-width: 250px;
 						z-index: 4;
 					}
 

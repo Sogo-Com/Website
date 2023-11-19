@@ -17,7 +17,7 @@
 
 <div class="projet">
 
-	<h1>
+	<h1 animate>
 		{projet.titre ?? "Projet"}
 	</h1>
 

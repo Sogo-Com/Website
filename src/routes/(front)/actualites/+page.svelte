@@ -11,9 +11,9 @@
 </script>
 
 <div id="top">
-	<h1>Nos actualités</h1>
+	<h1 animate>Nos actualités</h1>
 	{#if firstActualite != null}
-		<h2>Retrouvez notre dernier article</h2>
+		<h2 animate>Retrouvez notre dernier article</h2>
 		<div class="flip-container">
 			<div class="flipcard">
 				<img src="/images/actualites-path.svg" alt="chemin" />

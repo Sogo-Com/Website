@@ -32,7 +32,7 @@
 				grand angle en perfusion, la créativité sans limites pour détonation.
 			</p>
 		
-			<a href="/agence" class="btn">
+			<a href="/agence" animate class="btn">
 				En savoir +
 			</a>
 		</div>
@@ -55,7 +55,7 @@
 			<p animate>
 				{projet.descriptionCourte}
 			</p>
-			<a href="/projets/{projet.id}" class="btn">En savoir +</a>
+			<a href="/projets/{projet.id}" animate class="btn">En savoir +</a>
 			<img alt="projet" src={projet.photo} />
 		</div>
 	{/if}

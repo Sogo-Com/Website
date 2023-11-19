@@ -13,65 +13,6 @@
     let descriptionCourte;
     let description;
 
-    
-    // collaborateurs = [...collaborateurs,...[
-    //     {
-    //         id: 0,
-    //         prenom: "Muriel",
-    //         descriptionCourte: "La gommette des gommettes",
-    //         description: "La gommette des gommettes",
-    //         photoInactive: "/images/Muriel1.png",
-    //         rang:7,
-    //         photoActive: "/images/Muriel2.png"
-        
-    //     },
-    //     {
-    //         id: 1,
-    //         prenom: "Gaelle",
-    //         descriptionCourte: "La gommette des videos montages",
-    //         description: "La gommette des gommettes",
-    //         photoInactive: "/images/Gaelle1.png",
-    //         photoActive: "/images/Gaelle2.png",
-    //         rang:6,
-    //     },
-    //     {
-    //         id: 2,
-    //         prenom: "Julie",
-    //         descriptionCourte: "La gommette des goblins",
-    //         description: "La gommette des gommettes",
-    //         photoInactive: "/images/Julie1.png",
-    //         photoActive: "/images/Julie2.png",
-    //         rang:5,
-    //     },
-    //     {
-    //         id: 3,
-    //         prenom: "Sophie",
-    //         descriptionCourte: "La gommette des gommettes",
-    //         description: "La gommette des gommettes",
-    //         photoInactive: "/images/Sophie1.png",
-    //         photoActive: "/images/Sophie2.png",
-    //         rang:2,
-    //     },
-      
-    //     {
-    //         id: 5,
-    //         prenom: "Veronique",
-    //         descriptionCourte: "La gommette des gommettes",
-    //         description: "La gommette des gommettes",
-    //         photoInactive: "/images/Veronique1.png",
-    //         photoActive: "/images/Veronique2.png",
-    //         rang:3,
-    //     },
-    //     {
-    //         id: 6,
-    //         prenom: "Magali",
-    //         descriptionCourte: "La gommette des gommettes",
-    //         description: "La gommette des gommettes",
-    //         photoInactive: "/images/Magali1.png",
-    //         photoActive: "/images/Magali2.png",
-    //         rang:4,
-    //     },
-    // ]]
 
     collaborateurs?.sort((a,b)=> a.rang - b.rang).forEach((collaborateur, index) => {
         collaborateur.partialId = index
@@ -146,7 +87,7 @@
 <div class="collaborateurs">
 
     <div class="h2-seo center">
-		<h2><span class="pink">Les Gommettes</span></h2>
+		<h2 animate><span class="pink">Les Gommettes</span></h2>
 		<p>Phrase très courte avec les mots clé pour SEO</p>
 	</div>
 
@@ -166,12 +107,12 @@
     <div class="info">
         <div class="collaborateur-info">
 
-            <h2>
+            <h2 animate>
                 <span class="pink" bind:this={prenom}></span>
             </h2>
-            <h3 bind:this={descriptionCourte}>
+            <h3 animate bind:this={descriptionCourte}>
             </h3>
-            <p bind:this={description}>
+            <p animate bind:this={description}>
             </p>
     
         </div>

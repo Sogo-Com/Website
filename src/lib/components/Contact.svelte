@@ -73,7 +73,7 @@
 	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
 	<label for="email">Email</label>
 	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre email" />
-	<button type="submit" class="btn" for="envoyer" value="envoyer"
+	<button animate type="submit" class="btn" for="envoyer" value="envoyer"
 		>Envoyer</button
 	>
 	<div class="status {statusClass}" contenteditable="false" bind:innerText={status}>

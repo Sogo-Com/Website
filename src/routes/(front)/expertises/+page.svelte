@@ -22,6 +22,12 @@
 
 	onMount((_) => {
 		changeExpertise();
+
+		Array.from(linksEls.children).forEach((link, index) => {
+			link.addEventListener('click', () => {
+				changeExpertise(index);
+			});
+		});
 	});
 
 	function changeExpertise(index = 0) {
@@ -78,16 +84,16 @@
 	<div id="top">
 		<img alt="background-sogo" src="/images/expertise-bg.png" />
 
-		<h1><span class="gris">Nos expertises</span><br />pour vous aider</h1>
+		<h1 animate><span class="gris">Nos expertises</span><br />pour vous aider</h1>
 	</div>
 
 	<div class="blanc" id="blanc">
 		<div class="wrapper">
 			<div class="bloc desc-gauche">
-				<h2>
+				<h2 animate>
 					<span class="grey">Nos expertises</span>
 				</h2>
-				<p>
+				<p animate>
 					L’agence Sogo Com concentre tout plein de savoir-faire, des expériences à tous les temps,
 					des compétences à tous les vents. Véritable couteau suisse, Sogo Com aiguise pour vous son
 					sens aiguisé de la communication.
@@ -113,63 +119,33 @@
 
 	<div class="exper-choice">
 		<div bind:this={linksEls} class="links">
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="link"
-				on:click={() => {
-					changeExpertise(0);
-				}}
-			>
+			
+			<div class="link" >
 				Rédaction
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="link"
-				on:click={() => {
-					changeExpertise(1);
-				}}
-			>
+			<div class="link" >
 				Relations presses
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="link"
-				on:click={() => {
-					changeExpertise(2);
-				}}
-			>
+			<div class="link" >
 				Graphisme
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="link"
-				on:click={() => {
-					changeExpertise(3);
-				}}
-			>
+			<div class="link" >
 				Réseaux sociaux
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="link"
-				on:click={() => {
-					changeExpertise(4);
-				}}
-			>
+			<div class="link" >
 				Photos & Vidéos
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="link"
-				on:click={() => {
-					changeExpertise(5);
-				}}
-			>
+			<div class="link" >
 				Evenements
 			</div>
 		</div>
@@ -179,7 +155,7 @@
 				<img src={imgPrincipaleEl} alt="sogo" />
 			</div>
 			<div class="texte">
-				<h3 data-noamin class="grey">{titreEl}</h3>
+				<h3 class="grey">{titreEl}</h3>
 				<p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" />
 			</div>
 		</div>
@@ -197,6 +173,7 @@
 				<div class="medias" bind:this={iconsEls}>
 					{#each iconsData as icon, index}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 						<img
 							on:click={() => {
 								changeIcon(index);
@@ -207,9 +184,9 @@
 					{/each}
 				</div>
 				<div class="texte">
-					<h3 data-noamin class="grey">{titreSecondaireEl}</h3>
+					<h3  class="grey">{titreSecondaireEl}</h3>
 					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
-					<div class="btn">En savoir +</div>
+					<div animate class="btn">En savoir +</div>
 				</div>
 			</div>
 			<div class="slider">

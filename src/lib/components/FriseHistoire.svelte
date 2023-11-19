@@ -8,7 +8,7 @@
 
 <div id="histoire" class="blanc">
 	<div class="h2-seo end">
-		<h2><span class="pink">Notre histoire</span></h2>
+		<h2 animate><span class="pink">Notre histoire</span></h2>
 		<p>Phrase très courte avec les mots clé pour SEO</p>
 	</div>
 

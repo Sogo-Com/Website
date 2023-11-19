@@ -14,7 +14,7 @@
 <div id="top">
 	<img alt="background-sogo" src="/images/agence-bg.png" />
 
-	<h1><span class="pink">Des gommettes</span><br />qui en jettent !</h1>
+	<h1 animate><span class="pink">Des gommettes</span><br />qui en jettent !</h1>
 </div>
 
 <div id="guillemets">
@@ -24,12 +24,12 @@
 				<img src="/images/guillemet-gauche.PNG" alt="guillemet gauche" />
 			</div>
 			<div class="center">
-				<p>L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs.</p>
-				<br />
-				<p>
+				<p animate>L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs.
+					<br /><br />
 					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée,
 					nous pensons votre communication
 				</p>
+				
 			</div>
 			<div class="right">
 				<img src="/images/guillemet-droit.PNG" alt="guillemet droit" />

@@ -57,35 +57,34 @@
 </script>
 
 <div id="top">
-	<h1>Nos projets</h1>
+	<h1 animate>Nos projets</h1>
 	<img alt="background-sogo" src="/images/projet-bg.png" />
 </div>
 <div class="gris">
 	<div class="question gris-child">
-		<h2 data-noamin>
+		<h2 animate>
 			Que fait-on <br />
 			chez Sogo Com ?
 		</h2>
 	</div>
 
 	<div class="reponse gris-child">
-		<p>
+		<p animate>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
 			luctus.
+			<br><br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
+			luctus.
+			<br><br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
+			luctus.
+			<br>
 		</p>
-		<br />
-		<p>
-			Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem
-			ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus.
-		</p>
-		<br />
-		<p>
-			Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem
-			ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus.
-		</p>
+
+		
 	</div>
 </div>
-
+{#if projets != null && projets.length > 0}
 <div class="projet" bind:this={container}>
 	<div bind:this={links} class="links">
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
@@ -130,6 +129,8 @@
 		/>
 	{/each}
 </div>
+
+{/if}
 
 <style lang="scss">
 	#top {

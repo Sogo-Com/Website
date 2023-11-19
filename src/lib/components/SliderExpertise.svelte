@@ -10,6 +10,8 @@
 	let description;
 	let wrapper;
 
+	let titreElem
+	let descElem
 	const expertise = [
 		{
 			id: 0,
@@ -112,7 +114,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		links.children[id].classList.add('active');
 		changeContainerClass(expertise[id].class);
 		title = expertise[id].title;
+		titreElem.innerHTML = title;
 		description = expertise[id].description;
+		descElem.innerHTML = description;
 		bgImageSrc =  expertise[id].bgImages
 		changeImages(expertise[id].images);
 	}
@@ -143,74 +147,43 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		});
 
 		changeExpertise(0);
+		Array.from(links.children).forEach((child, index) => {
+			child.addEventListener('click', (_) => {
+				changeExpertise(index);
+			});
+		});
 	});
 </script>
 
 <div class="expertise" bind:this={container}>
-	<h2 bind:innerText={title} contenteditable="false">Titre</h2>
+	<h2 bind:this={titreElem} animate > </h2>
 
-	<p bind:innerHTML={description} contenteditable="false">
-		Description
+	<p bind:this={descElem} animate >
+		
 	</p>
 
 	<div bind:this={links} class="links">
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeExpertise(0);
-			}}
-		>
+		<div class="link">
 			Rédaction
 		</div>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeExpertise(1);
-			}}
-		>
+		<div class="link" >
 			Relation de presse
 		</div>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeExpertise(2);
-			}}
-		>
+		<div class="link" >
 			Graphisme
 		</div>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeExpertise(3);
-			}}
-		>
+		<div class="link" >
 			Réseaux sociaux
 		</div>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeExpertise(4);
-			}}
-		>
+		<div class="link" >
 			Photos & vidéos
 		</div>
 
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			class="link"
-			on:click={() => {
-				changeExpertise(5);
-			}}
-		>
+		<div class="link" >
 			Événements
 		</div>
 	</div>
@@ -233,7 +206,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		<img class="img-bg" src="{bgImageSrc}" alt="expertise-slide" />
 	</div>
 
-	<div class="btn">En savoir +</div>
+	<div animate class="btn">En savoir +</div>
 	<div class="pagination" />
 </div>
 

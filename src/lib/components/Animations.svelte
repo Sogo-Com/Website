@@ -228,6 +228,48 @@
 
 		},
 
+		btn: () => {
+			const selector = ".btn"
+
+			const Elems = document.querySelectorAll(`${selector}[animate]`);
+
+			if(timelines[selector] == null)
+				timelines[selector] = []
+
+			Elems?.forEach((Elem) => {
+				
+				const props = {
+					start: isTablet ? 'top 80%' : 'top 80%',
+					end: isTablet ? 'bottom 80%' : 'bottom 80%'
+				};
+
+			
+				let timeline = gsap.timeline({
+					scrollTrigger: {
+						trigger: Elem,
+						start: props.start,
+						end: props.end,
+					},
+				});
+				
+
+				timeline.fromTo(
+					Elem,
+					{
+						y: 10,
+						opacity: 0
+					},
+					{
+						y: 0,
+						opacity: 1
+					}
+				);
+
+				timelines[selector].push(timeline);
+			});
+
+		},
+
 	};
 
 	export const methods = {
@@ -237,7 +279,7 @@
 			localMethods.h2();
 			localMethods.h3();
 			localMethods.p();
-			
+			localMethods.btn();
 			
 		},
 		refresh: () => {

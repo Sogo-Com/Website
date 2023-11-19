@@ -17,7 +17,7 @@
 
 <div class="actualite">
 
-	<h1>
+	<h1 animate>
 		{actualite.titre ?? "Actualite"}
 	</h1>
 
