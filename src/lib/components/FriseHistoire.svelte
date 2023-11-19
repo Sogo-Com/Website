@@ -1,46 +1,5 @@
 <script>
-	import FlipCard from '$lib/components/FlipCard.svelte';
-	import gsap from 'gsap';
-	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-
-	import { onMount } from 'svelte';
-
-	onMount((_) => {
-
-		const pointsElems = document.querySelectorAll(".point")
-		const isMobile = window.matchMedia('(max-width:960px)').matches;
-
-		gsap.registerPlugin(ScrollTrigger)
-		let timeline = gsap.timeline({
-			scrollTrigger:{
-				trigger:"#histoire",
-				start:"center center",
-				end:"+=1300px",
-				pin:true,
-				pinSpacing:true,
-				scrub:true,
-			}
-		})
-
-		const props = {
-			x : isMobile ? 0 : -50,
-			y : isMobile ? -50 : 0
-		}
-
-		pointsElems?.forEach(pointElem => {
-
-			timeline.fromTo(pointElem,{
-				opacity:0,
-				x: props.x,
-				y: props.y
-			},{
-				opacity:1,
-				x:0,
-				y:0
-			})
-
-		})
-	});
+	
 </script>
 
 <div id="histoire" class="blanc">
@@ -50,7 +9,7 @@
 	</div>
 
 	<div class="wrapper">
-		<div class="frise">
+		<div animate class="frise">
 			<div style="--esp:0; --line:0; --index:4;" class="point">
 				<div class="innerText">2010</div>
 				<div class="innerStartLine" />
