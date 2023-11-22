@@ -96,6 +96,7 @@
 			text-align: center;
 			position: relative;
 			display: inline-block;
+		
 		}
 
 		h2:before {
@@ -186,6 +187,9 @@
 				flex-direction: column;
 				left: 0%;
 				align-items: center;
+			}
+			h2{
+				font-size:  2.5rem !important;
 			}
 
 			.contact-form {

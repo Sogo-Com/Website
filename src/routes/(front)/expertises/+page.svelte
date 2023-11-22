@@ -84,7 +84,7 @@
 	<div id="top">
 		<img alt="background-sogo" src="/images/expertise-bg.png" />
 
-		<h1 animate><span class="gris">Nos expertises</span><br />pour vous aider</h1>
+		<h1 animate><span class="gris">Nos expertises</span><br />à vos côter</h1>
 	</div>
 
 	<div class="blanc" id="blanc">
@@ -126,7 +126,7 @@
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="link" >
-				Relations presses
+				Relations presse
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -146,7 +146,7 @@
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="link" >
-				Evenements
+				Événements
 			</div>
 		</div>
 
@@ -184,9 +184,9 @@
 					{/each}
 				</div>
 				<div class="texte">
-					<h3 animate bind:this={titreSecondaireEl} class="grey"></h3>
+					<h3  bind:this={titreSecondaireEl} class="grey"></h3>
 					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
-					<div animate class="btn">En savoir +</div>
+					<div  class="btn">En savoir +</div>
 				</div>
 			</div>
 			<div class="slider">
@@ -404,7 +404,7 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
-				align-items: center;
+				align-items: start;
 
 				@media only screen and (max-width: $phone) {
 					flex-direction: column;

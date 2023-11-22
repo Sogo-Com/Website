@@ -88,7 +88,6 @@
 
     <div class="h2-seo center">
 		<h2 animate><span class="pink">Les Gommettes</span></h2>
-		<p>Phrase très courte avec les mots clé pour SEO</p>
 	</div>
 
 	<div class="swiper-collaborateur">
@@ -129,7 +128,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 64px;
+            padding: 32px;
 
             @media only screen and (max-width:$phone) {
                 padding:32px 8px;
@@ -156,7 +155,8 @@
 
 
         .h2-seo{
-            padding: 64px;
+            padding: 64px 0 0 0;
+            margin-bottom: 0;
             @media only screen and (max-width:$phone) {
                 padding: 32px;
                 margin: 0;
@@ -199,12 +199,12 @@
 							height: 100%;
 							object-fit: contain;
 
-                            -webkit-mask-image: url("/images/bubble-mask.svg");
-                            mask-image: url("/images/bubble-mask.svg");
-                            -webkit-mask-size: contain;
-                            mask-size: contain;
-                            -webkit-mask-repeat: no-repeat;
-                            mask-repeat: no-repeat;
+                            // -webkit-mask-image: url("/images/bubble-mask.svg");
+                            // mask-image: url("/images/bubble-mask.svg");
+                            // -webkit-mask-size: contain;
+                            // mask-size: contain;
+                            // -webkit-mask-repeat: no-repeat;
+                            // mask-repeat: no-repeat;
 						}
 					}
 				}

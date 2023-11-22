@@ -117,7 +117,7 @@
 					Projets
 				</a>
 				<a href="/actualites">
-					Actualites
+					Actualités
 				</a>
 				<a href="/contact">
 					Contact

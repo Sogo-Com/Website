@@ -51,6 +51,9 @@
 </div>
 
 <style lang="scss">
+	.block-header{
+		color:$color-gris-dark
+	}
 	.block {
 		margin-bottom: 32px;
 	}

@@ -31,10 +31,8 @@
 				Depuis 14 ans, Sogo Com a fait d’Annecy et des Alpes son territoire d’infusion. La communication
 				grand angle en perfusion, la créativité sans limites pour détonation.
 			</p>
-		
-			<a href="/agence" animate class="btn">
-				En savoir +
-			</a>
+
+			<a href="/agence" animate class="btn"> En savoir + </a>
 		</div>
 		<div class="bloc img-droite">
 			<div class="conteneur">
@@ -65,13 +63,17 @@
 			<h2 animate class="grey">Notre dernière actu</h2>
 			<div class="actu-content">
 				<img src="/images/fleche-actu-home.svg" alt="chemin" />
-				<div class="flip-container">
-					<FlipCard
-						titre={actualite.titre}
-						link="/actualites/{actualite.id}"
-						imageSrc={actualite.photo}
-						description={actualite.descriptionCourte}
-					/>
+				<div class="actualites">
+					<div class="conteneur bleu">
+						<div class="img-div"><img src={actualite.photo} alt={actualite.titre} /></div>
+						<div class="contenu">
+							<h2>{actualite.titre}</h2>
+							<p class="line-clamp-5">{actualite.descriptionCourte}</p>
+							<div class="btn-container">
+								<a class="btn" href="/actualites/{actualite.id}">En savoir +</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -122,13 +124,10 @@
 			@media only screen and (max-width: $phone) {
 				word-break: initial;
 				padding: 16px;
-				
 			}
 			@media only screen and (max-width: $fold) {
 				font-size: 3rem;
-				
 			}
-			
 		}
 		.bg-gris {
 			height: 100vh;
@@ -182,7 +181,7 @@
 
 				p {
 					font-family: $font-secondary-light;
-					margin-bottom: 64px;
+					margin-bottom: 32px;
 				}
 
 				.btn {
@@ -271,10 +270,14 @@
 			flex-direction: column;
 			padding: 64px 11%;
 			@media only screen and (max-width: $phone) {
-				padding: 16px;
+				padding: 32px 16px;
 			}
 			.btn {
 				background-color: $color-bordeaux;
+				@media only screen and (max-width: $phone) {
+					margin: 16px 0;
+				}
+				
 			}
 
 			img {
@@ -285,6 +288,16 @@
 				height: 60%;
 				object-fit: contain;
 				background-size: contain;
+
+				@media only screen and (max-width: $phone) {
+					display: none;
+				}
+			}
+
+			p{
+				@media only screen and (max-width: $phone) {
+					width: 100%;
+				}
 			}
 		}
 
@@ -306,18 +319,64 @@
 				justify-content: center;
 				align-items: center;
 
-				.flip-container {
-					height: 20vw;
-					width: 20vw;
-
+				.actualites {
 					@media only screen and (max-width: $tablet) {
-						height: 30vw;
-						width: 30vw;
+						width: 50vw;
 					}
 
 					@media only screen and (max-width: $phone) {
-						height: 70vw;
 						width: 70vw;
+					}
+
+					width: 100%;
+					max-width: 300px;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					justify-content: center;
+					align-items: center;
+
+					.conteneur {
+						height: 100%;
+						border-radius: 20px;
+						display: flex;
+						flex-direction: column;
+						overflow: hidden;
+						.img-div {
+							overflow: hidden;
+							height: 40%;
+
+							img {
+								transform: none !important;
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+								display: block;
+							}
+						}
+
+						.contenu {
+							padding: 24px;
+							height: 60%;
+							color: #000;
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							align-items: start;
+							h2 {
+								margin: 0;
+								font-size: 2rem;
+								text-align: start;
+							}
+
+							p {
+								width: 100%;
+							}
+
+							.btn-container {
+								padding: 32px 0;
+							}
+						}
 					}
 				}
 

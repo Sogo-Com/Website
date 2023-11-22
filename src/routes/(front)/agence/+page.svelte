@@ -53,7 +53,8 @@
 
 		@media only screen and (max-width: $phone) {
 			align-items: end;
-			height: 50vh;
+			margin-top: 80px;
+			height: 30vh;
 		}
 
 		img {
@@ -68,7 +69,7 @@
 
 		h1 {
 			@media only screen and (max-width: $phone) {
-				padding: 64px 8px;
+				padding: 32px 0;
 				width: 100%;
 				text-align: center;
 			}
@@ -147,10 +148,7 @@
 
 					p {
 						font-size: 1.5rem;
-						line-height: 32px;
-						@media only screen and (max-width: $phone) {
-							line-height: normal;
-						}
+					
 					}
 				}
 				.right {

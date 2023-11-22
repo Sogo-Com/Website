@@ -168,7 +168,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		</div>
 
 		<div class="link" >
-			Relation de presse
+			Relations presse
 		</div>
 
 		<div class="link" >
@@ -228,7 +228,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 		h2 {
 			text-align: center;
-			padding: 64px 0 32px 0;
+			padding: 64px 0 0 0;
 			color: $color-gris-dark;
 		}
 		p {
@@ -244,7 +244,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		}
 
 		.btn {
-			margin-bottom: 32px;
+			margin-bottom: 16px;
 			transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 			font-family: $font-secondary-light;
 		}
@@ -288,23 +288,31 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 			@media only screen and (max-width: $phone) {
 				height: fit-content;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin-top: 32px;
+
 			}
 
 			.link {
 				flex-grow: initial;
 				padding: 24px;
-
-				@media only screen and (max-width: $phone) {
-					padding: 16px;
-					border: none;
-				}
-
 				transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				border-left: $color-gris-dark solid 1px;
 				height: 100%;
+
+				@media only screen and (max-width: $phone) {
+					padding: 16px 8px;
+					border: none;
+					flex-basis:50%;
+					justify-content: start  !important;
+					align-items: start !important;
+					text-align: left;
+				}
 
 				&:nth-child(6) {
 					@media only screen and (min-width: $phone) {

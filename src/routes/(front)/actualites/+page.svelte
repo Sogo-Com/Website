@@ -20,14 +20,14 @@
 	<div class="actu-container">
 		<div class="actualites">
 			{#each actualites as actualite, index}
-
-
 				<div class="conteneur-m">
 					<div class="conteneur {classes[index % classes.length]}">
 						<div class="img-div"><img src={actualite.photo} alt={actualite.titre} /></div>
 						<div class="contenu">
-							<h2>{actualite.titre}</h2>
-							<p>{actualite.descriptionCourte}</p>
+							<div class="scroller">
+								<h2>{actualite.titre}</h2>
+								<p class="line-clamp-5">{actualite.descriptionCourte}</p>
+							</div>
 							<div class="btn-container">
 								<a class="btn" href="/actualites/{actualite.id}">En savoir +</a>
 							</div>
@@ -94,12 +94,11 @@
 		align-items: center;
 
 		.conteneur-m {
-
 			flex-basis: 23%;
 			width: 23%;
 			height: fit-content;
 			margin: 1%;
-			height: 500px;
+			height: 550px;
 
 			@media only screen and (max-width: $tablet) {
 				flex-basis: 31%;
@@ -113,8 +112,6 @@
 				margin: 5% 0;
 			}
 			.conteneur {
-
-				
 				height: 100%;
 				border-radius: 20px;
 				display: flex;
@@ -138,23 +135,20 @@
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					h2{
-						margin: 0;
-						font-size: 2rem;
-						line-height: unset;
-						padding-bottom: 24px;
+
+					.scroller {
+						// max-height: 60%;
+						overflow-y: hidden;
+						overflow-x: hidden;
+						h2 {
+							margin: 0;
+							font-size: 2rem;
+						}
 					}
 
-					p{
-						line-height: unset;
+					.btn-container {
+						padding-bottom: 16px;
 					}
-
-					.btn-container{
-
-						padding: 32px 0;
-				
-					}
-					
 				}
 			}
 		}

@@ -130,7 +130,6 @@
 
 				p {
 					font-size: 1rem;
-					line-height: 1rem;
 					width: 100% !important;
 					
 					@media only screen and (max-width: $phone) {

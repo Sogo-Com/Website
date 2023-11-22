@@ -13,7 +13,9 @@
 
 		methods.load();
 		window.refreshAnimations = () => {
-			methods.refresh();
+			setTimeout((_) => {
+				methods.refresh();
+			}, 500);
 		};
 	});
 

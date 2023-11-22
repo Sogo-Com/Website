@@ -106,6 +106,7 @@
 			.back {
 				transform: rotateY(180deg);
 				position: relative;
+				background-color: #DDB0AF;
 				img {
 					position: absolute;
 					right: 0;

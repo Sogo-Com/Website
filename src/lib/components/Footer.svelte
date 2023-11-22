@@ -10,13 +10,14 @@
 			<img alt="logo menu" src="/images/logo-menu-black.svg" />
 		</a>
 		<div class="links">
-			<a href="/agence"> Agence </a>
-			<a href="/actualites"> Actualités </a>
-			<a href="/expertises"> Expertises </a>
-			<a href="/contact"> Contact </a>
-			<a href="/projets"> Projets </a>
-
-			<a href="/presse"> Espace presse </a>
+			<div class="linkparent"><a href="/agence"> Agence </a></div>
+			<div class="linkparent left"><a href="/actualites"> Actualités </a></div>
+			<div class="linkparent"><a href="/expertises"> Expertises </a></div>
+			<div class="linkparent left"><a href="/contact"> Contact </a></div>
+			<div class="linkparent"><a href="/projets"> Projets </a></div>
+			<div class="linkparent left"><a href="/presse"> Espace presse </a></div>
+			
+			
 		</div>
 	</div>
 	<div class="white">
@@ -63,18 +64,33 @@
 					margin-bottom: 32px;
 				}
 
-				a {
+				.linkparent{
 					flex-basis: 50%;
-					@media only screen and (max-width: $phone) {
-						flex-basis: 50%;
-						text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: start;
+
+					&.left{
+						@media only screen and (max-width: $phone) {
+							justify-content: end;
+						}
+					
 					}
+					a {
+			
+					@media only screen and (max-width: $phone) {
+						text-align: left;
+						width: 60%;
+					}
+
 					font-family: $font-secondary-light;
 					font-size: 1rem;
 					color: $color-blanc;
 					text-decoration: none;
 					padding: 16px 0;
 				}
+				}
+				
 			}
 		}
 		.white {

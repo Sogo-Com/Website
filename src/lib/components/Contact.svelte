@@ -10,8 +10,9 @@
 	let telephone;
 	let societe;
 	let email;
+	let message;
 
-	let innerDescriptionText = "Description";
+	let innerDescriptionText = "Pour un café ou juste pour échanger laissez-nous vos coordonnées :";
 	if (typeof description === 'string' && description.length != 0)
 		innerDescriptionText = description;
 
@@ -73,6 +74,8 @@
 	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
 	<label for="email">Email</label>
 	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre email" />
+	<label for="message">Message</label>
+	<textarea bind:this={message} type="text" rows="10" name="message" id="message" placeholder="Votre message" />
 	<button animate type="submit" class="btn" for="envoyer" value="envoyer"
 		>Envoyer</button
 	>
@@ -88,6 +91,7 @@
 		border-radius: 32px;
 		padding: 32px;
 		display: flex;
+		overflow: hidden;
 		flex-direction: column;
 
 		p {
@@ -101,8 +105,8 @@
 			font-family: $font-secondary-medium;
 			font-size: 1rem;
 		}
-		input {
-			background: $color-blanc;
+		input ,textarea{
+			background:#fff;
 			border-radius: 16px;
 			border: none;
 			padding: 8px;
@@ -111,7 +115,7 @@
 		}
 
 		.btn {
-			background-color: $color-blanc;
+			background-color: #fff;
 			font-family: $font-secondary-semibold;
 			margin-top: 32px;
 			color: $color-rose;

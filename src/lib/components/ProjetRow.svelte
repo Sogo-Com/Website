@@ -28,9 +28,9 @@
 
 	<div class="contenu">
 		<h3>{title}</h3>
-		<div class="texte">
+		<p class="texte">
 			{description}
-		</div>
+		</p>
 		<div on:click={clicked} class="btn bleu">En savoir +</div>
 	</div>
 
@@ -147,8 +147,9 @@
 			}
 		}
 		.trait {
-			width: 2px;
+			width: 1px;
 			height: 300px;
+			opacity: .5;
 			background-color: $color-gris-dark;
 			margin: 0 32px;
 			@media only screen and (max-width: $phone) {
@@ -156,7 +157,7 @@
 			}
 		}
 		.images {
-			flex-basis: 15%;
+			flex-basis: 12%;
 
 			@media only screen and (max-width: $phone) {
 				display: none;
@@ -170,7 +171,7 @@
 			}
 
 			&.big {
-				flex-basis: 25%;
+				flex-basis: 28%;
 			}
 		}
 

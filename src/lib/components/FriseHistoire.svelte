@@ -5,7 +5,6 @@
 <div id="histoire" class="blanc">
 	<div class="h2-seo end">
 		<h2 animate><span class="pink">Notre histoire</span></h2>
-		<p>Phrase très courte avec les mots clé pour SEO</p>
 	</div>
 
 	<div class="wrapper">
@@ -194,7 +193,6 @@
 						@media only screen and (max-width: $phone) {
 							width: 100%;
 							text-align: left;
-							line-height: 16px;
 						}
 					}
 

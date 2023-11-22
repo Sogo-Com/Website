@@ -119,8 +119,8 @@
 	{#each projets as projet, index}
 		<ProjetRow
 			isLeft={index % 2 == 0}
-			imgLeft={index % 2 != 0 ? projet.photoLogo : projet.photo}
-			imgRight={index % 2 == 0 ? projet.photoLogo : projet.photo}
+			imgLeft={index % 2 == 0 ? projet.photoLogo : projet.photo}
+			imgRight={index % 2 != 0 ? projet.photoLogo : projet.photo}
 			description={projet.descriptionCourte}
 			title={projet.titre}
 			,
@@ -220,7 +220,7 @@
 		background-color: #fff;
 
 		@media only screen and (max-width: $phone) {
-			padding: 32px 0px;
+			padding: 32px 12px;
 		}
 
 
@@ -231,14 +231,25 @@
 
 			@media only screen and (max-width: $phone) {
 				height: fit-content;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin-top: 32px;
+				width: 100%;
+
 			}
 
-			.link {
+			form {
 				padding: 16px;
+				
 				@media only screen and (max-width: $phone) {
+					padding: 16px 8px;
 					border: none;
+					flex-basis:50%;
+					justify-content: start  !important;
+					align-items: start !important;
+					text-align: left;
 				}
-
 				transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				display: flex;
 				align-items: center;
