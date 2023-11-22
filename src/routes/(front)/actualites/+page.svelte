@@ -1,176 +1,160 @@
 <script>
-	import FlipCard from '$lib/components/FlipCard.svelte';
-
 	import { onMount } from 'svelte';
 
 	export let data;
 	const { actualites } = data;
 
-	const firstActualite = actualites.length > 0 ? actualites[0] : null
+	const firstActualite = actualites.length > 0 ? actualites[0] : null;
+
+	const classes = ['rose', 'violet', 'bleu', 'rouge', 'kaki', 'jaune'];
 	onMount((_) => {});
 </script>
 
 <div id="top">
+	<img alt="background-sogo" src="/images/actualites-bg.png" />
+
 	<h1 animate>Nos actualités</h1>
-	{#if firstActualite != null}
-		<h2 animate>Retrouvez notre dernier article</h2>
-		<div class="flip-container">
-			<div class="flipcard">
-				<img src="/images/actualites-path.svg" alt="chemin" />
-				<FlipCard
-							link="/actualites/{firstActualite.id}"
-							imageSrc={firstActualite.photo}
-							titre={firstActualite.titre ?? 'Actualité !'}
-							description={firstActualite.descriptionCourte}
-						/>
-			</div>
-		</div>
-	{/if}
-	
+</div>
+
+{#if actualites != null && actualites.length > 0}
 	<div class="actu-container">
-		<h2>Tous nos contenus</h2>
 		<div class="actualites">
 			{#each actualites as actualite, index}
-				<div class="flip-parent">
-					<div class="flip-row">
-						<FlipCard
-							link="/actualites/{actualite.id}"
-							imageSrc={actualite.photo}
-							titre={actualite.titre ?? 'Actualite n°' + index}
-							description={actualite.descriptionCourte}
-						/>
+
+
+				<div class="conteneur-m">
+					<div class="conteneur {classes[index % classes.length]}">
+						<div class="img-div"><img src={actualite.photo} alt={actualite.titre} /></div>
+						<div class="contenu">
+							<h2>{actualite.titre}</h2>
+							<p>{actualite.descriptionCourte}</p>
+							<div class="btn-container">
+								<a class="btn" href="/actualites/{actualite.id}">En savoir +</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			{/each}
-
 		</div>
 	</div>
-</div>
+{/if}
 
 <style lang="scss">
 	#top {
-		padding-top: 120px;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+		display: flex;
+		justify-content: start;
+		align-items: end;
 
 		@media only screen and (max-width: $phone) {
-			padding: 120px 15% 0 15%;
+			align-items: end;
+			height: 50vh;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			z-index: 10;
+			background-size: cover;
+			object-fit: cover;
 		}
 
 		h1 {
-			color: $color-gris-dark;
-			text-align: left;
-			padding: 32px 11%;
-
 			@media only screen and (max-width: $phone) {
-				padding: 32px 0;
+				padding: 64px 8px;
+				width: 100%;
 				text-align: center;
+				font-size: 4rem;
 			}
-		}
 
-		h2 {
-			padding: 0px 11%;
-			font-size: 2rem;
-			color: $color-gris-dark;
 			text-align: left;
-
-			@media only screen and (max-width: $phone) {
-				padding: 0 32px;
-				text-align: center;
-			}
+			padding: 10rem;
+			color: $color-blanc;
 		}
-		.flip-container {
-			display: flex;
-			justify-content: end;
-			transform: translate(0, -50px);
+	}
+
+	.actu-container {
+		padding: 32px 11%;
+		@media only screen and (max-width: $tablet) {
+			padding: 32px 12px;
+		}
+	}
+
+	.actualites {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+
+		.conteneur-m {
+
+			flex-basis: 23%;
+			width: 23%;
+			height: fit-content;
+			margin: 1%;
+			height: 500px;
 
 			@media only screen and (max-width: $tablet) {
-				transform: translate(0, -30px);
+				flex-basis: 31%;
+				width: 31%;
+				margin: 1%;
 			}
 
 			@media only screen and (max-width: $phone) {
-				display: none;
+				flex-basis: 100%;
+				width: 100%;
+				margin: 5% 0;
 			}
+			.conteneur {
 
-	
-
-			.flipcard {
-				@media only screen and (max-width: $tablet) {
-					margin-right: 10%;
-				}
-
-				@media only screen and (max-width: $phone) {
-					margin-right: 0;
-					transform: none;
-					width: 80vw;
-					height: 80vw;
-				}
-				margin-right: 25%;
-				position: relative;
-				width: 20vw;
-				height: 20vw;
-				transform: translateX(50%);
-
-				img {
-					@media only screen and (max-width: $phone) {
-						display: none;
-					}
-
-					position: absolute;
-					right: 100%;
-					bottom: -40%;
-					width: 200%;
-					height: 200%;
-				}
-			}
-		}
-
-		.actu-container {
-			h2 {
-				@media only screen and (max-width: $phone) {
-					display: none;
-				}
-			}
-		}
-
-		.actualites {
-			padding: 32px 64px;
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-			align-items: center;
-
-			@media only screen and (max-width: $phone) {
-				padding: 0;
-			}
-
-			.flip-parent {
-				@media only screen and (max-width: $tablet) {
-					flex-basis: 50%;
-				}
-
-				@media only screen and (max-width: $phone) {
-					flex-basis: 100%;
-					padding: 32px 0;
-				}
-
-				flex-basis: 33.3%;
-				padding: 2vw 3vw;
+				
+				height: 100%;
+				border-radius: 20px;
 				display: flex;
-				justify-content: center;
-				align-items: center;
-				.flip-row {
-					@media only screen and (max-width: $tablet) {
-						width: 30vw;
-						height: 30vw;
-					}
+				flex-direction: column;
+				overflow: hidden;
+				.img-div {
+					overflow: hidden;
+					height: 40%;
 
-					@media only screen and (max-width: $phone) {
+					img {
 						width: 100%;
-						height: 100vw;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+
+				.contenu {
+					padding: 24px;
+					height: 60%;
+					color: #000;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					h2{
+						margin: 0;
+						font-size: 2rem;
+						line-height: unset;
+						padding-bottom: 24px;
 					}
 
-					width: 20vw;
-					height: 20vw;
+					p{
+						line-height: unset;
+					}
+
+					.btn-container{
+
+						padding: 32px 0;
+				
+					}
+					
 				}
 			}
 		}

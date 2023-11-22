@@ -267,3 +267,68 @@ p{
     }
     
 }
+
+.actualites{
+
+    .jaune {
+        background-color: rgba(229, 173, 31, 0.1);
+
+       
+        .btn {
+            background: #e5ae1e;
+        }
+       
+    }
+
+    .rose {
+        background-color: rgba(156, 81, 79, 0.1);
+
+       
+        .btn {
+            background: #DDB0AF;
+        }
+       
+    }
+
+    .violet {
+        background-color: rgba(163, 139, 172, 0.1);
+
+       
+        .btn {
+            background: #A48BAD;
+        }
+       
+    }
+
+    
+    .bleu {
+        background-color: rgba(44, 154, 155, 0.1);
+
+       
+        .btn {
+            background: #2c9a9b;
+        }
+       
+    }
+
+    .rouge{
+        background-color: rgba(156, 81, 79, 0.1);
+
+       
+       
+        .btn {
+            background: #9d524f;
+        }
+    }
+
+    .kaki{
+        background-color: rgba(128, 129, 109, 0.1);
+
+       
+       
+        .btn {
+            background: #80816D;
+        }
+    }
+   
+}
