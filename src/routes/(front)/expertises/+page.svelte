@@ -82,7 +82,7 @@
 
 <div id="total-expertise" bind:this={containerEl}>
 	<div id="top">
-		<img alt="background-sogo" src="/images/expertise-bg.png" />
+		<img alt="background-sogo" src="/images/NosExpertises_Header.webp" />
 
 		<h1 animate><span class="gris">Nos expertises</span><br />à vos côter</h1>
 	</div>
@@ -111,7 +111,7 @@
 			</div>
 			<div class="bloc img-droite">
 				<div class="conteneur">
-					<img src="/images/home-equipe.png" alt="L'equipe" />
+					<img src="/images/Expertise2_Equipe_nb.webp" alt="L'equipe" />
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/index3-560a1835.js';
-import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index2-0087e825.js';
-import { w as writable, r as readable } from './chunks/index4-0a27471d.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/ssr-28b17f7a.js';
+import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-0087e825.js';
+import { w as writable, r as readable } from './chunks/index2-519bc178.js';
 
 let base = "";
 let assets = base;
@@ -48,15 +48,14 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.data_2(data_2);
   let $$settled;
   let $$rendered;
+  let previous_head = $$result.head;
   do {
     $$settled = true;
+    $$result.head = previous_head;
     {
       stores.page.set(page);
     }
-    $$rendered = `
-
-
-${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+    $$rendered = `  ${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
       $$result,
       { data: data_0, this: components[0] },
       {
@@ -114,9 +113,7 @@ ${constructors[1] ? `${validate_component(constructors[0] || missing_component, 
         }
       },
       {}
-    )}`}
-
-${``}`;
+    )}`} ${``}`;
   } while (!$$settled);
   return $$rendered;
 });
@@ -134,7 +131,7 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '\n\n<!DOCTYPE html>\n<html lang="fr" >\n\n	<head>\n		<meta charset="utf-8" />\n\n		<meta name="viewport" content="width=device-width" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover" style="background: #F5F5F5 ;">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '\r\n\r\n<!DOCTYPE html>\r\n<html lang="fr" >\r\n\r\n	<head>\r\n		<meta charset="utf-8" />\r\n\r\n		<meta name="viewport" content="width=device-width" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" style="background: #F5F5F5 ;">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -206,10 +203,10 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1o52wfs"
+  version_hash: "bnsdg9"
 };
 function get_hooks() {
-  return import('./chunks/hooks.server-9c67c109.js');
+  return import('./chunks/hooks.server-fc4ce644.js');
 }
 
 /** @type {Record<string, string>} */

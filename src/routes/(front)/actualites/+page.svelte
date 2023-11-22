@@ -142,12 +142,13 @@
 						overflow-x: hidden;
 						h2 {
 							margin: 0;
+							color:$color-gris-dark
 							font-size: 2rem;
 						}
 					}
 
 					.btn-container {
-						padding-bottom: 16px;
+						padding-bottom: 16 px;
 					}
 				}
 			}

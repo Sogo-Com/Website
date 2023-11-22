@@ -21,12 +21,13 @@ if (!existsSync("uploads")) {
 
 
 // Middleware pour redimensionner les images
-app.use('/images/:path?/:filename/:width?/:height?', (req, res, next) => {
-    const { path: imagePath, filename, width=600 , height=600 } = req.params;
+app.use('/images/:path?/:filename', (req, res, next) => {
+    const {width=600, height=600} = req.query;
+    const { path: imagePath, filename } = req.params;
  
     // Construire le chemin complet de l'image
     const basePath = imagePath ? path.join('build-node/client/images', imagePath) : 'build-node/client/images';
-    const fullImagePath = path.join(__dirname, basePath, filename);
+    const fullImagePath = path.join( basePath, filename);
 
     sharp(fullImagePath)
     .resize({
@@ -47,13 +48,14 @@ app.use('/images/:path?/:filename/:width?/:height?', (req, res, next) => {
 
 
 // Middleware pour redimensionner les images
-app.use('/uploads/:path?/:filename/:width?/:height?', (req, res, next) => {
-    const { path: imagePath, filename, width=600, height=600 } = req.params;
+app.use('/uploads/:path?/:filename', (req, res, next) => {
+    const { width=600 , height=600} = req.query;
+    const { path: imagePath, filename } = req.params;
    
 
     // Construire le chemin complet de l'image
     const basePath = imagePath ? path.join('uploads', imagePath) : 'uploads';
-    const fullImagePath = path.join(__dirname, basePath, filename);
+    const fullImagePath = path.join( basePath, filename);
 
     sharp(fullImagePath)
     .resize({

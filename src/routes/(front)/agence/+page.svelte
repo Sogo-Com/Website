@@ -12,7 +12,7 @@
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/agence-bg.png" />
+	<img alt="background-sogo" src="/images/agence-bg.png?width=1200&height=1200" />
 
 	<h1 animate><span class="pink">Des gommettes</span><br />qui en jettent !</h1>
 </div>

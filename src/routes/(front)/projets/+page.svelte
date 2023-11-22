@@ -58,7 +58,7 @@
 
 <div id="top">
 	<h1 animate>Nos projets</h1>
-	<img alt="background-sogo" src="/images/projet-bg.png" />
+	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.webp" />
 </div>
 <div class="gris">
 	<div class="question gris-child">
