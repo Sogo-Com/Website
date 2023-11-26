@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Swiper from 'swiper';
-	import { Pagination } from 'swiper/modules';
+	import { Pagination, Navigation } from 'swiper/modules';
 	import 'swiper/css';
 
 	let container;
@@ -136,9 +136,15 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 	onMount((_) => {
 		window.swiper = new Swiper('.swiper-container', {
-			modules: [Pagination],
+			modules: [Pagination,Navigation],
 			// loop: true,
 
+			
+			navigation: {
+
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev'
+			},
 			// If we need pagination
 			pagination: {
 				clickable: true,
@@ -204,10 +210,17 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		</div>
 
 		<img class="img-bg" src="{bgImageSrc}" alt="expertise-slide" />
+
+		<div class="swiper-button swiper-button-next"></div>
+		<div class="swiper-button swiper-button-prev"></div>
+	
+
 	</div>
 
 	<div animate class="btn">En savoir +</div>
 	<div class="pagination" />
+
+
 </div>
 
 <style lang="scss" global>

@@ -3,7 +3,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Swiper from 'swiper';
-	import { Pagination } from 'swiper/modules';
+	import { Pagination,Navigation } from 'swiper/modules';
 	import 'swiper/css';
 
     export let collaborateurs;
@@ -25,7 +25,7 @@
             return
 
 		let swiper = new Swiper('.swiper-container', {
-			modules: [Pagination],
+			modules: [Pagination,Navigation],
             slidesPerGroup:1,
             loop:true,
             spaceBetween:0,
@@ -100,6 +100,8 @@
                 {/each}
 				
 			</div>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
 		</div>
 	</div>
 

@@ -84,7 +84,7 @@
 	<div id="top">
 		<img alt="background-sogo" src="/images/NosExpertises_Header.webp?width=1200&height=1200" />
 
-		<h1 animate><span class="gris">Nos expertises</span><br />à vos côter</h1>
+		<h1 animate><span class="gris">Nos expertises</span><br />à vos côtes</h1>
 	</div>
 
 	<div class="blanc" id="blanc">

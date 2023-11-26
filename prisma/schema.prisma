@@ -71,6 +71,13 @@ model Collaborateur {
   description       String   @default("")
   photoInactive     String   @default("")
   photoActive       String   @default("")
-  rang       Int   @default(1)
+  rang              Int      @default(1)
   createdAt         DateTime @default(now())
+}
+
+model PointHistoire {
+  id          String @id @default(uuid())
+  titre       String
+  description String
+  date        String
 }

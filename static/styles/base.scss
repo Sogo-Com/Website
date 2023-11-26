@@ -115,6 +115,38 @@ h3 {
 	.swiper-slide {
 		width: 100%;
 	}
+
+
+	.swiper-button{
+		background-image: url('/images/fleche.png');
+		width: 50px;
+		height: 50px;
+		background-size: contain;
+		top: 50%;
+		z-index: 50;
+		margin: 50px;
+		translate: 0 -50%;
+		cursor: pointer;
+		position: absolute;
+		transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1)
+	}
+
+	.swiper-button:hover{
+		filter: brightness(0.4);
+	}
+	.swiper-button-next{
+		right: 0;
+		transform: rotate(-90deg);
+	}
+
+	.swiper-button-prev{
+		left: 0;
+		transform: rotate(90deg);
+	}
+
+	.swiper-button-disabled{
+		display:none;   
+	}
 }
 
 .swiper-collaborateur {
