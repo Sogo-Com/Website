@@ -100,9 +100,9 @@
 				background-color: rgba($color-bleu, 0.1);
 				display: block;
 				position: absolute;
-				left: -15%;
+				left: -25px;
 				z-index: -1;
-				bottom: 15%;
+				top: -25px;
 				border-radius: 50px;
 				content: '';
 				width: 50px;
@@ -154,7 +154,7 @@
 			}
 		}
 		.images {
-			flex-basis: 12%;
+			flex-basis: 15%;
 
 			@media only screen and (max-width: $phone) {
 				display: none;

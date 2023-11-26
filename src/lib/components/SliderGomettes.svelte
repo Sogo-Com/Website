@@ -40,7 +40,7 @@
                 },
                 // when window width is >= 640px
                 1150: {
-                    slidesPerView: 3,
+                    slidesPerView: 5,
                     spaceBetween: 60
                 }
             }
@@ -127,7 +127,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 32px;
+            padding: 0 32px 32px 32px;
 
             @media only screen and (max-width:$phone) {
                 padding:0 8px 32px 8px;
@@ -177,7 +177,7 @@
 			align-items: center;
 			.swiper-container {
 				width: 100%;
-                height: 40vh;
+                height: 40vh; 
                 overflow: visible;
 
 

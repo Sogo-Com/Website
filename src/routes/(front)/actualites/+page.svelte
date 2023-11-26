@@ -26,7 +26,7 @@
 						<div class="contenu">
 							<div class="scroller">
 								<h2>{actualite.titre}</h2>
-								<p class="line-clamp-5">{actualite.descriptionCourte}</p>
+								<p class="">{actualite.descriptionCourte}</p>
 							</div>
 							<div class="btn-container">
 								<a class="btn" href="/actualites/{actualite.id}">En savoir +</a>
@@ -142,8 +142,24 @@
 						overflow-x: hidden;
 						h2 {
 							margin: 0;
-							color:$color-gris-dark;
-							font-size: 2rem;
+							color: $color-gris-dark;
+							font-size: 1.5rem;
+							line-clamp: 2;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 2;
+							overflow: hidden;
+							margin-bottom: 16px;
+						}
+
+						p{
+							line-height: 1.5rem;
+							word-break: break-word;
+							line-clamp: 5;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 5;
+							overflow: hidden;
 						}
 					}
 

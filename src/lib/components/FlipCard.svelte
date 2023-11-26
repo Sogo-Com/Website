@@ -123,7 +123,7 @@
 					position: relative;
 					z-index: 1;
 					text-align: left;
-					line-height: 1rem;
+					line-height: 1.5rem;
 				}
 			}
 		}
