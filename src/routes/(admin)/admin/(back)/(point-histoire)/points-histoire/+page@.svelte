@@ -36,50 +36,33 @@
 </script>
 
 <Layout>
-	<div slot="buttons">
-		<a href="/admin/pointHistoire" class="create-button" ><span>Créer un pointHistoire</span></a>
-	</div>
+
 	<div class="grid-view">
 		<h1>
-			{pointHistoires.length == 0 ? 'Aucun pointHistoire' : 'Liste des pointHistoires'}
+			{pointHistoires.length == 0 ? 'Aucun  point hisotrique' : 'Liste des points hisotriques'}
 		</h1>
 
 		<table class="pointHistoire-table" style={pointHistoires.length == 0 ? 'display:none;' : ''}>
 			<thead>
 				<tr>
-					<th>Prenom</th>
-					<th>Rang</th>
-					<th>Date de création</th>
-					<th>Supprimer</th>
+					<th>Ordre</th>
+					<th>Date</th>
+					<th>Titre</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				{#each pointHistoires as pointHistoire, index}
 					<tr>
 						<td
-							><a href="/admin/pointHistoire/{pointHistoire.id}">{pointHistoire?.prenom ?? 'Aucun prénom'}</a
+							><a href="/admin/point-histoire/{pointHistoire.id}">{pointHistoire?.id ?? 'Aucune date'}</a
 							></td
 						>
-						<td>{pointHistoire?.rang ?? 'Aucun rang'}</td>
+						<td>{pointHistoire?.date ?? 'Aucune date'}</td>
+						<td>{pointHistoire?.titre ?? 'Aucun titre'}</td>
 
-						<td
-							>{new Intl.DateTimeFormat('fr-FR', {
-								dateStyle: 'full',
-								timeStyle: 'short'
-							}).format(pointHistoire?.createdAt)}</td
-						>
-						<td
-							>
-							
-							
-								<form action="?/delete" method="POST" use:enhance={submitDeletePointHistoire}>
-									<input type="hidden" name="id" value={pointHistoire.id} />
-									<button type="submit" class="delete-button">Supprimer</button>
-								</form>
-
-							
-							</td
-						>
+						<td>{pointHistoire?.description ?? 'Aucune description'}</td>
+						
 					</tr>
 				{/each}
 			</tbody>

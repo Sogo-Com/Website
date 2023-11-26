@@ -105,7 +105,7 @@
 
 		<form method="POST" action="?/create" class="collaborateur-form"  use:enhance={submitCreateCollaborateur}>
 			<div class="form-group">
-				<label for="prenom">Titre</label>
+				<label for="prenom">Prenom</label>
 				<input id="prenom" name="prenom" bind:value={collaborateur.prenom} contenteditable="true" type="text"  />
 			</div>
 

@@ -42,6 +42,29 @@ async function main() {
 
     });
 
+    for(var i = 1; i<= 4 ; i++) {
+
+        try{
+            const point = await prisma.pointHistoire.create({
+                data: {
+                    id: i.toString() ,
+                    titre :"Titre",
+                    date:"2010",
+                    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus."
+                    
+                },
+        
+            });
+        }catch(e){
+            if(e.code != "P2002")
+                console.log(e)
+            else
+                console.log("Point déjà existant")
+        }
+       
+
+    }
+
     console.log("Admin user created:", adminUser);
 }
 

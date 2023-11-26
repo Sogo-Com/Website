@@ -22,6 +22,7 @@
 				<li><a href="/admin/actualites">Actualites</a></li>
 				<li><a href="/admin/projets">Projets</a></li>
 				<li><a href="/admin/collaborateurs">Collaborateurs</a></li>
+				<li><a href="/admin/points-histoire">Frise Historique</a></li>
 			</ul>
 		</div>
 	</div>

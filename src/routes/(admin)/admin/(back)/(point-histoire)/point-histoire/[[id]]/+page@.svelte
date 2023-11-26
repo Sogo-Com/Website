@@ -6,47 +6,43 @@
 	import { goto, } from '$app/navigation';
 
 	export let data;
-	let { collaborateur } = data;
+	let { pointHistoire } = data;
 	
 	
-	const submitCreateCollaborateur = async ({ form, data, action, cancel }) => {
+	const submitCreatePointHistoire = async ({ form, data, action, cancel }) => {
 
-		const { prenom,rang, descriptionCourte} = Object.fromEntries(data);
+		const { titre,date, description} = Object.fromEntries(data);
 
-		if (prenom.length < 1) {
+		if (titre.length < 1) {
 			toast.error('Titre vide !');
 			cancel();
 		}
 
-		if (rang == null || isNaN(rang) ||  parseInt(rang) < 1) {
-			toast.error(' Le rang doit être un nombre et supperieur à 0 !');
+
+		if (date.length < 1) {
+			toast.error('Date vide !');
 			cancel();
 		}
 
-		if (descriptionCourte.length < 1) {
-			toast.error('Description courte vide !');
+		if (description.length < 1) {
+			toast.error('Description vide !');
 			cancel();
 		}
 
 
-		data.append('id', collaborateur.id)
-		data.append('photoActive', collaborateur.photoActive ?? '')
-		data.append('photoInactive', collaborateur.photoInactive ?? '')
+		data.append('id', pointHistoire.id)
 
 		
 		return async ({ result, update }) => {
 			
 			switch (result.type) {
 				case 'success':
-					toast.success('Collaborateur enregistré!');
+					toast.success('point historique enregistré!');
 					await applyAction(result)
 			
 					await update();
 			
-					collaborateur = result.data.data
-					goto(`/admin/collaborateur/${collaborateur.id}`,{invalidateAll: true})
-					writerMethods.loadContenu(collaborateur.contenu)
-
+					pointHistoire = result.data.data
 					break;
 				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
@@ -66,99 +62,40 @@
 		};
 	};
 
-	const submitDeleteCollaborateur  = () => {
-		return async ({ result, update }) => {
-			switch (result.type) {
-				case 'success':
-					toast.success('Collaborateur supprimé!');
-					
-					break;
-				case 'failure':
-					toast.error("Erreur lors de la suppression");
-					break;
-				default:
-					break;
-			}
-			await update();
-			goto("/admin/collaborateurs", { invalidateAll: true })
-		};
-	};
 
 </script>
 
 <Layout>
 	<div slot="buttons">
-		<button class="back-button" on:click={()=>{goto("/admin/collaborateurs")}}>Retour aux collaborateurs</button>
-		{#if collaborateur.id != null && collaborateur.id.length != 0}
+		<button class="back-button" on:click={()=>{goto("/admin/points-histoires")}}>Retour aux pointHistoires</button>
 
-			<form action="?/delete" method="POST" use:enhance={submitDeleteCollaborateur}>
-				<input type="hidden" name="id" value={collaborateur.id} />
-				<button type="submit" class="delete-button">Supprimer</button>
-			</form>
-
-		{/if}
-	
 	</div>
 
 	<div>
-		<h1>Formulaire de Collaborateur</h1>
-
-		<form method="POST" action="?/create" class="collaborateur-form"  use:enhance={submitCreateCollaborateur}>
-			<div class="form-group">
-				<label for="prenom">Titre</label>
-				<input id="prenom" name="prenom" bind:value={collaborateur.prenom} contenteditable="true" type="text"  />
-			</div>
+		<h1>Formulaire de PointHistoire</h1>
 
 
-			<div class="form-group">
-				<label for="rang">Rang</label>
-				<input id="rang" name="rang" type="number" min="1" max="1000" step="1" bind:value={collaborateur.rang}   />
-			</div>
+		<form method="POST" action="?/create" class="pointHistoire-form"  use:enhance={submitCreatePointHistoire}>
 			
-
+			
 			<div class="form-group">
-				<label for="photoInactiveFile">Image Inactive</label>
-				<input
-				  type="file"
-				  id="photoInactiveFile"
-				  name="photoInactiveFile"
-				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
-				  
-				/>
-				{#if collaborateur.photoInactive != null && collaborateur.photoInactive.length != 0}
-					<img src={collaborateur.photoInactive} alt={collaborateur.prenom} />
-				{/if}
-			  </div>
-
-			  
-			<div class="form-group">
-				<label for="photoActiveFile">Image Active</label>
-				<input
-				  type="file"
-				  id="photoActiveFile"
-				  name="photoActiveFile"
-				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
-				  
-				/>
-				{#if collaborateur.photoActive != null && collaborateur.photoActive.length != 0}
-					<img src={collaborateur.photoActive} alt={collaborateur.prenom} />
-				{/if}
-			  </div>
-
-
-
-
-			<div class="form-group">
-				<label for="descriptionCourte">Description courte (200 caracteres max)</label>
-				<textarea id="descriptionCourte" rows="3" cols="45"  maxlength="200" name="descriptionCourte" bind:value={collaborateur.descriptionCourte} contenteditable="true" type="text"  />
+				<label for="date">Date</label>
+				<textarea id="date"   maxlength="4" name="date" bind:value={pointHistoire.date} contenteditable="true" type="text"  />
 			</div>
+			<div class="form-group">
+				<label for="titre">Titre</label>
+				<input id="titre" name="titre" bind:value={pointHistoire.titre} contenteditable="true" type="text"  />
+			</div>
+
+
+			<div class="form-group">
+				<label for="description">Description (200 caracteres max)</label>
+				<textarea id="description" rows="3" cols="45"  maxlength="200" name="description" bind:value={pointHistoire.description} contenteditable="true" type="text"  />
+			</div>
+
 
 
 			
-			<div class="form-group">
-				<label for="description">Description</label>
-				<textarea id="description" rows="8" cols="45"   name="description" bind:value={collaborateur.description} contenteditable="true" type="text"  />
-			</div>
 
 			<button type="submit" for="envoyer" value="envoyer" class="submit-button" >Enregistrer</button>
 		</form>
@@ -166,7 +103,7 @@
 </Layout>
 
 <style lang="scss">
-	.collaborateur-form {
+	.pointHistoire-form {
 		margin: 0px 20px;
 		padding: 20px;
 		background-color: var(--color-blanc);
