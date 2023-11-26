@@ -93,7 +93,7 @@
 		</form>
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="presse" />
-			<button type="submit" class="link">Relation de presse</button>
+			<button type="submit" class="link">Relations presse</button>
 		</form>
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
@@ -103,16 +103,18 @@
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="reseaux" />
-			<button type="submit" class="link">Réseaux sociaux</button>
+			<button type="submit" class="link">
+				Réseaux sociaux</button>
 		</form>
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="photos" />
-			<button type="submit" class="link">Photos et vidéos</button>
+			<button type="submit" class="link">Photos & vidéos</button>
 		</form>
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="evenements" />
-			<button type="submit" class="link">Évenements</button>
+			<button type="submit" class="link">
+				Événements</button>
 		</form>
 	</div>
 

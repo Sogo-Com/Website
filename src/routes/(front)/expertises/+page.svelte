@@ -458,6 +458,11 @@
 						padding: 0;
 						flex-wrap: wrap;
 					}
+
+					@media only screen and (max-width: $fold) {
+						width: min-content;
+					}
+				
 					img {
 						margin: 8px;
 						width: 64px;

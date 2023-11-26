@@ -12,14 +12,11 @@
 
 	isLeft = isLeft.toString();
 
-	function clicked() {
-		if (link != null && link.length > 0) goto(link);
-	}
 </script>
 
 <div class="sub-project {customClass} {isLeft == 'true' ? 'left' : 'right'} ">
 	<div class="images {isLeft == 'false' ? 'big' : ''}">
-		<img src={imgLeft} alt="tomme" />
+		<img src={imgLeft} alt="{title}" />
 	</div>
 
 	{#if isLeft == 'true'}
@@ -31,7 +28,7 @@
 		<p class="texte">
 			{description}
 		</p>
-		<div on:click={clicked} class="btn bleu">En savoir +</div>
+		<a href="{link}" class="btn bleu">En savoir +</a>
 	</div>
 
 	{#if isLeft == 'false'}

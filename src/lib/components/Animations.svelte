@@ -13,9 +13,7 @@
 
 		methods.load();
 		window.refreshAnimations = () => {
-			setTimeout((_) => {
-				methods.refresh();
-			}, 500);
+			methods.refresh();
 		};
 	});
 
@@ -263,7 +261,7 @@
 						end: '+=1300px',
 						pin: true,
 						pinSpacing: true,
-						scrub: true,
+						scrub: true
 					}
 				});
 
@@ -288,7 +286,6 @@
 					);
 				});
 
-
 				timelines[selector].push(timeline);
 			});
 		}
@@ -296,18 +293,20 @@
 
 	export const methods = {
 		load: () => {
-			localMethods.h1();
-			localMethods.h2();
-			localMethods.h3();
-			localMethods.p();
-			localMethods.btn();
-			localMethods.friseHistoire()
+			setTimeout((_) => {
+				localMethods.h1();
+				localMethods.h2();
+				localMethods.h3();
+				localMethods.p();
+				localMethods.btn();
+				localMethods.friseHistoire();
+			});
 		},
 		refresh: () => {
 			Object.keys(timelines).forEach((tlKey) => {
 				timelines[tlKey]?.forEach((timeline) => {
 					setTimeout((_) => {
-						tl.refresh();
+						timeline.restart();
 					});
 				});
 			});

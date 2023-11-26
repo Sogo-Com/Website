@@ -106,7 +106,7 @@
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				align-items: start;
-				height: calc(60vw + 200px);
+				height: calc(60vw + 300px);
 			}
 			.point {
 				position: relative;
@@ -118,9 +118,9 @@
 					top: var(--esp);
 				}
 				color: $color-blanc;
-				width: 50px;
-				height: 50px;
-				border-radius: 50px;
+				width: 75px;
+				height: 75px;
+				border-radius: 75px;
 				background-color: $color-rose;
 				display: flex;
 				justify-content: center;
@@ -164,7 +164,7 @@
 
 				.innerText {
 					font-family: $font-secondary-light;
-					font-size: 0.8rem;
+					font-size: 1.2rem;
 				}
 				.innerPoint {
 					padding: 16px;
@@ -189,7 +189,7 @@
 					p {
 						width: 20vw;
 						font-size: 0.8rem;
-
+						line-height: 1rem;
 						@media only screen and (max-width: $phone) {
 							width: 100%;
 							text-align: left;

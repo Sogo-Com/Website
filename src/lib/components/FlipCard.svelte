@@ -89,6 +89,7 @@
 				h3{
 					padding: 8px;
 					text-align: center;
+					font-size: 1.5rem;
 				}
 				img ,.placeholder{
 					position: absolute;
@@ -99,7 +100,7 @@
 					height: 100%;
                     object-fit: cover;
                     background-size: cover;
-					background: antiquewhite;
+					background: $color-rose;
 				}
 			}
 
@@ -122,6 +123,7 @@
 					position: relative;
 					z-index: 1;
 					text-align: left;
+					line-height: 1rem;
 				}
 			}
 		}

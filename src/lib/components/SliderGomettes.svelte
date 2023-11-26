@@ -106,8 +106,7 @@
     <div class="info">
         <div class="collaborateur-info">
 
-            <h2 animate>
-                <span class="pink" bind:this={prenom}></span>
+            <h2 animate class="pink" bind:this={prenom}>
             </h2>
             <h3 animate bind:this={descriptionCourte}>
             </h3>
@@ -131,7 +130,7 @@
             padding: 32px;
 
             @media only screen and (max-width:$phone) {
-                padding:32px 8px;
+                padding:0 8px 32px 8px;
         		}
             .collaborateur-info{
                 width: 60%;
@@ -148,7 +147,7 @@
                     font-size: 1rem;
                 }
                 p{
-                    font-size: .8rem;
+                    text-align: center;
                 }
             }
         }

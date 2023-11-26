@@ -148,7 +148,7 @@
 					}
 
 					.btn-container {
-						padding-bottom: 16 px;
+						padding-bottom: 16px;
 					}
 				}
 			}
