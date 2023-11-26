@@ -54,7 +54,7 @@
 		@media only screen and (max-width: $phone) {
 			align-items: end;
 			margin-top: 80px;
-			height: 30vh;
+			height: 50vh;
 		}
 
 		img {
@@ -65,6 +65,12 @@
 			z-index: 10;
 			background-size: cover;
 			object-fit: cover;
+			margin-top: 120px;
+
+			@media only screen and (max-width: $phone) {
+				margin-top: 0px;
+			}
+
 		}
 
 		h1 {

@@ -41,7 +41,7 @@
 
 <style lang="scss">
 	#top {
-		height: 100vh;
+		height: 80vh;
 		width: 100%;
 		overflow: hidden;
 		position: relative;

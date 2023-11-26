@@ -136,7 +136,7 @@
 
 <style lang="scss">
 	#top {
-		height: 100vh;
+		height: 80vh;
 		position: relative;
 		display: flex;
 
