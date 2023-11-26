@@ -1,7 +1,39 @@
 <script>
 	export let contenu;
 	const { blocks = [] } = contenu;
-	
+
+	function nestedList(listData) {
+		const { items, style = 'unordered' } = listData;
+
+		let listHtml = '';
+
+		if (items == null || items.length == 0) listHtml = '';
+
+		listHtml += `<ul style="--index:0;"  class='parent child-0'>`;
+		items.forEach((element, index) => {
+			listHtml += listChild(element, style, ++index);
+		});
+		listHtml += `</ul>`;
+		return listHtml;
+	}
+
+	function listChild(parent, style, parentIndex, nestedIndex = 1) {
+		let listHtml = '';
+
+		const { content, items } = parent;
+
+		listHtml += `<li>${style == 'ordered' ? `<ol>${parentIndex}</ol> &nbsp;` : '&#8226;&nbsp;'}${content}</li>`;
+
+		if (items != null && items.length > 0) {
+			listHtml += `<ul style="--index:${nestedIndex};" class='child-${nestedIndex}'>`;
+			items.forEach((element, index) => {
+				listHtml += listChild(element, style, `${parentIndex}.${++index}`, nestedIndex++);
+			});
+			listHtml += '</ul>';
+		}
+
+		return listHtml;
+	}
 </script>
 
 <div id="contenu">
@@ -19,14 +51,11 @@
 			{#if block.type == 'header' && block.data.level == 4}
 				<h4>{block.data.text}</h4>
 			{/if}
-		
-			{#if block.type == 'list'}
-				<ul>
-					{#each block.data.items as item}
-						<li>{item}</li>
-					{/each}
-				</ul>
+
+			{#if block.type == 'nestedList'}
+				{@html nestedList(block.data)}
 			{/if}
+
 			{#if block.type == 'quote'}
 				<blockquote>{block.data.text}</blockquote>
 			{/if}
@@ -50,31 +79,47 @@
 	{/each}
 </div>
 
-<style lang="scss">
-	.block-header{
-		color:$color-gris-dark
-	}
-	.block {
-		margin-bottom: 32px;
-	}
+<style lang="scss" global>
+	#contenu {
+		.block-header {
+			color: $color-gris-dark;
+		}
+		.block {
+			margin-bottom: 32px;
+		}
 
-	.block-button {
-		margin-bottom: 64px;
-	}
+		.block-button {
+			margin-bottom: 64px;
+		}
 
-	.block-image {
-		width: 100%;
-		max-height: 400px;
-		overflow: hidden;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		img {
+		.block-image {
 			width: 100%;
-			height: 100%;
-			object-fit: cover;
+			max-height: 400px;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.block-nestedList {
+			ul {
+				list-style: none;
+				padding-left: calc(var(--index) * 16px);
+				li {
+					margin-bottom: 8px;
+					display: flex;
+					&:before {
+						content: var(--index);
+						margin-right: 8px;
+					}
+				}
+			}
 		}
 	}
-	
 </style>

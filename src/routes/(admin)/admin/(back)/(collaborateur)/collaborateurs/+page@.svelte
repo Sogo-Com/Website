@@ -8,6 +8,8 @@
 	
 	export let data;
 	let { collaborateurs } = data;
+	if(collaborateurs != null && collaborateurs.length != 0)
+		collaborateurs = collaborateurs?.sort((a,b)=> a.rang - b.rang);
 
 
 	const submitDeleteCollaborateur  = () => {

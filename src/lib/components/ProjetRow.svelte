@@ -12,14 +12,11 @@
 
 	isLeft = isLeft.toString();
 
-	function clicked() {
-		if (link != null && link.length > 0) goto(link);
-	}
 </script>
 
 <div class="sub-project {customClass} {isLeft == 'true' ? 'left' : 'right'} ">
 	<div class="images {isLeft == 'false' ? 'big' : ''}">
-		<img src={imgLeft} alt="tomme" />
+		<img src={imgLeft} alt="{title}" />
 	</div>
 
 	{#if isLeft == 'true'}
@@ -31,7 +28,7 @@
 		<p class="texte">
 			{description}
 		</p>
-		<div on:click={clicked} class="btn bleu">En savoir +</div>
+		<a href="{link}" class="btn bleu">En savoir +</a>
 	</div>
 
 	{#if isLeft == 'false'}
@@ -103,9 +100,9 @@
 				background-color: rgba($color-bleu, 0.1);
 				display: block;
 				position: absolute;
-				left: -15%;
+				left: -25px;
 				z-index: -1;
-				bottom: 15%;
+				top: -25px;
 				border-radius: 50px;
 				content: '';
 				width: 50px;
@@ -157,7 +154,7 @@
 			}
 		}
 		.images {
-			flex-basis: 12%;
+			flex-basis: 15%;
 
 			@media only screen and (max-width: $phone) {
 				display: none;

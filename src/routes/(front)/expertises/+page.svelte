@@ -82,7 +82,7 @@
 
 <div id="total-expertise" bind:this={containerEl}>
 	<div id="top">
-		<img alt="background-sogo" src="/images/NosExpertises_Header.webp" />
+		<img alt="background-sogo" src="/images/NosExpertises_Header.webp?width=1200&height=1200" />
 
 		<h1 animate><span class="gris">Nos expertises</span><br />à vos côter</h1>
 	</div>
@@ -458,6 +458,11 @@
 						padding: 0;
 						flex-wrap: wrap;
 					}
+
+					@media only screen and (max-width: $fold) {
+						width: min-content;
+					}
+				
 					img {
 						margin: 8px;
 						width: 64px;

@@ -37,7 +37,7 @@
 		<div class="bloc img-droite">
 			<div class="conteneur">
 				<span data-lag=".2" class="bubble top-left" />
-				<img src="/images/home-equipe.png" alt="L'equipe" />
+				<img src="/images/Expertise2_SogoCom_nb.jpg" alt="L'equipe" />
 				<span data-lag=".2" class="bubble bottom-right" />
 			</div>
 		</div>
@@ -277,14 +277,13 @@
 				@media only screen and (max-width: $phone) {
 					margin: 16px 0;
 				}
-				
 			}
 
 			img {
 				position: absolute;
 				right: 5%;
-				bottom: 5%;
-				width: 40%;
+				bottom: 15%;
+				width: 45%;
 				height: 60%;
 				object-fit: contain;
 				background-size: contain;
@@ -294,7 +293,7 @@
 				}
 			}
 
-			p{
+			p {
 				@media only screen and (max-width: $phone) {
 					width: 100%;
 				}
@@ -470,6 +469,7 @@
 						height: 50%;
 						width: 30%;
 						z-index: 4;
+						display: none;
 					}
 
 					&:nth-child(4) {

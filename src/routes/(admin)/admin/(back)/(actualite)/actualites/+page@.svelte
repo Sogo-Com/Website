@@ -8,7 +8,6 @@
 	export let data;
 	let { actualites } = data;
 
-
 	const submitDeleteNote  = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {

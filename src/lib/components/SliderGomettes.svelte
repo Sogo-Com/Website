@@ -40,7 +40,7 @@
                 },
                 // when window width is >= 640px
                 1150: {
-                    slidesPerView: 3,
+                    slidesPerView: 5,
                     spaceBetween: 60
                 }
             }
@@ -106,8 +106,7 @@
     <div class="info">
         <div class="collaborateur-info">
 
-            <h2 animate>
-                <span class="pink" bind:this={prenom}></span>
+            <h2 animate class="pink" bind:this={prenom}>
             </h2>
             <h3 animate bind:this={descriptionCourte}>
             </h3>
@@ -128,10 +127,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 32px;
+            padding: 0 32px 32px 32px;
 
             @media only screen and (max-width:$phone) {
-                padding:32px 8px;
+                padding:0 8px 32px 8px;
         		}
             .collaborateur-info{
                 width: 60%;
@@ -148,7 +147,7 @@
                     font-size: 1rem;
                 }
                 p{
-                    font-size: .8rem;
+                    text-align: center;
                 }
             }
         }
@@ -178,7 +177,7 @@
 			align-items: center;
 			.swiper-container {
 				width: 100%;
-                height: 40vh;
+                height: 40vh; 
                 overflow: visible;
 
 

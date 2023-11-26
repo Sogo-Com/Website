@@ -58,7 +58,7 @@
 
 <div id="top">
 	<h1 animate>Nos projets</h1>
-	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.webp" />
+	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.webp?width=1200&height=1200" />
 </div>
 <div class="gris">
 	<div class="question gris-child">
@@ -93,7 +93,7 @@
 		</form>
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="presse" />
-			<button type="submit" class="link">Relation de presse</button>
+			<button type="submit" class="link">Relations presse</button>
 		</form>
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
@@ -103,16 +103,18 @@
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="reseaux" />
-			<button type="submit" class="link">Réseaux sociaux</button>
+			<button type="submit" class="link">
+				Réseaux sociaux</button>
 		</form>
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="photos" />
-			<button type="submit" class="link">Photos et vidéos</button>
+			<button type="submit" class="link">Photos & vidéos</button>
 		</form>
 
 		<form action="?/find" method="POST" use:enhance={submitFindProjets}>
 			<input type="hidden" name="typeProjet" value="evenements" />
-			<button type="submit" class="link">Évenements</button>
+			<button type="submit" class="link">
+				Événements</button>
 		</form>
 	</div>
 
@@ -134,7 +136,7 @@
 
 <style lang="scss">
 	#top {
-		height: 100vh;
+		height: 80vh;
 		position: relative;
 		display: flex;
 
