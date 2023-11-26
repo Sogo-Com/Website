@@ -37,7 +37,7 @@
 				{#if imageSrc}
 					<img src={imageSrc} alt={titre} />
 				{:else}
-					<div class="placeholder"></div>
+					<span class="placeholder"></span>
 				{/if}
 				
 			</div>

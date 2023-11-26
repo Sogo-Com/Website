@@ -66,14 +66,14 @@
 	<p contenteditable="false" bind:innerText={innerDescriptionText} />
 	<label for="nom">Nom</label>
 	<input bind:this={nom} type="text" name="nom" id="nom" placeholder="Votre nom" />
-	<label for="prenom">Prenom</label>
-	<input bind:this={prenom} type="text" name="prenom" id="prenom" placeholder="Votre prenom" />
+	<label for="prenom">Prénom</label>
+	<input bind:this={prenom} type="text" name="prenom" id="prenom" placeholder="Votre prénom" />
 	<label for="societe">Société</label>
 	<input bind:this={societe} type="text" name="societe" id="societe" placeholder="Votre société" />
 	<label for="telephone">Téléphone</label>
 	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
-	<label for="email">Email</label>
-	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre email" />
+	<label for="email">E-mail</label>
+	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre e-mail" />
 	<label for="message">Message</label>
 	<textarea bind:this={message} type="text" rows="10" name="message" id="message" placeholder="Votre message" />
 	<button animate type="submit" class="btn" for="envoyer" value="envoyer"

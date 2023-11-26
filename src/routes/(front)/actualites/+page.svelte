@@ -11,7 +11,7 @@
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/actualites-bg.png" />
+	<img alt="background-sogo" src="/images/actualites-bg.png?width=1200&height=1200" />
 
 	<h1 animate>Nos actualités</h1>
 </div>

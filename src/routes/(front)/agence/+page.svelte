@@ -12,7 +12,7 @@
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/agence-bg.png?width=1200&height=1200" />
+	<img alt="background-sogo" src="/images/Agence_SogoCom_nb.jpg?width=1200&height=1200" />
 
 	<h1 animate><span class="pink">Des gommettes</span><br />qui en jettent !</h1>
 </div>
@@ -27,7 +27,7 @@
 				<p animate>L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs.
 					<br /><br />
 					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée,
-					nous pensons votre communication
+					nous pensons votre communication.
 				</p>
 				
 			</div>
