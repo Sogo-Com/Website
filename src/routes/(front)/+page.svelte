@@ -47,7 +47,7 @@
 
 <div class="blanc" id="proj-actu">
 	{#if projet != null}
-		<div class="projet">
+		<div class="projet {projet.typeProjet}">
 			<h2 animate class="grey">Notre nouveau projet</h2>
 			<h3 animate class="grey">{projet.titre}</h3>
 			<p animate>
@@ -296,6 +296,43 @@
 			p {
 				@media only screen and (max-width: $phone) {
 					width: 100%;
+				}
+			}
+
+			&.presse {
+				background-color: rgba(229, 173, 31, 0.1);
+
+				.btn {
+					background: #e5ae1e;
+				}
+			}
+
+			&.graphisme {
+				background-color: rgba(163, 139, 172, 0.1);
+
+				.btn {
+					background: #a48bad;
+				}
+			}
+			&.reseaux {
+				background-color: rgba(44, 154, 155, 0.1);
+
+				.btn {
+					background: #2c9a9b;
+				}
+			}
+			&.photos {
+				background-color: rgba(128, 129, 109, 0.1);
+
+				.btn {
+					background: #80816d;
+				}
+			}
+			&.evenements {
+				background-color: rgba(156, 81, 79, 0.1);
+
+				.btn {
+					background: #9d524f;
 				}
 			}
 		}
