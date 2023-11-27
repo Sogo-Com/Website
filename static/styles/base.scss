@@ -126,6 +126,7 @@ h3 {
 		top: 50%;
 		z-index: 50;
 		margin: 32px;
+		translate: 0 -41px;
 		cursor: pointer;
 		position: absolute;
 		transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -140,12 +141,12 @@ h3 {
 	}
 	.swiper-button-next{
 		right: 0;
-		transform: rotate(-90deg) translateY(-50%);
+		transform: rotate(-90deg);
 	}
 
 	.swiper-button-prev{
 		left: 0;
-		transform: rotate(90deg) translateY(-50%);
+		transform: rotate(90deg);
 	}
 
 	.swiper-button-disabled{
