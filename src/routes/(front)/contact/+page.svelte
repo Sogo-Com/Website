@@ -1,9 +1,11 @@
 <script>
+	import { goto } from '$app/navigation';
 	
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import Contact from '$lib/components/Contact.svelte';
 
+	
 	onMount(async (_) => {
 		if (browser) {
 			const module = await import('leaflet');
@@ -43,14 +45,14 @@
 </svelte:head>
 
 <div class="title">
-	<h2 animate>Contactez nous</h2>
+	<h2 animate>Contactez-nous</h2>
 </div>
 
 <div class="infos">
 	<div class="info">
 		<a href="https://www.google.fr/maps/place/356+Rue+de+Chavanne,+74330+Poisy">
 			<img src="/images/pin.svg" alt="pin" />
-			<p>356 Route de Chavane<br /> 74330 Poisy</p>
+			<p>356 CR dit de Chavane,<br />74330 Poisy (Parc du calvi)</p>
 		</a>
 	</div>
 
@@ -69,8 +71,9 @@
 	</div>
 </div>
 
-<div id="map" />
-
+<a target="_blank" href="https://www.google.fr/maps/place/Sogo+Com/@45.9329141,6.0742713,17z/data=!4m15!1m8!3m7!1s0x478b84f87be9c9d5:0x7a9ccb22bbf01a5d!2s356+Rue+de+Chavanne,+74330+Poisy!3b1!8m2!3d45.9329141!4d6.0742713!16s%2Fg%2F11rvc4y984!3m5!1s0x478b8f9777907dcd:0x7183c040b4008473!8m2!3d45.9310403!4d6.0727623!16s%2Fg%2F1vn17f27?entry=ttu">
+<div id="map"  />
+</a>
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
@@ -160,6 +163,7 @@
 	#map {
 		height: 40vh;
 		z-index: 0;
+		cursor: pointer ;
 	}
 
 	#contact {

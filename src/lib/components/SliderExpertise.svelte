@@ -230,7 +230,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 64px 11%;
+		padding: 64px 0;
 		transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
 
@@ -309,8 +309,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			}
 
 			.link {
-				flex-grow: initial;
-				padding: 24px;
+				padding: 16px;
 				transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				display: flex;
 				align-items: center;

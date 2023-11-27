@@ -119,6 +119,8 @@
 				}
 				p {
 
+					max-height: 100%;
+					overflow-y: auto;
 				
 					color: #fff;
 					font-size: 1rem;
@@ -126,7 +128,7 @@
 					z-index: 1;
 					text-align: left;
 					line-height: 1.5rem;
-					padding: 32px;
+					padding: 24px;
 					@media only screen and (max-width: $smpc) {
 						line-height: 1rem;
 						font-size: 0.8rem;

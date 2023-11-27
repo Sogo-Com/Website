@@ -48,7 +48,7 @@
 <div class="blanc" id="proj-actu">
 	{#if projet != null}
 		<div class="projet {projet.typeProjet}">
-			<h2 animate class="grey">Notre nouveau projet</h2>
+			<h2 animate class="grey">Notre dernier projet</h2>
 			<h3 animate class="grey">{projet.titre}</h3>
 			<p animate>
 				{projet.descriptionCourte}
@@ -83,7 +83,7 @@
 <div class="blanc" id="contact">
 	<div class="wrapper">
 		<div class="contact-form">
-			<h2 animate class="grey">Contactez nous !</h2>
+			<h2 animate class="grey">Contactez-nous !</h2>
 			<Contact />
 		</div>
 		<div class="contact-images">
