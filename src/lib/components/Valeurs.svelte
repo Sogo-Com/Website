@@ -10,54 +10,54 @@
 	<div class="conteneur">
 		<div class="contenu left">
 			<p animate class="flip">
-				Créative et inspirée, l’équipe Sogo Com c’est aussi un lien de proximité assuré.
-				<br /><br />
-				Basée à Poisy, aux portes d’Annecy, la team expérimentée défend son système de valeurs coûte
-				que coûte.
-				<br /><br />
-				L’éthique et l’écoute pour la finesse de l’intention, la confiance et le conseil pour la justesse
-				de la relation.
+				Créative et inspirée, l’équipe Sogo Com c’est aussi un lien de proximité assuré. Basée à Poisy, aux
+portes d’Annecy, la team expérimentée défend son système de valeurs coûte que coûte. Confiance
+et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur à toute épreuve !
 			</p>
 		</div>
 		<div class="contenu center">
 			<div class="flip">
-				<FlipCard titre="Bienveillance" />
+				<FlipCard titre="Proximité" description="La relation de confiance se tisse dans la toile de la proximité. L’écoute et l’attention en sont les fils
+				d’Ariane. Vous connaître, c’est respecter votre identité. Echanger à tous les instants de votre projet,
+				c’est être au plus proche de vos besoins."/>
 			</div>
 		</div>
 
 		<div class="contenu right">
 			<div class="flip">
 				<FlipCard
-					titre="Éthique"
-					description="« L’éthique c’est l’esthétique de dedans », Pierre Reverdy. 
-
-				Mettre en adéquation nos actions et nos valeurs, injecter de l’humain à tous les temps de la collaboration est une composante essentielle chez Sogo Com. "
+					titre="Solidarité"
+					description="Parce que la valeur des liens humains véritables surpasse tout, notre valeur ajoutée à nous c’est la
+					solidarité. Chez Sogo Com, nous sommes engagés et ne perdons pas de vue les causes qui nous
+					tiennent à cœur."
 				/>
 			</div>
 		</div>
 		<div class="contenu left">
 			<div class="flip">
 				<FlipCard
-					titre="Confiance"
-					description="« Le meilleur moyen de savoir si vous pouvez faire confiance à quelqu’un c’est de lui faire confiance », Ernest Hemingway. 
-
-				Incontournable à toute relation saine et sereine, Sogo Com place la confiance mutuelle comme trait d’union. Elle tisse le lien entre vous et nous. "
+					titre="Honnêteté"
+					description="Mettre en adéquation nos actions et nos valeurs, injecter de l’humain à tous les temps de la
+					collaboration sont des composantes essentielles chez Sogo Com. Jouer la transparence est pour nous
+					la meilleure façon d’instaurer un climat de confiance. En toute honnêteté."
 				/>
 			</div>
 		</div>
 		<div class="contenu center">
 			<div class="flip">
 				<FlipCard
-					titre="Conseil"
-					description="« Un bon conseil doit pouvoir être conjugué à la personnalité de l’individu qui le reçoit », Laurent Martinez
-
-				Parce que tout process de projet comprend un principe fondateur et clé de réalité, l’équipe Sogo Com vous éclaire, vous aiguille et vous conseille en toute transparence pour une communication qui vous ressemble. "
+					titre="Rigueur"
+					description="Des rendus de qualité qui répondent en tous points à la demande, le respect des délais et du cadre
+					imposé sont des conditions que nous respectons. Un héritage né de la rigueur rédactionnelle.
+					Anticipation, planification, action et réaction au diapason."
 				/>
 			</div>
 		</div>
 		<div class="contenu right">
 			<div class="flip">
-				<FlipCard titre="Bienveillance" />
+				<FlipCard titre="Plaisir & Bonne humeur" description="Rigueur et exigence ne signifient pas qu’il faille se prendre au sérieux. Chez Sogo Com nous savons
+				faire la part des choses, prendre du recul et rester à notre place ! Parce qu’une atmosphère saine en
+				dit long, nous aimons prendre du plaisir dans nos missions."/>
 			</div>
 		</div>
 	</div>

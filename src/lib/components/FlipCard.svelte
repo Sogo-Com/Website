@@ -118,12 +118,27 @@
 					background-size: contain;
 				}
 				p {
+
+				
 					color: #fff;
 					font-size: 1rem;
 					position: relative;
 					z-index: 1;
 					text-align: left;
 					line-height: 1.5rem;
+
+					@media only screen and (max-width: $smpc) {
+						line-height: 1rem;
+						font-size: 0.8rem;
+					}
+
+					
+					@media only screen and (max-width: $tablet) {
+						font-size: 1rem;
+						line-height: 1.5rem;
+					}
+
+
 				}
 			}
 		}

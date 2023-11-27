@@ -32,11 +32,17 @@
 	}
 
 	
-
+	function animate(){
+		animations.load();
+		loadSmoothScroll()
+	}
 
 	onNavigate((navigation) => {
         
-		if (!document.startViewTransition) return;
+		if (!document.startViewTransition) {
+			animate()
+			return;
+		}
 
        
 		return new Promise((resolve) => {
@@ -45,8 +51,7 @@
 				resolve();
 				await navigation.complete;
 				
-                animations.load();
-				loadSmoothScroll()
+				animate()
 			});
 
 		});

@@ -27,6 +27,10 @@
 			slidesPerView: 1,
 			centeredSlides: true,
 			slideToClickedSlide: true,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev'
+			},
 			breakpoints: {
 				960: {
 					slidesPerView: 3,
@@ -34,13 +38,8 @@
 				},
 				// when window width is >= 640px
 				1150: {
-					slidesPerView: 5,
-					spaceBetween: 60,
-
-					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev'
-					}
+					slidesPerView: 3,
+					spaceBetween: 60
 				}
 			}
 		});
@@ -157,6 +156,11 @@
 				height: 40vh;
 				overflow: visible;
 
+				.swiper-button {
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
+				}
 				.swiper-wrapper {
 					.swiper-slide {
 						cursor: pointer;
