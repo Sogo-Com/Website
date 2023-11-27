@@ -1,74 +1,95 @@
 <script>
+	export let pointsHistoriques;
 	
 </script>
 
-<div id="histoire" class="blanc">
-	<div class="h2-seo end">
-		<h2 animate><span class="pink">Notre histoire</span></h2>
-	</div>
+{#if pointsHistoriques != null && pointsHistoriques.length == 4}
+	<div id="histoire" class="blanc">
+		<div class="h2-seo end">
+			<h2 animate><span class="pink">Notre histoire</span></h2>
+		</div>
 
-	<div class="wrapper">
-		<div animate class="frise">
-			<div style="--esp:0; --line:0; --index:4;" class="point">
-				<div class="innerText">2010</div>
-				<div class="innerStartLine" />
-				<div class="innerEndLine" />
-				<div class="innerPoint top">
-					<h3>Lancement</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
-						orci at luctus.
-					</p>
-				</div>
-			</div>
+		<div class="wrapper">
+			<div animate class="frise">
 
-			<div style="--esp:15vw; --line:15vw; --index:3;" class="point">
-				<div class="innerText">2010</div>
-				<div class="innerStartLine" />
-				<div class="innerEndLine" />
-				<div class="innerPoint bottom">
-					<h3>Lancement</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
-						orci at luctus.
-					</p>
+				{#each  pointsHistoriques as pointHistorique,index }
+					
+				
+				<div style="--esp:{index*15}vw; --endline:{index == 3 ? "40vw":"0"}; --line:{index != 0 ? "15vw":"0"}; --index:{4 - index};" class="point">
+					<div class="innerText">{pointHistorique.date}</div>
+					<div class="innerStartLine" />
+					<div class="innerEndLine" />
+					<div class="innerPoint {index % 2 == 0 ? "top" : "bottom"}">
+						<h3>{pointHistorique.titre}</h3>
+						<p>
+							{pointHistorique.description}
+						</p>
+					</div>
 				</div>
-			</div>
-			<div style="--esp:30vw; --line:15vw; --index:2;" class="point">
-				<div class="innerText">2010</div>
-				<div class="innerStartLine" />
-				<div class="innerEndLine" />
-				<div class="innerPoint top">
-					<h3>Lancement</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
-						orci at luctus.
-					</p>
-				</div>
-			</div>
 
-			<div style="--esp:45vw; --line:15vw; --endline:40vw; --index:1;" class="point">
-				<div class="innerText">2010</div>
-				<div class="innerStartLine" />
-				<div class="innerEndLine" />
-				<div class="innerPoint bottom">
-					<h3>Lancement</h3>
-					<p>Le meilleur reste à venir...</p>
+				{/each}
+<!-- 
+				<div style="--esp:0; --line:0; --index:4;" class="point">
+					<div class="innerText">2010</div>
+					<div class="innerStartLine" />
+					<div class="innerEndLine" />
+					<div class="innerPoint top">
+						<h3>Lancement</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
+							orci at luctus.
+						</p>
+					</div>
 				</div>
+
+				<div style="--esp:15vw; --line:15vw; --index:3;" class="point">
+					<div class="innerText">2010</div>
+					<div class="innerStartLine" />
+					<div class="innerEndLine" />
+					<div class="innerPoint bottom">
+						<h3>Lancement</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
+							orci at luctus.
+						</p>
+					</div>
+				</div>
+				<div style="--esp:30vw; --line:15vw; --index:2;" class="point">
+					<div class="innerText">2010</div>
+					<div class="innerStartLine" />
+					<div class="innerEndLine" />
+					<div class="innerPoint top">
+						<h3>Lancement</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
+							orci at luctus.
+						</p>
+					</div>
+				</div>
+
+				<div style="--esp:45vw; --line:15vw; --endline:40vw; --index:1;" class="point">
+					<div class="innerText">2010</div>
+					<div class="innerStartLine" />
+					<div class="innerEndLine" />
+					<div class="innerPoint bottom">
+						<h3>Lancement</h3>
+						<p>Le meilleur reste à venir...</p>
+					</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style lang="scss">
 	#histoire {
 		background: #fff;
 
-		.h2-seo{
+		.h2-seo {
 			@media only screen and (max-width: $tablet) {
 				padding-bottom: 32px;
 			}
-			h2{
+			h2 {
 				@media only screen and (max-width: $tablet) {
 					margin-bottom: 0;
 				}
@@ -111,7 +132,7 @@
 			.point {
 				position: relative;
 				left: var(--esp);
-				z-index: var(--index);	
+				z-index: var(--index);
 
 				@media only screen and (max-width: $phone) {
 					left: unset;
@@ -125,7 +146,6 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				
 
 				.innerStartLine {
 					position: absolute;
@@ -170,7 +190,7 @@
 					padding: 16px;
 					position: absolute;
 					text-align: right;
-					
+
 					right: calc(100% - 68px);
 					@media only screen and (max-width: $phone) {
 						padding: 0 32px;
@@ -197,8 +217,8 @@
 					}
 
 					@media only screen and (max-width: $phone) {
-							left: 100%;
-						}
+						left: 100%;
+					}
 
 					&.bottom {
 						top: 100%;

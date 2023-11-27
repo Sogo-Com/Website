@@ -251,13 +251,14 @@
 
 			const isMobile = window.matchMedia('(max-width:960px)').matches;
 
+
 			Elems?.forEach((Elem) => {
 				const pointsElems = document.querySelectorAll('.point');
 
 				let timeline = gsap.timeline({
 					scrollTrigger: {
 						trigger: Elem,
-						start: 'center center',
+						start: isMobile ? 'top 84px' : 'center center',
 						end: '+=1300px',
 						pin: true,
 						pinSpacing: true,

@@ -6,7 +6,7 @@
 	import SliderGomettes from '$lib/components/SliderGomettes.svelte';
 
 	export let data;
-	let { collaborateurs } = data;
+	let { collaborateurs, pointsHistoriques = [] } = data;
 
 	onMount((_) => {});
 </script>
@@ -38,7 +38,7 @@
 	</div>
 </div>
 <Valeurs />
-<FriseHistoire />
+<FriseHistoire {pointsHistoriques} />
 <SliderGomettes {collaborateurs} />
 
 <style lang="scss">

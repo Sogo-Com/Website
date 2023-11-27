@@ -67,7 +67,7 @@
 
 <Layout>
 	<div slot="buttons">
-		<button class="back-button" on:click={()=>{goto("/admin/points-histoires")}}>Retour aux pointHistoires</button>
+		<button class="back-button" on:click={()=>{goto("/admin/points-histoire")}}>Retour aux points historiques</button>
 
 	</div>
 
@@ -89,8 +89,8 @@
 
 
 			<div class="form-group">
-				<label for="description">Description (200 caracteres max)</label>
-				<textarea id="description" rows="3" cols="45"  maxlength="200" name="description" bind:value={pointHistoire.description} contenteditable="true" type="text"  />
+				<label for="description">Description (100 caracteres max)</label>
+				<textarea id="description" rows="3" cols="45"  maxlength="100" name="description" bind:value={pointHistoire.description} contenteditable="true" type="text"  />
 			</div>
 
 
