@@ -17,8 +17,8 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 		</div>
 		<div class="contenu center">
 			<div class="flip">
-				<FlipCard titre="Proximité" description="La relation de confiance se tisse dans la toile de la proximité. L’écoute et l’attention en sont les fils
-				d’Ariane. Vous connaître, c’est respecter votre identité. Echanger à tous les instants de votre projet,
+				<FlipCard titre="Proximité" description="La relation de confiance se tisse dans la toile de la proximité.<br> <br>L’écoute et l’attention en sont les fils
+				d’Ariane.<br> <br>Vous connaître, c’est respecter votre identité. Echanger à tous les instants de votre projet,
 				c’est être au plus proche de vos besoins."/>
 			</div>
 		</div>
@@ -28,7 +28,7 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 				<FlipCard
 					titre="Solidarité"
 					description="Parce que la valeur des liens humains véritables surpasse tout, notre valeur ajoutée à nous c’est la
-					solidarité. Chez Sogo Com, nous sommes engagés et ne perdons pas de vue les causes qui nous
+					solidarité.<br><br> Chez Sogo Com, nous sommes engagés et ne perdons pas de vue les causes qui nous
 					tiennent à cœur."
 				/>
 			</div>
@@ -38,7 +38,7 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 				<FlipCard
 					titre="Honnêteté"
 					description="Mettre en adéquation nos actions et nos valeurs, injecter de l’humain à tous les temps de la
-					collaboration sont des composantes essentielles chez Sogo Com. Jouer la transparence est pour nous
+					collaboration sont des composantes essentielles chez Sogo Com.<br><br> Jouer la transparence est pour nous
 					la meilleure façon d’instaurer un climat de confiance. En toute honnêteté."
 				/>
 			</div>
@@ -48,15 +48,15 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 				<FlipCard
 					titre="Rigueur"
 					description="Des rendus de qualité qui répondent en tous points à la demande, le respect des délais et du cadre
-					imposé sont des conditions que nous respectons. Un héritage né de la rigueur rédactionnelle.
+					imposé sont des conditions que nous respectons.<br><br> Un héritage né de la rigueur rédactionnelle.
 					Anticipation, planification, action et réaction au diapason."
 				/>
 			</div>
 		</div>
 		<div class="contenu right">
 			<div class="flip">
-				<FlipCard titre="Plaisir & Bonne humeur" description="Rigueur et exigence ne signifient pas qu’il faille se prendre au sérieux. Chez Sogo Com nous savons
-				faire la part des choses, prendre du recul et rester à notre place ! Parce qu’une atmosphère saine en
+				<FlipCard titre="Plaisir & Bonne humeur" description="Rigueur et exigence ne signifient pas qu’il faille se prendre au sérieux. <br><br>Chez Sogo Com nous savons
+				faire la part des choses, prendre du recul et rester à notre place !<br><br> Parce qu’une atmosphère saine en
 				dit long, nous aimons prendre du plaisir dans nos missions."/>
 			</div>
 		</div>

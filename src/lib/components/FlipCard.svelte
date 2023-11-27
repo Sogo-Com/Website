@@ -44,7 +44,7 @@
 			<div class="back">
 				<img src="/images/bubble.png" alt="bubble" />
 				<p>
-					{description}
+					{@html description}
 				</p>
 			</div>
 		</div>
@@ -126,10 +126,11 @@
 					z-index: 1;
 					text-align: left;
 					line-height: 1.5rem;
-
+					padding: 32px;
 					@media only screen and (max-width: $smpc) {
 						line-height: 1rem;
 						font-size: 0.8rem;
+						padding: 8px;
 					}
 
 					
