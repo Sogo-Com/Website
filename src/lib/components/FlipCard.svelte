@@ -19,48 +19,46 @@
 			flipcard.style.transform = 'rotateY(0deg)';
 		});
 
-
-		if(typeof link !== undefined && typeof link !== null && typeof link === 'string' && link.length > 0){
-			container.classList.add("active")
-			container.addEventListener("click",_=>{
-				goto(link)
-			})
-		}else
-			container.classList.remove("active")
+		if (
+			typeof link !== undefined &&
+			typeof link !== null &&
+			typeof link === 'string' &&
+			link.length > 0
+		) {
+			container.classList.add('active');
+			container.addEventListener('click', (_) => {
+				goto(link);
+			});
+		} else container.classList.remove('active');
 	});
 </script>
 
-	<div class="container active" bind:this={container}>
-		<div id="flipcard" bind:this={flipcard}>
-			<div class="front">
-				<h3>{titre}</h3>
-				{#if imageSrc}
-					<img src={imageSrc} alt={titre} />
-				{:else}
-					<span class="placeholder"></span>
-				{/if}
-				
-			</div>
-			<div class="back">
-				<img src="/images/bubble.png" alt="bubble" />
-				<p>
-					{@html description}
-				</p>
-			</div>
+<div class="container active" bind:this={container}>
+	<div id="flipcard" bind:this={flipcard}>
+		<div class="front">
+			<h3>{titre}</h3>
+			{#if imageSrc}
+				<img src={imageSrc} alt={titre} />
+			{:else}
+				<span class="placeholder" />
+			{/if}
+		</div>
+		<div class="back">
+			<img src="/images/bubble.png" alt="bubble" />
+			<p>
+				{@html description}
+			</p>
 		</div>
 	</div>
-
-
+</div>
 
 <style lang="scss">
-
-
 	.container {
 		width: 100%;
 		height: 100%;
 		perspective: 600px;
 
-		&.active{
+		&.active {
 			cursor: pointer;
 		}
 
@@ -85,29 +83,37 @@
 			}
 
 			.front {
-
-				h3{
+				h3 {
 					padding: 8px;
 					text-align: center;
 					font-size: 1.5rem;
 				}
-				img ,.placeholder{
+				img,
+				.placeholder {
 					position: absolute;
 					border-radius: 500px;
-					right: -25%;
-					bottom: -45%;
-					width: 100%;
-					height: 100%;
-                    object-fit: cover;
-                    background-size: cover;
+					right: -10%;
+					bottom: -20%;
+					width: 105%;
+					height: 105%;
+					object-fit: cover;
+					background-size: cover;
 					background: $color-rose;
+
+						
+					@media only screen and (max-width: 1650px) {
+						width: 100%;
+						height: 100%;
+					}
+					
+					
 				}
 			}
 
 			.back {
 				transform: rotateY(180deg);
 				position: relative;
-				background-color: #DDB0AF;
+				background-color: #ddb0af;
 				img {
 					position: absolute;
 					right: 0;
@@ -118,30 +124,33 @@
 					background-size: contain;
 				}
 				p {
+			
 
-					max-height: 100%;
-					overflow-y: auto;
-				
 					color: #fff;
 					font-size: 1rem;
 					position: relative;
 					z-index: 1;
 					text-align: left;
-					line-height: 1.5rem;
+					line-height: 1.1rem;
 					padding: 24px;
+
+					@media only screen and (max-width: 1650px) {
+						line-height: 1rem;
+						font-size: 1rem;
+						padding: 8px;
+					}
+
+
 					@media only screen and (max-width: $smpc) {
 						line-height: 1rem;
 						font-size: 0.8rem;
 						padding: 8px;
 					}
 
-					
 					@media only screen and (max-width: $tablet) {
 						font-size: 1rem;
 						line-height: 1.5rem;
 					}
-
-
 				}
 			}
 		}

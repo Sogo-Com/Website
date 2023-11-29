@@ -42,7 +42,7 @@ Vous avez le projet, nous avons les mots.`,
             inactive : '/images/Redaction/Print_1.svg',
             titre: 'Print',
             description: `Plaquettes, brochures, flyers, dossiers de presse… Vos supports de communication print doivent être dans le prolongement de votre identité et de vos valeurs. Des textes adaptés, des mots choisis et des univers déclinés, retrouvez ici quelques-uns de nos projets rédactionnels.`,
-            image:'/images/expertise-yellow.png',
+            image:'/images/Redaction/print.png',
         }]
     },
 
@@ -114,7 +114,7 @@ Confiez-nous votre image, nous la bichonnerons. Notoriété et qualité garantie
             inactive : '/images/Graphisme/Flyer_1.svg',
             titre: 'Flyer',
             description: `Percutant, le flyer est un outil qui doit taper dans l’œil tout en assurant la lisibilité du propos et des informations essentielles. Son efficacité dépend de sa pertinence visuelle.`,
-            image:'/images/expertise-purple.png',
+            image:'/images/Graphisme/flyer.png',
         }, {
             active:'/images/Graphisme/PlaquetteActive_1.svg',
             inactive : '/images/Graphisme/Plaquette_1.svg',
@@ -205,19 +205,21 @@ Zoom sur l’image, le tournage et le montage sont aussi dans notre rayon. Actio
             description: `Que ce soit pour le web ou pour le print, avoir des photos haute définition, bien anglées, mises en scène et variées est un pré-requis incontournable à toute communication qualitative. 
 
             Votre image en dépend et la confiance que l’on vous accordera aussi. Misez sur l’image n’est pas une option, faites-nous confiance.`,
-            image:'/images/expertise-kaki.png',
+            image:'/images/PhotosVideos/photo.png',
         },{
             active:'/images/PhotosVideos/VideosActive_1.svg',
             inactive : '/images/PhotosVideos/Videos_1.svg',
             titre: 'Vidéos',
             description: `Tout comme la photo, la vidéo permet de capitaliser de façon positive et instantanée sur votre entreprise. Elaborer le scénario, réaliser les prises de vue et les interviews, cadencer le tout en musique et en rythme, la vidéo est un art qui doit donner du sens à votre message.`,
-            image:'/images/expertise-kaki.png',
+            image:'/images/PhotosVideos/video.mp4',
+            video:true,
         },{
             active:'/images/PhotosVideos/DroneActive_1.svg',
             inactive : '/images/PhotosVideos/Drone_1.svg',
             titre: 'Prises de vue aériennes',
             description: `Les prises de vue aérienne à l’aide de drones apportent une vraie plus-value à vos images. Prendre de la hauteur et changer d’angle pour des images qui marquent, plonger au cœur d’un univers vu d’en haut pour en prendre toute la dimension, les images de drone ouvrent le champ d’un regard impactant.`,
             image:'/images/expertise-kaki.png',
+           
         }]
     },
 

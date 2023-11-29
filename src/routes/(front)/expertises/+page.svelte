@@ -14,6 +14,7 @@
 	let descriptionSecondaireEl;
 	let imageSecondaireEl;
 	let iconsEls = [];
+	let isVideo = false;
 
 	//Data part
 	export let data;
@@ -74,6 +75,8 @@
 		titreSecondaireEl.innerText = actualIcon.titre;
 		descriptionSecondaireEl = actualIcon.description;
 		imageSecondaireEl = actualIcon.image;
+		
+		isVideo = actualIcon.video != null;
 
 		const iconEl = iconsEls.children.item(index);
 		if (iconEl != null) iconEl.src = actualIcon.active;
@@ -84,7 +87,7 @@
 	<div id="top">
 		<img alt="background-sogo" src="/images/NosExpertises_Header.webp?width=1200&height=1200" />
 
-		<h1 animate><span class="gris">Nos expertises</span><br />à vos côtés</h1>
+		<h1 animate>Nos expertises<br />à vos côtés</h1>
 	</div>
 
 	<div class="blanc" id="blanc">
@@ -190,7 +193,14 @@
 				</div>
 			</div>
 			<div class="slider">
-				<img src={imageSecondaireEl} alt="expertise-icon" />
+				{#if isVideo == true}
+					<video muted width="320" height="240" controls>
+						<source src="{imageSecondaireEl}" type="video/mp4">
+						<track kind="captions" />
+					</video>
+				{:else}
+					<img src={imageSecondaireEl} alt="expertise-icon" />
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -517,6 +527,13 @@
 					height: 100%;
 					object-fit: contain;
 					background-size: contain;
+				}
+
+				video{
+					width: 100%;
+   					height: 100%;
+					object-fit: cover;
+					border-radius: 32px;
 				}
 			}
 		}

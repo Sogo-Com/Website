@@ -25,7 +25,7 @@
 		-
 		<a href="/donnees-personelles"> Données personnelles </a>
 		-
-		<a> Préférence cookies </a>
+		<a> Modifier les cookies </a>
 	</div>
 </footer>
 

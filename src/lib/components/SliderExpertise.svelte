@@ -23,7 +23,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			images: [
 				'/images/SliderRedac/Redac1.png',
 				'/images/SliderRedac/Redac2.png',
-				'/images/mokup.png'
+				'/images/SliderRedac/Redac3.png'
 			],
 			bgImages : '/images/exper-jaune.png'
 		},
@@ -35,9 +35,9 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
-				'/images/SliderRelationsPresse/RelationsPresse1.png',
-				'/images/SliderRelationsPresse/RelationsPresse2.png',
-				'/images/SliderRelationsPresse/RelationsPresse3.png'
+				'/images/SliderRelationsPresse/RP1.png',
+				'/images/SliderRelationsPresse/RP2.png',
+				'/images/SliderRelationsPresse/RP3.png'
 			],
 			bgImages : '/images/exper-jaune.png'
 		},
@@ -50,7 +50,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs. `,
 			images: [
 				'/images/SliderGraphisme/Graphisme1.png',
-				'/images/SliderGraphisme/Graphisme2.png',
+				'/images/SliderGraphisme/graphisme2.png',
 				'/images/SliderGraphisme/Graphisme3.png'
 			],
 			bgImages : '/images/exper-rose.png'
@@ -77,8 +77,8 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs.`,
 			images: [
+				'/images/SlidePhotoVideo/1.mp4',
 				'/images/SlidePhotoVideo/2.png',
-				'/images/mokup.png',
 				'/images/mokup.png'
 			],
 			bgImages : '/images/exper-kaki.png'
@@ -127,11 +127,38 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		oldExpertise.class = classToAdd;
 	}
 
+
+	function isVideoSlide(src){
+		return src.includes('.mp4')
+	}
+
+	function videoSLide(src){
+
+		let videoHtml = `
+		<video muted width="320" height="240" controls><source src="${src}" type="video/mp4"><track kind="captions" /></video>
+		`
+		return videoHtml
+
+	}
+
+	function imageSlide(src){
+		let imageHtml = `
+		<img src="${src}" alt="expertise-slide" />
+		`
+		return imageHtml
+	}
+
 	function changeImages(imagesArray) {
-		wrapper.children[0].firstElementChild.src = imagesArray[0];
-		wrapper.children[1].firstElementChild.src = imagesArray[1];
-		wrapper.children[2].firstElementChild.src = imagesArray[2];
-		
+
+		imagesArray.forEach((image, index) => {
+			if(isVideoSlide(image)){
+				
+				wrapper.children[index].innerHTML = videoSLide(image)
+			}else{
+				wrapper.children[index].innerHTML = imageSlide(image);
+			}
+		});
+
 	}
 
 	onMount((_) => {
@@ -270,6 +297,13 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				justify-content: space-evenly;
 				align-items: center;
 
+				video{
+					width: 80%;
+					height: 80%;
+					object-fit: cover;
+					border-radius: 32px;
+				}
+				
 				img {
 					
 					width: auto;
