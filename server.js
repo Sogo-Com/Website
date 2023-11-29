@@ -29,6 +29,15 @@ app.use('/images/:path?/:filename', (req, res, next) => {
     const basePath = imagePath ? path.join('build-node/client/images', imagePath) : 'build-node/client/images';
     const fullImagePath = path.join( basePath, filename);
 
+       // Vérifier si le fichier est une vidéo en fonction de l'extension
+    const isVideo = ['.mp4', '.webm', '.ogg'].some(ext => filename.endsWith(ext));
+
+    if (isVideo) {
+        next()
+        return
+    }
+   
+
     sharp(fullImagePath)
     .resize({
         width: width ? parseInt(width) : undefined,
