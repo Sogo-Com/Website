@@ -291,6 +291,17 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		.swiper-container {
 			margin-bottom: 16px;
 			position: relative;
+
+
+			.swiper-button{
+			
+				margin: 0 15%;
+
+				@media only screen and (max-width: $phone) {
+					margin: 32px;
+				}
+			}
+
 			.swiper-slide {
 				display: flex;
 				flex-direction: column;
@@ -298,10 +309,16 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				align-items: center;
 
 				video{
-					width: 80%;
+					width: 50%;
 					height: 80%;
+					aspect-ratio: 16/9;
 					object-fit: cover;
 					border-radius: 32px;
+
+					@media only screen and (max-width: $phone) {
+						width: 90%;
+					}
+
 				}
 				
 				img {

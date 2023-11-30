@@ -139,6 +139,7 @@
 		height: 80vh;
 		position: relative;
 		display: flex;
+		align-items: end;
 
 		@media only screen and (max-width: $phone) {
 			height: 50vh;
@@ -147,9 +148,10 @@
 		h1 {
 			color: #fff;
 			text-align: left;
-			padding: 256px 11%;
+			padding: 64px 11%;
 			z-index: 15;
 			position: relative;
+			height: fit-content;
 
 			@media only screen and (max-width: $phone) {
 				padding: 64px 8px;

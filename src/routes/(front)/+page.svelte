@@ -351,7 +351,7 @@
 
 			.actu-content {
 				display: flex;
-				flex-direction: row;
+				flex-direction: row-reverse;
 				justify-content: center;
 				align-items: center;
 
@@ -421,7 +421,7 @@
 					height: 40%;
 					object-fit: contain;
 					background-size: contain;
-					transform: translateY(-20px);
+					transform: translateY(-20px) scaleX(-1);
 
 					@media only screen and (max-width: $phone) {
 						display: none;

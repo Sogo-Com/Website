@@ -46,7 +46,7 @@
 				align-items: center;
 				flex-basis: 33.3%;
 				img {
-					width: 80%;
+					width: 50%;
 					height: 50%;
 				}
 

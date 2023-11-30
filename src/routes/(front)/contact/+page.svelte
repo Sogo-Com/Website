@@ -59,7 +59,7 @@
 	<div class="info">
 		<a href="tel:+33450456915">
 			<img src="/images/tel.svg" alt="tel" />
-			<p>04 50 45 69 15<br /> du lundi au vendredi</p>
+			<p>04 50 45 69 15<br /> du lundi au vendredi <br>9h - 18h</p>
 		</a>
 	</div>
 
