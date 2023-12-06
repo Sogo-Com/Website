@@ -31,6 +31,7 @@
           <li><strong>Email:</strong> <a href="mailto:{contact?.email ?? ''}"> {contact?.email ?? 'Aucun email'}</a></li>
           <li><strong>Téléphone:</strong> <a href="tel:{contact?.telephone ?? ''}">{contact?.telephone ?? ''}</a></li>
           <li><strong>Société:</strong>{contact?.societe ?? 'Aucune société'}</li>
+          <li><strong>Message:</strong>{contact?.message ?? 'Aucun message'}</li>
           <li><strong>Créé le:</strong> {new Intl.DateTimeFormat('fr-FR', {
             dateStyle: 'full', timeStyle: 'long'
         }).format(contact?.createdAt)}</li>

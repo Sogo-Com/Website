@@ -1,9 +1,8 @@
 <script>
-	
 	import { page } from '$app/stores';
+	import { PUBLIC_RECAPCHA_SITEKEY } from '$env/static/public';
 
 	export let description;
-
 
 	let nom;
 	let prenom;
@@ -12,55 +11,75 @@
 	let email;
 	let message;
 
-	let innerDescriptionText = "Pour un café ou juste pour échanger laissez-nous vos coordonnées :";
+	let innerDescriptionText = 'Pour un café ou juste pour échanger laissez-nous vos coordonnées :';
 	if (typeof description === 'string' && description.length != 0)
 		innerDescriptionText = description;
 
 	let status = '';
-	let statusClass = ''
+	let statusClass = '';
 	const handleSubmit = async (data) => {
 		status = 'Envoie en cours...';
-		statusClass = 'pending'
+		statusClass = 'pending';
 		const formData = new FormData(data.currentTarget);
 		const object = Object.fromEntries(formData);
-	
+
 		console.log(typeof object.nom);
 		if (
 			object.nom.length == 0 ||
 			object.prenom.length == 0 ||
 			object.email.length == 0 ||
 			object.telephone.length == 0 ||
-			object.societe.length == 0
+			object.societe.length == 0 ||
+			object.message.length == 0
 		) {
 			status = 'Entrée invalide !';
-			statusClass = 'error'
+			statusClass = 'error';
 			return;
 		}
 
-		const json = JSON.stringify(object);
-		const response = await fetch('/api/contact', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: json
-		});
-		const result = await response.json();
-		if (result.success) {
-			console.log(result);
-			status = 'Message envoyé !';
-			statusClass = 'success';
+		grecaptcha.ready(async () => {
+			const token = await grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY, { action: 'contact' });
+			object.token = token;
 
-			nom.value = '';
-			prenom.value = '';
-			telephone.value = '';
-			societe.value = ''
-			email.value = '';
-			
-		}
+			const json = JSON.stringify(object);
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json'
+				},
+				body: json
+			});
+			const result = await response.json();
+			if (result.success) {
+				console.log(result);
+				status = 'Message envoyé !';
+				statusClass = 'success';
+
+				nom.value = '';
+				prenom.value = '';
+				telephone.value = '';
+				societe.value = '';
+				email.value = '';
+				message.value = '';
+			}
+			if (response.ok) {
+				console.log('Formulaire soumis avec succès!');
+				// Effectuez d'autres actions en cas de succès
+			} else {
+				console.error('Erreur lors de la soumission du formulaire.');
+				// Gérez les erreurs ici
+			}
+		});
 	};
 </script>
+
+
+<svelte:head>
+	<script
+		src="https://www.google.com/recaptcha/api.js?render={PUBLIC_RECAPCHA_SITEKEY}"
+	></script>
+</svelte:head>
 
 <form method="post" on:submit|preventDefault={handleSubmit}>
 	<p contenteditable="false" bind:innerText={innerDescriptionText} />
@@ -71,17 +90,26 @@
 	<label for="societe">Société</label>
 	<input bind:this={societe} type="text" name="societe" id="societe" placeholder="Votre société" />
 	<label for="telephone">Téléphone</label>
-	<input bind:this={telephone} type="text" name="telephone" id="telephone" placeholder="Votre téléphone" />
+	<input
+		bind:this={telephone}
+		type="text"
+		name="telephone"
+		id="telephone"
+		placeholder="Votre téléphone"
+	/>
 	<label for="email">E-mail</label>
 	<input bind:this={email} type="text" name="email" id="email" placeholder="Votre e-mail" />
 	<label for="message">Message</label>
-	<textarea bind:this={message} type="text" rows="10" name="message" id="message" placeholder="Votre message" />
-	<button animate type="submit" class="btn" for="envoyer" value="envoyer"
-		>Envoyer</button
-	>
-	<div class="status {statusClass}" contenteditable="false" bind:innerText={status}>
-
-	</div>
+	<textarea
+		bind:this={message}
+		type="text"
+		rows="10"
+		name="message"
+		id="message"
+		placeholder="Votre message"
+	/>
+	<button animate type="submit" class="btn" for="envoyer" value="envoyer">Envoyer</button>
+	<div class="status {statusClass}" contenteditable="false" bind:innerText={status} />
 </form>
 
 <style lang="scss">
@@ -105,8 +133,9 @@
 			font-family: $font-secondary-medium;
 			font-size: 1rem;
 		}
-		input ,textarea{
-			background:#fff;
+		input,
+		textarea {
+			background: #fff;
 			border-radius: 16px;
 			border: none;
 			padding: 8px;
@@ -121,7 +150,7 @@
 			color: $color-rose;
 			width: fit-content;
 		}
-		.status{
+		.status {
 			padding-top: 32px;
 		}
 	}
