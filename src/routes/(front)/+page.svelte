@@ -88,7 +88,7 @@
 		</div>
 		<div class="contact-images">
 			<img class="contact-image" src="/images/contact-1.png" alt="contact-1" />
-			<img class="contact-image" src="/images/contact-2.png" alt="contact-2" />
+			<img class="contact-image" data-lag="0.05"  src="/images/contact-2.png" alt="contact-2" />
 			<img class="contact-image" src="/images/contact-3.png" alt="contact-3" />
 			<span class="contact-image" />
 		</div>
@@ -489,12 +489,13 @@
 						z-index: 2;
 						height: 40%;
 						width: 50%;
+						display: none;
 					}
 
 					&:nth-child(2) {
 						top: 50%;
 						height: 50%;
-						width: 40%;
+						width: 60%;
 						transform: translate(-30%, -50%);
 						z-index: 3;
 					}

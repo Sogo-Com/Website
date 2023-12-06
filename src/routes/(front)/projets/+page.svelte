@@ -53,7 +53,11 @@
 		};
 	};
 
-	onMount((_) => {});
+	onMount((_) => {
+
+		changeProjet(0)
+
+	});
 </script>
 
 <div id="top">

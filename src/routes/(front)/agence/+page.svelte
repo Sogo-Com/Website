@@ -25,8 +25,8 @@
 			</div>
 			<div class="center">
 				<p animate>L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs.
-					<br /><br />
-					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée,
+					<br />
+					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée,<br />
 					nous pensons votre communication.
 				</p>
 				

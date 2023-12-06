@@ -50,7 +50,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 Et pour condimenter le tout et donner la touche qui fera mouche à tous les coups, expertises mixées en ébullition : relations presse, graphisme, vidéo, community management et événements sur le grill, optez pour une communication pleine de saveurs. `,
 			images: [
 				'/images/SliderGraphisme/Graphisme1.png',
-				'/images/SliderGraphisme/graphisme2.png',
+				'/images/SliderGraphisme/Graphisme2.png',
 				'/images/SliderGraphisme/Graphisme3.png'
 			],
 			bgImages : '/images/exper-rose.png'
@@ -244,7 +244,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 
 	</div>
 
-	<div animate class="btn">En savoir +</div>
+	<a animate href="/expertises" class="btn">En savoir +</a>
 	<div class="pagination" />
 
 
@@ -291,34 +291,17 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 		.swiper-container {
 			margin-bottom: 16px;
 			position: relative;
-
-
-			.swiper-button{
-			
-				margin: 0 15%;
-
-				@media only screen and (max-width: $phone) {
-					margin: 32px;
-				}
-			}
-
 			.swiper-slide {
-				display: flex;
+				display: flex; 
 				flex-direction: column;
 				justify-content: space-evenly;
 				align-items: center;
 
 				video{
-					width: 50%;
+					width: 80%;
 					height: 80%;
-					aspect-ratio: 16/9;
 					object-fit: cover;
 					border-radius: 32px;
-
-					@media only screen and (max-width: $phone) {
-						width: 90%;
-					}
-
 				}
 				
 				img {

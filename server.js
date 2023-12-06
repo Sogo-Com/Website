@@ -22,7 +22,7 @@ if (!existsSync("uploads")) {
 
 // Middleware pour redimensionner les images
 app.use('/images/:path?/:filename', (req, res, next) => {
-    const {width=900, height=900} = req.query;
+    const {width=1000, height=1000} = req.query;
     const { path: imagePath, filename } = req.params;
  
     // Construire le chemin complet de l'image
@@ -58,7 +58,7 @@ app.use('/images/:path?/:filename', (req, res, next) => {
 
 // Middleware pour redimensionner les images
 app.use('/uploads/:path?/:filename', (req, res, next) => {
-    const { width=900 , height=900} = req.query;
+    const { width=1000 , height=1000} = req.query;
     const { path: imagePath, filename } = req.params;
    
 

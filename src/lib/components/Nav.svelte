@@ -34,6 +34,13 @@
 
 	});
 
+	afterUpdate((_) => {
+		const link = $page.data?.backlink;
+		if(link != null)
+			checkLinks(new URL(window.location.origin + link) )
+	});
+	
+
 	function checkLinks(url){
 		const linkChilds = Array.from(links.children);
 		if(linkChilds.length != 0 && url != null)

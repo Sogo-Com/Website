@@ -72,14 +72,14 @@ Sont les flèches ciblées prêtes à être décochées.`,
         },{
             active:'/images/RelationsPresse/DossierActive_2.svg',
             inactive : '/images/RelationsPresse/Dossier_2.svg',
-            titre: 'Dossier presse',
+            titre: 'Dossiers de presse',
             description: `Le dossier de presse est essentiel pour développer l’intérêt autour de vos valeurs d’entreprise, de vos compétences et de vos actions. 
             Complet et détaillé, le dossier de presse doit être le reflet de votre identité.`,
             image:'/images/RelationsPresse/dossierPresse.png',
         },{
             active:'/images/RelationsPresse/InvitationActive_2.svg',
             inactive : '/images/RelationsPresse/Invitation_2.svg',
-            titre: 'Invitation presse',
+            titre: 'Invitations presse',
             description: `Que ce soit pour lancer un événement, marquer le temps fort d’une entreprise, évoquer le lancement d’un produit ou simplement faire découvrir l’un de nos partenaires, nous organisons des rencontres avec la presse sous différentes formes, petits-déjeuners informels ou conférences officielles.`,
             image:'/images/RelationsPresse/invitation.png',
         }]
@@ -104,7 +104,7 @@ Confiez-nous votre image, nous la bichonnerons. Notoriété et qualité garantie
         icons: [{
             active:'/images/Graphisme/LivreActive_1.svg',
             inactive : '/images/Graphisme/Livre_1.svg',
-            titre: 'Livre',
+            titre: 'Livres',
             description: `La mise en page d’un livre entier est un travail titanesque et complexe. 
             Nous imaginons l’univers graphique qui sera le vôtre et assurons la réalisation de la maquette, de l’élaboration du chemin de fer jusqu’aux calages techniques avec l’imprimeur.`,
             image:'/images/Graphisme/livre.png',
@@ -112,27 +112,27 @@ Confiez-nous votre image, nous la bichonnerons. Notoriété et qualité garantie
         {
             active:'/images/Graphisme/FlyerActive_1.svg',
             inactive : '/images/Graphisme/Flyer_1.svg',
-            titre: 'Flyer',
+            titre: 'Flyers',
             description: `Percutant, le flyer est un outil qui doit taper dans l’œil tout en assurant la lisibilité du propos et des informations essentielles. Son efficacité dépend de sa pertinence visuelle.`,
             image:'/images/Graphisme/flyer.png',
         }, {
             active:'/images/Graphisme/PlaquetteActive_1.svg',
             inactive : '/images/Graphisme/Plaquette_1.svg',
-            titre: 'Plaquette',
+            titre: 'Plaquettes',
             description: `Qu’elle soit institutionnelle, commerciale ou informative, la plaquette doit refléter votre intention et être bien organisée. Un look qui correspond à votre chartre graphique est un gage de qualité.`,
             image:'/images/Graphisme/plaquette.png',
         },
         {
             active:'/images/Graphisme/LogoActive_1.svg',
             inactive : '/images/Graphisme/Logo_1.svg',
-            titre: 'Logo',
+            titre: 'Logos',
             description: `Le logo est le symbole de votre entreprise. Il doit refléter votre identité et vos valeurs en un seul coup d’œil. Il doit être décliné en différents formats et coloris. Associé à une charte graphique, il véhicule votre image et vous accompagne durant toute la vie de votre entreprise.`,
             image:'/images/Graphisme/logo.png',
         },
         {
             active:'/images/Graphisme/PubliciteActive_1.svg',
             inactive : '/images/Graphisme/Publicite_1.svg',
-            titre: 'Publicité',
+            titre: 'Publicités',
             description: `Encarts publicitaires et publi-informations, nous réalisons vos maquettes selon les formats et contraintes techniques exigés par les magazines.`,
             image:'/images/expertise-purple.png',
         },{
@@ -242,7 +242,7 @@ N’hésitez pas à nous confier vos projets, nous imaginons tous vos événemen
             {
                 active:'/images/Event/ConventionActive_1.svg',
                 inactive : '/images/Event/Convention_1.svg',
-                titre: 'Convention',
+                titre: 'Conventions',
                 description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
                 Donec in euismod nibh. Ut mollis enim neque, et tincidunt nulla pulvinar condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus. 
                 `,
@@ -251,7 +251,7 @@ N’hésitez pas à nous confier vos projets, nous imaginons tous vos événemen
             {
                 active:'/images/Event/InaugurationActive_1.svg',
                 inactive : '/images/Event/Inauguration_1.svg',
-                titre: 'Inauguration',
+                titre: 'Inaugurations',
                 description: `Inaugurer ses nouveaux locaux est toujours l’occasion de tisser du lien avec ses partenaires et collaborateurs et de conforter le lien de proximité que vous entretenez avec eux. C’est aussi une façon de s’implanter dans un nouvel environnement et de rencontrer ses voisins. Ne négliger pas cette étape importante dans la vie de votre entreprise.
                 `,
                 image:'/images/Event/innauguration.png',
@@ -259,7 +259,7 @@ N’hésitez pas à nous confier vos projets, nous imaginons tous vos événemen
             {
                 active:'/images/Event/SeminaireActive_1.svg',
                 inactive : '/images/Event/Seminaire_1.svg',
-                titre: 'Séminaire',
+                titre: 'Séminaires',
                 description: `Vous souhaitez organiser un temps d’échange et de travail autour d’un thème, d’un sujet ou d’une problématique ? Un séminaire réussi doit concilier proximité des espaces de réunion, de restauration et d’hébergement, fluidité du planning et bien entendu pertinence des interventions. Nous savons mitonner pour vous la recette parfaite.`,
                 image:'/images/expertise-red.png',
             }, {

@@ -6,7 +6,8 @@
 	const {projet} = data
 	
 	const contenu = projet.contenu != null ? JSON.parse(projet.contenu) : {}
-		
+	const typeProjet = ["redaction", "presse", "graphisme", "reseaux", "photos", "evenements"]
+	const type = ['Rédaction', 'Relations Presse', 'Graphisme', 'Réseaux Sociaux', 'Photos et Vidéos', 'Événements']
 
 </script>
 
@@ -30,7 +31,7 @@
 
 		<div class="commentary">
 			<img  src="/images/commentary.svg" alt="commentary">
-			{ projet.typeProjet  } 
+			{ typeProjet.indexOf(projet.typeProjet) != -1 ? type[typeProjet.indexOf(projet.typeProjet)] : "Projet"  } 
 		</div>
 	</div>
 

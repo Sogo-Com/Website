@@ -18,7 +18,8 @@ export const load = async (serverloadEvent) =>{
   }
 
   return {
-    actualite
+    actualite,
+    backlink: "/actualites",
   }
 }
 

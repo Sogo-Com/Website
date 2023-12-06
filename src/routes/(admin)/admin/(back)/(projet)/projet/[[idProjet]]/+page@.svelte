@@ -113,11 +113,11 @@
 				<select id="typeProjet" value={projet.typeProjet ?? ""} name="typeProjet" required>
 					<option value="" selected disabled hidden>Choisissez un type...</option>
 					<option value="redaction">Rédaction</option>
-					<option value="presse">Presse</option>
+					<option value="presse">Relations Presse</option>
 					<option value="graphisme">Graphisme</option>
-					<option value="reseaux">Réseaux</option>
-					<option value="photos">Photos</option>
-					<option value="evenements">Evenements</option>
+					<option value="reseaux">Réseaux Sociaux</option>
+					<option value="photos">Photos et Vidéos</option>
+					<option value="evenements">Événements</option>
 				</select>	
 			</div>
 

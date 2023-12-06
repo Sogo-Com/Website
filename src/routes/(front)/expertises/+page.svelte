@@ -189,7 +189,7 @@
 				<div class="texte">
 					<h3  bind:this={titreSecondaireEl} class="grey"></h3>
 					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
-					<div  class="btn">En savoir +</div>
+					<a href="/contact" class="btn">En savoir +</a>
 				</div>
 			</div>
 			<div class="slider">

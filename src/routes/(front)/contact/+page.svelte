@@ -52,7 +52,7 @@
 	<div class="info">
 		<a href="https://www.google.fr/maps/place/356+Rue+de+Chavanne,+74330+Poisy">
 			<img src="/images/pin.svg" alt="pin" />
-			<p>356 CR dit de Chavane,<br />74330 Poisy (Parc du calvi)</p>
+			<p>356 CR dit de Chavane,<br />74330 Poisy (Parc du Calvi)</p>
 		</a>
 	</div>
 
