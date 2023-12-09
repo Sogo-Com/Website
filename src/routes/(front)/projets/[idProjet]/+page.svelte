@@ -12,7 +12,7 @@
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="{projet.photo ?? "/images/agence-bg.png"}?width=1200&height=1200" />
+	<img alt="background-sogo" src="{projet.photo ?? "/images/agence-bg.png"}?width=1800&height=1800" />
 
 </div>
 

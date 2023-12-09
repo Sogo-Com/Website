@@ -85,7 +85,7 @@
 
 <div id="total-expertise" bind:this={containerEl}>
 	<div id="top">
-		<img alt="background-sogo" src="/images/NosExpertises_Header.webp?width=1200&height=1200" />
+		<img alt="background-sogo" src="/images/NosExpertises_Header.webp?width=1800&height=1800" />
 
 		<h1 animate>Nos expertises<br />à vos côtés</h1>
 	</div>
@@ -99,7 +99,7 @@
 				<p animate>
 					L’agence Sogo Com concentre tout plein de savoir-faire, des expériences à tous les temps,
 					des compétences à tous les vents. Véritable couteau suisse, Sogo Com aiguise pour vous son
-					sens aiguisé de la communication.
+					sens de la communication.
 					<br /><br />
 					→ Rédaction dans le ton<br />
 					→ Relations presse en action<br />
@@ -189,7 +189,7 @@
 				<div class="texte">
 					<h3  bind:this={titreSecondaireEl} class="grey"></h3>
 					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
-					<a href="/contact" class="btn">En savoir +</a>
+					<a href="/contact" class="btn">Contactez-nous</a>
 				</div>
 			</div>
 			<div class="slider">

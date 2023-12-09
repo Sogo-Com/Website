@@ -39,7 +39,7 @@
 
 	<div class="grid-view">
 		<h1>
-			{pointHistoires.length == 0 ? 'Aucun  point hisotrique' : 'Liste des points hisotriques'}
+			{pointHistoires.length == 0 ? 'Aucun  point historique' : 'Liste des points historiques'}
 		</h1>
 
 		<table class="pointHistoire-table" style={pointHistoires.length == 0 ? 'display:none;' : ''}>

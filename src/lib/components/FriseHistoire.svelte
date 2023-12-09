@@ -1,9 +1,8 @@
 <script>
 	export let pointsHistoriques;
-	
 </script>
 
-{#if pointsHistoriques != null && pointsHistoriques.length == 4}
+{#if pointsHistoriques != null && pointsHistoriques.length == 5}
 	<div id="histoire" class="blanc">
 		<div class="h2-seo end">
 			<h2 animate><span class="pink">Notre histoire</span></h2>
@@ -11,24 +10,35 @@
 
 		<div class="wrapper">
 			<div animate class="frise">
-
-				{#each  pointsHistoriques as pointHistorique,index }
-					
-				
-				<div style="--esp:{index*15}vw; --endline:{index == 3 ? "40vw":"0"}; --line:{index != 0 ? "15vw":"0"}; --index:{4 - index};" class="point">
-					<div class="innerText">{pointHistorique.date}</div>
-					<div class="innerStartLine" />
-					<div class="innerEndLine" />
-					<div class="innerPoint {index % 2 == 0 ? "top" : "bottom"}">
-						<h3>{pointHistorique.titre}</h3>
-						<p>
-							{pointHistorique.description}
-						</p>
+				{#each pointsHistoriques as pointHistorique, index}
+					<div
+						style="--esp:{index * 10}vw; --endline:{index == 4 ? '40vw' : '0'}; --line:{index != 0
+							? '10vw'
+							: '0'}; --index:{5 - index};"
+						class="point {index == 3 ? 'decal' : ''}  {index == 2 ? 're' : ''}"
+					>
+						<div class="innerText">{pointHistorique.date}</div>
+						<div class="innerStartLine" />
+						<div class="innerEndLine" />
+						<div class="innerPoint {index % 2 == 0 ? 'top' : 'bottom'}">
+							<h3>{pointHistorique.titre}</h3>
+							<p>
+								{pointHistorique.description}
+							</p>
+						</div>
+						{#if index == 3}
+						<div class="spacer">
+							<p >
+								4 nouvelles Gommettes arrivent…<br />
+								Nouvelles expertises : <br />
+								événementiel et community management
+							</p>
+						</div>
+							
+						{/if}
 					</div>
-				</div>
-
 				{/each}
-<!-- 
+				<!-- 
 				<div style="--esp:0; --line:0; --index:4;" class="point">
 					<div class="innerText">2010</div>
 					<div class="innerStartLine" />
@@ -107,7 +117,7 @@
 				flex-direction: row;
 				flex-wrap: nowrap;
 				position: relative;
-				left: 22%;
+				left: 11%;
 
 				@media only screen and (max-width: $phone) {
 					left: unset;
@@ -127,7 +137,7 @@
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				align-items: start;
-				height: calc(60vw + 300px);
+				height: calc(85vw + 300px);
 			}
 			.point {
 				position: relative;
@@ -146,6 +156,22 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+
+				&.decal {
+					margin-left: 10vw;
+					@media only screen and (max-width: $phone) {
+						margin-left: 0;
+						margin-top: 10vw;
+						}
+					.innerStartLine {
+						width: calc(var(--line) * 2);
+						@media only screen and (max-width: $phone) {
+							width: 1px;
+							height: calc(var(--line) * 2);
+					
+						}
+					}
+				}
 
 				.innerStartLine {
 					position: absolute;
@@ -182,16 +208,40 @@
 					}
 				}
 
+				.spacer {
+					width: 20vw;
+					right: calc(100% );
+					text-align: center;
+					top: 100%;
+					position: absolute;
+					
+					@media only screen and (max-width: $phone) {
+						width: 50vw;
+					
+						top: -80%;
+   						left: 100%;
+					}
+
+					p{
+						font-size: 0.8rem;
+						line-height: 1rem;
+						@media only screen and (max-width: $phone) {
+							width: 100%;
+							text-align: left;
+						}
+					}
+				
+				}
 				.innerText {
 					font-family: $font-secondary-light;
 					font-size: 1.2rem;
 				}
 				.innerPoint {
-					padding: 16px;
+					padding: 64px 16px;
 					position: absolute;
-					text-align: right;
+					text-align: center;
 
-					right: calc(100% - 68px);
+					//right: calc(100% - 68px);
 					@media only screen and (max-width: $phone) {
 						padding: 0 32px;
 						width: 80vw;
@@ -199,7 +249,7 @@
 
 					h3 {
 						margin-bottom: 8px;
-						text-align: right;
+						text-align: center;
 						color: #000;
 						@media only screen and (max-width: $phone) {
 							width: 100%;

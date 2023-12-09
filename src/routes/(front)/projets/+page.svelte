@@ -61,28 +61,23 @@
 </script>
 
 <div id="top">
-	<h1 animate>Nos projets</h1>
-	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.webp?width=1200&height=1200" />
+	<h1 animate>Des projets <br>qui fusent</h1>
+	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.webp?width=1800&height=1800" />
 </div>
 <div class="gris">
 	<div class="question gris-child">
 		<h2 animate>
-			Que fait-on <br />
-			chez Sogo Com ?
+			L'écoute et l'attention <br />
+			pour missions.
 		</h2>
 	</div>
 
 	<div class="reponse gris-child">
 		<p animate>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-			luctus.
+			Chez Sogo Com les projets se suivent mais ne se ressemblent jamais !
 			<br><br>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-			luctus.
-			<br><br>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at
-			luctus.
-			<br>
+			A chacun son identité, nous respectons votre ADN pour élaborer ensemble des projets sur-mesure qui collent parfaitement à l’image que vous en attendiez ou encore imaginer les supports dont vous n’osiez pas rêver. 
+			
 		</p>
 
 		

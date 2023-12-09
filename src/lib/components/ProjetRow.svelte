@@ -25,7 +25,7 @@
 
 	<div class="contenu">
 		<h3>{title}</h3>
-		<p class="texte">
+		<p class="texte ">
 			{description}
 		</p>
 		<a href="{link}" class="btn bleu">En savoir +</a>
@@ -129,7 +129,12 @@
 			}
 
 			.texte {
-				padding: 0 0 32px 0;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				margin: 0 0 32px 0;
 				font-family: $font-secondary-light;
 				@media only screen and (max-width: $phone) {
 					padding: 0;

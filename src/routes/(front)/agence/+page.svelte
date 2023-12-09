@@ -12,7 +12,7 @@
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/Agence_SogoCom_nb.jpg?width=1200&height=1200" />
+	<img alt="background-sogo" src="/images/Agence_SogoCom_nb.jpg?width=1800&height=1800" />
 
 	<h1 animate><span class="pink">Des Gommettes</span><br />qui en jettent !</h1>
 </div>
@@ -108,7 +108,7 @@
 				}
 
 			.bloc-seul {
-				width: 65%;
+				width: 75%;
 				height: 100%;
 				display: flex;
 				justify-content: center;

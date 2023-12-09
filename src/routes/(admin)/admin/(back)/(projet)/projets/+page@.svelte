@@ -6,6 +6,10 @@
 	import Layout from '../../+layout.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	
+	const typeProjet = ["redaction", "presse", "graphisme", "reseaux", "photos", "evenements"]
+	const type = ['Rédaction', 'Relations Presse', 'Graphisme', 'Réseaux Sociaux', 'Photos et Vidéos', 'Événements']
+
+
 	export let data;
 	let { projets } = data;
 
@@ -58,7 +62,7 @@
 							><a href="/admin/projet/{projet.id}">{projet?.titre ?? 'Aucun titre'}</a
 							></td
 						>
-						<td>{projet?.typeProjet ?? 'Aucun type'}</td>
+						<td>{type[typeProjet.indexOf(projet.typeProjet)] ?? 'Aucun type'}</td>
 
 						<td
 							>{new Intl.DateTimeFormat('fr-FR', {
