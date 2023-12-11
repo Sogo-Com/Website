@@ -89,8 +89,8 @@
 
 
 			<div class="form-group">
-				<label for="description">Description (100 caracteres max)</label>
-				<textarea id="description" rows="3" cols="45"  maxlength="100" name="description" bind:value={pointHistoire.description} contenteditable="true" type="text"  />
+				<label for="description">Description </label>
+				<textarea id="description" rows="3" cols="45" name="description" bind:value={pointHistoire.description} contenteditable="true" type="text"  />
 			</div>
 
 

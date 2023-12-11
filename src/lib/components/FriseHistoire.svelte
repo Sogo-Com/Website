@@ -187,7 +187,7 @@
 				}
 				.innerText {
 					font-family: $font-secondary-light;
-					font-size: 1rem;
+					font-size: 0.9rem;
 					text-align: center;
 				}
 				.innerPoint {
