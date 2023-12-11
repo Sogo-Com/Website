@@ -38,54 +38,7 @@
 						{/if}
 					</div>
 				{/each}
-				<!-- 
-				<div style="--esp:0; --line:0; --index:4;" class="point">
-					<div class="innerText">2010</div>
-					<div class="innerStartLine" />
-					<div class="innerEndLine" />
-					<div class="innerPoint top">
-						<h3>Lancement</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
-							orci at luctus.
-						</p>
-					</div>
-				</div>
-
-				<div style="--esp:15vw; --line:15vw; --index:3;" class="point">
-					<div class="innerText">2010</div>
-					<div class="innerStartLine" />
-					<div class="innerEndLine" />
-					<div class="innerPoint bottom">
-						<h3>Lancement</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
-							orci at luctus.
-						</p>
-					</div>
-				</div>
-				<div style="--esp:30vw; --line:15vw; --index:2;" class="point">
-					<div class="innerText">2010</div>
-					<div class="innerStartLine" />
-					<div class="innerEndLine" />
-					<div class="innerPoint top">
-						<h3>Lancement</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis
-							orci at luctus.
-						</p>
-					</div>
-				</div>
-
-				<div style="--esp:45vw; --line:15vw; --endline:40vw; --index:1;" class="point">
-					<div class="innerText">2010</div>
-					<div class="innerStartLine" />
-					<div class="innerEndLine" />
-					<div class="innerPoint bottom">
-						<h3>Lancement</h3>
-						<p>Le meilleur reste à venir...</p>
-					</div>
-				</div> -->
+				
 			</div>
 		</div>
 	</div>
@@ -234,7 +187,8 @@
 				}
 				.innerText {
 					font-family: $font-secondary-light;
-					font-size: 1.2rem;
+					font-size: 1rem;
+					text-align: center;
 				}
 				.innerPoint {
 					padding: 64px 16px;

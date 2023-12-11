@@ -80,7 +80,7 @@
 			
 			<div class="form-group">
 				<label for="date">Date</label>
-				<textarea id="date"   maxlength="4" name="date" bind:value={pointHistoire.date} contenteditable="true" type="text"  />
+				<textarea id="date"    name="date" bind:value={pointHistoire.date} contenteditable="true" type="text"  />
 			</div>
 			<div class="form-group">
 				<label for="titre">Titre</label>
