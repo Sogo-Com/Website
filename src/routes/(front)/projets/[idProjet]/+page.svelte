@@ -47,8 +47,9 @@
 		overflow: hidden;
 		position: relative;
 		display: flex;
-		justify-content: start;
-		align-items: end;
+		justify-content: center;
+		align-items: center;
+		
 
 		@media only screen and (max-width: $phone) {
 			align-items: center;
@@ -57,7 +58,7 @@
 
 
 		img {
-			width: 100%;
+			width: 70%;
 			height: 100%;
 			position: absolute;
 			top: 0;
