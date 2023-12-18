@@ -31,7 +31,7 @@ model Contact {
   prenom    String
   telephone String
   societe   String
-  message   String  @default("")
+  message   String   @default("")
   createdAt DateTime @default(now())
 }
 
@@ -81,4 +81,19 @@ model PointHistoire {
   titre       String
   description String
   date        String
+}
+
+model PageAgence {
+  id                String @id @default(uuid())
+  titre             String @default("")
+  photo             String @default("")
+  citation          String @default("")
+  valeurDescription String @default("")
+}
+
+model Valeur {
+  id          String @id @default(uuid())
+  titre       String @default("")
+  photo       String @default("")
+  description String @default("")
 }

@@ -23,6 +23,7 @@
 				<li><a href="/admin/projets">Projets</a></li>
 				<li><a href="/admin/collaborateurs">Collaborateurs</a></li>
 				<li><a href="/admin/points-histoire">Frise Historique</a></li>
+				<li><a href="/admin/agence">Page Agence</a></li>
 			</ul>
 		</div>
 	</div>

@@ -42,27 +42,42 @@ async function main() {
 
     });
 
-    for(var i = 1; i<= 5 ; i++) {
+    for (var i = 1; i <= 5; i++) {
 
-        try{
+        try {
             const point = await prisma.pointHistoire.create({
                 data: {
-                    id: i.toString() ,
-                    titre :"Titre",
-                    date:"2010",
-                    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus."
-                    
+                    id: i.toString(),
+                    titre: "Titre",
+                    date: "2010",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus."
+
                 },
-        
+
             });
-        }catch(e){
-            if(e.code != "P2002")
+        } catch (e) {
+            if (e.code != "P2002")
                 console.log(e)
             else
                 console.log("Point déjà existant")
         }
-       
 
+
+    }
+
+    try {
+        const pageAgence = await prisma.pageAgence.create({
+            data: {
+                id: "1",
+                titre: "Des Gommettes qui en jettent !",
+            },
+
+        });
+    } catch (e) {
+        if (e.code != "P2002")
+            console.log(e)
+        else
+            console.log("Page existante")
     }
 
     console.log("Admin user created:", adminUser);
