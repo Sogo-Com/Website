@@ -1,47 +1,45 @@
 <script>
-	import Layout from '../../+layout.svelte';
+	import Layout from '../../../+layout.svelte';
 	import { enhance, applyAction } from '$app/forms';
 	import toast from 'svelte-french-toast';
 
 	import { goto, } from '$app/navigation';
 
 	export let data;
-	let { pageAgence } = data;
+	let { valeur } = data;
 	
 	
-	const submitCreatepageAgence = async ({ form, data, action, cancel }) => {
+	const submitCreatevaleur = async ({ form, data, action, cancel }) => {
 
-		const { citation,valeurDescription} = Object.fromEntries(data);
+		const { titre, description} = Object.fromEntries(data);
 
-	
-        
-		if (citation.length < 1) {
-			toast.error('Citation vide !');
-			cancel();
-		}
-
-		if (valeurDescription.length < 1) {
-			toast.error('Description des valeurs vide !');
+		if (titre.length < 1) {
+			toast.error('Titre vide !');
 			cancel();
 		}
 
 
-		data.append('id', pageAgence.id)
-		data.append('photo', pageAgence.photo ?? '')
 
+		if (description.length < 1) {
+			toast.error('Description vide !');
+			cancel();
+		}
+
+
+		data.append('id', valeur.id)
+		data.append('photo', valeur.photo ?? '')
 		
 		return async ({ result, update }) => {
 			
 			switch (result.type) {
 				case 'success':
-					toast.success('page Agence enregistré!');
+					toast.success('valeur historique enregistré!');
 					await applyAction(result)
 			
 					await update();
-			
-					pageAgence = result.data.data
-					goto(`/admin/agence`,{invalidateAll: true})
-		
+					valeur = result.data.data
+					goto(`/admin/valeur/${valeur.id}`,{invalidateAll: true})
+					valeur = result.data.data
 					break;
 				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
@@ -61,23 +59,50 @@
 		};
 	};
 
+	const submitDelete  = () => {
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Valeur supprimé!');
+					
+					break;
+				case 'failure':
+					toast.error("Erreur lors de la suppression");
+					break;
+				default:
+					break;
+			}
+			await update();
+			goto("/admin/valeurs", { invalidateAll: true })
+		};
+	};
 </script>
 
 <Layout>
 	<div slot="buttons">
-	
+		<button class="back-button" on:click={()=>{goto("/admin/valeurs")}}>Retour aux valeurs</button>
+		{#if valeur.id != null && valeur.id.length != 0}
 
-	
+		<form action="?/delete" method="POST" use:enhance={submitDelete}>
+			<input type="hidden" name="id" value={valeur.id} />
+			<button type="submit" class="delete-button">Supprimer</button>
+		</form>
+
+	{/if}
+
 	</div>
 
 	<div>
-		<h1>Formulaire de la page Agence</h1>
+		<h1>Formulaire de valeur</h1>
 
-		<form method="POST" action="?/create" class="pageAgence-form"  use:enhance={submitCreatepageAgence}>
+
+		<form method="POST" action="?/create" class="valeur-form"  use:enhance={submitCreatevaleur}>
+			
 		
 
+			
 			<div class="form-group">
-				<label for="photoFile">Photo principale</label>
+				<label for="photoFile">Photo</label>
 				<input
 				  type="file"
 				  id="photoFile"
@@ -85,23 +110,26 @@
 				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
 				  
 				/>
-				{#if pageAgence.photo != null && pageAgence.photo.length != 0}
-					<img src={pageAgence.photo} alt={pageAgence.titre} />
+				{#if valeur.photo != null && valeur.photo.length != 0}
+					<img src={valeur.photo} alt={valeur.titre} />
 				{/if}
 			  </div>
 
-			
+
 			<div class="form-group">
-				<label for="citation">Citation</label>
-				<textarea id="citation" rows="3" cols="45"  maxlength="200" name="citation" bind:value={pageAgence.citation} contenteditable="true" type="text"  />
+				<label for="titre">Titre</label>
+				<input id="titre" name="titre" bind:value={valeur.titre} contenteditable="true" type="text"  />
 			</div>
 
 
-			
 			<div class="form-group">
-				<label for="valeurDescription">Description des valeurs</label>
-				<textarea id="valeurDescription" rows="8" cols="45"   name="valeurDescription" bind:value={pageAgence.valeurDescription} contenteditable="true" type="text"  />
+				<label for="description">Description </label>
+				<textarea id="description" rows="3" cols="45" name="description" bind:value={valeur.description} contenteditable="true" type="text"  />
 			</div>
+
+
+
+			
 
 			<button type="submit" for="envoyer" value="envoyer" class="submit-button" >Enregistrer</button>
 		</form>
@@ -109,7 +137,7 @@
 </Layout>
 
 <style lang="scss">
-	.pageAgence-form {
+	.valeur-form {
 		margin: 0px 20px;
 		padding: 20px;
 		background-color: var(--color-blanc);

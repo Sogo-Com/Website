@@ -4,7 +4,7 @@
 	import { redirect } from '@sveltejs/kit';
 
 	function logout() {
-		goto( '/admin/logout');
+		goto('/admin/logout');
 	}
 </script>
 
@@ -18,22 +18,39 @@
 				<img src="/images/sogo-pink.png" alt="Logo de l'entreprise" />
 			</div>
 			<ul class="menu">
+
+				<ul>
+					<span>Page Agence</span>
+					<li><a href="/admin/agence">Page Agence</a></li>
+					<li><a href="/admin/valeurs">Valeurs</a></li>
+					<li><a href="/admin/points-histoire">Frise Historique</a></li>
+					<li><a href="/admin/collaborateurs">Collaborateurs</a></li>
+				</ul>
+
+
+				<ul>
+					<span>Page Projets</span>
+					<li><a href="/admin/projets">Projets</a></li>
+				</ul>
+
+			
+
+				
 				<li><a href="/admin/contacts">Demandes de contact</a></li>
-				<li><a href="/admin/actualites">Actualites</a></li>
-				<li><a href="/admin/projets">Projets</a></li>
-				<li><a href="/admin/collaborateurs">Collaborateurs</a></li>
-				<li><a href="/admin/points-histoire">Frise Historique</a></li>
-				<li><a href="/admin/agence">Page Agence</a></li>
 			</ul>
 		</div>
 	</div>
-	
 
 	<!-- Main Content -->
 	<div class="main-content">
 		<header class="header">
 			<div class="header-content">
-				<button class="logout-button" on:click={()=> {logout()}}>Déconnexion</button>
+				<button
+					class="logout-button"
+					on:click={() => {
+						logout();
+					}}>Déconnexion</button
+				>
 				<slot class="btn-container" name="buttons" />
 
 				<a href="/" target="_blank" class="view-site-button"><div>Voir le site</div></a>
@@ -51,19 +68,18 @@
 		min-height: 100vh;
 		height: 100%;
 
-		h1{
-	font-family: var(--font-primary-bold);
-    color: var(--color-rose);
-}
+		h1 {
+			font-family: var(--font-primary-bold);
+			color: var(--color-rose);
+		}
 
-		.sidebar-container{
+		.sidebar-container {
 			width: 250px;
 			background-color: $color-gris-clair;
 			padding: 20px;
 		}
 		/* Sidebar/Menu */
 		.sidebar {
-		
 			position: sticky;
 			top: 0;
 
@@ -79,9 +95,21 @@
 				list-style: none;
 				padding: 0;
 
+				ul {
+					margin-top: 20px;
+					margin-left: 20px;
+					margin-bottom: 10px;
+					span {
+						font-family: var(--font-secondary-medium);
+						color: var(--color-gris-dark);
+						margin-bottom: 5px;
+						display: block;
+					}
+				}
+
 				li {
 					margin-bottom: 10px;
-
+					margin-left: 10px;
 					a {
 						text-decoration: none;
 						color: var(--color-gris-dark);
@@ -156,7 +184,6 @@
 					}
 				}
 
-
 				.save-button {
 					height: 50px;
 					background-color: var(--color-bleu);
@@ -175,7 +202,6 @@
 						background-color: var(--color-gris);
 					}
 				}
-
 
 				.back-button {
 					height: 50px;
