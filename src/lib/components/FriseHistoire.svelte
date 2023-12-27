@@ -90,7 +90,7 @@
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				align-items: start;
-				height: calc(85vw + 300px);
+				height: calc(85vw + 425px);
 			}
 			.point {
 				position: relative;
@@ -102,9 +102,9 @@
 					top: var(--esp);
 				}
 				color: $color-blanc;
-				width: 75px;
-				height: 75px;
-				border-radius: 75px;
+				width: 85px;
+				height: 85px;
+				border-radius: 85px;
 				background-color: $color-rose;
 				display: flex;
 				justify-content: center;
