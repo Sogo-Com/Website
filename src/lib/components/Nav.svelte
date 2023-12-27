@@ -42,13 +42,14 @@
 	
 
 	function checkLinks(url){
+		
 		const linkChilds = Array.from(links.children);
 		if(linkChilds.length != 0 && url != null)
 		{
 			linkChilds.forEach((link) => {
 				link.classList.remove('active');
 				const linkUrl = new URL(link.href);
-				if (url.pathname == linkUrl.pathname) link.classList.add('active');
+				if (url.pathname?.replaceAll("/","") == linkUrl.pathname?.replaceAll("/","")) link.classList.add('active');
 			});
 		}
 
