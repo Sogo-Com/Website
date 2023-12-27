@@ -97,3 +97,22 @@ model Valeur {
   photo       String @default("")
   description String @default("")
 }
+
+// model ExpertiseIcon {
+//   id                String  @id @default(uuid())
+//   photoIconActive   String
+//   photoIconInactive String
+//   titre             String
+//   description       String
+//   photoIllustration String
+//   isVideo           Boolean @default(false)
+// }
+
+// model ExpertiseOnglet {
+//   id              String @id @default(uuid())
+//   class           String
+//   key             String
+//   titre           String
+//   descriptionHTML String
+//   photoPrincipale String
+// }
