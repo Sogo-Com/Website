@@ -95,7 +95,9 @@ Sont les flèches ciblées prêtes à être décochées.`,
 → Charte graphique<br>
 → Création de logos<br>
 → Réalisation de supports print : flyers, plaquettes, magazines, dossiers de presse, papeterie…<br>
-→ Elaboration de maquettes web : sites internet, blogs, bannières…<br><br>
+→ Elaboration de maquettes web : sites internet, blogs, bannières…<br>
+→ Covering de véhicules<br>
+→ Vitrophanie, signalétique et enseignes<br><br>
 
 Confiez-nous votre image, nous la bichonnerons. Notoriété et qualité garanties.`,
         imagePrincipale: '/images/expertise-graphisme.png',
