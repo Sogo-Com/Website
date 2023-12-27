@@ -98,21 +98,26 @@ model Valeur {
   description String @default("")
 }
 
-// model ExpertiseIcon {
-//   id                String  @id @default(uuid())
-//   photoIconActive   String
-//   photoIconInactive String
-//   titre             String
-//   description       String
-//   photoIllustration String
-//   isVideo           Boolean @default(false)
-// }
+model ExpertiseOnglet {
+  id              String          @id @default(uuid())
+  class           String
+  key             String
+  titre           String
+  description     String
+  photoPrincipale String
+  rang            Int
+  expertiseIcons  ExpertiseIcon[]
+}
 
-// model ExpertiseOnglet {
-//   id              String @id @default(uuid())
-//   class           String
-//   key             String
-//   titre           String
-//   descriptionHTML String
-//   photoPrincipale String
-// }
+model ExpertiseIcon {
+  id                String           @id @default(uuid())
+  photoIconActive   String
+  photoIconInactive String
+  titre             String
+  description       String
+  photoIllustration String
+  isVideo           Boolean          @default(false)
+  rang              Int
+  expertiseOngletId String?
+  expertiseOnglet   ExpertiseOnglet? @relation(fields: [expertiseOngletId], references: [id])
+}

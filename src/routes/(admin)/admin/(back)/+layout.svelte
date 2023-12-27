@@ -27,6 +27,11 @@
 					<li><a href="/admin/collaborateurs">Collaborateurs</a></li>
 				</ul>
 
+				<ul>
+					<span>Page Expertise</span>
+					<li><a href="/admin/onglets">Onglets</a></li>
+				</ul>
+
 
 				<ul>
 					<span>Page Projets</span>
@@ -34,6 +39,12 @@
 				</ul>
 
 			
+				<ul>
+					<span>Page Actualites</span>
+					<li><a href="/admin/actualites">Actualites</a></li>
+				</ul>
+
+
 
 				
 				<li><a href="/admin/contacts">Demandes de contact</a></li>
