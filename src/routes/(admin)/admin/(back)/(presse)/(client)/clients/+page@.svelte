@@ -1,87 +1,65 @@
 <script>
-	
 	import { enhance } from '$app/forms';
 	import toast from 'svelte-french-toast';
 
-	import Layout from '../../+layout.svelte';
+	import Layout from '../../../+layout.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
-	
-	const typeProjet = ["redaction", "presse", "graphisme", "reseaux", "photos", "evenements"]
-	const type = ['Rédaction', 'Relations Presse', 'Graphisme', 'Réseaux Sociaux', 'Photos et Vidéos', 'Événements']
-
 
 	export let data;
-	let { projets } = data;
-
- 
-	const submitDeleteProjet  = () => {
-		
+	let { clients } = data;
+	
+	const submitDeleteClient = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Projet supprimé!');
+					toast.success('Client supprimé!');
 					await update(result);
-					
-					break;
+
+					break; 
 				case 'failure':
-					toast.error("Erreur lors de la suppression");
+					toast.error('Erreur lors de la suppression');
 					await update();
 					break;
 				default:
 					break;
 			}
 			window.location.reload();
-			
 		};
 	};
-
 </script>
 
 <Layout>
 	<div slot="buttons">
-		<a href="/admin/projet" class="create-button" ><span>Créer un projet</span></a>
+		<a href="/admin/client" class="create-button"><span>Créer un client</span></a>
 	</div>
 	<div class="grid-view">
 		<h1>
-			{projets.length == 0 ? 'Aucun projet' : 'Liste des projets'}
+			{clients.length == 0 ? 'Aucun client' : 'Liste des clients'}
 		</h1>
 
-		<table class="projet-table" style={projets.length == 0 ? 'display:none;' : ''}>
+		<table class="client-table" style={clients.length == 0 ? 'display:none;' : ''}>
 			<thead>
 				<tr>
-					<th>Titre</th>
-					<th>Type</th>
-					<th>Date de création</th>
+					<th>Nom</th>
+					<th>Type de domaine</th>
 					<th>Supprimer</th>
 				</tr>
 			</thead>
 			<tbody>
-				{#each projets as projet, index}
+				{#each clients as client, index}
 					<tr>
-						<td
-							><a href="/admin/projet/{projet.id}">{projet?.titre ?? 'Aucun titre'}</a
-							></td
-						>
-						<td>{type[typeProjet.indexOf(projet.typeProjet)] ?? 'Aucun type'}</td>
+						<td><a href="/admin/client/{client.id}">{client?.nom ?? 'Aucun nom'}</a></td>
 
-						<td
-							>{new Intl.DateTimeFormat('fr-FR', {
-								dateStyle: 'full',
-								timeStyle: 'long'
-							}).format(projet?.createdAt)}</td
-						>
-						<td
-							>
-							
-							
-								<form action="?/delete" method="POST" use:enhance={submitDeleteProjet}>
-									<input type="hidden" name="id" value={projet.id} />
-									<button type="submit" class="delete-button">Supprimer</button>
-								</form>
+						<td>
+							{client?.domaine?.nom ?? 'Aucun type de domaine'}
+						</td>
 
-							
-							</td
-						>
+						<td>
+							<form action="?/delete" method="POST" use:enhance={submitDeleteClient}>
+								<input type="hidden" name="id" value={client.id} />
+								<button type="submit" class="delete-button">Supprimer</button>
+							</form>
+						</td>
 					</tr>
 				{/each}
 			</tbody>
@@ -90,10 +68,7 @@
 </Layout>
 
 <style lang="scss">
-
-
-
-	.projet-table {
+	.client-table {
 		width: 100%;
 		border-collapse: collapse;
 
@@ -166,7 +141,7 @@
 			border: 1px solid var(--color-gris-clair);
 			padding: 20px;
 
-			/* Styles spécifiques pour le contenu de la demande de projet */
+			/* Styles spécifiques pour le contenu de la demande de client */
 
 			/* Exemple de style pour le titre de la demande */
 			.request-title {

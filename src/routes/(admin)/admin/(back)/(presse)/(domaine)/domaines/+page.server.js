@@ -11,10 +11,10 @@ export const load = async (serverloadEvent) =>{
     throw redirect(302, '/admin/login')
   }
 
-  const projets = await db.projet.findMany()
+  const domaines = await db.domaine.findMany()
   return {
-    projets
-  } 
+    domaines
+  }
 }
 
 export const actions = {
@@ -34,26 +34,26 @@ export const actions = {
     if (!IsStringNotEmpty(id)) {
       return fail(400, {
         data: data,
-        errorMsg: "❌ L'identifiant du projet est requis",
+        errorMsg: "❌ L'identifiant du domaine est requis",
       });
     }
 
     try {
 
-      const projetToDelete = await db.projet.findUnique({
+      const domaineToDelete = await db.domaine.findUnique({
         where: {
           id
         }
       })
 
-      if (projetToDelete == null) {
+      if (domaineToDelete == null) {
         return fail(400, {
           data: data,
-          errorMsg: "Le projet n'existe pas",
+          errorMsg: "Le domaine n'existe pas",
         });
       }
 
-      await db.projet.delete({
+      await db.domaine.delete({
         where: {
           id
         },
@@ -69,7 +69,7 @@ export const actions = {
 
       return fail(400, {
         data: data,
-        errorMsg: "❌ Une erreur est survenue lors de la suppression du projet",
+        errorMsg: "❌ Une erreur est survenue lors de la suppression du domaine",
       });
 
     }

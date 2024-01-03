@@ -11,9 +11,15 @@ export const load = async (serverloadEvent) =>{
     throw redirect(302, '/admin/login')
   }
 
-  const projets = await db.projet.findMany()
+  const clients = await db.client.findMany({
+    include: {
+      domaine: true
+    },
+
+  })
+
   return {
-    projets
+    clients
   } 
 }
 
@@ -34,26 +40,26 @@ export const actions = {
     if (!IsStringNotEmpty(id)) {
       return fail(400, {
         data: data,
-        errorMsg: "❌ L'identifiant du projet est requis",
+        errorMsg: "❌ L'identifiant du client est requis",
       });
     }
 
     try {
 
-      const projetToDelete = await db.projet.findUnique({
+      const clientToDelete = await db.client.findUnique({
         where: {
           id
         }
       })
 
-      if (projetToDelete == null) {
+      if (clientToDelete == null) {
         return fail(400, {
           data: data,
-          errorMsg: "Le projet n'existe pas",
+          errorMsg: "Le client n'existe pas",
         });
       }
 
-      await db.projet.delete({
+      await db.client.delete({
         where: {
           id
         },
@@ -69,7 +75,7 @@ export const actions = {
 
       return fail(400, {
         data: data,
-        errorMsg: "❌ Une erreur est survenue lors de la suppression du projet",
+        errorMsg: "❌ Une erreur est survenue lors de la suppression du client",
       });
 
     }

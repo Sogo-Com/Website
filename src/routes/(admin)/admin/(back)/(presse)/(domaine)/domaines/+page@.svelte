@@ -1,87 +1,60 @@
 <script>
-	
 	import { enhance } from '$app/forms';
 	import toast from 'svelte-french-toast';
 
-	import Layout from '../../+layout.svelte';
+	import Layout from '../../../+layout.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
-	
-	const typeProjet = ["redaction", "presse", "graphisme", "reseaux", "photos", "evenements"]
-	const type = ['Rédaction', 'Relations Presse', 'Graphisme', 'Réseaux Sociaux', 'Photos et Vidéos', 'Événements']
-
 
 	export let data;
-	let { projets } = data;
+	let { domaines } = data;
 
- 
-	const submitDeleteProjet  = () => {
-		
+	const submitDeleteDomaine = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Projet supprimé!');
+					toast.success('Domaine supprimé!');
 					await update(result);
-					
+
 					break;
 				case 'failure':
-					toast.error("Erreur lors de la suppression");
+					toast.error('Erreur lors de la suppression');
 					await update();
 					break;
 				default:
 					break;
 			}
 			window.location.reload();
-			
 		};
 	};
-
 </script>
 
 <Layout>
 	<div slot="buttons">
-		<a href="/admin/projet" class="create-button" ><span>Créer un projet</span></a>
+		<a href="/admin/domaine" class="create-button"><span>Créer un domaine</span></a>
 	</div>
 	<div class="grid-view">
 		<h1>
-			{projets.length == 0 ? 'Aucun projet' : 'Liste des projets'}
+			{domaines.length == 0 ? 'Aucun domaine' : 'Liste des domaines'}
 		</h1>
 
-		<table class="projet-table" style={projets.length == 0 ? 'display:none;' : ''}>
+		<table class="domaine-table" style={domaines.length == 0 ? 'display:none;' : ''}>
 			<thead>
 				<tr>
-					<th>Titre</th>
-					<th>Type</th>
-					<th>Date de création</th>
+					<th>Nom</th>
 					<th>Supprimer</th>
 				</tr>
 			</thead>
 			<tbody>
-				{#each projets as projet, index}
+				{#each domaines as domaine, index}
 					<tr>
-						<td
-							><a href="/admin/projet/{projet.id}">{projet?.titre ?? 'Aucun titre'}</a
-							></td
-						>
-						<td>{type[typeProjet.indexOf(projet.typeProjet)] ?? 'Aucun type'}</td>
+						<td><a href="/admin/domaine/{domaine.id}">{domaine?.nom ?? 'Aucun nom'}</a></td>
 
-						<td
-							>{new Intl.DateTimeFormat('fr-FR', {
-								dateStyle: 'full',
-								timeStyle: 'long'
-							}).format(projet?.createdAt)}</td
-						>
-						<td
-							>
-							
-							
-								<form action="?/delete" method="POST" use:enhance={submitDeleteProjet}>
-									<input type="hidden" name="id" value={projet.id} />
-									<button type="submit" class="delete-button">Supprimer</button>
-								</form>
-
-							
-							</td
-						>
+						<td>
+							<form action="?/delete" method="POST" use:enhance={submitDeleteDomaine}>
+								<input type="hidden" name="id" value={domaine.id} />
+								<button type="submit" class="delete-button">Supprimer</button>
+							</form>
+						</td>
 					</tr>
 				{/each}
 			</tbody>
@@ -90,10 +63,7 @@
 </Layout>
 
 <style lang="scss">
-
-
-
-	.projet-table {
+	.domaine-table {
 		width: 100%;
 		border-collapse: collapse;
 
@@ -166,7 +136,7 @@
 			border: 1px solid var(--color-gris-clair);
 			padding: 20px;
 
-			/* Styles spécifiques pour le contenu de la demande de projet */
+			/* Styles spécifiques pour le contenu de la demande de domaine */
 
 			/* Exemple de style pour le titre de la demande */
 			.request-title {

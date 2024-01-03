@@ -11,10 +11,10 @@ export const load = async (serverloadEvent) =>{
     throw redirect(302, '/admin/login')
   }
 
-  const projets = await db.projet.findMany()
+  const attachePresses = await db.attachePresse.findMany()
   return {
-    projets
-  } 
+    attachePresses
+  }
 }
 
 export const actions = {
@@ -34,26 +34,26 @@ export const actions = {
     if (!IsStringNotEmpty(id)) {
       return fail(400, {
         data: data,
-        errorMsg: "❌ L'identifiant du projet est requis",
+        errorMsg: "❌ L'identifiant de l'attaché de presse est requis",
       });
     }
 
     try {
 
-      const projetToDelete = await db.projet.findUnique({
+      const attachePresseToDelete = await db.attachePresse.findUnique({
         where: {
           id
         }
       })
 
-      if (projetToDelete == null) {
+      if (attachePresseToDelete == null) {
         return fail(400, {
           data: data,
-          errorMsg: "Le projet n'existe pas",
+          errorMsg: "L'attaché de presse n'existe pas",
         });
       }
 
-      await db.projet.delete({
+      await db.attachePresse.delete({
         where: {
           id
         },
@@ -69,7 +69,7 @@ export const actions = {
 
       return fail(400, {
         data: data,
-        errorMsg: "❌ Une erreur est survenue lors de la suppression du projet",
+        errorMsg: "❌ Une erreur est survenue lors de la suppression de l'attaché de presse",
       });
 
     }

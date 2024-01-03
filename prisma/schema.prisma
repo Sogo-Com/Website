@@ -57,14 +57,6 @@ model Projet {
   createdAt         DateTime @default(now())
 }
 
-model Client {
-  id          String   @id @default(uuid())
-  nom         String
-  typeClient  String   @default("")
-  typeDomaine String   @default("")
-  createdAt   DateTime @default(now())
-}
-
 model Collaborateur {
   id                String   @id @default(uuid())
   prenom            String
@@ -120,4 +112,34 @@ model ExpertiseIcon {
   rang              Int
   expertiseOngletId String?
   expertiseOnglet   ExpertiseOnglet? @relation(fields: [expertiseOngletId], references: [id])
+}
+
+model Client {
+  id  String @id @default(uuid())
+  nom String
+  photoLogo            String                @default("")
+  photoAvant1          String                @default("")
+  photoAvant2          String                @default("")
+  createdAt     DateTime        @default(now())
+
+  domaineId     String
+  domaine       Domaine         @relation(fields: [domaineId], references: [id])
+
+  attachePresses AttachePresse[]
+
+}
+
+model Domaine {
+  id            String          @id @default(uuid())
+  nom           String
+  clients       Client[]
+}
+
+
+model AttachePresse {
+  id                   String                @id @default(uuid())
+  nom                  String
+  telephone            String
+  email                String
+  cliens Client[]
 }

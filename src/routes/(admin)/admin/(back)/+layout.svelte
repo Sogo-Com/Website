@@ -19,6 +19,13 @@
 			</div>
 			<ul class="menu">
 
+				
+				<ul>
+					<span>Formulaires</span>
+					<li><a href="/admin/contacts">Demandes de contact</a></li>
+				</ul>
+				
+				
 				<ul>
 					<span>Page Agence</span>
 					<li><a href="/admin/agence">Page Agence</a></li>
@@ -44,10 +51,17 @@
 					<li><a href="/admin/actualites">Actualites</a></li>
 				</ul>
 
+				<ul>
+					<span>Page Presse</span>
+					<li><a href="/admin/clients">Clients</a></li>
+					<li><a href="/admin/domaines">Domaines</a></li>
+					<li><a href="/admin/attachePresses">Attachés de Presse</a></li>
+					<li><a href="/admin/communiquePresses">Communiqué de Presse</a></li>
+					<li><a href="/admin/dossierPresses">Dossier de Presse</a></li>
+				</ul>
 
-
+	
 				
-				<li><a href="/admin/contacts">Demandes de contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -87,22 +101,28 @@
 		.sidebar-container {
 			width: 250px;
 			background-color: $color-gris-clair;
-			padding: 20px;
 		}
 		/* Sidebar/Menu */
 		.sidebar {
 			position: sticky;
 			top: 0;
+			display: block;
+			max-height: 100vh;
+			padding: 0 10px;
 
 			.logo {
-				margin-bottom: 20px;
-
+				height: 20vh;
 				img {
-					max-width: 100%;
+					
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
 				}
 			}
 
 			.menu {
+				max-height: 80vh;
+				overflow-y:auto;
 				list-style: none;
 				padding: 0;
 
