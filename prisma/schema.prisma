@@ -115,31 +115,49 @@ model ExpertiseIcon {
 }
 
 model Client {
-  id  String @id @default(uuid())
-  nom String
-  photoLogo            String                @default("")
-  photoAvant1          String                @default("")
-  photoAvant2          String                @default("")
-  createdAt     DateTime        @default(now())
+  id          String   @id @default(uuid())
+  nom         String
+  photoLogo   String   @default("")
+  photoAvant1 String   @default("")
+  photoAvant2 String   @default("")
+  createdAt   DateTime @default(now())
 
-  domaineId     String
-  domaine       Domaine         @relation(fields: [domaineId], references: [id])
+  domaineId String
+  domaine   Domaine @relation(fields: [domaineId], references: [id])
 
   attachePresses AttachePresse[]
-
+  communiquePresses CommuniquePresse[]
+  dossierPresses DossierPresse[]
 }
 
 model Domaine {
-  id            String          @id @default(uuid())
-  nom           String
-  clients       Client[]
+  id      String   @id @default(uuid())
+  nom     String
+  clients Client[]
 }
 
+model CommuniquePresse {
+  id        String                @id @default(uuid())
+  titre     String
+  fichier    String
+  createdAt DateTime              @default(now())
+  clientId  String          
+  client    Client @relation(fields: [clientId], references: [id])
+}
+
+model DossierPresse {
+  id        String                @id @default(uuid())
+  titre     String
+  fichier    String
+  createdAt DateTime              @default(now())
+  clientId  String          
+  client    Client @relation(fields: [clientId], references: [id])
+}
 
 model AttachePresse {
-  id                   String                @id @default(uuid())
-  nom                  String
-  telephone            String
-  email                String
-  cliens Client[]
+  id        String   @id @default(uuid())
+  nom       String
+  telephone String
+  email     String
+  cliens    Client[]
 }

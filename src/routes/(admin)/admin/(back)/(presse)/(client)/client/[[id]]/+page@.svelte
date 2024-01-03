@@ -10,7 +10,6 @@
 	let { client, domaines, attachePresses } = data;
 
 	let attachePresseValue = '';
-	let clientDomaineValue = '';
 
 	const submitCreateClient = async ({ form, data, action, cancel }) => {
 		const { nom } = Object.fromEntries(data);
@@ -86,7 +85,7 @@
 					await update();
 					client = result.data.data.client;
 					attachePresses = result.data.data.attachePresses;
-
+					attachePresseValue = '';
 					break;
 				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
@@ -97,8 +96,6 @@
 				default:
 					break;
 			}
-
-			// goto(`/admin/client/${client.id}`, { invalidateAll: true });
 		};
 	};
 
@@ -119,10 +116,127 @@
 				default:
 					break;
 			}
-
-			// goto('/admin/clients', { invalidateAll: true });
 		};
 	};
+
+	const submitCreateCommunique = async ({ form, data, action, cancel }) => {
+		const { titre ,fichierFile} = Object.fromEntries(data);
+
+		if (titre.length < 1) {
+			toast.error('Titre vide !');
+			cancel();
+		}
+
+			
+		if (fichierFile.size < 1) {
+			toast.error('Fichier vide !');
+			cancel();
+		}
+
+
+		data.append('idClient', client.id);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Communique de presse ajouté !');
+					await applyAction(result);
+					await update();
+					client = result.data.data
+					attachePresseValue = '';
+					break;
+				case 'failure':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				case 'error':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				default:
+					break;
+			}
+		};
+	};
+
+	const submitDeleteCommunique = ({ form, data, action, cancel }) => {
+		data.append('idClient', client.id);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Communiqué de presse supprimé!');
+					await update();
+					client = result.data.data;
+					break;
+				case 'failure':
+					toast.error('Erreur lors de la suppression');
+					break;
+				default:
+					break;
+			}
+		};
+	};
+
+
+
+	const submitCreateDossier = async ({ form, data, action, cancel }) => {
+		const { titre,fichierFile } = Object.fromEntries(data);
+
+		if (titre.length < 1) {
+			toast.error('Titre vide !');
+			cancel();
+		}
+
+		
+		if (fichierFile.size < 1) {
+			toast.error('Fichier vide !');
+			cancel();
+		}
+
+
+		
+
+		data.append('idClient', client.id);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Dossier de presse ajouté !');
+					await applyAction(result);
+					await update();
+					client = result.data.data
+					attachePresseValue = '';
+					break;
+				case 'failure':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				case 'error':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				default:
+					break;
+			}
+		};
+	};
+
+	const submitDeleteDossier = ({ form, data, action, cancel }) => {
+		data.append('idClient', client.id);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Dossier de presse supprimé!');
+					await update();
+					client = result.data.data;
+					break;
+				case 'failure':
+					toast.error('Erreur lors de la suppression');
+					break;
+				default:
+					break;
+			}
+		};
+	};
+
 </script>
 
 <Layout>
@@ -233,8 +347,8 @@
 					<thead>
 						<tr>
 							<th>Nom</th>
-							<th>Email</th>
 							<th>Telephone</th>
+							<th>Email</th>
 							<th>Supprimer</th>
 						</tr>
 					</thead>
@@ -254,6 +368,127 @@
 										<input type="hidden" name="idAttache" value={attachePresse.id} />
 										<button type="submit" class="delete-button">Supprimer</button>
 									</form>
+								</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+
+				<br /><br />
+			</div>
+		{/if}
+
+		{#if client != null && client.communiquePresses != null}
+			<br /><br />
+
+			<div class="client-form">
+				<h3>Communiqué de presse</h3>
+
+				<form
+					class="attache-form"
+					method="POST"
+					action="?/createCommunique"
+					use:enhance={submitCreateCommunique}
+				>
+					<div class="form-group">
+						<label for="idCommunique">Ajouter communiqué de presse</label>
+
+						<input type="file" id="fichier" name="fichierFile" />
+					</div>
+
+
+					<div class="form-group">
+						<label for="titre">Titre</label>
+
+						<input type="text" name="titre" />
+					</div>
+
+					<button type="submit" for="envoyer" value="envoyer" class="submit-button">Ajouter</button>
+				</form>
+				<br /><br />
+
+				<table class="presse-table">
+					<thead>
+						<tr>
+							<th>Titre</th>
+							<th>Fichier</th>
+							<th>Supprimer</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each client.communiquePresses as communiquePresse, index}
+							<tr>
+								<td>{communiquePresse?.titre ?? 'Aucun titre'}</td>
+								<td><a href={communiquePresse?.fichier ?? '#'} target="_blank">Fichier</a></td>
+
+								<td>
+									<form action="?/deleteCommunique" method="POST" use:enhance={submitDeleteCommunique}>
+										<input type="hidden" name="idCommunique" value={communiquePresse.id} />
+										<button type="submit" class="delete-button">Supprimer</button>
+									</form>
+									
+								</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+
+				<br /><br />
+			</div>
+		{/if}
+
+
+
+
+		{#if client != null && client.dossierPresses != null}
+			<br /><br />
+
+			<div class="client-form">
+				<h3>Dossier de presse</h3>
+
+				<form
+					class="attache-form"
+					method="POST"
+					action="?/createDossier"
+					use:enhance={submitCreateDossier}
+				>
+					<div class="form-group">
+						<label for="idDossier">Ajouter dossier de presse</label>
+
+						<input type="file" id="fichier" name="fichierFile" />
+					</div>
+
+
+					<div class="form-group">
+						<label for="titre">Titre</label>
+
+						<input type="text" name="titre" />
+					</div>
+
+					<button type="submit" for="envoyer" value="envoyer" class="submit-button">Ajouter</button>
+				</form>
+				<br /><br />
+
+				<table class="presse-table">
+					<thead>
+						<tr>
+							<th>Titre</th>
+							<th>Fichier</th>
+							<th>Supprimer</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each client.dossierPresses as dossierPresse, index}
+							<tr>
+								<td>{dossierPresse?.titre ?? 'Aucun titre'}</td>
+								<td><a href={dossierPresse?.fichier ?? '#'} target="_blank">Fichier</a></td>
+
+								<td>
+									<form action="?/deleteDossier" method="POST" use:enhance={submitDeleteDossier}>
+										<input type="hidden" name="idDossier" value={dossierPresse.id} />
+										<button type="submit" class="delete-button">Supprimer</button>
+									</form>
+									
 								</td>
 							</tr>
 						{/each}
@@ -356,12 +591,18 @@
 			input[type='number'],
 			textarea,
 			select,
-			.contenu {
+			.contenu,
+			input[type='file'] {
 				width: 100%;
 				padding: 10px;
 				border: 1px solid var(--color-gris-clair);
 				font-family: var(--font-secondary-regular);
 				background: white;
+			}
+
+			/* Style spécifique pour le champ de type fichier */
+			input[type='file'] {
+				cursor: pointer;
 			}
 		}
 

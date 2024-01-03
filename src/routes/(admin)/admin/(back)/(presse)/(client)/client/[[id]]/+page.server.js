@@ -20,7 +20,9 @@ export const load = async (serverloadEvent) => {
   const { id = '' } = params
   let client = await db.client.findUnique({
     include: {
-      attachePresses: true
+      attachePresses: true,
+      communiquePresses: true,
+      dossierPresses: true,
     },
     where: {
       id
@@ -368,6 +370,306 @@ export const actions = {
     } catch (err) {
 
 
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
+      });
+
+    }
+
+  },
+
+
+
+  createCommunique: async ({ request, locals }) => {
+
+
+    const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN") {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { idClient, titre, fichierFile,fichier = "" } = data
+
+    if (!IsStringNotEmpty(idClient)) {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ L'identifiant du client est requis",
+      });
+    }
+
+    if (!IsStringNotEmpty(titre)) {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Le titre du dossier est requis",
+      });
+    }
+
+
+    try {
+
+
+
+         
+      if (IsFile(fichierFile)) {
+
+
+        if (!existsSync(FULL_UPLOAD_PATH)) {
+          mkdirSync(FULL_UPLOAD_PATH);
+        }
+
+        const fsPhotoPath = `${FULL_UPLOAD_PATH}${fichierFile.name}`
+        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${fichierFile.name}`
+
+        writeFileSync(fsPhotoPath, Buffer.from(await fichierFile.arrayBuffer()))
+        fichier = dbPhotoPath
+        console.log(fichier)
+      }
+
+      await db.communiquePresse.create({
+        data: {
+          titre,
+          fichier,
+          client: {
+            connect: {
+              id: idClient
+            }
+          },
+
+        },
+      })
+
+      const client = await db.client.findUnique({
+        include: {
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
+        },
+        where: {
+          id: idClient
+        }
+      })
+
+      return {
+        data: client,
+        errorMsg: undefined,
+      };
+
+
+    } catch (err) {
+      console.log(err)
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
+      });
+
+
+      
+
+    }
+
+
+
+  },
+
+
+  deleteCommunique: async ({ request, locals }) => {
+
+
+
+    const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN") {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { idClient, idCommunique } = data
+
+
+    try {
+
+      await db.communiquePresse.delete({
+        where: {
+          id: idCommunique
+        },
+      })
+
+      const client = await db.client.findUnique({
+        include: {
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
+        },
+        where: {
+          id: idClient
+        }
+      })
+
+  
+      return {
+        data: client,
+        errorMsg: undefined,
+      };
+
+    } catch (err) {
+
+      console.log(err)
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
+      });
+
+    }
+
+  },
+
+
+
+
+  
+  createDossier: async ({ request, locals }) => {
+
+
+    const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN") {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { idClient, titre, fichierFile,fichier = "" } = data
+
+    if (!IsStringNotEmpty(idClient)) {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ L'identifiant du client est requis",
+      });
+    }
+
+    if (!IsStringNotEmpty(titre)) {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Le titre du dossier est requis",
+      });
+    }
+
+
+    try {
+
+
+
+         
+      if (IsFile(fichierFile)) {
+
+
+        if (!existsSync(FULL_UPLOAD_PATH)) {
+          mkdirSync(FULL_UPLOAD_PATH);
+        }
+
+        const fsPhotoPath = `${FULL_UPLOAD_PATH}${fichierFile.name}`
+        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${fichierFile.name}`
+
+        writeFileSync(fsPhotoPath, Buffer.from(await fichierFile.arrayBuffer()))
+        fichier = dbPhotoPath
+        console.log(fichier)
+      }
+
+      await db.dossierPresse.create({
+        data: {
+          titre,
+          fichier,
+          client: {
+            connect: {
+              id: idClient
+            }
+          },
+
+        },
+      })
+
+      const client = await db.client.findUnique({
+        include: {
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
+        },
+        where: {
+          id: idClient
+        }
+      })
+
+      return {
+        data: client,
+        errorMsg: undefined,
+      };
+
+
+    } catch (err) {
+      console.log(err)
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
+      });
+
+
+      
+
+    }
+
+
+
+  },
+
+
+  deleteDossier: async ({ request, locals }) => {
+
+
+
+    const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN") {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { idClient, idDossier } = data
+
+
+    try {
+
+      await db.dossierPresse.delete({
+        where: {
+          id: idDossier
+        },
+      })
+
+      const client = await db.client.findUnique({
+        include: {
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
+        },
+        where: {
+          id: idClient
+        }
+      })
+
+  
+      return {
+        data: client,
+        errorMsg: undefined,
+      };
+
+    } catch (err) {
+
+      console.log(err)
       return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
