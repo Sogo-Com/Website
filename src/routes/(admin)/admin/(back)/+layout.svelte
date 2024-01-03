@@ -56,8 +56,7 @@
 					<li><a href="/admin/clients">Clients</a></li>
 					<li><a href="/admin/domaines">Domaines</a></li>
 					<li><a href="/admin/attachePresses">Attachés de Presse</a></li>
-					<li><a href="/admin/communiquePresses">Communiqué de Presse</a></li>
-					<li><a href="/admin/dossierPresses">Dossier de Presse</a></li>
+				
 				</ul>
 
 	
