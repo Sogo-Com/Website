@@ -62,7 +62,7 @@ export const actions = {
       });
     }
 
-    let { id, domaineId, nom, photoLogo, photoLogoFile ,photoAvant1,photoAvant1File,photoAvant2,photoAvant2File} = data
+    let { id, domaineId, nom,description, photoLogo, photoLogoFile ,photoAvant1,photoAvant1File,photoAvant2,photoAvant2File} = data
 
     console.log(data)
 
@@ -136,6 +136,7 @@ export const actions = {
         },
         create: {
           nom,
+          description,
           photoLogo,
           photoAvant1,
           photoAvant2,
@@ -147,6 +148,7 @@ export const actions = {
         },
         update: {
           nom,
+          description,
           photoLogo,
           photoAvant1,
           photoAvant2,

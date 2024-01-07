@@ -190,7 +190,7 @@
 		}
 
 		.submit-button {
-			background-color: var(--color-jaune);
+			background-color: var(--color-save);
 			color: var(--color-blanc);
 			padding: 10px 20px;
 			font-family: var(--font-secondary-bold);
@@ -199,7 +199,7 @@
 			transition: background-color 0.3s ease;
 
 			&:hover {
-				background-color: var(--color-bordeaux);
+				background-color: var(--color-bleu);
 			}
 		}
 	}

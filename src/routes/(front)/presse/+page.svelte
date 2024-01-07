@@ -1,8 +1,11 @@
 <script>
-	import FlipCard from '$lib/components/FlipCard.svelte';
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+
+	export let data;
+	let { domaines, clients } = data;
+	console.log(data);
 	onMount((_) => {
 		const isMedia = window.matchMedia('(max-width:1150px)').matches;
 
@@ -77,9 +80,7 @@
 				Retrouvez sur cette page nos derniers communiqués et dossiers de presse.
 			</p>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<a animate class="btn" href="/agence">
-				En savoir plus
-			</a>
+			<a animate class="btn" href="/agence"> En savoir plus </a>
 		</div>
 		<div class="bloc img-droite">
 			<div class="conteneur">
@@ -93,70 +94,37 @@
 
 <div id="presslist">
 	<div class="filtre">
-		<form method="post" on:submit|preventDefault={handleSubmit}>
+		<form method="post" action="?/search" on:submit|preventDefault={handleSubmit}>
 			<p contenteditable="false">Recherchez !</p>
 
 			<label for="nom">Nom</label>
 			<input type="text" name="nom" id="nom" placeholder="Nom" />
 
-			<label for="type">Type</label>
-
-			<select id="type" name="type" required>
-				<option value="" selected disabled hidden>Choisissez un type...</option>
-				<option value="communiquePresse">Communiqué de presse</option>
-			</select>
-
 			<label for="domaine">Domaine</label>
 
 			<select id="domaine" name="domaine" required>
 				<option value="" selected disabled hidden>Choisissez un domaine...</option>
-				<option value="immobilier">Immobilier</option>
+				{#each domaines as domaine}
+					<option value={domaine.id}>{domaine.nom}</option>
+				{/each}
 			</select>
 
 			<button type="submit" class="btn" for="rechercher" value="rechercher">Rechercher</button>
 		</form>
 	</div>
 	<div class="clients">
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
+		{#each clients as client}
+			<div class="flip-parent">
+				<a href="/presse/{client.id}">
+					<div class="flip-row">
+						<img src={client.photoLogo} alt={client.nom} />
+						<h3>{client.nom}</h3>
+					</div>
+				</a>
 			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
-		<div class="flip-parent">
-			<div class="flip-row">
-				<FlipCard />
-			</div>
-		</div>
+		{/each}
+		
+
 	</div>
 </div>
 
@@ -257,12 +225,11 @@
 
 	#presslist {
 		display: flex;
-
-
+		background: #fff;
 		@media only screen and (max-width: $tablet) {
-					flex-direction: column;
-					padding: 32px 12px;
-				}
+			flex-direction: column;
+			padding: 32px 12px;
+		}
 		.filtre {
 			form {
 				font-family: $font-secondary-light;
@@ -313,7 +280,7 @@
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
-
+			width: 100%;
 			@media only screen and (max-width: $phone) {
 				padding: 0;
 			}
@@ -333,7 +300,14 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+
+				a{
+					text-decoration: none;
+				}
+				
 				.flip-row {
+					border-radius: 32px;
+					box-shadow: 0px 4px 18.6px rgba(0, 0, 0, 0.25);
 					@media only screen and (max-width: $tablet) {
 						width: 30vw;
 						height: 30vw;
@@ -346,6 +320,24 @@
 
 					width: 20vw;
 					height: 20vw;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+
+
+					img {
+						width: 100%;
+						height: 80%;
+						padding: 20px 0;
+						object-fit: contain;
+					}
+					h3 {
+						width: 100%;
+						text-align: center;
+						height: 10%;
+			
+						color: #000;
+					}
 				}
 			}
 		}

@@ -117,6 +117,7 @@ model ExpertiseIcon {
 model Client {
   id          String   @id @default(uuid())
   nom         String
+  description String   @default("Aucune description")
   photoLogo   String   @default("")
   photoAvant1 String   @default("")
   photoAvant2 String   @default("")
@@ -142,7 +143,7 @@ model CommuniquePresse {
   fichier    String
   createdAt DateTime              @default(now())
   clientId  String          
-  client    Client @relation(fields: [clientId], references: [id])
+  client    Client @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model DossierPresse {
@@ -151,7 +152,7 @@ model DossierPresse {
   fichier    String
   createdAt DateTime              @default(now())
   clientId  String          
-  client    Client @relation(fields: [clientId], references: [id])
+  client    Client @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model AttachePresse {

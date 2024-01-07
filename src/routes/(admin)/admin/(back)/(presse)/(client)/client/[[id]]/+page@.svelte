@@ -12,13 +12,15 @@
 	let attachePresseValue = '';
 
 	const submitCreateClient = async ({ form, data, action, cancel }) => {
-		const { nom } = Object.fromEntries(data);
+		const { nom ,description} = Object.fromEntries(data);
 
 		if (nom.length < 1) {
 			toast.error('Nom vide !');
 			cancel();
 		}
 
+		
+		data.append('description', description?.replaceAll("\n", "<br/>"));
 		data.append('photoLogo', client?.photoLogo ?? '');
 		data.append('photoAvant1', client?.photoAvant1 ?? '');
 		data.append('photoAvant2', client?.photoAvant2 ?? '');
@@ -26,11 +28,15 @@
 		data.append('id', client.id);
 
 		return async ({ result, update }) => {
+			let forceRefresh = false;
 			switch (result.type) {
 				case 'success':
 					toast.success('Client enregistré!');
 					await applyAction(result);
 
+					if ((client.id == null || client.id.length == 0) && result.data.data.id != null) {
+						forceRefresh = true;
+					}
 					break;
 				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
@@ -44,9 +50,14 @@
 
 			await update();
 
+		
 			client = result.data.data;
 			console.log(client);
-			goto(`/admin/client/${client.id}`, { invalidateAll: true });
+			goto(`/admin/client/${client.id}`, { invalidateAll: true }).then(() => {
+				if (forceRefresh) {
+					location.reload();
+				}
+			});
 		};
 	};
 
@@ -266,6 +277,11 @@
 			<div class="form-group">
 				<label for="nom">Nom</label>
 				<input id="nom" name="nom" bind:value={client.nom} contenteditable="true" type="text" />
+			</div>
+
+			<div class="form-group">
+				<label for="description">Description</label>
+				<textarea id="description" name="description" value={client.description.replace(/<br\s?\/?>/g,"\n")} contenteditable="true" type="text" rows="5"></textarea>
 			</div>
 
 			<div class="form-group">
@@ -497,7 +513,9 @@
 
 				<br /><br />
 			</div>
+			<br /><br />
 		{/if}
+		
 	</div>
 </Layout>
 
@@ -607,7 +625,7 @@
 		}
 
 		.submit-button {
-			background-color: var(--color-jaune);
+			background-color: var(--color-save);
 			color: var(--color-blanc);
 			padding: 10px 20px;
 			font-family: var(--font-secondary-bold);
@@ -616,7 +634,7 @@
 			transition: background-color 0.3s ease;
 
 			&:hover {
-				background-color: var(--color-bordeaux);
+				background-color: var(--color-bleu);
 			}
 		}
 	}
