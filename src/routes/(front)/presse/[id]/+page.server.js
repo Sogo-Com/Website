@@ -11,6 +11,11 @@ export const load = async (serverloadEvent) =>{
   const client = await db.client.findUnique({
     where: {
       id
+    },
+    include: {
+      attachePresses:true,
+      communiquePresses:true,
+      dossierPresses:true,
     }
   })
   
