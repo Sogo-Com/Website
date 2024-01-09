@@ -52,8 +52,6 @@ export const actions = {
 
 		let { photo, photoFile, citation, valeurDescription } = data;
 
-		console.log(data);
-
 		if (citation.length < 1) {
 			return fail(400, {
 				data: data,

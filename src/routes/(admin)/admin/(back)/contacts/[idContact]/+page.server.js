@@ -19,7 +19,6 @@ export const load = async (serverloadEvent) =>{
     }
   })
 
-  console.log(contact);
   return {
     contact
   }

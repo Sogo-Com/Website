@@ -100,7 +100,6 @@ export const actions = {
 				errorMsg: undefined
 			};
 		} catch (err) {
-			console.log(err);
 			return fail(400, {
 				data: data,
 				errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de la valeur"

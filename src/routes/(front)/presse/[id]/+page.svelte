@@ -21,13 +21,13 @@
 
 <div class="blanc">
 	<div class="wrapper">
-		<div class="bloc img-droite">
+		<div class="bloc avant img-droite">
 			<div class="conteneur">
 				<img src={client.photoAvant1} alt={client.nom} />
 			</div>
 		</div>
 		<div class="bloc desc-gauche files">
-			<h2 animate>Communiqué de presse</h2>
+			<h2 animate>Communiqués de presse</h2>
 			<div class="innerFile">
 				{#each client.communiquePresses as communiquePresse}
 					<a href={communiquePresse.fichier} target="_blank" class="file" animate>
@@ -45,7 +45,7 @@
 <div class="blanc">
 	<div class="wrapper">
 		<div class="bloc desc-gauche files">
-			<h2 animate>Communiqué de presse</h2>
+			<h2 animate>Dossiers de presse</h2>
 			<div class="innerFile">
 				{#each client.dossierPresses as dossierPresse}
 					<a href={dossierPresse.fichier} target="_blank" class="file" animate>
@@ -58,35 +58,36 @@
 			</div>
 		</div>
 
-		<div class="bloc img-droite">
+		<div class="bloc avant img-droite">
 			<div class="conteneur">
 				<img src={client.photoAvant2} alt={client.nom} />
 			</div>
 		</div>
 	</div>
 </div>
-
+{#if client.attachePresses != null && client.attachePresses.length > 0}
 <div class="blanc attache">
 	<h2 animate>Attaché de presse</h2>
 	{#each client.attachePresses as attachePresses}
 		<div class="info-wrapper">
 			<div class="info">
 				<img src="/images/personne.svg" alt="" />
-				<p animate>{attachePresses.nom}</p>
+				<p>{attachePresses.nom}</p>
 			</div>
 
-			<div class="info">
+			<a href="tel:{attachePresses.telephone}" class="info">
 				<img src="/images/tel.svg" alt="" />
-				<p animate>{attachePresses.telephone}</p>
-			</div>
+				<p>{attachePresses.telephone}</p>
+			</a>
 
-			<div class="info">
+			<a href="mailto:{attachePresses.email}" class="info">
 				<img src="/images/mail.svg" alt="" />
-				<p animate>{attachePresses.email}</p>
-			</div>
+				<p>{attachePresses.email}</p>
+			</a>
 		</div>
 	{/each}
 </div>
+{/if}
 
 <style lang="scss">
 	#blanc {
@@ -121,15 +122,17 @@
 					display: flex;
 					align-items: center;
 					flex-direction: column;
+					flex-basis: 33%;
+					text-decoration: none;
+					color: $color-gris-dark;
 					@media only screen and (max-width: $phone) {
 						margin-bottom: 32px;
+						flex-basis: 100%;
+						width: 100%;
 					}
-					
 					img {
 						width: 60px;
 						height: 60px;
-						margin-right: 16px;
-
 					}
 				}
 			}
@@ -186,6 +189,13 @@
 				justify-content: end;
 				align-items: start;
 				height: 50vh;
+
+				&.avant {
+					@media only screen and (max-width: $phone) {
+						display: none;
+					}
+				}
+
 				@media only screen and (max-width: $phone) {
 					padding: 5rem 0 0 0;
 					justify-content: center;

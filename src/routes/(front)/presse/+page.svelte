@@ -5,7 +5,7 @@
 
 	export let data;
 	let { domaines, clients } = data;
-	console.log(data);
+
 	onMount((_) => {
 		const isMedia = window.matchMedia('(max-width:1150px)').matches;
 
@@ -31,7 +31,7 @@
 		const formData = new FormData(data.currentTarget);
 		const object = Object.fromEntries(formData);
 
-		console.log(typeof object.nom);
+	
 		if (
 			object.nom.length == 0 ||
 			object.prenom.length == 0 ||
@@ -55,7 +55,7 @@
 		});
 		const result = await response.json();
 		if (result.success) {
-			console.log(result);
+					
 			status = 'Message envoyé !';
 			statusClass = 'success';
 
@@ -303,6 +303,7 @@
 
 				a{
 					text-decoration: none;
+					width: 100%;
 				}
 				
 				.flip-row {

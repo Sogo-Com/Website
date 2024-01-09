@@ -24,7 +24,7 @@ export async function POST(req) {
 				body: { error: "Erreur recapcha" }
 			};
 		}
-		console.log(recacpchaResponse);
+		
 
 		const contact = await db.contact.create({
 			data: {
@@ -62,7 +62,7 @@ export async function DELETE(req) {
 	let { request } = req;
 
 	let { id } = await request.json();
-	console.log(id);
+	
 	const deleteContact = await db.contact.delete({
 		where: {
 			id

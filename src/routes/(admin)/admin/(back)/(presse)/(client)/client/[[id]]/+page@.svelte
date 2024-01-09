@@ -52,7 +52,6 @@
 
 		
 			client = result.data.data;
-			console.log(client);
 			goto(`/admin/client/${client.id}`, { invalidateAll: true }).then(() => {
 				if (forceRefresh) {
 					location.reload();
@@ -281,7 +280,7 @@
 
 			<div class="form-group">
 				<label for="description">Description</label>
-				<textarea id="description" name="description" value={client.description.replace(/<br\s?\/?>/g,"\n")} contenteditable="true" type="text" rows="5"></textarea>
+				<textarea id="description" name="description" value={client.description?.replace(/<br\s?\/?>/g,"\n") ?? ""} contenteditable="true" type="text" rows="5"></textarea>
 			</div>
 
 			<div class="form-group">
@@ -371,7 +370,7 @@
 					<tbody>
 						{#each client.attachePresses as attachePresse, index}
 							<tr>
-								<td>{attachePresse?.nom ?? 'Aucun nom'}</td>
+								<td><a target="_blank" href="/admin/attachePresse/{attachePresse.id}" >{attachePresse?.nom ?? 'Aucun nom'}</a> </td>
 								<td>{attachePresse?.telephone ?? 'Aucun nom'}</td>
 								<td>{attachePresse?.email ?? 'Aucun nom'}</td>
 
@@ -434,6 +433,7 @@
 					<tbody>
 						{#each client.communiquePresses as communiquePresse, index}
 							<tr>
+								
 								<td>{communiquePresse?.titre ?? 'Aucun titre'}</td>
 								<td><a href={communiquePresse?.fichier ?? '#'} target="_blank">Fichier</a></td>
 

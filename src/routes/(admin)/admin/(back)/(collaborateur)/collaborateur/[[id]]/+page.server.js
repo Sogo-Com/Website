@@ -47,8 +47,6 @@ export const actions = {
 
     let { id, prenom = '',rang=1,descriptionCourte = '',  description = '',photoInactive = '', photoActive = '', photoInactiveFile ,photoActiveFile} = data
 
-    console.log(data)
-
     if (prenom.length < 1) {
       return fail(400, {
         data: data,

@@ -64,7 +64,6 @@ export const actions = {
 
     let { id, domaineId, nom,description, photoLogo, photoLogoFile ,photoAvant1,photoAvant1File,photoAvant2,photoAvant2File} = data
 
-    console.log(data)
 
     if (nom.length < 1) {
       return fail(400, {
@@ -162,14 +161,15 @@ export const actions = {
 
       const client = await db.client.findUnique({
         include: {
-          attachePresses: true
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
         },
         where: {
           id:upserted.id
         }
       })
 
-      console.log(client)
       return {
         data: client,
         errorMsg: undefined,
@@ -177,7 +177,7 @@ export const actions = {
 
 
     } catch (err) {
-      console.log(err)
+      
 
       return fail(400, {
         data: data,
@@ -280,7 +280,9 @@ export const actions = {
 
       const client = await db.client.findUnique({
         include: {
-          attachePresses: true
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
         },
         where: {
           id: idClient
@@ -349,7 +351,9 @@ export const actions = {
 
       const client = await db.client.findUnique({
         include: {
-          attachePresses: true
+          attachePresses: true,
+          dossierPresses: true,
+          communiquePresses: true,
         },
         where: {
           id: idClient
@@ -428,7 +432,7 @@ export const actions = {
 
         writeFileSync(fsPhotoPath, Buffer.from(await fichierFile.arrayBuffer()))
         fichier = dbPhotoPath
-        console.log(fichier)
+     
       }
 
       await db.communiquePresse.create({
@@ -462,7 +466,7 @@ export const actions = {
 
 
     } catch (err) {
-      console.log(err)
+      
       return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
@@ -520,7 +524,7 @@ export const actions = {
 
     } catch (err) {
 
-      console.log(err)
+      
       return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
@@ -579,7 +583,6 @@ export const actions = {
 
         writeFileSync(fsPhotoPath, Buffer.from(await fichierFile.arrayBuffer()))
         fichier = dbPhotoPath
-        console.log(fichier)
       }
 
       await db.dossierPresse.create({
@@ -613,7 +616,7 @@ export const actions = {
 
 
     } catch (err) {
-      console.log(err)
+      
       return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
@@ -671,7 +674,6 @@ export const actions = {
 
     } catch (err) {
 
-      console.log(err)
       return fail(400, {
         data: data,
         errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
