@@ -18,14 +18,16 @@
 		</div>
 	</div>
 </div>
-
+{#if client.communiquePresses != null &&  client.communiquePresses.length > 0}
 <div class="blanc">
 	<div class="wrapper">
+		{#if client.photoAvant1 != null && client.photoAvant1 != ''}
 		<div class="bloc avant img-droite">
 			<div class="conteneur">
 				<img src={client.photoAvant1} alt={client.nom} />
 			</div>
 		</div>
+		{/if}
 		<div class="bloc desc-gauche files">
 			<h2 animate>Communiqués de presse</h2>
 			<div class="innerFile">
@@ -41,52 +43,56 @@
 		</div>
 	</div>
 </div>
+{/if}
 
-<div class="blanc">
-	<div class="wrapper">
-		<div class="bloc desc-gauche files">
-			<h2 animate>Dossiers de presse</h2>
-			<div class="innerFile">
-				{#each client.dossierPresses as dossierPresse}
-					<a href={dossierPresse.fichier} target="_blank" class="file" animate>
-						<p>
-							{dossierPresse.titre}
-						</p>
-						<span class="btn"> Télécharger </span>
-					</a>
-				{/each}
+{#if client.dossierPresses != null && client.dossierPresses.length > 0}
+	<div class="blanc">
+		<div class="wrapper">
+			<div class="bloc desc-gauche files">
+				<h2 animate>Dossiers de presse</h2>
+				<div class="innerFile">
+					{#each client.dossierPresses as dossierPresse}
+						<a href={dossierPresse.fichier} target="_blank" class="file" animate>
+							<p>
+								{dossierPresse.titre}
+							</p>
+							<span class="btn"> Télécharger </span>
+						</a>
+					{/each}
+				</div>
 			</div>
-		</div>
-
-		<div class="bloc avant img-droite">
-			<div class="conteneur">
-				<img src={client.photoAvant2} alt={client.nom} />
-			</div>
+			{#if client.photoAvant2 != null && client.photoAvant2 != ''}
+				<div class="bloc avant img-droite">
+					<div class="conteneur">
+						<img src={client.photoAvant2} alt={client.nom} />
+					</div>
+				</div>
+			{/if}
 		</div>
 	</div>
-</div>
+{/if}
 {#if client.attachePresses != null && client.attachePresses.length > 0}
-<div class="blanc attache">
-	<h2 animate>Attaché de presse</h2>
-	{#each client.attachePresses as attachePresses}
-		<div class="info-wrapper">
-			<div class="info">
-				<img src="/images/personne.svg" alt="" />
-				<p>{attachePresses.nom}</p>
+	<div class="blanc attache">
+		<h2 animate>Attaché de presse</h2>
+		{#each client.attachePresses as attachePresses}
+			<div class="info-wrapper">
+				<div class="info">
+					<img src="/images/personne.svg" alt="" />
+					<p>{attachePresses.nom}</p>
+				</div>
+
+				<a href="tel:{attachePresses.telephone}" class="info">
+					<img src="/images/tel.svg" alt="" />
+					<p>{attachePresses.telephone}</p>
+				</a>
+
+				<a href="mailto:{attachePresses.email}" class="info">
+					<img src="/images/mail.svg" alt="" />
+					<p>{attachePresses.email}</p>
+				</a>
 			</div>
-
-			<a href="tel:{attachePresses.telephone}" class="info">
-				<img src="/images/tel.svg" alt="" />
-				<p>{attachePresses.telephone}</p>
-			</a>
-
-			<a href="mailto:{attachePresses.email}" class="info">
-				<img src="/images/mail.svg" alt="" />
-				<p>{attachePresses.email}</p>
-			</a>
-		</div>
-	{/each}
-</div>
+		{/each}
+	</div>
 {/if}
 
 <style lang="scss">
@@ -133,6 +139,7 @@
 					img {
 						width: 60px;
 						height: 60px;
+						object-fit: contain;
 					}
 				}
 			}
@@ -143,7 +150,7 @@
 			flex-direction: row;
 			flex-wrap: nowrap;
 			position: relative;
-
+			justify-content: space-evenly;
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				left: 0%;
@@ -182,6 +189,10 @@
 				p {
 					width: auto;
 					margin: 0;
+					padding-right: 16px;
+				}
+				.btn{
+					place-self: center;
 				}
 			}
 			.img-droite {

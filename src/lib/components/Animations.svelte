@@ -15,6 +15,9 @@
 		window.refreshAnimations = () => {
 			methods.refresh();
 		};
+
+		// window.timelines = timelines;
+		// window.animations = localMethods
 	});
 
 	const timelines = {};
@@ -289,8 +292,35 @@
 
 				timelines[selector].push(timeline);
 			});
+		},
+		presseSearch: ()=>{
+
+			const selector = '.filtre';
+			if (timelines[selector] == null) timelines[selector] = [];
+
+			timelines[selector].forEach((timeline) => {
+				timeline?.kill();
+			});
+			const isTablet = window.matchMedia('(max-width:960px)').matches;
+			const filtre = document.querySelector(selector);
+
+			if (!isTablet && filtre != null) {
+				
+				let timeline = gsap.timeline({
+					scrollTrigger: {
+						trigger: selector,
+						start: 'top 120px',
+						end: `bottom ${filtre.firstElementChild.clientHeight + 120}px`,
+						pin: true,
+						// markers:true
+					}
+				});
+
+				timelines[selector].push(timeline);
+			}
 		}
 	};
+
 
 	export const methods = {
 		load: () => {
@@ -301,6 +331,7 @@
 				localMethods.p();
 				localMethods.btn();
 				localMethods.friseHistoire();
+				localMethods.presseSearch();
 			});
 		},
 		refresh: () => {

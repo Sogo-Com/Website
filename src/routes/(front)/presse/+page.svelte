@@ -1,70 +1,41 @@
 <script>
 	import { onMount } from 'svelte';
+	import { enhance, applyAction } from '$app/forms';
 	import gsap from 'gsap';
 	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 	export let data;
 	let { domaines, clients } = data;
 
-	onMount((_) => {
-		const isMedia = window.matchMedia('(max-width:1150px)').matches;
+	let nameSearch = '';
+	let domaineSearch = '';
 
-		if (!isMedia) {
-			gsap.registerPlugin(ScrollTrigger);
-			const filtre = document.querySelector('.filtre');
+	const submitSearchClient = async ({ form, data, action, cancel }) => {
+		const { nom, domaine } = Object.fromEntries(data);
 
-			let stickTl = gsap.timeline({
-				scrollTrigger: {
-					trigger: '.filtre',
-					start: 'top 120px',
-					end: `bottom ${filtre.firstElementChild.clientHeight + 120}px`,
-					// markers: true,
-					pin: true
-				}
-			});
-		}
-	});
-
-	const handleSubmit = async (data) => {
-		status = 'Envoie en cours...';
-		statusClass = 'pending';
-		const formData = new FormData(data.currentTarget);
-		const object = Object.fromEntries(formData);
-
-	
-		if (
-			object.nom.length == 0 ||
-			object.prenom.length == 0 ||
-			object.email.length == 0 ||
-			object.telephone.length == 0 ||
-			object.societe.length == 0
-		) {
-			status = 'Entrée invalide !';
-			statusClass = 'error';
-			return;
-		}
-
-		const json = JSON.stringify(object);
-		const response = await fetch('/api/contact', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: json
-		});
-		const result = await response.json();
-		if (result.success) {
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					clients = result.data.data.clients;
+					nameSearch = result.data.data.nom;
+					domaineSearch = result.data.data.domaine;
 					
-			status = 'Message envoyé !';
-			statusClass = 'success';
+					break;
+				case 'failure':
+					
+					break;
+				case 'error':
+					
+					break;
+				default:
+					break;
+			}
 
-			nom.value = '';
-			prenom.value = '';
-			telephone.value = '';
-			societe.value = '';
-			email.value = '';
-		}
+		
+
+			
+		
+		};
 	};
 </script>
 
@@ -94,16 +65,16 @@
 
 <div id="presslist">
 	<div class="filtre">
-		<form method="post" action="?/search" on:submit|preventDefault={handleSubmit}>
+		<form method="post" action="?/search" use:enhance={submitSearchClient}>
 			<p contenteditable="false">Recherchez !</p>
 
 			<label for="nom">Nom</label>
-			<input type="text" name="nom" id="nom" placeholder="Nom" />
+			<input type="text" bind:value={nameSearch} name="nom" id="nom" placeholder="Nom" />
 
 			<label for="domaine">Domaine</label>
 
-			<select id="domaine" name="domaine" required>
-				<option value="" selected disabled hidden>Choisissez un domaine...</option>
+			<select id="domaine" bind:value={domaineSearch} name="domaine">
+				<option value="" selected >Tous les domaines</option>
 				{#each domaines as domaine}
 					<option value={domaine.id}>{domaine.nom}</option>
 				{/each}
@@ -123,8 +94,6 @@
 				</a>
 			</div>
 		{/each}
-		
-
 	</div>
 </div>
 
@@ -301,11 +270,11 @@
 				justify-content: center;
 				align-items: center;
 
-				a{
+				a {
 					text-decoration: none;
 					width: 100%;
 				}
-				
+
 				.flip-row {
 					border-radius: 32px;
 					box-shadow: 0px 4px 18.6px rgba(0, 0, 0, 0.25);
@@ -325,18 +294,17 @@
 					flex-direction: column;
 					justify-content: space-between;
 
-
 					img {
 						width: 100%;
-						height: 80%;
-						padding: 20px 0;
+						height: 70%;
+						padding: 20px;
 						object-fit: contain;
 					}
 					h3 {
 						width: 100%;
 						text-align: center;
-						height: 10%;
-			
+						height: 25%;
+
 						color: #000;
 					}
 				}
