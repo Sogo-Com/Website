@@ -31,8 +31,8 @@ app.use('/images/:path?/:filename', (req, res, next) => {
 
        // Vérifier si le fichier est une vidéo en fonction de l'extension
     const isVideo = ['.mp4', '.webm', '.ogg'].some(ext => filename.endsWith(ext));
-
-    if (isVideo) {
+    const isSpecial = ['.pdf', '.docx', '.doc', '.xlsx', '.xls', '.pptx', '.ppt'].some(ext => filename.endsWith(ext));
+    if (isVideo || isSpecial) {
         next()
         return
     }
@@ -65,6 +65,15 @@ app.use('/uploads/:path?/:filename', (req, res, next) => {
     // Construire le chemin complet de l'image
     const basePath = imagePath ? path.join('uploads', imagePath) : 'uploads';
     const fullImagePath = path.join( basePath, filename);
+
+       // Vérifier si le fichier est une vidéo en fonction de l'extension
+       const isVideo = ['.mp4', '.webm', '.ogg'].some(ext => filename.endsWith(ext));
+       const isSpecial = ['.pdf', '.docx', '.doc', '.xlsx', '.xls', '.pptx', '.ppt'].some(ext => filename.endsWith(ext));
+       if (isVideo || isSpecial) {
+           next()
+           return
+       }
+      
 
     sharp(fullImagePath)
     .resize({
