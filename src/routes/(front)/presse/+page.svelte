@@ -89,7 +89,9 @@
 				<a href="/presse/{client.id}">
 					<div class="flip-row">
 						<img src={client.photoLogo} alt={client.nom} />
-						<h3>{client.nom}</h3>
+						<div class="h3">
+							<h3>{client.nom}</h3>
+						</div>
 					</div>
 				</a>
 			</div>
@@ -297,15 +299,22 @@
 					img {
 						width: 100%;
 						height: 70%;
-						padding: 20px;
+						padding: 48px;
 						object-fit: contain;
 					}
-					h3 {
+					.h3 {
 						width: 100%;
 						text-align: center;
-						height: 25%;
+						height:30%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						color: $color-gris-dark;
 
-						color: #000;
+						h3{
+							font-size: 1.5rem;
+							margin: 0;
+						}
 					}
 				}
 			}

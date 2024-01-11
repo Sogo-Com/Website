@@ -101,7 +101,7 @@
 	}
 	.blanc {
 		background-color: #fff;
-		padding: 32px 11%;
+		padding: 0 11%;
 		position: relative;
 		overflow: hidden;
 
@@ -216,6 +216,7 @@
 					position: relative;
 					width: 100%;
 					height: 100%;
+					padding: 32px;
 					@media only screen and (max-width: $phone) {
 						transform: none;
 					}
@@ -224,7 +225,8 @@
 						position: relative;
 						z-index: 10;
 						width: 100%;
-						height: 70%;
+						height: 100%;
+						
 						border-radius: 32px;
 						object-fit: contain;
 					}
