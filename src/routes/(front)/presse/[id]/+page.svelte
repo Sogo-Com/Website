@@ -12,7 +12,7 @@
 			</p>
 		</div>
 		<div class="bloc img-droite">
-			<div class="conteneur">
+			<div class="cont">
 				<img src={client.photoLogo} alt={client.nom} />
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 	<div class="wrapper">
 		{#if client.photoAvant1 != null && client.photoAvant1 != ''}
 		<div class="bloc avant img-droite">
-			<div class="conteneur">
+			<div class="cont">
 				<img src={client.photoAvant1} alt={client.nom} />
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 			</div>
 			{#if client.photoAvant2 != null && client.photoAvant2 != ''}
 				<div class="bloc avant img-droite">
-					<div class="conteneur">
+					<div class="cont">
 						<img src={client.photoAvant2} alt={client.nom} />
 					</div>
 				</div>
@@ -109,7 +109,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-
+			padding-bottom: 64px;
 			h2 {
 				text-align: center;
 				color: $color-gris-dark;
@@ -151,11 +151,16 @@
 			flex-wrap: nowrap;
 			position: relative;
 			justify-content: space-evenly;
+			
+			padding-bottom: 64px;
 			@media only screen and (max-width: $phone) {
 				flex-direction: column;
 				left: 0%;
 			}
 
+			.desc-gauche{
+				padding-top: 64px;
+			}
 			.bloc {
 				width: 50%;
 
@@ -212,7 +217,7 @@
 					justify-content: center;
 					align-items: center;
 				}
-				.conteneur {
+				.cont {
 					position: relative;
 					width: 100%;
 					height: 100%;
@@ -227,7 +232,6 @@
 						width: 100%;
 						height: 100%;
 						
-						border-radius: 32px;
 						object-fit: contain;
 					}
 				}

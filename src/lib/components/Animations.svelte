@@ -18,6 +18,11 @@
 
 		// window.timelines = timelines;
 		// window.animations = localMethods
+
+		window.animations = {};
+		window.animations.refreshFiltre = () => {
+			localMethods.presseSearch();
+		};
 	});
 
 	const timelines = {};
@@ -254,7 +259,6 @@
 
 			const isMobile = window.matchMedia('(max-width:960px)').matches;
 
-
 			Elems?.forEach((Elem) => {
 				const pointsElems = document.querySelectorAll('.point');
 
@@ -293,8 +297,8 @@
 				timelines[selector].push(timeline);
 			});
 		},
-		presseSearch: ()=>{
-
+		presseSearch: () => {
+			
 			const selector = '.filtre';
 			if (timelines[selector] == null) timelines[selector] = [];
 
@@ -305,13 +309,12 @@
 			const filtre = document.querySelector(selector);
 
 			if (!isTablet && filtre != null) {
-				
 				let timeline = gsap.timeline({
 					scrollTrigger: {
 						trigger: selector,
 						start: 'top 120px',
 						end: `bottom ${filtre.firstElementChild.clientHeight + 120}px`,
-						pin: true,
+						pin: true
 						// markers:true
 					}
 				});
@@ -320,7 +323,6 @@
 			}
 		}
 	};
-
 
 	export const methods = {
 		load: () => {

@@ -345,3 +345,16 @@ p,ul {
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+
+
+#presslist{
+	height: fit-content;
+
+	.pin-spacer{
+		height: fit-content !important;
+
+		.filtre{
+			height: fit-content !important;
+		}
+	}
+}
