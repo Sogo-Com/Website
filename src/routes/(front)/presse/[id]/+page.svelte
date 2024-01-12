@@ -160,6 +160,10 @@
 
 			.desc-gauche{
 				padding-top: 64px;
+
+				@media only screen and (max-width: $phone) {
+					padding-top: 0;
+				}
 			}
 			.bloc {
 				width: 50%;
@@ -213,7 +217,6 @@
 				}
 
 				@media only screen and (max-width: $phone) {
-					padding: 5rem 0 0 0;
 					justify-content: center;
 					align-items: center;
 				}
