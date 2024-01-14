@@ -1,7 +1,7 @@
 
 
 const mentionsLegales = {
-	$website$: 'https://www.sogocom.fr',
+    $website$: 'https://www.sogocom.fr',
 	$formJuridique$: 'SARL',
 	$nomEntreprise$: 'SOGOCOM',
 	$csEntreprise$: '4000,00',
