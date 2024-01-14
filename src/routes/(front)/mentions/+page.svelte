@@ -599,7 +599,7 @@
 		}
 
 		h1,
-		h2 {
+		h2,h3 {
 			color: $color-gris-dark;
 			margin: 32px;
 
@@ -618,6 +618,11 @@
 		h2 {
 			@media only screen and (max-width: $phone) {
 				font-size: 2rem;
+			}
+		}
+		h3 {
+			@media only screen and (max-width: $phone) {
+				font-size: 1.5rem;
 			}
 		}
 		a {
