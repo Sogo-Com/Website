@@ -122,11 +122,34 @@
 		max-width: 800px;
 		padding: 150px 20px;
 
+		@media only screen and (max-width: $phone) {
+			padding: 100px 8px;
+			max-width: unset;
+		}
+	
 		h1,h2{
 			color: $color-gris-dark;
 			margin: 32px;
+
+			
+		@media only screen and (max-width: $phone) {
+			padding: 0;
+			margin: 32px;
 		}
 
+		}
+
+		h1{
+			@media only screen and (max-width: $phone) {
+				font-size: 3rem;
+			}
+		}
+
+		h2{
+			@media only screen and (max-width: $phone) {
+				font-size: 2rem;
+			}
+		}
 		a{
 			color: $color-bordeaux;
 			text-underline-offset: 5px;
