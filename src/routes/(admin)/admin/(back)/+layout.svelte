@@ -37,6 +37,7 @@
 				<ul>
 					<span>Page Expertise</span>
 					<li><a href="/admin/onglets">Onglets</a></li>
+					<li><a href="/admin/icons">Icons</a></li>
 				</ul>
 
 
