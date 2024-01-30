@@ -62,7 +62,7 @@
 
 <div id="top">
 	<h1 animate>Des projets <br>qui fusent</h1>
-	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.webp?width=1800&height=1800" />
+	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.jpg?width=1800&height=1800" />
 </div>
 <div class="gris">
 	<div class="question gris-child">

@@ -85,7 +85,7 @@
 
 <div id="total-expertise" bind:this={containerEl}>
 	<div id="top">
-		<img alt="background-sogo" src="/images/NosExpertises_Header.webp?width=1800&height=1800" />
+		<img alt="background-sogo" src="/images/expertis.jpg?width=1800&height=1800" />
 
 		<h1 animate>Nos expertises<br />à vos côtés</h1>
 	</div>
@@ -421,7 +421,7 @@
 				}
 				.image {
 					flex-basis: 20%;
-					padding: 32px;
+					padding:64px;
 					img {
 						width: 100%;
 						height: 100%;

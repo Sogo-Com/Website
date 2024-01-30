@@ -1,11 +1,10 @@
 <script>
 	import { goto } from '$app/navigation';
-	
+
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import Contact from '$lib/components/Contact.svelte';
 
-	
 	onMount(async (_) => {
 		if (browser) {
 			const module = await import('leaflet');
@@ -59,7 +58,7 @@
 	<div class="info">
 		<a href="tel:+33450456915">
 			<img src="/images/tel.svg" alt="tel" />
-			<p>04 50 45 69 15<br /> du lundi au vendredi <br>9h - 18h</p>
+			<p>04 50 45 69 15<br /> du lundi au vendredi <br />9h - 18h</p>
 		</a>
 	</div>
 
@@ -71,8 +70,11 @@
 	</div>
 </div>
 
-<a target="_blank" href="https://www.google.fr/maps/place/Sogo+Com/@45.9329141,6.0742713,17z/data=!4m15!1m8!3m7!1s0x478b84f87be9c9d5:0x7a9ccb22bbf01a5d!2s356+Rue+de+Chavanne,+74330+Poisy!3b1!8m2!3d45.9329141!4d6.0742713!16s%2Fg%2F11rvc4y984!3m5!1s0x478b8f9777907dcd:0x7183c040b4008473!8m2!3d45.9310403!4d6.0727623!16s%2Fg%2F1vn17f27?entry=ttu">
-<div id="map"  />
+<a
+	target="_blank"
+	href="https://www.google.fr/maps/place/Sogo+Com/@45.9329141,6.0742713,17z/data=!4m15!1m8!3m7!1s0x478b84f87be9c9d5:0x7a9ccb22bbf01a5d!2s356+Rue+de+Chavanne,+74330+Poisy!3b1!8m2!3d45.9329141!4d6.0742713!16s%2Fg%2F11rvc4y984!3m5!1s0x478b8f9777907dcd:0x7183c040b4008473!8m2!3d45.9310403!4d6.0727623!16s%2Fg%2F1vn17f27?entry=ttu"
+>
+	<div id="map" />
 </a>
 <div class="blanc" id="contact">
 	<div class="wrapper">
@@ -83,7 +85,6 @@
 		<div class="contact-images">
 			<img class="contact-image" data-lag="0.1" src="/images/contact-1.png" alt="contact-1" />
 			<img class="contact-image" data-lag="0.05" src="/images/contact-2.png" alt="contact-2" />
-			<img class="contact-image" data-lag="0.2" src="/images/contact-3.png" alt="contact-3" />
 			<span class="contact-image" />
 		</div>
 	</div>
@@ -99,7 +100,6 @@
 			text-align: center;
 			position: relative;
 			display: inline-block;
-		
 		}
 
 		h2:before {
@@ -163,7 +163,7 @@
 	#map {
 		height: 40vh;
 		z-index: 0;
-		cursor: pointer ;
+		cursor: pointer;
 	}
 
 	#contact {
@@ -192,8 +192,8 @@
 				left: 0%;
 				align-items: center;
 			}
-			h2{
-				font-size:  2.5rem !important;
+			h2 {
+				font-size: 2.5rem !important;
 			}
 
 			.contact-form {
@@ -216,42 +216,28 @@
 				transform: translateX(20%);
 
 				.contact-image {
-					margin-left: 64px;
 					position: absolute;
 					object-fit: cover;
 					background-size: cover;
 					border-radius: 32px;
 
 					&:nth-child(1) {
-						top: 0;
-						left: 50%;
-						transform: translate(-75%, -15%);
+						top: 72px;
+						right: 20%;
 						z-index: 2;
-						height: 40%;
-						width: 50%;
-						min-width: 350px;
+						height: 50%;
+						width: 90%;
 					}
 
 					&:nth-child(2) {
-						top: 50%;
-						height: 50%;
-						width: 40%;
-						min-width: 300px;
-						transform: translate(-30%, -50%);
+						bottom: 0%;
+						height: 40%;
+						width: 60%;
 						z-index: 3;
+						right: 0;
 					}
 
 					&:nth-child(3) {
-						transform: translate(-100%, 20%);
-						bottom: 0;
-						left: 50%;
-						height: 50%;
-						width: 30%;
-						min-width: 250px;
-						z-index: 4;
-					}
-
-					&:nth-child(4) {
 						border-radius: 5000px;
 						height: 700px;
 						width: 700px;

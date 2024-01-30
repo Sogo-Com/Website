@@ -92,7 +92,7 @@
 			<div class="collaborateur-info">
 				<h2 animate class="pink" bind:this={prenom} />
 				<h3 animate bind:this={descriptionCourte} />
-				<p animate bind:this={description} />
+				<p  bind:this={description} />
 			</div>
 		</div>
 	</div>

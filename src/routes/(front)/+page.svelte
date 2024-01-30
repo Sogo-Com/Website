@@ -8,10 +8,20 @@
 
 	export let data;
 	let { actualite, projet } = data;
+
+	onMount(() => {
+		const player = document.getElementById('player');
+		player.play();
+	});
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/bg-home.png?width=1800&height=1800" />
+	<!-- svelte-ignore a11y-media-has-caption -->
+	<video id="player" loop playsinline muted data-poster="/images/agence-bg.png">
+		<source src="/images/videhome.mp4" type="video/mp4" />
+		<source src="/images/videhome.webm" type="video/webm" />
+	</video>
+
 	<div class="abso bg-gris" />
 
 	<h1 animate class="abso">Sogo Com, votre agence<br /> de communication</h1>
@@ -87,9 +97,8 @@
 			<Contact />
 		</div>
 		<div class="contact-images">
-			<img class="contact-image" src="/images/contact-1.png" alt="contact-1" />
+			<img class="contact-image"  data-lag="0.03" src="/images/contact-1.png" alt="contact-1" />
 			<img class="contact-image" data-lag="0.05"  src="/images/contact-2.png" alt="contact-2" />
-			<img class="contact-image" src="/images/contact-3.png" alt="contact-3" />
 			<span class="contact-image" />
 		</div>
 	</div>
@@ -102,7 +111,7 @@
 		overflow: hidden;
 		position: relative;
 
-		img {
+		img,video {
 			width: 100%;
 			height: 100%;
 			position: absolute;
@@ -110,6 +119,12 @@
 			z-index: 10;
 			background-size: cover;
 			object-fit: cover;
+			padding-top: 120px;
+
+			@media only screen and (max-width: $phone) {
+				padding-top: 84px;
+
+			}
 		}
 		.abso {
 			position: absolute;
@@ -476,41 +491,31 @@
 				transform: translateX(20%);
 
 				.contact-image {
-					margin-left: 64px;
+				
 					position: absolute;
 					object-fit: cover;
 					background-size: cover;
 					border-radius: 32px;
 
 					&:nth-child(1) {
-						top: 0;
-						left: 50%;
-						transform: translate(-75%, -15%);
+						top: 72px;
+						right: 20%;
 						z-index: 2;
-						height: 40%;
-						width: 50%;
-						display: none;
+						height: 50%;
+						width: 90%;
 					}
 
 					&:nth-child(2) {
-						top: 50%;
-						height: 50%;
+						bottom: 0%;
+						height: 40%;
 						width: 60%;
-						transform: translate(-30%, -50%);
 						z-index: 3;
+						right:0;
 					}
+
+					
 
 					&:nth-child(3) {
-						transform: translate(-100%, 20%);
-						bottom: 0;
-						left: 50%;
-						height: 50%;
-						width: 30%;
-						z-index: 4;
-						display: none;
-					}
-
-					&:nth-child(4) {
 						border-radius: 5000px;
 						height: 700px;
 						width: 700px;
