@@ -194,7 +194,6 @@ Laissez-nous vous guider pour optimiser vos actions sur les médias sociaux et a
         descriptionHTML: `Parce que les images en disent long, nous les pensons en amont. En contre-plongée ou dans les airs, en fixe ou en mouvement, photos et vidéos accompagnent les mots.
 <br><br>
 → Photos<br>
-→ Prises de vue aériennes avec drone<br>
 → Vidéos : teasers, interviews, témoignages, reportages…<br>
 <br>
 Zoom sur l’image, le tournage et le montage sont aussi dans notre rayon. Action.`,
@@ -215,14 +214,19 @@ Zoom sur l’image, le tournage et le montage sont aussi dans notre rayon. Actio
             description: `Tout comme la photo, la vidéo permet de capitaliser de façon positive et instantanée sur votre entreprise. Elaborer le scénario, réaliser les prises de vue et les interviews, cadencer le tout en musique et en rythme, la vidéo est un art qui doit donner du sens à votre message.`,
             image:'/images/PhotosVideos/video.mp4',
             video:true,
-        },{
-            active:'/images/PhotosVideos/DroneActive_1.svg',
-            inactive : '/images/PhotosVideos/Drone_1.svg',
-            titre: 'Prises de vue aériennes',
-            description: `Les prises de vue aérienne à l’aide de drones apportent une vraie plus-value à vos images. Prendre de la hauteur et changer d’angle pour des images qui marquent, plonger au cœur d’un univers vu d’en haut pour en prendre toute la dimension, les images de drone ouvrent le champ d’un regard impactant.`,
-            image:'/images/expertise-kaki.png',
+        },
+        
+        //→ Prises de vue aériennes avec drone<br>
+        // {
+        //     active:'/images/PhotosVideos/DroneActive_1.svg',
+        //     inactive : '/images/PhotosVideos/Drone_1.svg',
+        //     titre: 'Prises de vue aériennes',
+        //     description: `Les prises de vue aérienne à l’aide de drones apportent une vraie plus-value à vos images. Prendre de la hauteur et changer d’angle pour des images qui marquent, plonger au cœur d’un univers vu d’en haut pour en prendre toute la dimension, les images de drone ouvrent le champ d’un regard impactant.`,
+        //     image:'/images/expertise-kaki.png',
            
-        }]
+        // }
+    
+    ]
     },
 
     {

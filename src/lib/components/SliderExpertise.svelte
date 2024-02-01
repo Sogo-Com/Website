@@ -298,7 +298,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 				align-items: center;
 
 				video{
-					width: 80%;
+					width: auto;
 					height: 80%;
 					object-fit: cover;
 					border-radius: 32px;
