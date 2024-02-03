@@ -22,13 +22,23 @@ export const load = async (serverloadEvent) => {
   let expertiseOnglet = await db.expertiseOnglet.findUnique({
     where: {
       id
-    }
+    },
+    include: {
+      expertiseIcons: true,
+    },
   })
 
   expertiseOnglet = expertiseOnglet == null ? {} : expertiseOnglet
 
+  let expertiseIcons = await db.expertiseIcon.findMany({
+    where: {
+      id: { notIn: (expertiseOnglet != null ? expertiseOnglet.expertiseIcons.map(exp => exp.id) : []) },
+    }
+  })
+
   return {
-    expertiseOnglet
+    expertiseOnglet,
+    expertiseIcons
   }
 }
 
@@ -48,7 +58,7 @@ export const actions = {
       });
     }
 
-    let { id, titre, description, isVideoChecked, rang, photoIconActive, photoIconInactive, photoIllustration, photoIconActiveFile, photoIconInactiveFile, photoIllustrationFile } = data
+    let { id,titre, cssClass ,rang,   description, photoPrincipale, photoPrincipaleFile } = data
 
     if (titre.length < 1) {
       return fail(400, {
@@ -57,13 +67,14 @@ export const actions = {
       });
     }
 
-    if (description.length < 1) {
+
+    
+    if (cssClass.length < 1) {
       return fail(400, {
         data: data,
-        errorMsg: "❌ La description ne doit pas être vide",
+        errorMsg: "❌ La class css ne doit pas être vide",
       });
     }
-    
 
     if (rang == null || isNaN(rang) || parseInt(rang) < 0) {
       return fail(400, {
@@ -75,54 +86,19 @@ export const actions = {
     try {
 
 
-      if (IsPhoto(photoIconActiveFile)) {
+      if (IsPhoto(photoPrincipaleFile)) {
 
         if (!existsSync(FULL_UPLOAD_PATH)) {
           mkdirSync(FULL_UPLOAD_PATH);
         }
 
-        const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoIconActiveFile.name}`
-        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoIconActiveFile.name}`
+        const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoPrincipaleFile.name}`
+        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoPrincipaleFile.name}`
 
 
 
-        writeFileSync(fsPhotoPath, Buffer.from(await photoIconActiveFile.arrayBuffer()))
-        photoIconActive = dbPhotoPath
-
-      }
-
-
-      if (IsPhoto(photoIconInactiveFile)) {
-
-        if (!existsSync(FULL_UPLOAD_PATH)) {
-          mkdirSync(FULL_UPLOAD_PATH);
-        }
-
-        const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoIconInactiveFile.name}`
-        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoIconInactiveFile.name}`
-
-
-
-        writeFileSync(fsPhotoPath, Buffer.from(await photoIconInactiveFile.arrayBuffer()))
-        photoIconInactive = dbPhotoPath
-
-      }
-
-
-      if (IsPhoto(photoIllustrationFile) || IsVideo(photoIllustrationFile)) {
-
-        console.log("ici")
-        if (!existsSync(FULL_UPLOAD_PATH)) {
-          mkdirSync(FULL_UPLOAD_PATH);
-        }
-
-        const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoIllustrationFile.name}`
-        const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoIllustrationFile.name}`
-
-
-
-        writeFileSync(fsPhotoPath, Buffer.from(await photoIllustrationFile.arrayBuffer()))
-        photoIllustration = dbPhotoPath
+        writeFileSync(fsPhotoPath, Buffer.from(await photoPrincipaleFile.arrayBuffer()))
+        photoPrincipale = dbPhotoPath
 
       }
 
@@ -133,22 +109,18 @@ export const actions = {
         },
         create: {
           titre,
+          cssClass,
           description,
-          isVideo : StringToBoolean(isVideoChecked),
           rang : parseInt(rang),
-          photoIconActive,
-          photoIconInactive,
-          photoIllustration,
+          photoPrincipale,
 
         },
         update: {
           titre,
+          cssClass,
           description,
-          isVideo : StringToBoolean(isVideoChecked),
           rang : parseInt(rang),
-          photoIconActive,
-          photoIconInactive,
-          photoIllustration,
+          photoPrincipale,
         },
       })
 
@@ -227,5 +199,144 @@ export const actions = {
 
     }
   },
+
+
+
+
+  createIcon: async ({ request, locals }) => {
+
+
+    const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN") {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { idOnglet, idIcon } = data
+
+
+    try {
+
+      await db.expertiseOnglet.update({
+        where: {
+          id: idOnglet
+        },
+        data: {
+          expertiseIcons: {
+            connect: {
+              id: idIcon
+            }
+          },
+
+        },
+      })
+
+      const expertiseOnglet = await db.expertiseOnglet.findUnique({
+        include: {
+          expertiseIcons:true,
+        },
+        where: {
+          id: idOnglet
+        }
+      })
+      return {
+        data: {
+          expertiseOnglet,
+          expertiseIcons: await db.expertiseIcon.findMany({
+            where: {
+              id: { notIn: expertiseOnglet.expertiseIcons.map(attache => attache.id) },
+            }
+          })
+        },
+        errorMsg: undefined,
+      };
+
+
+    } catch (err) {
+
+      console.log(err)
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
+      });
+
+
+      
+
+    }
+
+
+
+  },
+
+
+  deleteIcon: async ({ request, locals }) => {
+
+
+
+    const data = Object.fromEntries(await request.formData());
+    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN") {
+      return fail(400, {
+        data: data,
+        errorMsg: "Vous n'etes pas connecté",
+      });
+    }
+
+    let { idIcon, idOnglet } = data
+
+
+    try {
+
+      await db.expertiseOnglet.update({
+        where: {
+          id: idOnglet
+        },
+        data: {
+          expertiseIcons: {
+            disconnect: {
+              id: idIcon
+            }
+          },
+
+        },
+      })
+
+      const expertiseOnglet = await db.expertiseOnglet.findUnique({
+        include: {
+          expertiseIcons: true,
+        },
+        where: {
+          id: idOnglet
+        }
+      })
+
+  
+      return {
+        data: {
+          expertiseOnglet,
+          expertiseIcons: await db.expertiseIcon.findMany({
+            where: {
+              id: { notIn: expertiseOnglet.expertiseIcons.map(attache => attache.id) },
+            }
+          })
+        },
+        errorMsg: undefined,
+      };
+
+    } catch (err) {
+
+      console.log(err)
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Une erreur est survenue lors de l'enregistrement du client",
+      });
+
+    }
+
+  },
+
+
 };
 

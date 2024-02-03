@@ -2,27 +2,22 @@
 	import Layout from '../../../+layout.svelte';
 	import { enhance, applyAction } from '$app/forms';
 	import toast from 'svelte-french-toast';
+	import Writer from '$lib/components/editor/Writer.svelte';
 
 	import { goto } from '$app/navigation';
 
 	export let data;
-	
-	let { expertiseOnglet } = data;
-	let video = expertiseOnglet.isVideo != null ?  expertiseOnglet.isVideo : false;
-
-	let illustrationValue = expertiseOnglet.photoIllustration;
+	let writerMethods;
+	let { expertiseOnglet,expertiseIcons } = data;
+	let expertiseIconValue;
 	const submitCreateNote = async ({ form, data, action, cancel }) => {
-		const { titre, description, isVideo, rang } = Object.fromEntries(data);
-
+		const { titre, rang} = Object.fromEntries(data);
+		
 		if (titre.length < 1) {
 			toast.error('Titre vide !');
 			cancel();
 		}
 
-		if (description.length < 1) {
-			toast.error('Description vide !');
-			cancel();
-		}
 
 		if (rang == null || isNaN(rang) || parseInt(rang) < 0) {
 			toast.error('Le rang ne doit pas être vide');
@@ -30,16 +25,16 @@
 		}
 		
 		data.append('id', expertiseOnglet.id ?? '');
-		data.append('photoIconActive', expertiseOnglet.photoIconActive ?? '');
-		data.append('photoIconInactive', expertiseOnglet.photoIconInactive ?? '');
-		data.append('photoIllustration', expertiseOnglet.photoIllustration ?? '');
-		data.append('isVideoChecked', isVideo == "on");
+		data.append('photoPrincipale', expertiseOnglet.photoPrincipale ?? '');
+		data.append('description', await writerMethods.saveContenu() ?? '')
+
 
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Icon enregistré!');
+					toast.success('Onglet enregistré!');
 					await applyAction(result);
+					writerMethods.loadContenu(expertiseOnglet.description)
 
 					break;
 				case 'failure':
@@ -52,9 +47,8 @@
 			await update();
 
 			expertiseOnglet = result.data.data;
-			video = expertiseOnglet.isVideo != null ?  expertiseOnglet.isVideo : false;
 			
-			goto(`/admin/icon/${expertiseOnglet.id}`, { invalidateAll: true });
+			goto(`/admin/onglet/${expertiseOnglet.id}`, { invalidateAll: true });
 		};
 	};
 
@@ -62,7 +56,7 @@
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Icon supprimé!');
+					toast.success('Onglet supprimé!');
 
 					break;
 				case 'failure':
@@ -72,7 +66,60 @@
 					break;
 			}
 			await update();
-			goto('/admin/icons', { invalidateAll: true });
+			goto('/admin/onglets', { invalidateAll: true });
+		};
+	};
+
+
+	const submitCreateIcon = async ({ form, data, action, cancel }) => {
+		if (expertiseIconValue.length < 1) {
+			toast.error('Aucun icon sélectionné !');
+			cancel();
+			return;
+		}
+
+		data.append('idOnglet', expertiseOnglet.id);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Icon ajouté !');
+					await applyAction(result);
+					await update();
+					expertiseOnglet = result.data.data.expertiseOnglet;
+					expertiseIcons = result.data.data.expertiseIcons;
+					expertiseIconValue = '';
+					break;
+				case 'failure':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				case 'error':
+					toast.error("Erreur lors de l'enregistrement");
+					break;
+				default:
+					break;
+			}
+		};
+	};
+
+	const submitDeleteIcon = ({ form, data, action, cancel }) => {
+		
+		data.append('idOnglet', expertiseOnglet.id);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Icon supprimé!');
+					await update();
+					expertiseOnglet = result.data.data.expertiseOnglet;
+					expertiseIcons = result.data.data.expertiseIcons;
+					break;
+				case 'failure':
+					toast.error('Erreur lors de la suppression');
+					break;
+				default:
+					break;
+			}
 		};
 	};
 </script>
@@ -82,8 +129,8 @@
 		<button
 			class="back-button"
 			on:click={() => {
-				goto('/admin/icons');
-			}}>Retour aux icons</button
+				goto('/admin/onglets');
+			}}>Retour aux onglets</button
 		>
 		{#if expertiseOnglet.id != null && expertiseOnglet.id.length != 0}
 			<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
@@ -94,7 +141,7 @@
 	</div>
 
 	<div>
-		<h1>Formulaire d'Icon</h1>
+		<h1>Formulaire d'Onglet</h1>
 
 		<form method="POST" action="?/create" class="expertiseOnglet-form" use:enhance={submitCreateNote}>
 			<div class="form-group">
@@ -106,6 +153,17 @@
 					contenteditable="true"
 					type="text"
 				/>
+			</div>
+
+			<div class="form-group">
+				<label for="cssClass">Couleur</label>
+				<select id="cssClass" name="cssClass" bind:value={expertiseOnglet.cssClass}>
+					<option value="yellow">Jaune</option>
+					<option value="pink">Rose</option>
+					<option value="blue">Bleu</option>
+					<option value="kaki">Kaki</option>
+					<option value="red">Rouge</option>
+				</select>
 			</div>
 
 			<div class="form-group">
@@ -121,76 +179,144 @@
 				/>
 			</div>
 
+
+			<div class="form-group">
+				<label for="file">Image de l'Onglet</label>
+				<input
+					type="file"
+					name="photoPrincipaleFile"
+					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
+				/>
+				{#if expertiseOnglet.photoPrincipale != null && expertiseOnglet.photoPrincipale.length != 0}
+					<img src={expertiseOnglet.photoPrincipale} alt={expertiseOnglet.titre} />
+				{/if}
+			</div>
+
+
+			
 			<div class="form-group">
 				<label for="description">Description</label>
-				<textarea
-					id="description"
-					rows="3"
-					cols="45"
-					name="description"
-					bind:value={expertiseOnglet.description}
-					contenteditable="true"
-					type="text"
-				/>
+				
+				<div id="contenu" class="contenu" name="description" required >
+					<Writer bind:methods={writerMethods} contenu="{expertiseOnglet.description}"/>
+				</div>
 			</div>
-
-			<div class="form-group">
-				<label for="file">Image Icon Actif</label>
-				<input
-					type="file"
-					name="photoIconActiveFile"
-					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
-				/>
-				{#if expertiseOnglet.photoIconActive != null && expertiseOnglet.photoIconActive.length != 0}
-					<img src={expertiseOnglet.photoIconActive} alt={expertiseOnglet.titre} />
-				{/if}
-			</div>
-
-			<div class="form-group">
-				<label for="file">Image Icon Inactif</label>
-				<input
-					type="file"
-					name="photoIconInactiveFile"
-					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
-				/>
-				{#if expertiseOnglet.photoIconInactive != null && expertiseOnglet.photoIconInactive.length != 0}
-					<img src={expertiseOnglet.photoIconInactive} alt={expertiseOnglet.titre} />
-				{/if}
-			</div>
-
-			<div class="form-group">
-				<label for="isVideo">L'illustration est une vidéo</label>
-				<input id="isVideo" name="isVideo" type="checkbox" bind:checked="{expertiseOnglet.isVideo}" />
-			</div>
-
-			<div class="form-group">
-				<label for="file">Image / Video Illustrative</label>
-				<input
-					type="file"
-					name="photoIllustrationFile"
-					accept={['.jpg', '.jpeg', '.png', '.webp',".mp4"].join(',')}
-				/>
-
-				{#if  expertiseOnglet.photoIllustration != null && expertiseOnglet.photoIllustration.length != 0}
-					{#if video}
-						<video controls>
-							<source src={illustrationValue} type="video/mp4" />
-							<track kind="captions" />
-						</video>
-					{:else}
-						<img src={illustrationValue} alt={expertiseOnglet.titre} />
-					{/if}
-					
-				{/if}
-			</div>
+			
 
 			<button type="submit" for="envoyer" value="envoyer" class="submit-button">Enregistrer</button>
 		</form>
+
+
+		{#if expertiseOnglet != null && expertiseOnglet.expertiseIcons != null}
+		<br /><br />
+
+		<div class="client-form">
+			<h3>Icons</h3>
+
+			<form
+				class="attache-form"
+				method="POST"
+				action="?/createIcon"
+				use:enhance={submitCreateIcon}
+			>
+				<div class="form-group">
+					<label for="idIcon">Ajouter un Icon</label>
+					<select id="idIcon" name="idIcon" bind:value={expertiseIconValue}>
+						<option value="">Aucun</option>
+						{#each expertiseIcons as expertiseIcon}
+							<option value={expertiseIcon.id}>{expertiseIcon.titre}</option>
+						{/each}
+					</select>
+				</div>
+				<button type="submit" for="envoyer" value="envoyer" class="submit-button">Ajouter</button>
+			</form>
+			<br /><br />
+
+			<table class="presse-table">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Rang</th>
+						<th>Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each expertiseOnglet.expertiseIcons as expertiseIcon, index}
+						<tr>
+							<td><a target="_blank" href="/admin/icon/{expertiseIcon.id}" >{expertiseIcon?.titre ?? 'Aucun nom'}</a> </td>
+			
+							<td>{expertiseIcon?.rang ?? 'Aucun rang'}</td>
+
+							<td>
+								<form
+									action="?/deleteIcon"
+									method="POST"
+									use:enhance={submitDeleteIcon}
+								>
+									<input type="hidden" name="idIcon" value={expertiseIcon.id} />
+									<button type="submit" class="delete-button">Supprimer</button>
+								</form>
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+
+			<br /><br />
+		</div>
+	{/if}
 	</div>
 </Layout>
 
 <style lang="scss">
-	.expertiseOnglet-form {
+.presse-table {
+		width: 100%;
+		border-collapse: collapse;
+
+		th,
+		td {
+			border: 1px solid var(--color-gris-clair);
+			padding: 10px;
+			text-align: left;
+			a {
+				color: #000;
+				&:hover {
+					color: var(--color-rose);
+				}
+			}
+		}
+
+		th {
+			background-color: var(--color-jaune);
+			color: var(--color-blanc);
+			font-family: var(--font-secondary-bold);
+		}
+
+		td {
+			font-family: var(--font-secondary-regular);
+		}
+
+		.delete-button {
+			background-color: var(--color-rose); /* Couleur de fond */
+			color: var(--color-blanc); /* Couleur du texte */
+			padding: 10px 20px; /* Espacement interne */
+			font-family: var(--font-secondary-bold); /* Police */
+			border: none; /* Supprime la bordure */
+			cursor: pointer; /* Curseur au survol */
+			width: 100%;
+			transition: background-color 0.3s ease; /* Transition au survol */
+			&:hover {
+				background-color: var(--color-bordeaux); /* Couleur de fond au survol */
+			}
+		}
+
+		tbody tr:nth-child(even) {
+			background-color: var(--color-gris-clair);
+		}
+	}
+
+
+	.expertiseOnglet-form ,.client-form{
 		margin: 0px 20px;
 		padding: 20px;
 		background-color: var(--color-blanc);
@@ -216,6 +342,7 @@
 
 			input[type='text'],
 			input[type='number'],
+			select,
 			textarea,
 			.contenu {
 				width: 100%;

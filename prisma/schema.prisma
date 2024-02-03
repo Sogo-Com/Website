@@ -92,8 +92,7 @@ model Valeur {
 
 model ExpertiseOnglet {
   id              String          @id @default(uuid())
-  class           String
-  key             String
+  cssClass           String
   titre           String
   description     String
   photoPrincipale String
