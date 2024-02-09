@@ -28,7 +28,6 @@ export const load = async (serverloadEvent) => {
     },
   })
 
-  expertiseOnglet = expertiseOnglet == null ? {} : expertiseOnglet
 
   let expertiseIcons = await db.expertiseIcon.findMany({
     where: {
@@ -36,6 +35,7 @@ export const load = async (serverloadEvent) => {
     }
   })
 
+  expertiseOnglet = expertiseOnglet == null ? {} : expertiseOnglet
   return {
     expertiseOnglet,
     expertiseIcons

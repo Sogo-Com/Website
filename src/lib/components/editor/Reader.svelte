@@ -1,6 +1,15 @@
 <script>
 	export let contenu;
-	const { blocks = [] } = contenu;
+	if(contenu == null)
+		contenu = {blocks:[]};
+
+	let { blocks = [] } = contenu;
+	
+	export const setContenu = (_contenu) => {
+
+		blocks = _contenu.blocks;
+		
+	};
 
 	function nestedList(listData) {
 		const { items, style = 'unordered' } = listData;

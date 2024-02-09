@@ -45,10 +45,15 @@
 			}
 
 			await update();
+			let forceRefresh = false;
+			if(expertiseOnglet.id == null&& result.data.data != null && result.data.data.id != null)
+				forceRefresh = true;
 
 			expertiseOnglet = result.data.data;
-			
-			goto(`/admin/onglet/${expertiseOnglet.id}`, { invalidateAll: true });
+			if(!forceRefresh)
+				goto(`/admin/onglet/${expertiseOnglet.id}`, { invalidateAll: true });
+			else
+				window.location.href = `/admin/onglet/${expertiseOnglet.id}`;
 		};
 	};
 

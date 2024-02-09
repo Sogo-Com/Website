@@ -1,8 +1,22 @@
 
+import { db } from '$lib/database'
+
 export const load = async (serverloadEvent) => {
-	return {
-		realisationData
-	};
+
+
+  
+    let expertiseOnglets = await db.expertiseOnglet.findMany({
+      include: {
+        expertiseIcons: true,
+      },
+    })
+  
+
+    return {
+        expertiseOnglets,
+      
+    }
+
 };
 
 
@@ -10,7 +24,7 @@ export const load = async (serverloadEvent) => {
 
 
 
-const realisationData = [
+const expertiseOnglets2 = [
     {
         id: 'redaction',
         titre: 'Rédaction',

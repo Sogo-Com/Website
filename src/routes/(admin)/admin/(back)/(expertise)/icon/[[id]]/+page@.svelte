@@ -140,7 +140,7 @@
 				<input
 					type="file"
 					name="photoIconActiveFile"
-					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
+					accept={['.jpg', '.jpeg', '.png', '.webp','.svg'].join(',')}
 				/>
 				{#if expertiseIcon.photoIconActive != null && expertiseIcon.photoIconActive.length != 0}
 					<img src={expertiseIcon.photoIconActive} alt={expertiseIcon.titre} />
@@ -152,7 +152,7 @@
 				<input
 					type="file"
 					name="photoIconInactiveFile"
-					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
+					accept={['.jpg', '.jpeg', '.png', '.webp','.svg'].join(',')}
 				/>
 				{#if expertiseIcon.photoIconInactive != null && expertiseIcon.photoIconInactive.length != 0}
 					<img src={expertiseIcon.photoIconInactive} alt={expertiseIcon.titre} />

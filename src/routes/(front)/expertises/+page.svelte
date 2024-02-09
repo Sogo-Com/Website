@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-
+	import Reader from '$lib/components/editor/Reader.svelte';
 	//DOMElements
 	let linksEls;
 
@@ -8,6 +8,8 @@
 	let imgPrincipaleEl;
 	let titreEl;
 	let descriptionPrincipaleEl;
+
+	let reader;
 
 	let realSecondaireEl;
 	let titreSecondaireEl;
@@ -18,10 +20,14 @@
 
 	//Data part
 	export let data;
-	const { realisationData = [] } = data;
+	const { expertiseOnglets = [] } = data;
+
+
+
 	let iconsData = [];
 
 	onMount((_) => {
+	
 		changeExpertise();
 
 		Array.from(linksEls.children).forEach((link, index) => {
@@ -37,15 +43,16 @@
 		});
 		linksEls.children[index].classList.add('active');
 
-		const data = realisationData[index];
+		const data = expertiseOnglets[index];
 
 		containerEl.className = '';
-		containerEl.classList.add(data.class);
-
+		containerEl.classList.add(data.cssClass);
+		
 		titreEl = data.titre;
-		imgPrincipaleEl = data.imagePrincipale;
-		descriptionPrincipaleEl = data.descriptionHTML;
-		iconsData = data.icons;
+		imgPrincipaleEl = data.photoPrincipale;
+		descriptionPrincipaleEl = data.description;
+		reader.setContenu(data.description != null ? JSON.parse(data.description) : { blocks: [] });
+		iconsData = data.expertiseIcons;
 
 		if (iconsData.length <= 0) {
 			realSecondaireEl.style.display = 'none';
@@ -56,7 +63,9 @@
 
 		titreSecondaireEl.innerText = iconData.titre;
 		descriptionSecondaireEl = iconData.description;
-		imageSecondaireEl = iconData.image;
+		imageSecondaireEl = iconData.photoIllustration;
+		isVideo = iconData.isVideo ;
+
 	}
 
 	function changeIcon(index = 0) {
@@ -67,19 +76,18 @@
 
 		Array.from(iconsEls.children).forEach((icon, localIndex) => {
 			const localIconData = iconsData[localIndex];
-			icon.src = localIconData.inactive;
+			icon.src = localIconData.photoIconInactive;
 		});
 
 		const actualIcon = iconsData[index];
 
 		titreSecondaireEl.innerText = actualIcon.titre;
 		descriptionSecondaireEl = actualIcon.description;
-		imageSecondaireEl = actualIcon.image;
-		
-		isVideo = actualIcon.video != null;
+		imageSecondaireEl = actualIcon.photoIllustration;
+		isVideo = actualIcon.isVideo ;
 
 		const iconEl = iconsEls.children.item(index);
-		if (iconEl != null) iconEl.src = actualIcon.active;
+		if (iconEl != null) iconEl.src = actualIcon.photoIconActive;
 	}
 </script>
 
@@ -123,34 +131,12 @@
 	<div class="exper-choice">
 		<div bind:this={linksEls} class="links">
 			
-			<div class="link" >
-				Rédaction
-			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" >
-				Relations presse
-			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" >
-				Graphisme
-			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" >
-				Réseaux sociaux
-			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" >
-				Photos & Vidéos
-			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" >
-				Événements
-			</div>
+			{#each expertiseOnglets as expertiseOnglet,index }
+				<div class="link" >
+					{expertiseOnglet.titre}
+				</div>
+			{/each}
+			
 		</div>
 
 		<div class="contenu">
@@ -159,7 +145,8 @@
 			</div>
 			<div class="texte">
 				<h3 class="grey">{titreEl}</h3>
-				<p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" />
+				<Reader bind:this={reader} />
+				<!-- <p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" /> -->
 			</div>
 		</div>
 	</div>
@@ -181,7 +168,7 @@
 							on:click={() => {
 								changeIcon(index);
 							}}
-							src={index == 0 ? icon.active : icon.inactive}
+							src={index == 0 ? icon.photoIconActive : icon.photoIconInactive}
 							alt="Real {index}"
 						/>
 					{/each}

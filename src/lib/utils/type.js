@@ -52,7 +52,7 @@ export function IsEmptyFile(obj) {
 
 }
 
-export const PhotoExtensions = ['jpg', 'jpeg', 'png', 'webp']
+export const PhotoExtensions = ['jpg', 'jpeg', 'png', 'webp','svg']
 
 export function IsPhoto(obj) {
 
