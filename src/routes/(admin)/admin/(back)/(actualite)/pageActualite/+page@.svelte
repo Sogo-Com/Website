@@ -6,41 +6,36 @@
 	import { goto, } from '$app/navigation';
 
 	export let data;
-	let { pageAgence } = data;
+	let { pageActualite } = data;
 	
 	
-	const submitCreatepageAgence = async ({ form, data, action, cancel }) => {
+	const submitCreatepageActualite = async ({ form, data, action, cancel }) => {
 
-		const { citation,valeurDescription} = Object.fromEntries(data);
+		const { titre,} = Object.fromEntries(data);
 
 	
         
-		if (citation.length < 1) {
+		if (titre.length < 1) {
 			toast.error('Citation vide !');
 			cancel();
 		}
 
-		if (valeurDescription.length < 1) {
-			toast.error('Description des valeurs vide !');
-			cancel();
-		}
+		data.append('id', pageActualite.id)
+		data.append('photoPrincipale', pageActualite.photoPrincipale ?? '')
 
-
-		data.append('id', pageAgence.id)
-		data.append('photo', pageAgence.photo ?? '')
-
+		
 		
 		return async ({ result, update }) => {
 			
 			switch (result.type) {
 				case 'success':
-					toast.success('page Agence enregistré!');
+					toast.success('page Actualité enregistré!');
 					await applyAction(result)
 			
 					await update();
 			
-					pageAgence = result.data.data
-					goto(`/admin/agence`,{invalidateAll: true})
+					pageActualite = result.data.data
+					goto(`/admin/pageActualite`,{invalidateAll: true})
 		
 					break;
 				case 'failure':
@@ -71,47 +66,30 @@
 	</div>
 
 	<div>
-		<h1>Formulaire de la page Agence</h1>
+		<h1>Formulaire de la page Actualite</h1>
 
-		<form method="POST" action="?/create" class="pageAgence-form"  use:enhance={submitCreatepageAgence}>
+		<form method="POST" action="?/create" class="pageActualite-form"  use:enhance={submitCreatepageActualite}>
 
 			<div class="form-group">
-				<label for="titre">Titre blanc</label>
-				<textarea rows="2" id="titre" name="titre" bind:value={pageAgence.titre} contenteditable="true" type="text"  />
-			</div>
-
-			
-			<div class="form-group">
-				<label for="titreRose">Titre rose</label>
-				<textarea rows="2" id="titreRose" name="titreRose" bind:value={pageAgence.titreRose} contenteditable="true" type="text"  />
+				<label for="titre">Titre</label>
+				<textarea rows="3" id="titre" name="titre" bind:value={pageActualite.titre} contenteditable="true" type="text"  />
 			</div>
 
 			<div class="form-group">
-				<label for="photoFile">Photo principale</label>
+				<label for="photoPrincipaleFile">Photo principale</label>
 				<input
 				  type="file"
-				  id="photoFile"
-				  name="photoFile"
+				  id="photoPrincipaleFile"
+				  name="photoPrincipaleFile"
 				  accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
 				  
 				/>
-				{#if pageAgence.photo != null && pageAgence.photo.length != 0}
-					<img src={pageAgence.photo} alt={pageAgence.titre} />
+				{#if pageActualite.photoPrincipale != null && pageActualite.photoPrincipale.length != 0}
+					<img src={pageActualite.photoPrincipale} alt={pageActualite.titre} />
 				{/if}
 			  </div>
 
-			
-			<div class="form-group">
-				<label for="citation">Citation</label>
-				<textarea id="citation" rows="5" cols="45"  name="citation" bind:value={pageAgence.citation} contenteditable="true" type="text"  />
-			</div>
-
-
-			
-			<div class="form-group">
-				<label for="valeurDescription">Description des valeurs</label>
-				<textarea id="valeurDescription" rows="8" cols="45"   name="valeurDescription" bind:value={pageAgence.valeurDescription} contenteditable="true" type="text"  />
-			</div>
+		
 
 			<button type="submit" for="envoyer" value="envoyer" class="submit-button" >Enregistrer</button>
 		</form>
@@ -119,7 +97,7 @@
 </Layout>
 
 <style lang="scss">
-	.pageAgence-form {
+	.pageActualite-form {
 		margin: 0px 20px;
 		padding: 20px;
 		background-color: var(--color-blanc);

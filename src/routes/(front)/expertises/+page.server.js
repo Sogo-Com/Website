@@ -3,7 +3,11 @@ import { db } from '$lib/database'
 
 export const load = async (serverloadEvent) => {
 
-
+	let pageExpertise = await db.pageExpertise.findUnique({
+		where: {
+			id: '1'
+		}
+	});
   
     let expertiseOnglets = await db.expertiseOnglet.findMany({
       include: {
@@ -13,6 +17,7 @@ export const load = async (serverloadEvent) => {
   
 
     return {
+        pageExpertise,
         expertiseOnglets,
       
     }

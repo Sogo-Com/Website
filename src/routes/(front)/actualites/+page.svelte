@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 
 	export let data;
-	const { actualites } = data;
+	const { actualites, pageActualite } = data;
 
 	const firstActualite = actualites.length > 0 ? actualites[0] : null;
 
@@ -11,9 +11,9 @@
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/actualites-bg.jpg?width=1800&height=1800" />
+	<img alt="background-sogo" src="{pageActualite.photoPrincipale ?? "/images/actualites-bg.jpg" }?width=1800&height=1800" />
 
-	<h1 animate>Nos actualités</h1>
+	<h1 animate>{@html pageActualite.titre?.replaceAll("\n","<br>") ?? "Nos actualités"} </h1>
 </div>
 
 {#if actualites != null && actualites.length > 0}

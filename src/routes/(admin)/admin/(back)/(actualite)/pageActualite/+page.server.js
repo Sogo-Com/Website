@@ -14,8 +14,8 @@ import bcrypt from 'bcrypt';
 import { db } from '$lib/database';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 
-const FULL_UPLOAD_PATH = `uploads/agence/`;
-const PARTIAL_UPLOAD_PATH = '/uploads/agence/';
+const FULL_UPLOAD_PATH = `uploads/pageActualite/`;
+const PARTIAL_UPLOAD_PATH = '/uploads/pageActualite/';
 
 export const load = async (serverloadEvent) => {
 	let { locals } = serverloadEvent;
@@ -24,18 +24,18 @@ export const load = async (serverloadEvent) => {
 	}
 
 	const { params } = serverloadEvent;
-	let pageAgence = await db.pageAgence.findUnique({
+	let pageActualite = await db.pageActualite.findUnique({
 		where: {
 			id: '1'
 		}
 	});
 
-	if (pageAgence == null) {
+	if (pageActualite == null) {
 		throw redirect(302, '/admin/home');
 	}
 
 	return {
-		pageAgence
+		pageActualite
 	};
 };
 
@@ -50,56 +50,52 @@ export const actions = {
 			});
 		}
 
-		let { titre, titreRose, photo, photoFile, citation, valeurDescription } = data;
+		let {
+			titre,
+			photoPrincipale,
+			photoPrincipaleFile,
+		} = data;
 
-		if (citation.length < 1) {
+		if (titre.length < 1) {
 			return fail(400, {
 				data: data,
-				errorMsg: '❌ La citation ne doit pas être vide'
+				errorMsg: '❌ Le titre ne doit pas être vide'
 			});
 		}
 
-		if (valeurDescription.length < 1) {
-			return fail(400, {
-				data: data,
-				errorMsg: '❌ Le description de la valeur ne doit pas être vide'
-			});
-		}
 
 		try {
-			if (IsPhoto(photoFile)) {
+			if (IsPhoto(photoPrincipaleFile)) {
 				if (!existsSync(FULL_UPLOAD_PATH)) {
 					mkdirSync(FULL_UPLOAD_PATH);
 				}
 
-				const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`;
-				const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`;
+				const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoPrincipaleFile.name}`;
+				const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoPrincipaleFile.name}`;
 
-				writeFileSync(fsPhotoPath, Buffer.from(await photoFile.arrayBuffer()));
-				photo = dbPhotoPath;
+				writeFileSync(fsPhotoPath, Buffer.from(await photoPrincipaleFile.arrayBuffer()));
+				photoPrincipale = dbPhotoPath;
 			}
 
-			const pageAgence = await db.pageAgence.update({
+			
+			const pageActualite = await db.pageActualite.update({
 				where: {
 					id: '1'
 				},
 				data: {
 					titre,
-					titreRose,
-					photo,
-					citation,
-					valeurDescription
+					photoPrincipale,
 				}
 			});
 
 			return {
-				data: pageAgence,
+				data: pageActualite,
 				errorMsg: undefined
 			};
 		} catch (err) {
 			return fail(400, {
 				data: data,
-				errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de la page agence"
+				errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de la page actualite"
 			});
 		}
 	}

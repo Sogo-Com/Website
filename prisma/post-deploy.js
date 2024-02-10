@@ -1,92 +1,108 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 async function main() {
-    const adminEmail = process.env.ADMIN_EMAIL;
-    const adminPassword = process.env.ADMIN_PASSWORD;
-    const adminSalt = process.env.ADMIN_SALT;
-    const adminPasswordHashed = await bcrypt.hash(adminPassword, parseInt(adminSalt))
+	const adminEmail = process.env.ADMIN_EMAIL;
+	const adminPassword = process.env.ADMIN_PASSWORD;
+	const adminSalt = process.env.ADMIN_SALT;
+	const adminPasswordHashed = await bcrypt.hash(adminPassword, parseInt(adminSalt));
 
+	const adminRole = await prisma.roles.upsert({
+		where: { name: 'ADMIN' },
+		update: {
+			name: 'ADMIN'
+		},
+		create: {
+			name: 'ADMIN'
+		}
+	});
 
-    const adminRole = await prisma.roles.upsert({
+	const adminUser = await prisma.user.upsert({
+		where: { email: adminEmail },
+		update: {
+			email: adminEmail,
+			passwordHash: adminPasswordHashed,
+			userAuthToken: '23456789'
+		},
+		create: {
+			email: adminEmail,
+			passwordHash: adminPasswordHashed,
+			userAuthToken: '23456789',
+			role: {
+				connect: { id: 1 }
+			}
+		}
+	});
 
-        where: { name: "ADMIN" },
-        update: {
-            name: "ADMIN",
+	for (var i = 1; i <= 5; i++) {
+		try {
+			const point = await prisma.pointHistoire.create({
+				data: {
+					id: i.toString(),
+					titre: 'Titre',
+					date: '2010',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus.'
+				}
+			});
+		} catch (e) {
+			if (e.code != 'P2002') console.log(e);
+			else console.log('Point déjà existant');
+		}
+	}
 
-        },
-        create: {
-            name: "ADMIN",
-        },
+	try {
+		await prisma.pageAgence.create({
+			data: {
+				id: '1'
+			}
+		});
+	} catch (e) {
+		if (e.code != 'P2002') console.log(e);
+		else console.log('Page existante');
+	}
 
-    });
+	try {
+		await prisma.pageActualite.create({
+			data: {
+				id: '1'
+			}
+		});
+	} catch (e) {
+		if (e.code != 'P2002') console.log(e);
+		else console.log('Page existante');
+	}
 
+	try {
+		await prisma.pageExpertise.create({
+			data: {
+				id: '1'
+			}
+		});
+	} catch (e) {
+		if (e.code != 'P2002') console.log(e);
+		else console.log('Page existante');
+	}
 
-    const adminUser = await prisma.user.upsert({
+	try {
+		await prisma.pageProjet.create({
+			data: {
+				id: '1'
+			}
+		});
+	} catch (e) {
+		if (e.code != 'P2002') console.log(e);
+		else console.log('Page existante');
+	}
 
-        where: { email: adminEmail },
-        update: {
-            email: adminEmail,
-            passwordHash: adminPasswordHashed,
-            userAuthToken: "23456789",
-        },
-        create: {
-            email: adminEmail,
-            passwordHash: adminPasswordHashed,
-            userAuthToken: "23456789",
-            role: {
-                connect: { id: 1 }
-            }
-        },
-
-    });
-
-    for (var i = 1; i <= 5; i++) {
-
-        try {
-            const point = await prisma.pointHistoire.create({
-                data: {
-                    id: i.toString(),
-                    titre: "Titre",
-                    date: "2010",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque facilisis orci at luctus."
-
-                },
-
-            });
-        } catch (e) {
-            if (e.code != "P2002")
-                console.log(e)
-            else
-                console.log("Point déjà existant")
-        }
-
-
-    }
-
-    try {
-        const pageAgence = await prisma.pageAgence.create({
-            data: {
-                id: "1",
-                titre: "Des Gommettes qui en jettent !",
-            },
-
-        });
-    } catch (e) {
-        if (e.code != "P2002")
-            console.log(e)
-        else
-            console.log("Page existante")
-    }
-
-    console.log("Admin user created:", adminUser);
+	console.log('Admin user created:', adminUser);
 }
 
 main()
-    .catch((e) => {
-        throw e;
-    })
-    .finally(async () => {
-        await prisma.$disconnect();
-    });
+	.catch((e) => {
+		throw e;
+	})
+	.finally(async () => {
+		await prisma.$disconnect();
+	});

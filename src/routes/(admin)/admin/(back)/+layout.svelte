@@ -36,6 +36,7 @@
 
 				<ul>
 					<span>Page Expertise</span>
+					<li><a href="/admin/pageExpertise">Page Expertise</a></li>
 					<li><a href="/admin/onglets">Onglets</a></li>
 					<li><a href="/admin/icons">Icons</a></li>
 				</ul>
@@ -43,12 +44,14 @@
 
 				<ul>
 					<span>Page Projets</span>
+					<li><a href="/admin/pageProjet">Page Projet</a></li>
 					<li><a href="/admin/projets">Projets</a></li>
 				</ul>
 
 			
 				<ul>
 					<span>Page Actualites</span>
+					<li><a href="/admin/pageActualite">Page Actualite</a></li>
 					<li><a href="/admin/actualites">Actualites</a></li>
 				</ul>
 

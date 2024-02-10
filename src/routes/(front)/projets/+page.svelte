@@ -5,7 +5,7 @@
 	import { invalidate, invalidateAll } from '$app/navigation';
 
 	export let data;
-	let { projets } = data;
+	let { projets,pageProjet } = data;
 
 	let container;
 	let links;
@@ -61,23 +61,19 @@
 </script>
 
 <div id="top">
-	<h1 animate>Des projets <br>qui fusent</h1>
-	<img alt="background-sogo" src="/images/NosProjets_Header_SogoCom.jpg?width=1800&height=1800" />
+	<h1 animate>{@html pageProjet.titre?.replaceAll("\n","<br>") ?? "Des projets <br>qui fusent"}</h1>
+	<img alt="background-sogo" src="{pageProjet.photoPrincipale ?? "/images/NosProjets_Header_SogoCom.jpg"}?width=1800&height=1800" />
 </div>
 <div class="gris">
 	<div class="question gris-child">
 		<h2 animate>
-			L'écoute et l'attention <br />
-			pour missions.
+			{@html pageProjet.h2?.replaceAll("\n","<br>") ?? "L'écoute et l'attention <br />pour missions."}
 		</h2>
 	</div>
 
 	<div class="reponse gris-child">
 		<p animate>
-			Chez Sogo Com les projets se suivent mais ne se ressemblent jamais !
-			<br><br>
-			A chacun son identité, nous respectons votre ADN pour élaborer ensemble des projets sur-mesure qui collent parfaitement à l’image que vous en attendiez ou encore imaginer les supports dont vous n’osiez pas rêver. 
-			
+			{@html pageProjet.description?.replaceAll("\n","<br>") ?? "Aucune description"}
 		</p>
 
 		

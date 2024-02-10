@@ -78,9 +78,33 @@ model PointHistoire {
 model PageAgence {
   id                String @id @default(uuid())
   titre             String @default("")
+  titreRose         String @default("")
   photo             String @default("")
   citation          String @default("")
   valeurDescription String @default("")
+}
+
+model PageExpertise {
+  id              String @id @default(uuid())
+  titre           String @default("")
+  photoPrincipale String @default("")
+  photoSecondaire String @default("")
+  h2              String @default("")
+  description     String @default("")
+}
+
+model PageProjet {
+  id              String @id @default(uuid())
+  titre           String @default("")
+  photoPrincipale String @default("")
+  h2              String @default("")
+  description     String @default("")
+}
+
+model PageActualite {
+  id              String @id @default(uuid())
+  titre           String @default("")
+  photoPrincipale String @default("")
 }
 
 model Valeur {
@@ -92,7 +116,7 @@ model Valeur {
 
 model ExpertiseOnglet {
   id              String          @id @default(uuid())
-  cssClass           String
+  cssClass        String
   titre           String
   description     String
   photoPrincipale String
@@ -125,9 +149,9 @@ model Client {
   domaineId String
   domaine   Domaine @relation(fields: [domaineId], references: [id])
 
-  attachePresses AttachePresse[]
+  attachePresses    AttachePresse[]
   communiquePresses CommuniquePresse[]
-  dossierPresses DossierPresse[]
+  dossierPresses    DossierPresse[]
 }
 
 model Domaine {
@@ -137,21 +161,21 @@ model Domaine {
 }
 
 model CommuniquePresse {
-  id        String                @id @default(uuid())
+  id        String   @id @default(uuid())
   titre     String
-  fichier    String
-  createdAt DateTime              @default(now())
-  clientId  String          
-  client    Client @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  fichier   String
+  createdAt DateTime @default(now())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model DossierPresse {
-  id        String                @id @default(uuid())
+  id        String   @id @default(uuid())
   titre     String
-  fichier    String
-  createdAt DateTime              @default(now())
-  clientId  String          
-  client    Client @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  fichier   String
+  createdAt DateTime @default(now())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model AttachePresse {

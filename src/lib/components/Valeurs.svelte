@@ -1,20 +1,45 @@
 <script>
 	import FlipCard from '$lib/components/FlipCard.svelte';
 	import { onMount } from 'svelte';
+	import { each } from 'svelte/internal';
 
-	onMount((_) => {});
+	export let description = '';
+	export let valeurs = [];
+
+	description = description.replaceAll('\n', '<br>');
+
 </script>
 
-<div id="valeurs">
-	<h2 animate><span class="pink">Nos Valeurs</span></h2>
-	<div class="conteneur">
-		<div class="contenu left">
-			<p animate class="flip">
-				Créative et inspirée, l’équipe Sogo Com c’est aussi un lien de proximité assuré. Basée à Poisy, aux
-portes d’Annecy, la team expérimentée défend son système de valeurs coûte que coûte. Confiance
-et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur à toute épreuve !
-			</p>
+{#if valeurs.length > 0}
+	<div id="valeurs">
+		<h2 animate><span class="pink">Nos Valeurs</span></h2>
+		<div class="conteneur">
+			<div class="contenu left">
+				<p animate class="flip">
+					{@html description != null
+						? description
+						: `Créative et inspirée, l’équipe Sogo Com c’est aussi un lien de proximité assuré. Basée à Poisy, aux
+				portes d’Annecy, la team expérimentée défend son système de valeurs coûte que coûte. Confiance
+				et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur à toute épreuve !`}
+				</p>
+			</div>
+
+			{#each valeurs as valeur}
+				<div class="contenu center">
+					<div class="flip">
+						<FlipCard
+							titre={valeur.titre}
+							imageSrc={valeur.photo}
+							description={valeur.description}
+						/>
+					</div>
+				</div>
+			{/each}
 		</div>
+	</div>
+{/if}
+
+<!-- 
 		<div class="contenu center">
 			<div class="flip">
 				<FlipCard titre="Proximité" imageSrc="/images/valeurs/ProximiteV2.png" description="La relation de confiance se tisse dans la toile de la proximité.<br> <br>L’écoute et l’attention en sont les fils
@@ -59,9 +84,7 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 				faire la part des choses, prendre du recul et rester à notre place !<br><br> Parce qu’une atmosphère saine en
 				dit long, nous aimons prendre du plaisir dans nos missions."/>
 			</div>
-		</div>
-	</div>
-</div>
+		</div> -->
 
 <style lang="scss">
 	#valeurs {
@@ -112,12 +135,11 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 				align-items: center;
 				flex-grow: 1;
 
-
-				&.right{
+				&.right {
 					justify-content: end;
 				}
 
-				&.left{
+				&.left {
 					justify-content: start;
 				}
 				@media only screen and (max-width: $tablet) {
@@ -131,17 +153,16 @@ et honnêteté pour piliers, plaisir et solidarité pour fondations et rigueur �
 				p {
 					font-size: 1rem;
 					width: 100% !important;
-					
+
 					@media only screen and (max-width: $phone) {
 						width: 100% !important;
 						margin-bottom: 12px;
 					}
 				}
 				.flip {
-					margin: 15%  0;
+					margin: 15% 0;
 					width: 20vw;
 					height: 20vw;
-
 
 					@media only screen and (max-width: $tablet) {
 						width: 30vw;

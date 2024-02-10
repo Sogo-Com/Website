@@ -20,14 +20,15 @@
 
 	//Data part
 	export let data;
-	const { expertiseOnglets = [] } = data;
-
-
+	const { expertiseOnglets = [],pageExpertise } = data;
 
 	let iconsData = [];
 
 	onMount((_) => {
-	
+
+		if (expertiseOnglets.length <= 0) return;
+
+
 		changeExpertise();
 
 		Array.from(linksEls.children).forEach((link, index) => {
@@ -38,6 +39,7 @@
 	});
 
 	function changeExpertise(index = 0) {
+	
 		Array.from(linksEls.children).forEach((link) => {
 			link.classList.remove('active');
 		});
@@ -47,7 +49,7 @@
 
 		containerEl.className = '';
 		containerEl.classList.add(data.cssClass);
-		
+
 		titreEl = data.titre;
 		imgPrincipaleEl = data.photoPrincipale;
 		descriptionPrincipaleEl = data.description;
@@ -64,8 +66,7 @@
 		titreSecondaireEl.innerText = iconData.titre;
 		descriptionSecondaireEl = iconData.description;
 		imageSecondaireEl = iconData.photoIllustration;
-		isVideo = iconData.isVideo ;
-
+		isVideo = iconData.isVideo;
 	}
 
 	function changeIcon(index = 0) {
@@ -84,7 +85,7 @@
 		titreSecondaireEl.innerText = actualIcon.titre;
 		descriptionSecondaireEl = actualIcon.description;
 		imageSecondaireEl = actualIcon.photoIllustration;
-		isVideo = actualIcon.isVideo ;
+		isVideo = actualIcon.isVideo;
 
 		const iconEl = iconsEls.children.item(index);
 		if (iconEl != null) iconEl.src = actualIcon.photoIconActive;
@@ -93,104 +94,94 @@
 
 <div id="total-expertise" bind:this={containerEl}>
 	<div id="top">
-		<img alt="background-sogo" src="/images/expertis.jpg?width=1800&height=1800" />
+		<img alt="Page Expertise" src="{pageExpertise.photoPrincipale ?? "/images/expertis.jpg" }?width=1800&height=1800" />
 
-		<h1 animate>Nos expertises<br />à vos côtés</h1>
+		<h1 animate>{@html pageExpertise.titre?.replaceAll("\n","<br>") ?? "Nos expertises<br />à vos côtés"} </h1>
 	</div>
 
 	<div class="blanc" id="blanc">
 		<div class="wrapper">
 			<div class="bloc desc-gauche">
 				<h2 animate>
-					<span class="grey">Nos expertises</span>
+					<span class="grey">{@html pageExpertise.h2?.replaceAll("\n","<br>") ?? "Nos expertises"}</span>
 				</h2>
 				<p animate>
-					L’agence Sogo Com concentre tout plein de savoir-faire, des expériences à tous les temps,
-					des compétences à tous les vents. Véritable couteau suisse, Sogo Com aiguise pour vous son
-					sens de la communication.
-					<br /><br />
-					→ Rédaction dans le ton<br />
-					→ Relations presse en action<br />
-					→ Magazines dédiés ciblés<br />
-					→ Evénements dans le vent<br />
-					→ Graphisme print et web dans le prisme<br />
-					→ Réseaux sociaux typés pros<br />
-					→ Vidéo & Photo, focus ISO<br />
-					<br />
-					Vous reprendrez bien un peu de Sogo ?
+
+					{@html pageExpertise.description?.replaceAll("\n","<br>") ?? "Aucune description"}
+					
 				</p>
 			</div>
 			<div class="bloc img-droite">
 				<div class="conteneur">
-					<img src="/images/Expertise2_Equipe_nb.webp" alt="L'equipe" />
+					<img src="{pageExpertise.photoSecondaire ?? "/images/Expertise2_Equipe_nb.webp" }?width=1800&height=1800" alt="L'equipe" />
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="exper-choice">
-		<div bind:this={linksEls} class="links">
-			
-			{#each expertiseOnglets as expertiseOnglet,index }
-				<div class="link" >
-					{expertiseOnglet.titre}
-				</div>
-			{/each}
-			
-		</div>
+	{#if expertiseOnglets.length > 0}
+		<div class="exper-choice">
+			<div bind:this={linksEls} class="links">
+				{#each expertiseOnglets as expertiseOnglet, index}
+					<div class="link">
+						{expertiseOnglet.titre}
+					</div>
+				{/each}
+			</div>
 
-		<div class="contenu">
-			<div class="image">
-				<img src={imgPrincipaleEl} alt="sogo" />
-			</div>
-			<div class="texte">
-				<h3 class="grey">{titreEl}</h3>
-				<Reader bind:this={reader} />
-				<!-- <p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" /> -->
-			</div>
-		</div>
-	</div>
-	<div id="realSecondaire" bind:this={realSecondaireEl} class="blanc">
-		<div class="wrapper">
-			<div class="bloc desc-gauche">
-				<h2 animate class="h2-gauche">
-					<span class="grey">Nos réalisations</span>
-				</h2>
-			</div>
-		</div>
-		<div class="infoSlide">
-			<div class="infos">
-				<div class="medias" bind:this={iconsEls}>
-					{#each iconsData as icon, index}
-						<!-- svelte-ignore a11y-click-events-have-key-events -->
-						<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-						<img
-							on:click={() => {
-								changeIcon(index);
-							}}
-							src={index == 0 ? icon.photoIconActive : icon.photoIconInactive}
-							alt="Real {index}"
-						/>
-					{/each}
+			<div class="contenu">
+				<div class="image">
+					<img src={imgPrincipaleEl} alt="sogo" />
 				</div>
 				<div class="texte">
-					<h3  bind:this={titreSecondaireEl} class="grey"></h3>
-					<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
-					<a href="/contact" class="btn">Contactez-nous</a>
+					<h3 class="grey">{titreEl}</h3>
+					<Reader bind:this={reader} />
+					<!-- <p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" /> -->
 				</div>
 			</div>
-			<div class="slider">
-				{#if isVideo == true}
-					<video muted width="320" height="240" controls>
-						<source src="{imageSecondaireEl}" type="video/mp4">
-						<track kind="captions" />
-					</video>
-				{:else}
-					<img src={imageSecondaireEl} alt="expertise-icon" />
-				{/if}
+		</div>
+		<div id="realSecondaire" bind:this={realSecondaireEl} class="blanc">
+			<div class="wrapper">
+				<div class="bloc desc-gauche">
+					<h2 animate class="h2-gauche">
+						<span class="grey">Nos réalisations</span>
+					</h2>
+				</div>
+			</div>
+			<div class="infoSlide">
+				<div class="infos">
+					<div class="medias" bind:this={iconsEls}>
+						{#each iconsData as icon, index}
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+							<img
+								on:click={() => {
+									changeIcon(index);
+								}}
+								src={index == 0 ? icon.photoIconActive : icon.photoIconInactive}
+								alt="Real {index}"
+							/>
+						{/each}
+					</div>
+					<div class="texte">
+						<h3 bind:this={titreSecondaireEl} class="grey" />
+						<p bind:innerHTML={descriptionSecondaireEl} contenteditable="false" />
+						<a href="/contact" class="btn">Contactez-nous</a>
+					</div>
+				</div>
+				<div class="slider">
+					{#if isVideo == true}
+						<video muted width="320" height="240" controls>
+							<source src={imageSecondaireEl} type="video/mp4" />
+							<track kind="captions" />
+						</video>
+					{:else}
+						<img src={imageSecondaireEl} alt="expertise-icon" />
+					{/if}
+				</div>
 			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style lang="scss" global>
@@ -256,8 +247,6 @@
 					left: 0%;
 				}
 
-
-			
 				h2 {
 					position: relative;
 					z-index: 1;
@@ -270,9 +259,8 @@
 					}
 				}
 
-				.h2-gauche{
+				.h2-gauche {
 					@media only screen and (max-width: $phone) {
-						
 						text-align: left;
 					}
 				}
@@ -408,7 +396,7 @@
 				}
 				.image {
 					flex-basis: 20%;
-					padding:64px;
+					padding: 64px;
 					img {
 						width: 100%;
 						height: 100%;
@@ -459,7 +447,7 @@
 					@media only screen and (max-width: $fold) {
 						width: min-content;
 					}
-				
+
 					img {
 						margin: 8px;
 						width: 64px;
@@ -472,7 +460,7 @@
 				.texte {
 					width: 70%;
 					margin-left: 10%;
-					
+
 					@media only screen and (max-width: $phone) {
 						width: 100%;
 						margin-left: 0%;
@@ -516,9 +504,9 @@
 					background-size: contain;
 				}
 
-				video{
+				video {
 					width: 100%;
-   					height: 100%;
+					height: 100%;
 					object-fit: cover;
 					border-radius: 32px;
 				}

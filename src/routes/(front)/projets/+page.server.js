@@ -3,13 +3,19 @@ import { db } from '$lib/database'
 
 
 export const load = async (serverloadEvent) => {
-
+  const pageProjet = await db.pageProjet.findUnique({
+    where: {
+      id: '1'
+    }
+  })
   const projets = await db.projet.findMany({
     where: {
       typeProjet:'redaction'
     }
   })
+
   return {
+    pageProjet,
     projets
   }
 }

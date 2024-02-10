@@ -6,15 +6,16 @@
 	import SliderGomettes from '$lib/components/SliderGomettes.svelte';
 
 	export let data;
-	let { collaborateurs, pointsHistoriques = [] } = data;
-
+	let { collaborateurs, pointsHistoriques = [],pageAgence ,valeurs} = data;
+	
 	onMount((_) => {});
 </script>
 
 <div id="top">
-	<img alt="background-sogo" src="/images/Agence_SogoCom_nb.jpg?width=1800&height=1800" />
+	<img alt="background-sogo" src="{pageAgence.photoPrincipale ?? "/images/Agence_SogoCom_nb.jpg"}?width=1800&height=1800" />
 
-	<h1 animate><span class="pink">Des Gommettes</span><br />qui en jettent !</h1>
+	<h1 animate><span class="pink">	{@html pageAgence.titre?.replaceAll("\n","<br>") ?? "Des Gommettes"}
+	</span><br />{@html pageAgence.titreRose?.replaceAll("\n","<br>") ?? "qui en jettent !"}</h1>
 </div>
 
 <div id="guillemets">
@@ -24,10 +25,9 @@
 				<img src="/images/guillemet-gauche.PNG" alt="guillemet gauche" />
 			</div>
 			<div class="center">
-				<p animate>L’équipe Sogo Com a le cœur qui bat au rythme de ses valeurs.
-					<br />
-					Le territoire en étendard, l’expertise en pendentif, touche d’audace et tonalité pulsée,<br />
-					nous pensons votre communication.
+				<p animate>
+					{@html pageAgence.citation?.replaceAll("\n","<br>") ?? "Aucune citation"}
+					
 				</p>
 				
 			</div>
@@ -37,7 +37,8 @@
 		</div>
 	</div>
 </div>
-<Valeurs />
+
+<Valeurs {valeurs} description={pageAgence.valeurDescription} />
 <FriseHistoire {pointsHistoriques} />
 <SliderGomettes {collaborateurs} />
 
