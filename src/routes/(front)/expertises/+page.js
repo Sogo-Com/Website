@@ -1,6 +1,6 @@
 export let csr = true;
 export let ssr = true;
-export const prerender = true;
+export const prerender = false;
 
 import { error } from "@sveltejs/kit";
 
