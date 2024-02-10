@@ -7,7 +7,7 @@
 
 	export let data;
 	let { collaborateurs, pointsHistoriques = [],pageAgence ,valeurs} = data;
-	
+	if (valeurs != null && valeurs.length != 0) valeurs = valeurs?.sort((a, b) => a.rang - b.rang);
 	onMount((_) => {});
 </script>
 

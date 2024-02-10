@@ -42,6 +42,7 @@
 			<thead>
 				<tr>
 					<th>Titre</th>
+					<th>Rang</th>
 					<th>Image</th>
 					<th>Supprimer</th>
 				</tr>
@@ -50,6 +51,7 @@
 				{#each valeurs as valeur, index}
 					<tr>
 						<td><a href="/admin/valeur/{valeur.id}">{valeur?.titre ?? 'Aucun titre'}</a></td>
+						<td>{valeur?.rang ?? 'Aucun rang'}</td>
 						<td><img src="{valeur.photo}"/>
 						<td>
 							<form action="?/delete" method="POST" use:enhance={submitDeleteValeur}>

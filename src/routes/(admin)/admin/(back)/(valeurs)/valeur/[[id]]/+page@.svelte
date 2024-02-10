@@ -11,7 +11,7 @@
 	
 	const submitCreatevaleur = async ({ form, data, action, cancel }) => {
 
-		const { titre, description} = Object.fromEntries(data);
+		const { titre, description,rang} = Object.fromEntries(data);
 
 		if (titre.length < 1) {
 			toast.error('Titre vide !');
@@ -25,6 +25,12 @@
 			cancel();
 		}
 
+
+		if (rang == null || isNaN(rang) || parseInt(rang) < 0) {
+			toast.error('Le rang ne doit pas être vide');
+			cancel();
+		}
+		
 
 		data.append('id', valeur.id)
 		data.append('photo', valeur.photo ?? '')
@@ -128,6 +134,18 @@
 			</div>
 
 
+			<div class="form-group">
+				<label for="rang">Rang</label>
+				<input
+					id="rang"
+					name="rang"
+					bind:value={valeur.rang}
+					contenteditable="true"
+					type="number"
+					min="1"
+					step="1"
+				/>
+			</div>
 
 			
 

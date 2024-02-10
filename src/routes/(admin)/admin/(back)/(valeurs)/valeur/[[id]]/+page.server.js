@@ -50,7 +50,7 @@ export const actions = {
 			});
 		}
 
-		let { id, photo, photoFile, titre, description } = data;
+		let { id, photo, photoFile, titre, description , rang} = data;
 
 		if (titre.length < 1) {
 			return fail(400, {
@@ -66,6 +66,12 @@ export const actions = {
 			});
 		}
 
+		if (rang == null || isNaN(rang) || parseInt(rang) < 0) {
+			return fail(400, {
+			  data: data,
+			  errorMsg: "❌ Le rang ne doit pas être vide",
+			});
+		  }
 		try {
 			if (IsPhoto(photoFile)) {
 				if (!existsSync(FULL_UPLOAD_PATH)) {
@@ -86,12 +92,14 @@ export const actions = {
 				update: {
 					titre,
 					description,
-					photo
+					photo,
+					rang : parseInt(rang),
 				},
 				create: {
 					titre,
 					description,
-					photo
+					photo,
+					rang : parseInt(rang),
 				}
 			});
 

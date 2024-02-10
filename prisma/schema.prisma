@@ -112,6 +112,7 @@ model Valeur {
   titre       String @default("")
   photo       String @default("")
   description String @default("")
+  rang        Int    @default(1)
 }
 
 model ExpertiseOnglet {

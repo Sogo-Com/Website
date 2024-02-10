@@ -46,7 +46,7 @@
 		<div class="back">
 			<img src="/images/bubble.png" alt="bubble" />
 			<p>
-				{@html description}
+				{@html description?.replaceAll('\n', '<br>')}
 			</p>
 		</div>
 	</div>
