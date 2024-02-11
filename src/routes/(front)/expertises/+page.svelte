@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import Reader from '$lib/components/editor/Reader.svelte';
 	//DOMElements
 	let linksEls;
 
@@ -9,7 +8,6 @@
 	let titreEl;
 	let descriptionPrincipaleEl;
 
-	let reader;
 
 	let realSecondaireEl;
 	let titreSecondaireEl;
@@ -53,7 +51,6 @@
 		titreEl = data.titre;
 		imgPrincipaleEl = data.photoPrincipale;
 		descriptionPrincipaleEl = data.description;
-		reader.setContenu(data.description != null ? JSON.parse(data.description) : { blocks: [] });
 		iconsData = data.expertiseIcons;
 
 		if (iconsData.length <= 0) {
@@ -135,7 +132,9 @@
 				</div>
 				<div class="texte">
 					<h3 class="grey">{titreEl}</h3>
-					<Reader bind:this={reader} />
+					<p>
+						{@html descriptionPrincipaleEl?.replaceAll("\n","<br>") ?? "Aucune description"}
+					</p>
 					<!-- <p bind:innerHTML={descriptionPrincipaleEl} contenteditable="false" /> -->
 				</div>
 			</div>

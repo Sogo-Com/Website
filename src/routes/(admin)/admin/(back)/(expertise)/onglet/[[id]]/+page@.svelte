@@ -7,7 +7,6 @@
 	import { goto } from '$app/navigation';
 
 	export let data;
-	let writerMethods;
 	let { expertiseOnglet,expertiseIcons } = data;
 	let expertiseIconValue;
 	const submitCreateNote = async ({ form, data, action, cancel }) => {
@@ -26,7 +25,6 @@
 		
 		data.append('id', expertiseOnglet.id ?? '');
 		data.append('photoPrincipale', expertiseOnglet.photoPrincipale ?? '');
-		data.append('description', await writerMethods.saveContenu() ?? '')
 
 
 		return async ({ result, update }) => {
@@ -34,8 +32,7 @@
 				case 'success':
 					toast.success('Onglet enregistré!');
 					await applyAction(result);
-					writerMethods.loadContenu(expertiseOnglet.description)
-
+	
 					break;
 				case 'failure':
 					toast.error("Erreur lors de l'enregistrement");
@@ -201,10 +198,8 @@
 			
 			<div class="form-group">
 				<label for="description">Description</label>
-				
-				<div id="contenu" class="contenu" name="description" required >
-					<Writer bind:methods={writerMethods} contenu="{expertiseOnglet.description}"/>
-				</div>
+				<textarea id="description" name="description" bind:value={expertiseOnglet.description} ></textarea>
+			
 			</div>
 			
 
