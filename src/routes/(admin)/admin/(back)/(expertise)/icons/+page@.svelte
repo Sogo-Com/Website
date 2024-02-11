@@ -7,7 +7,7 @@
 	
 	export let data;
 	let { expertiseIcons } = data;
-
+	
 	const submitDeleteNote  = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {
@@ -42,6 +42,7 @@
 			<thead>
 				<tr>
 					<th>Titre</th>
+					<th>Onglet</th>
 					<th>Rang</th>
 					<th>Supprimer</th>
 				</tr>
@@ -53,6 +54,8 @@
 							><a href="/admin/icon/{expertiseIcon.id}">{expertiseIcon?.titre ?? 'Aucun titre'}</a
 							></td
 						>
+						<td>{expertiseIcon?.expertiseOnglet?.titre ?? 'Aucun onglet assigné'}</td>
+
 						<td>{expertiseIcon?.rang ?? 'Aucun rang'}</td>
 
 						<td

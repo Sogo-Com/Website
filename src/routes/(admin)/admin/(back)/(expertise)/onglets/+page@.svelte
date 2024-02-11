@@ -42,8 +42,7 @@
 			<thead>
 				<tr>
 					<th>Titre</th>
-					<th>Redacteur</th>
-					<th>Date de création</th>
+					<th>Rang</th>
 					<th>Supprimer</th>
 				</tr>
 			</thead>
@@ -54,14 +53,8 @@
 							><a href="/admin/onglet/{expertiseOnglet.id}">{expertiseOnglet?.titre ?? 'Aucun titre'}</a
 							></td
 						>
-						<td>{expertiseOnglet?.redacteur ?? 'Aucun rédacteur'}</td>
+						<td>{expertiseOnglet?.rang ?? 'Aucun rang'}</td>
 
-						<td
-							>{new Intl.DateTimeFormat('fr-FR', {
-								dateStyle: 'full',
-								timeStyle: 'long'
-							}).format(expertiseOnglet?.createdAt)}</td
-						>
 						<td
 							>
 							

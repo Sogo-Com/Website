@@ -11,7 +11,13 @@ export const load = async (serverloadEvent) =>{
     throw redirect(302, '/admin/login')
   }
 
-  const expertiseOnglets = await db.expertiseOnglet.findMany()
+  const expertiseOnglets = await db.expertiseOnglet.findMany({
+    orderBy: [
+			{
+				rang: 'asc'
+			}
+		],
+  })
   return {
     expertiseOnglets
   }
