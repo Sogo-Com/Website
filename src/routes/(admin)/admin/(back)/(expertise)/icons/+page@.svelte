@@ -44,6 +44,7 @@
 					<th>Titre</th>
 					<th>Onglet</th>
 					<th>Rang</th>
+					<th>Photo</th>
 					<th>Supprimer</th>
 				</tr>
 			</thead>
@@ -57,6 +58,7 @@
 						<td>{expertiseIcon?.expertiseOnglet?.titre ?? 'Aucun onglet assigné'}</td>
 
 						<td>{expertiseIcon?.rang ?? 'Aucun rang'}</td>
+						<td>{expertiseIcon?.photoPrincipale ?? 'Aucune photo'}</td>
 
 						<td
 							>

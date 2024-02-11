@@ -198,7 +198,7 @@
 			
 			<div class="form-group">
 				<label for="description">Description</label>
-				<textarea id="description" name="description" bind:value={expertiseOnglet.description} ></textarea>
+				<textarea rows="8" id="description" name="description" bind:value={expertiseOnglet.description} ></textarea>
 			
 			</div>
 			
