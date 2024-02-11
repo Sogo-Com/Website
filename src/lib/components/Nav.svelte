@@ -165,7 +165,7 @@
 
 
 		
-		<div class="reseaux-s">
+		<div class="reseaux-s not-mob">
 			<a href="https://www.facebook.com/Sogocom?locale=fr_FR" target="_blank">
 				<img src="/images/FB_1.svg" alt="facebook" />
 
@@ -319,8 +319,20 @@
 
 			.reseaux-s{
 
-				&.mobile{
+				&.not-mob{
 					display: flex;
+
+					
+					@media only screen and (max-width: $tablet) {
+						display: none;
+					}
+				}
+				&.mobile{
+					display: none;
+					
+					@media only screen and (max-width: $tablet) {
+						display: flex;
+					}
 				}
 				a{
 					margin: 16px 8px;
@@ -344,9 +356,6 @@
 				justify-content: center;
 				align-items: center;
 
-				@media only screen and (max-width: $tablet) {
-					display: none;
-				}
 			
 			}
 			.presse, {
