@@ -47,7 +47,7 @@
 		<div class="bloc img-droite">
 			<div class="conteneur">
 				<span data-lag=".2" class="bubble top-left" />
-				<img src="/images/Expertise2_SogoCom_nb.jpg" alt="L'equipe" />
+				<img src="/images/Expertise2_SogoCom_nb.jpg?width=1500&height=1500" alt="L'equipe" />
 				<span data-lag=".2" class="bubble bottom-right" />
 			</div>
 		</div>
@@ -64,7 +64,7 @@
 				{projet.descriptionCourte}
 			</p>
 			<a href="/projets/{projet.id}" animate class="btn">En savoir +</a>
-			<img alt="projet" src={projet.photo} />
+			<img alt="projet" src={projet.photo+"?width=1500&height=1500"} />
 		</div>
 	{/if}
 
@@ -72,10 +72,10 @@
 		<div class="actu">
 			<h2 animate class="grey">Notre dernière actu</h2>
 			<div class="actu-content">
-				<img src="/images/fleche-actu-home.svg" alt="chemin" />
+				<img src="/images/fleche-actu-home.svg?width=500&height=500" alt="chemin" />
 				<div class="actualites">
 					<div class="conteneur bleu">
-						<div class="img-div"><img src={actualite.photo} alt={actualite.titre} /></div>
+						<div class="img-div"><img src={actualite.photo+"?width=1000&height=1000"} alt={actualite.titre} /></div>
 						<div class="contenu">
 							<h2>{actualite.titre}</h2>
 							<p class="line-clamp-5">{actualite.descriptionCourte}</p>
@@ -97,8 +97,8 @@
 			<Contact />
 		</div>
 		<div class="contact-images">
-			<img class="contact-image"  data-lag="0.03" src="/images/contact-1.png" alt="contact-1" />
-			<img class="contact-image" data-lag="0.05"  src="/images/contact-2.png" alt="contact-2" />
+			<img class="contact-image"  data-lag="0.03" src="/images/contact-1.png?width=1000&height=1000" alt="contact-1" />
+			<img class="contact-image" data-lag="0.05"  src="/images/contact-2.png?width=1000&height=1000" alt="contact-2" />
 			<span class="contact-image" />
 		</div>
 	</div>

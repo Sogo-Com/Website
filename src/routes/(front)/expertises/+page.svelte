@@ -110,7 +110,7 @@
 			</div>
 			<div class="bloc img-droite">
 				<div class="conteneur">
-					<img src="{pageExpertise.photoSecondaire ?? "/images/Expertise2_Equipe_nb.webp" }?width=1800&height=1800" alt="L'equipe" />
+					<img  src="{pageExpertise.photoSecondaire ?? "/images/Expertise2_Equipe_nb.webp" }?width=1800&height=1800" alt="L'equipe" />
 				</div>
 			</div>
 		</div>
