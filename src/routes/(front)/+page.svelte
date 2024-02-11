@@ -1,10 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 
 	import Contact from '$lib/components/Contact.svelte';
 	import SliderExpertise from '$lib/components/SliderExpertise.svelte';
-	import FlipCard from '$lib/components/FlipCard.svelte';
 
 	export let data;
 	let { actualite, projet } = data;
@@ -15,8 +13,33 @@
 	});
 </script>
 
+<svelte:head>
+
+	<title>Sogo Com, votre agence de communication</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<meta property="og:title" content="Sogo Com, votre agence de communication" />
+	<meta property="og:description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<meta property="og:image" content="/images/agence-bg.png" />
+	<meta property="og:url" content="https://sogocom.fr/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Sogo Com" />
+	<meta property="og:locale" content="fr_FR" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Sogo Com, votre agence de communication" />
+	<meta name="twitter:description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<meta name="twitter:image" content="/images/agence-bg.png" />
+	<meta name="twitter:site" content="@sogocom" />
+	<meta name="twitter:creator" content="@sogocom" />
+	<meta name="twitter:domain" content="sogocom.fr" />
+
+	<link rel="canonical" href="http://sogocom.fr/" />
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+</svelte:head>
+
 <div id="top">
-	<!-- svelte-ignore a11y-media-has-caption -->
 	<video id="player" loop playsinline muted data-poster="/images/agence-bg.png">
 		<source src="/images/videhome.mp4" type="video/mp4" />
 		<source src="/images/videhome.webm" type="video/webm" />
@@ -47,7 +70,7 @@
 		<div class="bloc img-droite">
 			<div class="conteneur">
 				<span data-lag=".2" class="bubble top-left" />
-				<img src="/images/Expertise2_SogoCom_nb.jpg?width=1500&height=1500" alt="L'equipe" />
+				<img  loading="lazy" src="/images/Expertise2_SogoCom_nb.jpg?width=1500&height=1500" alt="L'equipe" />
 				<span data-lag=".2" class="bubble bottom-right" />
 			</div>
 		</div>
@@ -72,10 +95,10 @@
 		<div class="actu">
 			<h2 animate class="grey">Notre dernière actu</h2>
 			<div class="actu-content">
-				<img src="/images/fleche-actu-home.svg?width=500&height=500" alt="chemin" />
+				<img  loading="lazy" src="/images/fleche-actu-home.svg?width=500&height=500" alt="chemin" />
 				<div class="actualites">
 					<div class="conteneur bleu">
-						<div class="img-div"><img src={actualite.photo+"?width=1000&height=1000"} alt={actualite.titre} /></div>
+						<div  loading="lazy" class="img-div"><img src={actualite.photo+"?width=1000&height=1000"} alt={actualite.titre} /></div>
 						<div class="contenu">
 							<h2>{actualite.titre}</h2>
 							<p class="line-clamp-5">{actualite.descriptionCourte}</p>
@@ -97,8 +120,8 @@
 			<Contact />
 		</div>
 		<div class="contact-images">
-			<img class="contact-image"  data-lag="0.03" src="/images/contact-1.png?width=1000&height=1000" alt="contact-1" />
-			<img class="contact-image" data-lag="0.05"  src="/images/contact-2.png?width=1000&height=1000" alt="contact-2" />
+			<img  loading="lazy" class="contact-image"  data-lag="0.03" src="/images/contact-1.png?width=1000&height=1000" alt="contact-1" />
+			<img  loading="lazy" class="contact-image" data-lag="0.05"  src="/images/contact-2.png?width=1000&height=1000" alt="contact-2" />
 			<span class="contact-image" />
 		</div>
 	</div>
