@@ -75,11 +75,7 @@
 
 		<form method="POST" action="?/create" class="pageAgence-form"  use:enhance={submitCreatepageAgence}>
 
-			<div class="form-group">
-				<label for="titre">Titre blanc</label>
-				<textarea rows="2" id="titre" name="titre" bind:value={pageAgence.titre} contenteditable="true" type="text"  />
-			</div>
-
+	
 			
 			<div class="form-group">
 				<label for="titreRose">Titre rose</label>

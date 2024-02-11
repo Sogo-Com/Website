@@ -17,7 +17,7 @@
 							: '0'}; --index:{5 - index};"
 						class="point {index == 3 ? 'decal' : ''}  {index == 2 ? 're' : ''}"
 					>
-						<div class="innerText">{pointHistorique.date}</div>
+						<div class="innerText">{@html pointHistorique.date?.replaceAll("\n","<br>")}</div>
 						<div class="innerStartLine" />
 						<div class="innerEndLine" />
 						<div class="innerPoint {index % 2 == 0 ? 'top' : 'bottom'}">
@@ -29,9 +29,8 @@
 						{#if index == 3}
 						<div class="spacer">
 							<p >
-								4 nouvelles Gommettes arrivent…<br />
-								Nouvelles expertises : <br />
-								événementiel et community management
+								De nouvelles expertises : <br />
+								événementiel, graphisme et community management
 							</p>
 						</div>
 							

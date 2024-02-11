@@ -73,7 +73,7 @@
 {/if}
 {#if client.attachePresses != null && client.attachePresses.length > 0}
 	<div class="blanc attache">
-		<h2 animate>Attaché de presse</h2>
+		<h2 animate>Attachée{client.attachePresses.length > 1 ?"s":""} de presse</h2>
 		{#each client.attachePresses as attachePresses}
 			<div class="info-wrapper">
 				<div class="info">

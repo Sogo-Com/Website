@@ -14,8 +14,7 @@
 <div id="top">
 	<img alt="background-sogo" src="{pageAgence.photoPrincipale ?? "/images/Agence_SogoCom_nb.jpg"}?width=1800&height=1800" />
 
-	<h1 animate><span class="pink">	{@html pageAgence.titre?.replaceAll("\n","<br>") ?? "Des Gommettes"}
-	</span><br />{@html pageAgence.titreRose?.replaceAll("\n","<br>") ?? "qui en jettent !"}</h1>
+	<h1 class="pink" animate>{@html pageAgence.titreRose?.replaceAll("\n","<br>")}</h1>
 </div>
 
 <div id="guillemets">
@@ -84,7 +83,7 @@
 			text-align: left;
 			padding: 10rem;
 
-			.pink {
+			&.pink {
 				color: $color-rose;
 			}
 		}

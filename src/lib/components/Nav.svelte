@@ -131,15 +131,60 @@
 					Contact
 				</a>
 
-				<a class="mobile presse" href="/presse"> Espace Presse </a>
+			<div class="mobile reseaux-s">
+				<a href="https://www.facebook.com/Sogocom?locale=fr_FR" target="_blank">
+					<img src="/images/FB_1.svg" alt="facebook" />
+
+				</a>
+
+				<a href="https://www.instagram.com/sogocom/?hl=fr" target="_blank">
+					<img src="/images/insta.svg" alt="instagram" />
+
+				</a>
+
+				<a href="https://www.linkedin.com/company/sogo-com/" target="_blank">
+					<img src="/images/linkedin.svg" alt="linkedin" />
+
+				</a>
+
+				<a href="https://www.youtube.com/@sogocom477" target="_blank">
+					<img src="/images/YT.svg" alt="youtube" />
+
+				</a>
+			</div>
+				<!-- <a class="mobile presse" href="/presse"> Espace Presse </a> -->
 			</div>
 		</div>
-		<div class="presse">
+		<!-- <div class="presse">
 			<a href="/presse">
 			<div class="btn-container">
 				<div class="btn">Espace Presse</div>
 			</div>
 		</a>
+		</div> -->
+
+
+		
+		<div class="reseaux-s">
+			<a href="https://www.facebook.com/Sogocom?locale=fr_FR" target="_blank">
+				<img src="/images/FB_1.svg" alt="facebook" />
+
+			</a>
+
+			<a href="https://www.instagram.com/sogocom/?hl=fr" target="_blank">
+				<img src="/images/insta.svg" alt="instagram" />
+
+			</a>
+
+			<a href="https://www.linkedin.com/company/sogo-com/" target="_blank">
+				<img src="/images/linkedin.svg" alt="linkedin" />
+
+			</a>
+
+			<a href="https://www.youtube.com/@sogocom477" target="_blank">
+				<img src="/images/YT.svg" alt="youtube" />
+
+			</a>
 		</div>
 
 		<div bind:this={mobileBtn} class="mobile-btn">
@@ -190,6 +235,11 @@
 				font-family: $font-secondary-light;
 				color: $color-gris-dark;
 				font-size: 24px;
+
+				@media only screen and (max-width: $smallpc) {
+					font-size: 1rem;
+				}
+				
 			}
 			.logo-menu {
 				display: flex;
@@ -267,7 +317,39 @@
 				}
 			}
 
-			.presse {
+			.reseaux-s{
+
+				&.mobile{
+					display: flex;
+				}
+				a{
+					margin: 16px 8px;
+					width: 24px;
+					height: 24px;
+
+					padding: 0 !important;
+
+
+					img{
+						width: 100%;
+						height: 100%;
+					}
+					
+					@media only screen and (max-width: $smallpc) {
+						font-size: 1rem;
+					}
+				}
+				flex-basis: 25%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				@media only screen and (max-width: $tablet) {
+					display: none;
+				}
+			
+			}
+			.presse, {
 				display: flex;
 				justify-content: end;
 				align-items: center;

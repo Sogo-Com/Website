@@ -152,10 +152,11 @@
 		.abso {
 			position: absolute;
 			left: 50%;
+		
 		}
 		h1 {
 			width: 100%;
-			bottom: 20%;
+			bottom: 15%;
 
 			transform: translate(-50%, 50%);
 			word-break: break-word;
@@ -168,6 +169,7 @@
 			}
 		}
 		.bg-gris {
+		
 			height: 100vh;
 			width: 100vh;
 			border-radius: 50vh;
@@ -175,7 +177,8 @@
 			opacity: 0.5;
 			top: 100%;
 			z-index: 20;
-			display: flex;
+			// display: flex;
+			display: none;
 			justify-content: center;
 			align-items: flex-end;
 			background-color: #575757;
