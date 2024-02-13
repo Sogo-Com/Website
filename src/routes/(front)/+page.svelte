@@ -70,7 +70,7 @@
 		<div class="bloc img-droite">
 			<div class="conteneur">
 				<span data-lag=".2" class="bubble top-left" />
-				<img  loading="lazy" src="/images/Expertise2_SogoCom_nb.jpg?width=1500&height=1500" alt="L'equipe" />
+				<img  loading="lazy" src="/images/everybody.png?width=1500&height=1500" alt="L'equipe" />
 				<span data-lag=".2" class="bubble bottom-right" />
 			</div>
 		</div>
