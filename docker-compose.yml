@@ -14,7 +14,7 @@ services:
       - "traefik.http.routers.sogocom.entrypoints=http"
       - "traefik.http.routers.sogocom-secure.rule=Host(`sogocom.fr`,`www.sogocom.fr`)"
       - "traefik.http.routers.sogocom-secure.entrypoints=https"
-      - "traefik.http.routers.sogocom-secure.tls=true"
+      - "traefik.http.routers.sogocom-secure.tls=false"
       - "traefik.http.services.sogocom.loadbalancer.server.port=3000"
     volumes:
       - type: bind
