@@ -22,7 +22,7 @@
 		<div class="bloc img-droite">
 			<div class="cont">
 				<img src={client.photoLogo} alt={client.nom} />
-			</div>
+			</div> 
 		</div>
 	</div> 
 </div>

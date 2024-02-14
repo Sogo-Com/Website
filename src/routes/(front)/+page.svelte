@@ -6,7 +6,7 @@
 
 	export let data;
 	let { actualite, projet } = data;
-
+	
 	onMount(() => {
 		const player = document.getElementById('player');
 		player.play();
