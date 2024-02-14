@@ -23,4 +23,4 @@ jobs:
         username: ${{ secrets.PROD_USERNAME }}
         host: ${{ secrets.PROD_HOST }}
         password: ${{ secrets.PROD_PASSWORD }} 
-        script: cd /home/sogocom/dev/sogocom/Website && git pull && docker compose up -d --force-recreate --build --no-deps
+        script: cd /home/sogocom/dev/sogocom/Website && git pull && sudo docker compose up -d --force-recreate --build --no-deps
