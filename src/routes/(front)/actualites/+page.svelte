@@ -10,6 +10,14 @@
 	onMount((_) => {});
 </script>
 
+
+<svelte:head>
+	<title>Sogo Com et ses actualités !</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/actualites" />
+
+</svelte:head>
+
 <div id="top">
 	<img alt="background-sogo" src="{pageActualite.photoPrincipale ?? "/images/actualites-bg.jpg" }?width=1800&height=1800" />
 

@@ -50,7 +50,7 @@
 				link.classList.remove('active');
 				if(link.href == null)
 					return;
-				
+
 				const linkUrl = new URL(link.href);
 				if (url.pathname?.replaceAll("/","") == linkUrl.pathname?.replaceAll("/","")) link.classList.add('active');
 			});
@@ -361,7 +361,7 @@
 
 			
 			}
-			.presse, {
+			.presse {
 				display: flex;
 				justify-content: end;
 				align-items: center;

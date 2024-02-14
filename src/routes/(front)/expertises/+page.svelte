@@ -89,6 +89,14 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Sogo Com, nos expertises professionelles !</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/experises" />
+
+</svelte:head>
+
+
 <div id="total-expertise" bind:this={containerEl}>
 	<div id="top">
 		<img alt="Page Expertise" src="{pageExpertise.photoPrincipale ?? "/images/expertis.jpg" }?width=1800&height=1800" />

@@ -60,6 +60,14 @@
 	});
 </script>
 
+
+<svelte:head>
+	<title>Sogo Com et ses projets !</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/projets" />
+
+</svelte:head>
+
 <div id="top">
 	<h1 animate>{@html pageProjet.titre?.replaceAll("\n","<br>") ?? "Des projets <br>qui fusent"}</h1>
 	<img alt="background-sogo" src="{pageProjet.photoPrincipale ?? "/images/NosProjets_Header_SogoCom.jpg"}?width=1800&height=1800" />

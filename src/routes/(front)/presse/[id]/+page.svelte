@@ -3,6 +3,14 @@
 	let { client } = data;
 </script>
 
+
+<svelte:head>
+	<title>Sogo Com avec {client.nom} !</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/presse/{client.id}" />
+
+</svelte:head>
+
 <div class="blanc" id="blanc">
 	<div class="wrapper">
 		<div class="bloc desc-gauche">

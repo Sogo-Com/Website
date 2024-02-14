@@ -3,6 +3,14 @@
 	const { mentionsLegales = {} } = data;
 </script>
 
+<svelte:head>
+	<title>Sogo Com, et ses mentions légales</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/mentions" />
+
+</svelte:head>
+
+
 <div class="mentions">
 	<h1>Mentions légales</h1>
 	<p>

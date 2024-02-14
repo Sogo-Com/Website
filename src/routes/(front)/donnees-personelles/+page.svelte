@@ -6,6 +6,14 @@
 
 </script>
 
+<svelte:head>
+	<title>Sogo Com, nos donées personelles</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/donnees-personelles" />
+
+</svelte:head>
+
+
 <div class="donnees">
 	<div>
 		<div class="privacy-policy">

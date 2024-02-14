@@ -11,6 +11,15 @@
 	onMount((_) => {});
 </script>
 
+<svelte:head>
+
+	<title>Sogo Com, votre agence de communication</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/agence" />
+
+</svelte:head>
+
+
 <div id="top">
 	<img alt="background-sogo" src="{pageAgence.photoPrincipale ?? "/images/Agence_SogoCom_nb.jpg"}?width=1800&height=1800" />
 

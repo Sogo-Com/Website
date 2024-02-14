@@ -40,6 +40,10 @@
 </script>
 
 <svelte:head>
+	<title>Sogo Com, contactez-nous !</title>
+	<meta name="description" content="Sogo Com, votre agence de communication à Annecy et dans les Alpes. Découvrez nos services et nos réalisations." />
+	<link rel="canonical" href="http://sogocom.fr/contact" />
+
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </svelte:head>
 

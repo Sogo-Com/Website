@@ -35,8 +35,6 @@
 
 	<link rel="canonical" href="http://sogocom.fr/" />
 
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-
 </svelte:head>
 
 <div id="top">
