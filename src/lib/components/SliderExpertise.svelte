@@ -79,7 +79,7 @@ Et pour condimenter le tout et donner la touche qui fera mouche à tous les coup
 			images: [
 				'/images/SlidePhotoVideo/1.mp4',
 				'/images/SlidePhotoVideo/2.png',
-				'/images/mokup.png'
+				'/images/SlidePhotoVideo/1.mp4'
 			],
 			bgImages : '/images/exper-kaki.png'
 		},
