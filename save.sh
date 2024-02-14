@@ -1,6 +1,6 @@
 #!/bin/sh
-BACKUP_DIR="/home/guillianv/dev/gvvinfo/sogocom/Backup/"
-PROD_DIR="/home/guillianv/dev/gvvinfo/sogocom/Website/"
+BACKUP_DIR="/home/sogocom/dev/sogocom/Backup/"
+PROD_DIR="/home/sogocom/dev/sogocom/Website/"
 
 [[ ! -d "$BACKUP_DIR" ]] && mkdir -p "$BACKUP_DIR"
 
