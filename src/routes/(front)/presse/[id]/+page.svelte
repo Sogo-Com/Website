@@ -24,7 +24,7 @@
 				<img src={client.photoLogo} alt={client.nom} />
 			</div>
 		</div>
-	</div>
+	</div> 
 </div>
 {#if client.communiquePresses != null &&  client.communiquePresses.length > 0}
 <div class="blanc">
