@@ -3,15 +3,15 @@ name: CI/CD
 on:
   push:
     branches:
-      - master
+      - prod
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HOST: ${{ secrets.HOST }}
-      USERNAME: ${{ secrets.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
+      HOST: ${{ secrets.PROD_HOST }}
+      USERNAME: ${{ secrets.PROD_USERNAME }}
+      PASSWORD: ${{ secrets.PROD_PASSWORD }}
 
     steps:
     - name: Checkout code
@@ -20,7 +20,7 @@ jobs:
     - name: SSH and deploy
       uses: appleboy/ssh-action@master
       with:
-        username: ${{ secrets.USERNAME }}
-        host: ${{ secrets.HOST }}
-        password: ${{ secrets.PASSWORD }} 
-        script: cd /home/guillianv/dev/gvvinfo/sogocom/Website && git pull && docker compose up -d --force-recreate --build --no-deps
+        username: ${{ secrets.PROD_USERNAME }}
+        host: ${{ secrets.PROD_HOST }}
+        password: ${{ secrets.PROD_PASSWORD }} 
+        script: cd /home/sogocom/dev/sogocom/Website && git pull && docker compose up -d --force-recreate --build --no-deps
