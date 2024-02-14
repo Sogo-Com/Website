@@ -10,7 +10,7 @@
 	onMount(() => {
 		const player = document.getElementById('player');
 		player.play();
-	});
+	}); 
 </script>
 
 <svelte:head>
