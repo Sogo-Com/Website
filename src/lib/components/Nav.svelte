@@ -48,6 +48,9 @@
 		{
 			linkChilds.forEach((link) => {
 				link.classList.remove('active');
+				if(link.href == null)
+					return;
+				
 				const linkUrl = new URL(link.href);
 				if (url.pathname?.replaceAll("/","") == linkUrl.pathname?.replaceAll("/","")) link.classList.add('active');
 			});
