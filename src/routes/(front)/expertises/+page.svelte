@@ -44,7 +44,7 @@
 		linksEls.children[index].classList.add('active');
 
 		const data = expertiseOnglets[index];
-
+		if(data == null) return;
 		containerEl.className = '';
 		containerEl.classList.add(data.cssClass);
 
@@ -194,7 +194,8 @@
 <style lang="scss" global>
 	#total-expertise {
 		#top {
-			height: 100vh;
+
+			height: 80vh;
 			width: 100%;
 			overflow: hidden;
 			position: relative;

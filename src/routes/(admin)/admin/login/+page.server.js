@@ -1,7 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import bcrypt from 'bcrypt';
 import { db } from '$lib/database';
-import jwt from 'jsonwebtoken';
 
 let Roles = {
 	ADMIN: 'ADMIN',
