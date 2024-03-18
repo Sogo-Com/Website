@@ -20,7 +20,7 @@ services:
       - "traefik.http.routers.sogocom-secure.middlewares=sogocom-redirect"
       - "traefik.http.routers.sogocom.middlewares=sogocom-redirect"
       - "traefik.http.middlewares.sogocom-redirect.redirectregex.regex=^https?://sogocom\\.fr/(.*)"
-      - "traefik.http.middlewares.sogocom-redirect.redirectregex.replacement=https://www.sogocom.fr/$${2}"
+      - "traefik.http.middlewares.sogocom-redirect.redirectregex.replacement=https://www.sogocom.fr/$${1}"
       - "traefik.http.middlewares.sogocom-redirect.redirectregex.permanent=false"
     volumes:
       - type: bind
