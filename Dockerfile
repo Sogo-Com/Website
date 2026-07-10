@@ -1,6 +1,7 @@
 FROM node:18-alpine AS build
 
 WORKDIR /app
+RUN apk add --no-cache openssl
 COPY . .
 RUN rm -rf package-lock.json
 RUN rm -rf node_modules
@@ -18,7 +19,7 @@ COPY --from=build /app/uploads ./uploads
 COPY --from=build /app/prisma .
 COPY --from=build /app/.env .
 COPY --from=build /app/server.js .
-RUN apk update && apk add bash
+RUN apk update && apk add bash openssl
 RUN npm add prisma --save-dev
 RUN npx prisma generate
 RUN npx prisma migrate deploy
