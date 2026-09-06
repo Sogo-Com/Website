@@ -1,0 +1,11 @@
+# La base SQLite est montée au runtime par docker-compose.
+# La copier dans l'image ferait tourner `prisma migrate deploy` sur une copie
+# de la prod au moment du build : les tables existent déjà -> P3018.
+prisma/dev.db
+dev.db
+
+node_modules
+.git
+.svelte-kit
+build-node
+test-results
